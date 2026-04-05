@@ -16,9 +16,11 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
+import { href } from "@/lib/utils";
+
 export function Logo() {
   return (
-    <a href="/" className="header__logo">
+    <a href={href("/")} className="header__logo">
       <LogoMark />
       <span className="header__wordmark">Vento Labs</span>
     </a>

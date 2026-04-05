@@ -1,5 +1,6 @@
 import { LogoMark } from "./Logo";
 import { site, footer } from "@/lib/content";
+import { href } from "@/lib/utils";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -42,7 +43,7 @@ export function Footer() {
             <div className="footer__col">
               <h4>Services</h4>
               {footer.services.map((link) => (
-                <a key={link.href} href={link.href}>
+                <a key={link.href} href={href(link.href)}>
                   {link.label}
                 </a>
               ))}
@@ -50,7 +51,7 @@ export function Footer() {
             <div className="footer__col">
               <h4>Company</h4>
               {footer.company.map((link) => (
-                <a key={link.href} href={link.href}>
+                <a key={link.href} href={href(link.href)}>
                   {link.label}
                 </a>
               ))}
@@ -68,8 +69,8 @@ export function Footer() {
         <div className="footer__bottom">
           <span>&copy; {year} {site.name}. All rights reserved.</span>
           <div className="footer__legal">
-            <a href="/terms">Terms</a>
-            <a href="/privacy">Privacy</a>
+            <a href={href("/terms")}>Terms</a>
+            <a href={href("/privacy")}>Privacy</a>
           </div>
         </div>
       </div>

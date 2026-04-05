@@ -86,7 +86,7 @@ function ServicesSection() {
             const s = services[slug];
             return (
               <ScrollReveal key={slug} delay={i * 100}>
-                <a href={`/services/${slug}`} className="service-card">
+                <a href={asset(`/services/${slug}`)} className="service-card">
                   <div className="service-card__image">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={image} alt={s.title} loading="lazy" />

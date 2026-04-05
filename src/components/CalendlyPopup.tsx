@@ -43,7 +43,7 @@ export function CalendlyWidget() {
     // Intercept all #book links to open popup instead of scrolling
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const anchor = target.closest('a[href="#book"], a[href="/#book"]');
+      const anchor = target.closest('a[href$="#book"]');
       if (anchor && window.Calendly) {
         e.preventDefault();
         openCalendly();

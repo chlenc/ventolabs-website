@@ -66,7 +66,7 @@ export default function CasesPage() {
               Book a call — we&apos;ll set up your AI assistant for free.
             </p>
             <div className="cta-row" style={{ justifyContent: "center" }}>
-              <Button href={`/#book`} variant="on-forest">
+              <Button href={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/#book"} variant="on-forest">
                 Book a free call
               </Button>
             </div>

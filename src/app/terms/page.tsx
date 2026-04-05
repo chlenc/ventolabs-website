@@ -56,7 +56,7 @@ export default function TermsPage() {
           We access client data solely for the purpose of implementing and maintaining
           agreed-upon automations. We do not store, sell, or share client data beyond what is
           necessary for service delivery. See our{" "}
-          <a href="/privacy">Privacy Policy</a> for details.
+          <a href={(process.env.NEXT_PUBLIC_BASE_PATH ?? "") + "/privacy"}>Privacy Policy</a> for details.
         </p>
 
         <h2>6. Limitation of Liability</h2>
