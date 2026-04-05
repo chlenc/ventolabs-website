@@ -380,7 +380,6 @@ p { max-width: 65ch; }
 .hero-word--line2 {
   font-size: clamp(3rem, 7.5vw, 7rem);
   align-self: center;
-  font-style: italic;
   color: var(--color-forest);
 }
 
