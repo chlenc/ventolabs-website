@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { CalendlyWidget } from "@/components/CalendlyPopup";
 import { site } from "@/lib/content";
+import { asset } from "@/lib/utils";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,12 +33,6 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
   other: {
     "geo.region": "US",
     "theme-color": "#234c12",
@@ -52,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href={asset("/favicon.svg")} type="image/svg+xml" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

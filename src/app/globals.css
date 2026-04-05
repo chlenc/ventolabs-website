@@ -308,10 +308,11 @@ p { max-width: 65ch; }
 }
 
 .service-card__logo {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-size: 0.85rem;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.7);
+  font-family: "Roboto Flex", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .service-card__body {
@@ -829,23 +830,26 @@ p { max-width: 65ch; }
 .header__contacts {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-pill);
 }
 
 .header__contact {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  color: var(--color-muted);
+  color: var(--color-text);
   transition: color var(--transition-fast), background var(--transition-fast);
 }
 
 .header__contact:hover {
-  color: var(--color-text);
-  background: var(--color-surface);
+  color: var(--color-forest);
+  background: var(--color-bg);
 }
 
 .header__cta {

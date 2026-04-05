@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button";
+import { asset } from "@/lib/utils";
 import {
   problems,
   solutionSteps,
@@ -66,10 +67,10 @@ function SolutionSection() {
 
 function ServicesSection() {
   const items = [
-    { slug: "ai-assistant" as const, image: "/images/service-ai-assistant.jpg" },
-    { slug: "ai-automation" as const, image: "/images/service-ai-automation.jpg" },
-    { slug: "ai-training" as const, image: "/images/service-ai-training.jpg" },
-    { slug: "ai-workspace" as const, image: "/images/service-ai-workspace.jpg" },
+    { slug: "ai-assistant" as const, image: asset("/images/service-ai-assistant.jpg") },
+    { slug: "ai-automation" as const, image: asset("/images/service-ai-automation.jpg") },
+    { slug: "ai-training" as const, image: asset("/images/service-ai-training.jpg") },
+    { slug: "ai-workspace" as const, image: asset("/images/service-ai-workspace.jpg") },
   ];
   return (
     <section className="section" id="services">
