@@ -11,20 +11,20 @@ export function generateStaticParams(): Params[] {
 
 const seoOverrides: Record<string, { title: string; description: string }> = {
   "ai-assistant": {
-    title: "AI Assistant for Business — Telegram & WhatsApp Bots",
-    description: "Deploy an AI assistant that captures leads, answers FAQ, and automates tasks in Telegram or WhatsApp. Launch in days, not months. Free setup included.",
+    title: "Custom AI Agents — Self-Hosted, Secure, 24/7",
+    description: "We build self-hosted AI agents on OpenClaw, LangGraph, CrewAI. Controls your computer, integrates with Telegram, LinkedIn, WhatsApp. Free agent setup included.",
   },
   "ai-automation": {
-    title: "AI Process Automation — Connect CRM, Sheets & Tools",
-    description: "Automate data entry, reports, and workflows across your CRM, spreadsheets, and task managers with AI-powered automation. Eliminate manual work.",
+    title: "AI Process Automation — n8n, Make.com & Custom Workflows",
+    description: "Automate lead qualification, data sync, reporting, and workflows with AI-powered n8n and Make.com automations. Zero manual data entry.",
   },
   "ai-training": {
-    title: "AI Training for Teams — Claude Code, Cursor & Workflows",
-    description: "Hands-on AI training that sticks. We teach your team Claude Code, Cursor, and custom AI workflows — then measure adoption and productivity gains.",
+    title: "AI Consulting & Team Training — Claude Code, Cursor, MCP",
+    description: "We install Claude Code, Cursor, and MCP servers, train your team on real workflows, and measure adoption at 30 and 60 days. AI consulting for projects of any scale.",
   },
   "ai-workspace": {
-    title: "Enterprise AI Workspace — Access Control & Governance",
-    description: "Company-wide AI environment with managed subscriptions, role-based access, usage policies, and compliance guardrails. Scale AI adoption safely.",
+    title: "Enterprise AI Platform — AI Operating System for Business",
+    description: "Full AI operating system: dedicated agents per department, Knowledge Vault, MCP Gateway, enterprise security. Deploy in 4 weeks. Pricing from Pilot to Enterprise.",
   },
 };
 

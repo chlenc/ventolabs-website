@@ -14,7 +14,7 @@ export const site = {
 
 export const hero = {
   subtitle:
-    "Book a call — we'll set up your AI assistant for free.",
+    "Book a call — we'll build your AI agent for free.",
   ctaPrimary: "Book a free call",
   ctaSecondary: "Our services",
 };
@@ -162,44 +162,75 @@ export const giftPopup = {
   cta: "Book a free call",
 };
 
+export const casesIntro = {
+  title: "Companies that adopt AI win. The rest fall behind.",
+  description:
+    "When computers were invented, companies that adopted them became faster, cheaper, and more competitive. Those that didn't went bankrupt. AI is the same inflection point — and the window is closing. Don't lose money and time. Start winning now.",
+};
+
 export const caseStudies = [
   {
-    label: "Pilot Project",
-    title: "AI assistant for a consulting firm's internal knowledge base",
+    company: "Zigmund Online",
+    industry: "Online Therapy Platform",
+    image: "/images/case-zigmund.jpg",
+    title: "AI agent cut patient intake time by 80% and handles 200+ conversations daily",
     challenge:
-      "Consultants spent 30+ minutes per day searching for past project templates, client frameworks, and internal guidelines across scattered Google Docs and Notion pages.",
+      "Zigmund Online's support team was overwhelmed — 200+ daily inquiries about therapist availability, session booking, and insurance questions. Patients waited 3-4 hours for a response, and 30% dropped off before booking.",
     solution:
-      "Deployed an AI assistant in Telegram connected to the firm's Notion workspace and Google Drive. The assistant instantly finds relevant documents, drafts summaries, and answers process questions.",
+      "Deployed a self-hosted AI agent in Telegram and WhatsApp that handles patient intake, answers insurance questions from the knowledge base, matches patients with available therapists, and books sessions automatically.",
     result:
-      "Average time to find internal documents dropped from 30+ minutes to under 2 minutes. Team adoption reached 85% within the first two weeks.",
-    tech: ["Telegram Bot", "Claude API", "Notion API", "Google Drive"],
+      "Patient response time dropped from 4 hours to under 2 minutes. Booking conversion increased by 40%. The support team now focuses on complex cases instead of repetitive intake.",
+    metrics: [
+      { value: "2 min", label: "response time (was 4 hours)" },
+      { value: "+40%", label: "booking conversion" },
+      { value: "200+", label: "conversations handled daily" },
+    ],
+    tech: ["AI Agent", "Telegram", "WhatsApp", "Claude API", "Notion"],
   },
   {
-    label: "Internal Deployment",
-    title: "Automated lead qualification for an e-commerce agency",
+    company: "NoConcept",
+    industry: "E-commerce",
+    image: "/images/case-noconcept.jpg",
+    title: "Automated product management saves 25 hours per week across the team",
     challenge:
-      "The sales team received 50+ inbound inquiries per week via email and chat. Manually reading, categorizing, and responding to each one took the entire morning.",
+      "NoConcept manages 3,000+ SKUs across multiple marketplaces. Price updates, stock sync, and customer inquiries consumed 5+ hours daily. Lead qualification from the website and social channels was entirely manual.",
     solution:
-      "Built an automation workflow that reads incoming inquiries, qualifies them based on criteria (budget, timeline, fit), drafts personalized responses, and creates tasks in the CRM for qualified leads.",
+      "Built an automation pipeline with n8n: incoming leads are qualified by AI, product data syncs across platforms in real-time, customer questions are answered from the product database, and weekly analytics reports generate automatically.",
     result:
-      "Lead response time dropped from 4 hours to under 15 minutes. The team now spends mornings on sales calls instead of inbox triage.",
-    tech: ["n8n", "OpenAI API", "HubSpot", "Gmail API"],
+      "Lead response time dropped from 6 hours to 8 minutes. Product data sync errors eliminated. The team reclaimed 25+ hours per week for growth activities instead of data entry.",
+    metrics: [
+      { value: "8 min", label: "lead response (was 6 hours)" },
+      { value: "25h", label: "saved per week" },
+      { value: "3,000+", label: "SKUs managed automatically" },
+    ],
+    tech: ["n8n", "OpenAI API", "Shopify", "Gmail", "Google Sheets"],
   },
   {
-    label: "Pilot Project",
-    title: "AI-powered content workflow for a SaaS marketing team",
+    company: "ASG Compute",
+    industry: "Cloud Infrastructure",
+    image: "/images/case-asgcompute.jpg",
+    title: "Enterprise AI workspace deployed for 45 employees across 5 departments in 4 weeks",
     challenge:
-      "The marketing team of 3 needed to produce 12+ blog posts, 40+ social media posts, and 4 newsletters per month. The bottleneck was always first drafts and research.",
+      "ASG Compute had no AI governance. Engineers used personal ChatGPT accounts, sales had no AI tools, and sensitive infrastructure data was going through uncontrolled channels. No visibility into AI spend or usage.",
     solution:
-      "Set up an AI content pipeline: topic research and outline generation, first draft creation, SEO optimization suggestions, and social media repurposing — all triggered from a simple Notion board.",
+      "Deployed a full AI operating system: Claude Team Plan for all 45 employees, 13 custom AI agents across sales, engineering, DevOps, marketing, and support. Knowledge Vault with all internal documentation. Role-based access and compliance policies.",
     result:
-      "Content production capacity increased by approximately 3x without hiring. First draft time dropped from 3-4 hours to 30 minutes per piece.",
-    tech: ["Claude API", "Notion API", "Google Sheets", "Make"],
+      "Full AI adoption across all departments in under 4 weeks. AI spend consolidated and reduced by 35%. New AI agents now deploy in 2-3 days instead of weeks. Company knowledge is preserved and accessible to every team member.",
+    metrics: [
+      { value: "13", label: "AI agents deployed" },
+      { value: "4 weeks", label: "from zero to full adoption" },
+      { value: "–35%", label: "AI infrastructure costs" },
+    ],
+    tech: ["Claude Team", "MCP Gateway", "n8n", "Supabase", "Custom Agents"],
   },
 ];
 
 export const nav = {
   links: [
+    { label: "AI Agents", href: "/services/ai-assistant" },
+    { label: "Automation", href: "/services/ai-automation" },
+    { label: "Consulting", href: "/services/ai-training" },
+    { label: "Enterprise", href: "/services/ai-workspace" },
     { label: "Cases", href: "/cases" },
   ],
   cta: { label: "Book a call", href: "#book" },
@@ -210,9 +241,9 @@ export const footer = {
     "We design and build AI agents that cut costs, automate operations, and help businesses scale without adding headcount.",
   services: [
     { label: "AI Agents", href: "/services/ai-assistant" },
-    { label: "Process Automation", href: "/services/ai-automation" },
-    { label: "Team Training", href: "/services/ai-training" },
-    { label: "Enterprise Workspace", href: "/services/ai-workspace" },
+    { label: "Automation", href: "/services/ai-automation" },
+    { label: "Consulting", href: "/services/ai-training" },
+    { label: "Enterprise", href: "/services/ai-workspace" },
   ],
   company: [
     { label: "Case Studies", href: "/cases" },
