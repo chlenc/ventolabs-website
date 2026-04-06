@@ -11,6 +11,10 @@ export default function PrivacyPage() {
       <div className="container container--narrow">
         <h1>Privacy Policy</h1>
         <p>Last updated: April 2026</p>
+        <p>
+          This policy applies to Vento Labs Pte. Ltd. (UEN 202504485G), a company
+          incorporated in the Republic of Singapore.
+        </p>
 
         <h2>1. Information We Collect</h2>
         <h3>Information you provide</h3>

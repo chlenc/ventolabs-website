@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
+import { GiftButton } from "./GiftPopup";
 import { nav, site } from "@/lib/content";
 import { href } from "@/lib/utils";
 
@@ -47,6 +48,7 @@ export function Header() {
               </a>
             </div>
 
+            <GiftButton />
             <a href={href(nav.cta.href)} className="btn btn--primary header__cta">
               {nav.cta.label}
             </a>

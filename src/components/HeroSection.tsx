@@ -51,21 +51,21 @@ export function HeroSection() {
       <div className="hero-v2__content">
         <div className="hero-v2__title">
           <span className="hero-word hero-word--line1" data-speed="0.6" data-dir="right">
-            AI assistants
+            We design & build
           </span>
           <span className="hero-word hero-word--line2" data-speed="0" data-dir="none">
-            & automations
+            AI agents
           </span>
           <span className="hero-word hero-word--line3" data-speed="0.6" data-dir="left">
-            for your business
+            that scale your business
           </span>
         </div>
 
         <div className="hero-v2__bottom">
           <div className="hero-v2__desc">
             <p>
-              We launch AI assistants in Telegram and WhatsApp, automate your processes,
-              and train your team — so you save time from month one.
+              Cut operating costs, automate repetitive work, and grow
+              without adding headcount — with custom AI agents and automations.
             </p>
             <p className="hero-v2__sub">
               Book a call — we&apos;ll set up your AI assistant for free.

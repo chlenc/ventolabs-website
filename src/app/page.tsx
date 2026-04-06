@@ -125,7 +125,6 @@ function LeadMagnetSection() {
               <Button href="#book" variant="on-forest">
                 {leadMagnet.cta}
               </Button>
-              <p className="lead-magnet__note">{leadMagnet.note}</p>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={150}>
@@ -160,16 +159,22 @@ function RoiSection() {
         <div className="grid grid--3">
           {roiCards.map((card, i) => (
             <ScrollReveal key={card.source} delay={i * 120}>
-              <div className="roi-card">
-                <p className="roi-card__source">
-                  <a href={card.sourceUrl} target="_blank" rel="noopener noreferrer">{card.source}</a>
-                </p>
+              <a href={card.sourceUrl} target="_blank" rel="noopener noreferrer" className="roi-card">
+                <div className="roi-card__header">
+                  <span className="roi-card__logo-icon">
+                    {card.logo === "stanford" && "🎓"}
+                    {card.logo === "science" && "🔬"}
+                    {card.logo === "github" && "⚡"}
+                  </span>
+                  <span className="roi-card__source">{card.source}</span>
+                  <svg className="roi-card__link" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </div>
                 <div className="roi-card__stat">
                   {card.stat} <span className="roi-card__stat-label">{card.statLabel}</span>
                 </div>
                 <p className="roi-card__desc">{card.description}</p>
                 <p className="roi-card__sample">{card.sample}</p>
-              </div>
+              </a>
             </ScrollReveal>
           ))}
         </div>

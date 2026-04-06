@@ -1165,3 +1165,143 @@ p { max-width: 65ch; }
   background: var(--color-surface);
   color: var(--color-muted);
 }
+
+/* ── Floating Action Button ─────────────────────────── */
+.fab {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.fab__button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-forest);
+  color: var(--color-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(35, 76, 18, 0.3);
+  transition: all var(--transition-base);
+}
+
+.fab__button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(35, 76, 18, 0.4);
+}
+
+.fab__button--open {
+  background: var(--color-text);
+}
+
+.fab__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  animation: slideUp 0.25s ease;
+}
+
+.fab__option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.25rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 450;
+  color: var(--color-text);
+  white-space: nowrap;
+  box-shadow: var(--shadow-soft);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fab__option:hover {
+  border-color: var(--color-forest);
+  color: var(--color-forest);
+  box-shadow: var(--shadow-lift);
+}
+
+/* ── Header Gift Button ─────────────────────────────── */
+.header__gift {
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.35rem;
+  border-radius: 50%;
+  transition: transform var(--transition-fast);
+  cursor: pointer;
+}
+
+.header__gift:hover {
+  transform: scale(1.2);
+}
+
+/* ── Popup with image ───────────────────────────────── */
+.popup--wide {
+  max-width: 480px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.popup__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.popup__body {
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.popup__body h3 { margin-bottom: 0.5rem; }
+.popup__body p { color: var(--color-muted); margin-bottom: 1.25rem; }
+
+.popup__emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* ── ROI Card Header ────────────────────────────────── */
+.roi-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-base);
+}
+
+.roi-card:hover {
+  border-color: var(--color-forest);
+  box-shadow: var(--shadow-soft);
+}
+
+.roi-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.roi-card__logo-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.roi-card__link {
+  margin-left: auto;
+  opacity: 0.3;
+  transition: opacity var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.roi-card:hover .roi-card__link { opacity: 0.8; }

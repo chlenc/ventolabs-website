@@ -12,9 +12,10 @@ export default function TermsPage() {
         <h1>Terms of Use</h1>
         <p>Last updated: April 2026</p>
 
-        <h2>1. Services</h2>
+        <h2>1. Company &amp; Services</h2>
         <p>
-          Vento Labs (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides AI automation
+          Vento Labs Pte. Ltd. (UEN 202504485G), a company incorporated in Singapore
+          (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), provides AI automation
           consulting, implementation, and training services. By engaging our services, you
           agree to these terms.
         </p>
@@ -80,7 +81,7 @@ export default function TermsPage() {
 
         <h2>8. Governing Law</h2>
         <p>
-          These terms are governed by the laws of the State of Delaware, United States.
+          These terms are governed by the laws of the Republic of Singapore.
           Disputes shall be resolved through good-faith negotiation before pursuing formal
           remedies.
         </p>

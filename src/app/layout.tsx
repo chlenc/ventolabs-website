@@ -3,35 +3,41 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { CalendlyWidget } from "@/components/CalendlyPopup";
+import { FloatingContact } from "@/components/FloatingContact";
 import { site } from "@/lib/content";
 import { asset } from "@/lib/utils";
 import "./globals.css";
 
+const seoTitle = "Vento Labs — AI Agents & Automation for Business | Cut Costs, Scale Fast";
+const seoDesc = "We design and build custom AI agents that automate operations, cut costs, and scale your business without adding headcount. Free AI agent setup included.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Vento Labs — AI Automation Agency",
+    default: seoTitle,
     template: "%s | Vento Labs",
   },
-  description: site.description,
+  description: seoDesc,
   keywords: [
-    "AI automation",
-    "AI business assistant",
+    "AI agents for business",
+    "AI automation agency",
+    "custom AI agents",
     "AI process automation",
-    "enterprise AI",
-    "AI consulting",
-    "Telegram AI bot",
-    "WhatsApp AI assistant",
+    "enterprise AI solutions",
+    "AI business assistant",
+    "reduce operating costs with AI",
     "AI team training",
+    "AI workflow automation",
+    "business AI implementation",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: site.name,
-    title: "Vento Labs — AI Automation Agency",
-    description: site.description,
+    title: seoTitle,
+    description: seoDesc,
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", title: seoTitle, description: seoDesc },
   robots: { index: true, follow: true },
   other: {
     "geo.region": "US",
@@ -86,6 +92,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <ExitIntentPopup />
+        <FloatingContact />
         <CalendlyWidget />
       </body>
     </html>

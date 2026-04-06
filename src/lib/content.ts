@@ -9,26 +9,19 @@ export const site = {
   whatsapp: "https://wa.me/351932111777",
   linkedin: "https://www.linkedin.com/company/vento-labs/",
   description:
-    "AI automation agency — we launch AI assistants, automate processes, and train teams to work with AI.",
+    "We design and build AI agents that cut operating costs, automate operations, and scale your business without adding headcount.",
 };
 
 export const hero = {
-  title: "We launch AI assistants and automations that save your team time from month one",
   subtitle:
-    "Book a call — we'll set up your AI business assistant for free.",
+    "Book a call — we'll set up your AI assistant for free.",
   ctaPrimary: "Book a free call",
-  ctaSecondary: "Learn more",
+  ctaSecondary: "Our services",
 };
 
-export const trustValues = [
-  { label: "Fast", description: "MVP in days, not months" },
-  { label: "Secure", description: "Your data stays yours" },
-  { label: "Measurable", description: "Track real ROI" },
-];
-
 export const problems = [
-  "Your team wastes hours answering the same questions, searching for info, and compiling manual reports",
-  "Leads and requests get lost between chats, spreadsheets, and email threads",
+  "Your team wastes hours on repetitive tasks — answering the same questions, searching for info, compiling reports manually",
+  "Leads and requests slip through the cracks between chats, spreadsheets, and email threads",
   "You tried AI tools — your team played around for a week and went back to doing things the old way",
   "There's no clear process for adopting AI — everyone does their own thing, with inconsistent results",
 ];
@@ -37,36 +30,36 @@ export const solutionSteps = [
   {
     title: "Audit",
     description:
-      "We analyze your key process in a 30-60 minute call. No fluff — we identify where AI can save the most time right now.",
+      "We analyze your key process in a 30-60 minute call. No fluff — we identify where AI can save the most time and money right now.",
   },
   {
-    title: "MVP",
+    title: "Build",
     description:
-      "We launch a working AI assistant in Telegram or WhatsApp, connected to your knowledge base and tools. You see results in days.",
+      "We set up your first AI agent — connected to your tools, knowledge base, and workflows. You see a working solution in days, not months.",
   },
   {
     title: "Scale",
     description:
-      "We automate more processes by priority, in sprints. Each one has clear KPIs and ongoing support.",
+      "We expand automation across your operations by priority. Each iteration has clear KPIs, and we support you as your needs evolve.",
   },
 ];
 
 export const leadMagnet = {
-  title: "Book a call — we'll set up your AI business assistant for free",
+  title: "Book a call — we'll set up your AI agent for free",
   items: [
-    "AI assistant deployed in Telegram or WhatsApp for your team",
+    "Custom AI agent deployed for your team",
     "Connected to your knowledge base — docs, FAQ, internal guides",
     "Short training session so your team can start using it immediately",
-    "Server and AI model costs are on your account — fully transparent",
+    "Infrastructure costs are on your account — fully transparent",
   ],
-  cta: "Book a free setup call",
-  note: "Free setup is available for clients who proceed with our services.",
+  cta: "Claim your free AI agent",
 };
 
 export const roiCards = [
   {
     source: "Stanford & MIT, 2023",
     sourceUrl: "https://www.nber.org/papers/w31161",
+    logo: "stanford",
     stat: "+14%",
     statLabel: "productivity",
     description:
@@ -76,6 +69,7 @@ export const roiCards = [
   {
     source: "Science, 2023",
     sourceUrl: "https://www.science.org/doi/10.1126/science.adh2586",
+    logo: "science",
     stat: "–40%",
     statLabel: "time on tasks",
     description:
@@ -85,6 +79,7 @@ export const roiCards = [
   {
     source: "GitHub & Microsoft, 2022",
     sourceUrl: "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
+    logo: "github",
     stat: "~56%",
     statLabel: "faster coding",
     description:
@@ -122,7 +117,7 @@ export const securityPoints = [
 export const faq = [
   {
     q: "Will the AI make things up or hallucinate?",
-    a: "We configure every assistant to answer strictly from your approved knowledge base. If it doesn't know something, it says so and routes the question to a human. We also fine-tune and test accuracy before launch.",
+    a: "We configure every agent to answer strictly from your approved knowledge base. If it doesn't know something, it says so and routes the question to a human. We also fine-tune and test accuracy before launch.",
   },
   {
     q: "What data goes to external AI models?",
@@ -130,15 +125,15 @@ export const faq = [
   },
   {
     q: "How much does it cost to run monthly?",
-    a: "Typical AI model costs for a business assistant are $20–200/month depending on usage volume. We give you a detailed cost estimate before starting, and you pay providers directly — no markups.",
+    a: "Typical AI model costs are $20–200/month depending on usage volume. We give you a detailed cost estimate before starting, and you pay providers directly — no markups.",
   },
   {
     q: "How long does implementation take?",
-    a: "A basic AI assistant launches in 3-7 days. Process automation workflows take 1-3 weeks. Enterprise workspace setup is typically 2-4 weeks. You always get a working MVP first.",
+    a: "A basic AI agent launches in 3-7 days. Process automation workflows take 1-3 weeks. Enterprise workspace setup is typically 2-4 weeks. You always get a working solution first.",
   },
   {
-    q: "Can we stop after the MVP?",
-    a: "Absolutely. The MVP is yours to keep. Many clients start there and come back when they're ready to automate more. There's no lock-in or long-term commitment required.",
+    q: "Can we stop after the first setup?",
+    a: "Absolutely. The initial build is yours to keep. Many clients start there and come back when they're ready to automate more. There's no lock-in or long-term commitment required.",
   },
   {
     q: "Do you work with our industry?",
@@ -149,14 +144,21 @@ export const faq = [
 export const calendly = {
   title: "Book a 20-minute discovery call",
   subtitle:
-    "No pitch, no pressure. We'll look at your process and tell you what's possible. Plus — we'll set up your AI assistant for free.",
+    "No pitch, no pressure. We'll look at your process and tell you what's possible. Plus — we'll set up your AI agent for free.",
   url: "https://calendly.com/ventolabs/30min",
 };
 
 export const exitPopup = {
-  title: "Before you go",
+  title: "Wait — free AI agent for your business",
   description:
-    "Book a 20-minute call and we'll set up your AI business assistant for free. No strings attached.",
+    "Book a 20-minute call and we'll build and deploy a custom AI agent for your team. Zero cost for the setup.",
+  cta: "Claim your free AI agent",
+};
+
+export const giftPopup = {
+  title: "🎁 Free AI Agent",
+  description:
+    "Book a discovery call and we'll set up a custom AI agent for your business — completely free.",
   cta: "Book a free call",
 };
 
@@ -205,9 +207,9 @@ export const nav = {
 
 export const footer = {
   blurb:
-    "AI automation agency — we launch assistants, automate processes, and train teams to work smarter with AI.",
+    "We design and build AI agents that cut costs, automate operations, and help businesses scale without adding headcount.",
   services: [
-    { label: "AI Assistant", href: "/services/ai-assistant" },
+    { label: "AI Agents", href: "/services/ai-assistant" },
     { label: "Process Automation", href: "/services/ai-automation" },
     { label: "Team Training", href: "/services/ai-training" },
     { label: "Enterprise Workspace", href: "/services/ai-workspace" },
