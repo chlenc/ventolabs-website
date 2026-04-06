@@ -2,86 +2,58 @@ import { ServiceDef } from "@/lib/services";
 import { Button } from "./Button";
 import { FaqSection } from "./FaqSection";
 import { ScrollReveal } from "./ScrollReveal";
+import { asset } from "@/lib/utils";
 
 const agentCategories = [
   {
     name: "Supply & Procurement",
+    image: "/images/agent-supply.jpg",
     agents: [
-      { name: "Price Parser", does: "Extracts prices from WhatsApp, email, PDFs automatically", replaces: "Manual data entry from supplier messages" },
-      { name: "Purchase Optimizer", does: "Suggests optimal order quantities based on demand and margins", replaces: "Gut-feel purchasing decisions" },
-      { name: "Supplier Scout", does: "Finds and evaluates new suppliers, compares terms", replaces: "Hours of manual market research" },
+      { name: "Price Parser", does: "Extracts prices from WhatsApp, email, PDFs automatically" },
+      { name: "Purchase Optimizer", does: "Suggests optimal order quantities based on demand and margins" },
+      { name: "Supplier Scout", does: "Finds and evaluates new suppliers, compares terms" },
     ],
   },
   {
     name: "Sales & GTM",
+    image: "/images/agent-sales.jpg",
     agents: [
-      { name: "Lead Qualifier", does: "Scores and routes inbound leads based on your criteria", replaces: "Manual lead review and email sorting" },
-      { name: "Proposal Builder", does: "Generates custom proposals from templates and client data", replaces: "Copy-paste proposal creation" },
-      { name: "Outreach Agent", does: "Drafts and sends personalized outreach sequences", replaces: "Manual cold email writing" },
+      { name: "Lead Qualifier", does: "Scores and routes inbound leads based on your criteria" },
+      { name: "Proposal Builder", does: "Generates custom proposals from templates and client data" },
+      { name: "Outreach Agent", does: "Drafts and sends personalized outreach sequences" },
     ],
   },
   {
     name: "Marketing & Content",
+    image: "/images/agent-marketing.jpg",
     agents: [
-      { name: "Content Engine", does: "Creates blog posts, social media, newsletters from briefs", replaces: "Blank page syndrome and first-draft bottleneck" },
-      { name: "Campaign Optimizer", does: "Analyzes campaign performance and suggests improvements", replaces: "Manual analytics review and guesswork" },
-      { name: "SEO Monitor", does: "Tracks rankings, finds keyword opportunities, suggests fixes", replaces: "Monthly manual SEO audits" },
+      { name: "Content Engine", does: "Creates blog posts, social media, newsletters from briefs" },
+      { name: "Campaign Optimizer", does: "Analyzes campaign performance and suggests improvements" },
+      { name: "SEO Monitor", does: "Tracks rankings, finds keyword opportunities, suggests fixes" },
     ],
   },
   {
     name: "Operations & Support",
+    image: "/images/agent-operations.jpg",
     agents: [
-      { name: "Morning Dashboard", does: "Compiles overnight metrics, flags anomalies, prepares briefing", replaces: "30 minutes of morning data checking" },
-      { name: "Customer Concierge", does: "Handles tier-1 support, escalates complex issues", replaces: "Repetitive support ticket responses" },
-      { name: "Inventory Prophet", does: "Predicts stock needs, alerts on low inventory, suggests reorders", replaces: "Reactive stock management" },
-      { name: "Report Generator", does: "Creates weekly/monthly reports from live data across all tools", replaces: "Half-day of report compilation" },
+      { name: "Morning Dashboard", does: "Compiles overnight metrics, flags anomalies, prepares briefing" },
+      { name: "Customer Concierge", does: "Handles tier-1 support, escalates complex issues" },
+      { name: "Inventory Prophet", does: "Predicts stock needs, alerts on low inventory" },
+      { name: "Report Generator", does: "Creates weekly/monthly reports from live data" },
     ],
   },
 ];
 
 const pricingTiers = [
-  {
-    name: "Pilot",
-    agents: "1–3",
-    seats: "Up to 5",
-    timeline: "4 weeks",
-    setup: "Custom",
-    monthly: "Custom",
-    highlight: false,
-  },
-  {
-    name: "Scale",
-    agents: "5–8",
-    seats: "Up to 15",
-    timeline: "8 weeks",
-    setup: "Custom",
-    monthly: "Custom",
-    highlight: true,
-  },
-  {
-    name: "Enterprise",
-    agents: "13+",
-    seats: "Unlimited",
-    timeline: "12 weeks",
-    setup: "Custom",
-    monthly: "Custom",
-    highlight: false,
-  },
+  { name: "Pilot", agents: "1–3", seats: "Up to 5", timeline: "4 weeks", setup: "Custom", monthly: "Custom", highlight: false },
+  { name: "Scale", agents: "5–8", seats: "Up to 15", timeline: "8 weeks", setup: "Custom", monthly: "Custom", highlight: true },
+  { name: "Enterprise", agents: "13+", seats: "Unlimited", timeline: "12 weeks", setup: "Custom", monthly: "Custom", highlight: false },
 ];
 
 const differentiators = [
-  {
-    title: "Claude-native",
-    description: "We don't build AI from scratch. We use the best platform and extend it. Faster. More reliable. More cost-effective than hiring an AI team.",
-  },
-  {
-    title: "Knowledge compounds",
-    description: "Every conversation, every decision, every deal is saved in your Knowledge Vault. After 6 months, AI knows your business better than any new hire.",
-  },
-  {
-    title: "Agile delivery",
-    description: "First agent works in 4 weeks. New agents deploy in days, not months. We iterate based on real data, not assumptions.",
-  },
+  { title: "Claude-native", description: "We use the best AI platform and extend it. Faster, more reliable, and more cost-effective than building from scratch." },
+  { title: "Knowledge compounds", description: "Every decision and conversation is saved. After 6 months, AI knows your business better than any new hire." },
+  { title: "Agile delivery", description: "First agent works in 4 weeks. New agents deploy in days. We iterate on real data, not assumptions." },
 ];
 
 export function EnterprisePage({ service }: { service: ServiceDef }) {
@@ -122,33 +94,37 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
         </div>
       </section>
 
-      {/* Solution */}
+      {/* Solution — with image */}
       <section className="section section--forest">
         <div className="container">
-          <ScrollReveal>
-            <div className="section-header centered" style={{ color: "var(--color-cream)" }}>
-              <p className="eyebrow" style={{ color: "rgba(255,231,210,0.6)" }}>The Solution</p>
-              <h2>AI Operating System — one brain for your entire company</h2>
-              <p style={{ color: "rgba(255,231,210,0.7)" }}>
-                Not a chatbot. Not a dashboard. A full operating system with dedicated AI agents for every department,
-                a shared knowledge vault, and enterprise-grade security.
-              </p>
-            </div>
-          </ScrollReveal>
-          <div className="grid grid--2">
-            {[
-              { title: "Claude Team Plan", desc: "Every employee gets an AI assistant with full company context" },
-              { title: "Custom AI Agents", desc: "Dedicated agents for sales, marketing, operations, support — each trained on your processes" },
-              { title: "Knowledge Vault", desc: "Everything your company knows — stored, indexed, and available to AI. Knowledge never leaves." },
-              { title: "MCP Gateway", desc: "AI connected to your systems: Shopify, Gmail, WhatsApp, CRM, databases — through secure protocols" },
-            ].map((item, i) => (
-              <ScrollReveal key={item.title} delay={i * 100}>
-                <div className="card card--forest">
-                  <h3>{item.title}</h3>
-                  <p>{item.desc}</p>
+          <div className="ent-solution">
+            <ScrollReveal>
+              <div className="ent-solution__text">
+                <p className="eyebrow" style={{ color: "rgba(255,231,210,0.6)" }}>The Solution</p>
+                <h2>AI Operating System — one brain for your entire company</h2>
+                <p style={{ color: "rgba(255,231,210,0.7)" }}>
+                  Not a chatbot. Not a dashboard. A full operating system with dedicated AI agents,
+                  a shared knowledge vault, and enterprise-grade security.
+                </p>
+                <div className="ent-solution__cards">
+                  {[
+                    { t: "Claude Team Plan", d: "AI assistant with full company context for every employee" },
+                    { t: "Custom AI Agents", d: "Dedicated agents per department, trained on your processes" },
+                    { t: "Knowledge Vault", d: "Company knowledge indexed and available to AI — forever" },
+                    { t: "MCP Gateway", d: "Secure connections to Shopify, Gmail, WhatsApp, CRM, databases" },
+                  ].map((c) => (
+                    <div key={c.t} className="ent-solution__card">
+                      <strong>{c.t}</strong>
+                      <span>{c.d}</span>
+                    </div>
+                  ))}
                 </div>
-              </ScrollReveal>
-            ))}
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={150}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={asset("/images/enterprise-solution.jpg")} alt="AI Operating System" className="ent-solution__image" />
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -175,35 +151,34 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
         </div>
       </section>
 
-      {/* Agents Showcase */}
+      {/* Agents Showcase — with images per category */}
       <section className="section section--surface">
         <div className="container">
           <ScrollReveal>
             <div className="section-header centered">
               <p className="eyebrow">AI Agents</p>
-              <h2>13+ agents. 4 departments. Zero manual work.</h2>
+              <h2>13+ agents across your entire operation</h2>
             </div>
           </ScrollReveal>
-          <div className="agents-showcase">
-            {agentCategories.map((cat, ci) => (
-              <ScrollReveal key={cat.name} delay={ci * 100}>
-                <div className="agents-category">
-                  <h3 className="agents-category__title">{cat.name}</h3>
-                  <div className="agents-category__list">
-                    {cat.agents.map((agent) => (
-                      <div key={agent.name} className="agent-card">
-                        <h4>{agent.name}</h4>
-                        <p className="agent-card__does">{agent.does}</p>
-                        <p className="agent-card__replaces">
-                          <span>Replaces:</span> {agent.replaces}
-                        </p>
+          {agentCategories.map((cat, ci) => (
+            <ScrollReveal key={cat.name} delay={ci * 80}>
+              <div className={`ent-agent-row${ci % 2 === 1 ? " ent-agent-row--reverse" : ""}`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={asset(cat.image)} alt={cat.name} className="ent-agent-row__image" loading="lazy" />
+                <div className="ent-agent-row__content">
+                  <h3>{cat.name}</h3>
+                  <div className="ent-agent-row__list">
+                    {cat.agents.map((a) => (
+                      <div key={a.name} className="ent-agent-item">
+                        <strong>{a.name}</strong>
+                        <span>{a.does}</span>
                       </div>
                     ))}
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
-          </div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </section>
 
@@ -219,14 +194,14 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
           <ScrollReveal>
             <div className="arch-facts">
               {[
-                { icon: "🔒", text: "Data stays on your infrastructure (Supabase, self-hosted VPS)" },
-                { icon: "🔑", text: "OAuth 2.1 authentication, role-based access controls" },
-                { icon: "📊", text: "Full audit logs and usage monitoring" },
-                { icon: "🔓", text: "No vendor lock-in — standard open protocols (MCP, REST)" },
-              ].map((fact) => (
-                <div key={fact.text} className="arch-fact">
-                  <span className="arch-fact__icon">{fact.icon}</span>
-                  <span>{fact.text}</span>
+                { icon: "🔒", text: "Data stays on your infrastructure — self-hosted VPS + Supabase" },
+                { icon: "🔑", text: "OAuth 2.1 authentication with role-based access controls" },
+                { icon: "📊", text: "Full audit logs, usage monitoring, and ROI reporting" },
+                { icon: "🔓", text: "No vendor lock-in — standard open protocols (MCP, REST API)" },
+              ].map((f) => (
+                <div key={f.text} className="arch-fact">
+                  <span className="arch-fact__icon">{f.icon}</span>
+                  <span>{f.text}</span>
                 </div>
               ))}
             </div>
@@ -252,7 +227,7 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
                     <div className="pricing-card__row"><span>Agents</span><strong>{tier.agents}</strong></div>
                     <div className="pricing-card__row"><span>Seats</span><strong>{tier.seats}</strong></div>
                     <div className="pricing-card__row"><span>Timeline</span><strong>{tier.timeline}</strong></div>
-                    <div className="pricing-card__row"><span>Setup</span><strong>{tier.setup}</strong></div>
+                    <div className="pricing-card__row"><span>Setup fee</span><strong>{tier.setup}</strong></div>
                     <div className="pricing-card__row"><span>Monthly</span><strong>{tier.monthly}</strong></div>
                   </div>
                   <Button href="#book" variant={tier.highlight ? "primary" : "secondary"}>
@@ -278,12 +253,9 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
             </div>
           </ScrollReveal>
           <div className="grid grid--3">
-            {differentiators.map((diff, i) => (
-              <ScrollReveal key={diff.title} delay={i * 100}>
-                <div className="card">
-                  <h3>{diff.title}</h3>
-                  <p>{diff.description}</p>
-                </div>
+            {differentiators.map((d, i) => (
+              <ScrollReveal key={d.title} delay={i * 100}>
+                <div className="card"><h3>{d.title}</h3><p>{d.description}</p></div>
               </ScrollReveal>
             ))}
           </div>
