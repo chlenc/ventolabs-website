@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { servicesSlugs, getService } from "@/lib/services";
 import { ServicePage } from "@/components/ServicePage";
+import { EnterprisePage } from "@/components/EnterprisePage";
 import type { Metadata } from "next";
 
 type Params = { slug: string };
@@ -44,5 +45,6 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
+  if (slug === "ai-workspace") return <EnterprisePage service={service} />;
   return <ServicePage service={service} />;
 }
