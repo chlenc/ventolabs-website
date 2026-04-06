@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { exitPopup } from "@/lib/content";
 import { openCalendly } from "./CalendlyPopup";
+import { isGiftPopupOpen } from "./GiftPopup";
 import { asset } from "@/lib/utils";
 
 export function ExitIntentPopup() {
@@ -22,6 +23,7 @@ export function ExitIntentPopup() {
 
     const doFire = () => {
       if (firedAlready) return;
+      if (isGiftPopupOpen()) return;
       firedAlready = true;
       sessionStorage.setItem(key, "1");
       fire();
@@ -91,7 +93,7 @@ export function ExitIntentPopup() {
           </svg>
         </button>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset("/images/free-agent.jpg")} alt="Free AI Agent" className="popup__image" />
+        <img src={asset("/images/ai-assistant-box.png")} alt="Free AI Agent" className="popup__image" />
         <div className="popup__body">
           <h3>{exitPopup.title}</h3>
           <p>{exitPopup.description}</p>

@@ -1,12 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { giftPopup } from "@/lib/content";
 import { openCalendly } from "./CalendlyPopup";
 import { asset } from "@/lib/utils";
 
+/** Global flag so other popups know when the gift modal is open */
+export function isGiftPopupOpen() {
+  return typeof window !== "undefined" && (window as any).__giftPopupOpen === true;
+}
+
 export function GiftButton() {
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    (window as any).__giftPopupOpen = show;
+  }, [show]);
 
   return (
     <>
@@ -28,7 +37,7 @@ export function GiftButton() {
               </svg>
             </button>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset("/images/free-agent.jpg")} alt="Free AI Agent" className="popup__image" />
+            <img src={asset("/images/ai-assistant-box.png")} alt="Free AI Agent" className="popup__image" />
             <div className="popup__body">
               <h3>{giftPopup.title}</h3>
               <p>{giftPopup.description}</p>
