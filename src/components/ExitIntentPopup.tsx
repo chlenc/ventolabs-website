@@ -10,44 +10,49 @@ export function ExitIntentPopup() {
 
   useEffect(() => {
     const key = "vl_exit_seen";
-    if (typeof window === "undefined" || sessionStorage.getItem(key)) return;
+    if (typeof window === "undefined") return;
+
+    // Already shown this session — don't set up listeners
+    if (sessionStorage.getItem(key)) return;
 
     let fired = false;
     const fire = () => {
-      if (fired) return;
+      if (fired || sessionStorage.getItem(key)) return;
       fired = true;
       setShow(true);
       sessionStorage.setItem(key, "1");
       cleanup();
     };
 
-    // 1. Exit intent — mouse leaves viewport top
+    // 1. Exit intent — mouse leaves viewport top (works on desktop)
     const exitHandler = (e: MouseEvent) => {
-      if (e.clientY < 10) fire();
+      if (e.clientY <= 0) fire();
     };
 
-    // 2. Idle timer — 30s without scroll/click/mousemove
+    // 2. Idle timer — 25s without any interaction
     let idleTimer: ReturnType<typeof setTimeout>;
     const resetIdle = () => {
       clearTimeout(idleTimer);
-      idleTimer = setTimeout(fire, 30000);
+      idleTimer = setTimeout(fire, 25000);
     };
 
     const cleanup = () => {
-      document.removeEventListener("mouseout", exitHandler);
-      document.removeEventListener("scroll", resetIdle);
-      document.removeEventListener("mousemove", resetIdle);
-      document.removeEventListener("click", resetIdle);
+      document.documentElement.removeEventListener("mouseleave", exitHandler);
+      window.removeEventListener("scroll", resetIdle);
+      window.removeEventListener("mousemove", resetIdle);
+      window.removeEventListener("click", resetIdle);
+      window.removeEventListener("keydown", resetIdle);
       clearTimeout(idleTimer);
     };
 
-    // Delay 5s before arming triggers
+    // Delay 5s before arming triggers (don't annoy users immediately)
     const armTimer = setTimeout(() => {
-      document.addEventListener("mouseout", exitHandler);
-      document.addEventListener("scroll", resetIdle, { passive: true });
-      document.addEventListener("mousemove", resetIdle, { passive: true });
-      document.addEventListener("click", resetIdle);
-      resetIdle();
+      document.documentElement.addEventListener("mouseleave", exitHandler);
+      window.addEventListener("scroll", resetIdle, { passive: true });
+      window.addEventListener("mousemove", resetIdle, { passive: true });
+      window.addEventListener("click", resetIdle);
+      window.addEventListener("keydown", resetIdle);
+      resetIdle(); // start idle countdown
     }, 5000);
 
     return () => {

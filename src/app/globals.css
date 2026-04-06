@@ -386,6 +386,7 @@ p { max-width: 65ch; }
 .hero-word--line3 {
   font-size: clamp(3.5rem, 9vw, 8rem);
   align-self: flex-end;
+  white-space: nowrap;
 }
 
 .hero-v2__bottom {
@@ -1179,6 +1180,7 @@ p { max-width: 65ch; }
 }
 
 .fab__button {
+  position: relative;
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -1194,6 +1196,22 @@ p { max-width: 65ch; }
 .fab__button:hover {
   transform: scale(1.08);
   box-shadow: 0 6px 28px rgba(35, 76, 18, 0.4);
+}
+
+.fab__button::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--color-forest);
+  opacity: 0;
+  animation: fabPulse 3s ease-in-out infinite;
+}
+
+@keyframes fabPulse {
+  0%, 70%, 100% { opacity: 0; transform: scale(1); }
+  80% { opacity: 0.5; transform: scale(1); }
+  90% { opacity: 0; transform: scale(1.4); }
 }
 
 .fab__button--open {

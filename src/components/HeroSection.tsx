@@ -57,7 +57,7 @@ export function HeroSection() {
             AI agents
           </span>
           <span className="hero-word hero-word--line3" data-speed="0.6" data-dir="left">
-            that scale your business
+            that grow your business
           </span>
         </div>
 
