@@ -8,14 +8,14 @@ import { site } from "@/lib/content";
 import { asset } from "@/lib/utils";
 import "./globals.css";
 
-const seoTitle = "Vento Labs — AI Agents & Automation for Business | Cut Costs, Scale Fast";
-const seoDesc = "We design and build custom AI agents that automate operations, cut costs, and scale your business without adding headcount. Free AI agent setup included.";
+const seoTitle = "Vento Labs | AI Agents & Automation for Business";
+const seoDesc = "Custom AI agents that cut operating costs, automate workflows, and scale your business without adding headcount. Free AI agent setup with every engagement.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: seoTitle,
-    template: "%s | Vento Labs",
+    template: "%s — Vento Labs | AI Automation Agency",
   },
   description: seoDesc,
   keywords: [
@@ -25,20 +25,30 @@ export const metadata: Metadata = {
     "AI process automation",
     "enterprise AI solutions",
     "AI business assistant",
-    "reduce operating costs with AI",
-    "AI team training",
     "AI workflow automation",
     "business AI implementation",
+    "AI chatbot for business",
+    "automate business operations with AI",
+    "AI agent development company",
+    "reduce operating costs AI",
   ],
+  alternates: { canonical: site.url },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: site.name,
     title: seoTitle,
     description: seoDesc,
+    url: site.url,
   },
   twitter: { card: "summary_large_image", title: seoTitle, description: seoDesc },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large" as unknown as undefined,
+    "max-video-preview": -1,
+  },
   other: {
     "geo.region": "US",
     "theme-color": "#234c12",
@@ -60,17 +70,38 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
-              name: site.name,
+              "@id": `${site.url}/#organization`,
+              name: "Vento Labs Pte. Ltd.",
+              alternateName: "Vento Labs",
               url: site.url,
               email: site.email,
-              description: site.description,
-              areaServed: { "@type": "Country", name: "United States" },
-              serviceType: [
-                "AI Automation",
-                "AI Business Assistants",
-                "Enterprise AI Implementation",
-                "AI Team Training",
+              telephone: site.phoneDisplay,
+              description: seoDesc,
+              foundingDate: "2025-02-03",
+              legalName: "Vento Labs Pte. Ltd.",
+              areaServed: [
+                { "@type": "Country", name: "United States" },
+                { "@type": "Country", name: "Singapore" },
               ],
+              serviceType: [
+                "AI Agent Development",
+                "AI Process Automation",
+                "Enterprise AI Implementation",
+                "AI Team Training & Adoption",
+                "Custom AI Solutions",
+              ],
+              sameAs: [
+                site.linkedin,
+                site.telegram,
+              ],
+              knowsAbout: [
+                "Artificial Intelligence",
+                "Business Automation",
+                "AI Agents",
+                "Machine Learning",
+                "Natural Language Processing",
+              ],
+              priceRange: "$$",
             }),
           }}
         />

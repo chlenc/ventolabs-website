@@ -3,9 +3,9 @@ import { caseStudies, calendly } from "@/lib/content";
 import { Button } from "@/components/Button";
 
 export const metadata: Metadata = {
-  title: "Case Studies",
+  title: "AI Automation Case Studies — Real Business Results",
   description:
-    "See how Vento Labs helps businesses automate processes and deploy AI assistants — real projects, real results.",
+    "See how businesses cut response times by 90%, tripled content output, and automated lead qualification with Vento Labs AI agents. Real projects, measured results.",
 };
 
 export default function CasesPage() {
