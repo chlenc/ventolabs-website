@@ -10,12 +10,18 @@ export function ServicePage({ service }: { service: ServiceDef }) {
       {/* 1. Hero — Customer as hero */}
       <section className="service-hero">
         <div className="container">
-          <p className="eyebrow">{service.kicker}</p>
-          <h1>{service.heroTitle}</h1>
-          <p>{service.heroDescription}</p>
-          <div className="cta-row">
-            <Button href="#book">Book a free call</Button>
-            <Button href="#included" variant="secondary">What&apos;s included</Button>
+          <div className="service-hero__split">
+            <div className="service-hero__text">
+              <p className="eyebrow">{service.kicker}</p>
+              <h1>{service.heroTitle}</h1>
+              <p>{service.heroDescription}</p>
+              <div className="cta-row">
+                <Button href="#book">Book a free call</Button>
+                <Button href="#included" variant="secondary">What&apos;s included</Button>
+              </div>
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={asset(service.heroImage)} alt={service.title} className="service-hero__image" />
           </div>
         </div>
       </section>

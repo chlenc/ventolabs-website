@@ -14,6 +14,7 @@ export type ServiceDef = {
   navLabel: string;
   heroTitle: string;
   heroDescription: string;
+  heroImage: string;
   cardSummary: string;
   problems: string[];
   guide: { empathy: string; authority: string };
@@ -34,6 +35,7 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     heroTitle: "Your own AI agent that works 24/7 — self-hosted, secure, fully yours",
     heroDescription:
       "We build custom AI agents powered by OpenClaw, LangGraph, CrewAI, and other leading frameworks. Self-hosted on your server or local machine. Controls your computer, uses any LLM — even local models. Manages Telegram, LinkedIn, WhatsApp, email, and any tool you use daily.",
+    heroImage: "/images/page-ai-agent.jpg",
     cardSummary:
       "Custom AI agents — self-hosted, secure, powered by OpenClaw, LangGraph, CrewAI. From personal assistants to full business automation.",
     problems: [
@@ -88,6 +90,7 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     heroTitle: "Automate your operations — from lead to invoice, zero manual work",
     heroDescription:
       "We connect your tools and build intelligent workflows using n8n, Make.com, and custom integrations. Your CRM talks to your email, your forms feed your database, your reports generate themselves — and AI makes smart decisions at every step.",
+    heroImage: "/images/page-automation.jpg",
     cardSummary:
       "Intelligent workflow automation with n8n, Make.com — connecting your CRM, email, forms, and databases into seamless operations.",
     problems: [
@@ -141,6 +144,7 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     heroTitle: "Your team is stuck on ChatGPT. We'll get them to the next level.",
     heroDescription:
       "Most teams use AI at 10% of its potential. We come in, assess your workflows, install the right tools — Claude Code, Cursor, MCP servers, custom prompts — and train your team until AI becomes a daily habit, not a novelty.",
+    heroImage: "/images/page-consulting.jpg",
     cardSummary:
       "AI consulting and hands-on training — we install the right tools, teach real use cases, and make AI adoption stick.",
     problems: [
@@ -194,6 +198,7 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     heroTitle: "Your entire company, powered by AI agents",
     heroDescription:
       "Not a chatbot. Not a dashboard. A full AI operating system — with dedicated agents for every department, a shared knowledge vault, and enterprise-grade security. Launch in 4 weeks.",
+    heroImage: "/images/enterprise-solution.jpg",
     cardSummary:
       "Complete AI operating system for your company — dedicated agents, shared knowledge vault, enterprise security. Launch in 4 weeks.",
     problems: [

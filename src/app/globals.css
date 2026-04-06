@@ -1069,7 +1069,25 @@ p { max-width: 65ch; }
 
 /* ── Service page ───────────────────────────────────── */
 .service-hero {
-  padding: clamp(9rem, 16vw, 13rem) 0 clamp(4rem, 8vw, 6rem);
+  padding: clamp(8rem, 14vw, 11rem) 0 clamp(3rem, 6vw, 5rem);
+}
+
+.service-hero__split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .service-hero__split { grid-template-columns: 1fr; }
+}
+
+.service-hero__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
 }
 
 .service-hero .eyebrow { margin-bottom: 1.5rem; }
