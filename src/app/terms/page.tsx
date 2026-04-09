@@ -95,7 +95,7 @@ export default function TermsPage() {
 
         <p style={{ marginTop: "3rem" }}>
           Questions? Contact us at{" "}
-          <a href="mailto:hello@ventolabs.com">hello@ventolabs.com</a>.
+          <a href="mailto:alexey@ventolabs.com">alexey@ventolabs.com</a>.
         </p>
       </div>
     </div>

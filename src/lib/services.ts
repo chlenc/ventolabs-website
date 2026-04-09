@@ -197,10 +197,10 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     navLabel: "Enterprise",
     heroTitle: "Your entire company, powered by AI agents",
     heroDescription:
-      "Not a chatbot. Not a dashboard. A full AI operating system — with dedicated agents for every department, a shared knowledge vault, and enterprise-grade security. Launch in 4 weeks.",
+      "Not a chatbot. Not a dashboard. A full AI operating system — with dedicated agents for every department, a shared knowledge vault, and enterprise-grade security. Go live in 4 weeks.",
     heroImage: "/images/enterprise-solution.jpg",
     cardSummary:
-      "Complete AI operating system for your company — dedicated agents, shared knowledge vault, enterprise security. Launch in 4 weeks.",
+      "Complete AI operating system for your company — dedicated agents, shared knowledge vault, enterprise security. Go live in 4 weeks.",
     problems: [
       "Your teams use different AI tools with personal accounts — there's zero oversight, inconsistent quality, and data scattered everywhere",
       "Critical company knowledge lives in people's heads — when someone leaves, their contacts, processes, and context leave with them",

@@ -116,7 +116,7 @@ export default function PrivacyPage() {
         <h2>10. Contact</h2>
         <p>
           For privacy-related inquiries, contact us at{" "}
-          <a href="mailto:hello@ventolabs.com">hello@ventolabs.com</a>.
+          <a href="mailto:alexey@ventolabs.com">alexey@ventolabs.com</a>.
         </p>
       </div>
     </div>

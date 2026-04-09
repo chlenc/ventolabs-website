@@ -30,7 +30,7 @@ export const solutionSteps = [
   {
     title: "Audit",
     description:
-      "We analyze your key process in a 30-60 minute call. No fluff — we identify where AI can save the most time and money right now.",
+      "We analyze your key processes in a 30-60 minute call. No fluff — we identify where AI can save the most time and money right now.",
   },
   {
     title: "Build",

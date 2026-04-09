@@ -61,14 +61,20 @@ export function HeroSection() {
           </span>
         </div>
 
+        <div className="hero-v2__tags">
+          <span className="hero-tag">Cut operational costs by 20–40%</span>
+          <span className="hero-tag">Replace 1–2 full-time roles with AI</span>
+          <span className="hero-tag">Go live in days, not months</span>
+        </div>
+
         <div className="hero-v2__bottom">
           <div className="hero-v2__desc">
             <p>
-              Cut operating costs, automate repetitive work, and grow
-              without adding headcount — with custom AI agents and automations.
+              Custom AI agents and automations that handle your repetitive work —
+              so your team focuses on growth instead of busywork.
             </p>
             <p className="hero-v2__sub">
-              Book a call — we&apos;ll set up your AI assistant for free.
+              Book a call — we&apos;ll build your AI agent for free.
             </p>
           </div>
           <div className="hero-v2__cta">
