@@ -144,7 +144,7 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     heroTitle: "Your team is stuck on ChatGPT. We'll get them to the next level.",
     heroDescription:
       "Most teams use AI at 10% of its potential. We come in, assess your workflows, install the right tools — Claude Code, Cursor, MCP servers, custom prompts — and train your team until AI becomes a daily habit, not a novelty.",
-    heroImage: "/images/page-consulting.jpg",
+    heroImage: "/images/service-ai-training.jpg",
     cardSummary:
       "AI consulting and hands-on training — we install the right tools, teach real use cases, and make AI adoption stick.",
     problems: [
