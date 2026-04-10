@@ -90,7 +90,7 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     heroTitle: "Automate your operations — from lead to invoice, zero manual work",
     heroDescription:
       "We connect your tools and build intelligent workflows using n8n, Make.com, and custom integrations. Your CRM talks to your email, your forms feed your database, your reports generate themselves — and AI makes smart decisions at every step.",
-    heroImage: "/images/page-automation.jpg",
+    heroImage: "/images/page-automation.png",
     cardSummary:
       "Intelligent workflow automation with n8n, Make.com — connecting your CRM, email, forms, and databases into seamless operations.",
     problems: [
