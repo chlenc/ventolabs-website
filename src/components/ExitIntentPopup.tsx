@@ -5,11 +5,13 @@ import { exitPopup } from "@/lib/content";
 import { openCalendly } from "./CalendlyPopup";
 import { isGiftPopupOpen } from "./GiftPopup";
 import { asset } from "@/lib/utils";
+import { trackCtaClick, trackPopupShown } from "@/lib/analytics";
 
 export function ExitIntentPopup() {
   const [show, setShow] = useState(false);
 
   const fire = useCallback(() => {
+    trackPopupShown("exit_intent");
     setShow(true);
   }, []);
 
@@ -97,7 +99,11 @@ export function ExitIntentPopup() {
         <div className="popup__body">
           <h3>{exitPopup.title}</h3>
           <p>{exitPopup.description}</p>
-          <button className="btn btn--primary" style={{ width: "100%" }} onClick={() => { setShow(false); openCalendly(); }}>
+          <button className="btn btn--primary" style={{ width: "100%" }} onClick={() => {
+            setShow(false);
+            trackCtaClick({ label: exitPopup.cta, location: "exit_intent_popup" });
+            openCalendly("exit_intent_popup");
+          }}>
             {exitPopup.cta}
           </button>
         </div>

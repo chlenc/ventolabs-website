@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { giftPopup } from "@/lib/content";
 import { openCalendly } from "./CalendlyPopup";
 import { asset } from "@/lib/utils";
+import { trackCtaClick, trackPopupShown } from "@/lib/analytics";
 
 /** Global flag so other popups know when the gift modal is open */
 export function isGiftPopupOpen() {
@@ -21,7 +22,7 @@ export function GiftButton() {
     <>
       <button
         className="header__gift"
-        onClick={() => setShow(true)}
+        onClick={() => { trackPopupShown("gift"); setShow(true); }}
         aria-label="Free AI agent"
         title="Free AI agent"
       >
@@ -41,7 +42,11 @@ export function GiftButton() {
             <div className="popup__body">
               <h3>{giftPopup.title}</h3>
               <p>{giftPopup.description}</p>
-              <button className="btn btn--primary" style={{ width: "100%" }} onClick={() => { setShow(false); openCalendly(); }}>
+              <button className="btn btn--primary" style={{ width: "100%" }} onClick={() => {
+                setShow(false);
+                trackCtaClick({ label: giftPopup.cta, location: "gift_popup" });
+                openCalendly("gift_popup");
+              }}>
                 {giftPopup.cta}
               </button>
             </div>
