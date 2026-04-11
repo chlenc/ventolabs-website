@@ -30,7 +30,7 @@ export const solutionSteps = [
   {
     title: "Audit",
     description:
-      "We analyze your key processes in a 30-60 minute call. No fluff — we identify where AI can save the most time and money right now.",
+      "We analyze your key processes in a 30-minute call. No fluff — we identify where AI can save the most time and money right now.",
   },
   {
     title: "Build",
@@ -142,7 +142,7 @@ export const faq = [
 ];
 
 export const calendly = {
-  title: "Book a 20-minute discovery call",
+  title: "Book a 30-minute discovery call",
   subtitle:
     "No pitch, no pressure. We'll look at your process and tell you what's possible. Plus — we'll set up your AI agent for free.",
   url: "https://calendly.com/ventolabs/30min",
@@ -151,7 +151,7 @@ export const calendly = {
 export const exitPopup = {
   title: "Wait — free AI agent for your business",
   description:
-    "Book a 20-minute call and we'll build and deploy a custom AI agent for your team. Zero cost for the setup.",
+    "Book a 30-minute call and we'll build and deploy a custom AI agent for your team. Zero cost for the setup.",
   cta: "Claim your free AI agent",
 };
 

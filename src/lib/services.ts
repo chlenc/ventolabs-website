@@ -34,10 +34,10 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     navLabel: "AI Agents",
     heroTitle: "Your own AI agent that works 24/7 — self-hosted, secure, fully yours",
     heroDescription:
-      "We build custom AI agents powered by OpenClaw, LangGraph, CrewAI, and other leading frameworks. Self-hosted on your server or local machine. Controls your computer, uses any LLM — even local models. Manages Telegram, LinkedIn, WhatsApp, email, and any tool you use daily.",
+      "We build custom AI agents powered by Claude Agent SDK, LangGraph, CrewAI, and other leading frameworks. Self-hosted on your server or local machine. Controls your computer, uses any LLM — even local models. Manages Telegram, LinkedIn, WhatsApp, email, and any tool you use daily.",
     heroImage: "/images/page-ai-agent.jpg",
     cardSummary:
-      "Custom AI agents — self-hosted, secure, powered by OpenClaw, LangGraph, CrewAI. From personal assistants to full business automation.",
+      "Custom AI agents — self-hosted, secure, powered by Claude Agent SDK, LangGraph, CrewAI. From personal assistants to full business automation.",
     problems: [
       "You spend hours every day on repetitive communication — answering emails, Telegram messages, LinkedIn DMs, and qualifying leads manually",
       "Your knowledge is scattered across docs, chats, and your own head — every new request requires you to search, remember, and retype the same answers",
@@ -54,7 +54,7 @@ export const services: Record<ServiceSlug, ServiceDef> = {
       { title: "Evolve", description: "Your agent learns and improves. We add new capabilities as your needs grow — new integrations, new workflows, new skills." },
     ],
     included: [
-      "Custom AI agent built on OpenClaw, LangGraph, or CrewAI",
+      "Custom AI agent built on Claude Agent SDK, LangGraph, or CrewAI",
       "Self-hosted deployment — your server, your VPS, or your local machine",
       "Any LLM backend — Claude, GPT, Llama, Mistral, or local models",
       "Telegram, WhatsApp, LinkedIn, and email integration",
@@ -74,7 +74,7 @@ export const services: Record<ServiceSlug, ServiceDef> = {
     stakes: "Every day without an AI agent is a day you're doing work a machine should handle. Your competitors are already automating — the gap grows wider every month.",
     socialProof: { company: "Zigmund Online", result: "Response time dropped from 4 hours to under 2 minutes" },
     faq: [
-      { q: "What frameworks do you use?", a: "We build on OpenClaw, LangGraph, CrewAI, and other leading open-source frameworks. We pick the best tool for your specific use case — there's no one-size-fits-all." },
+      { q: "What frameworks do you use?", a: "We build on Claude Agent SDK, LangGraph, CrewAI, and other leading open-source frameworks. We pick the best tool for your specific use case — there's no one-size-fits-all." },
       { q: "Can it really control my computer?", a: "Yes. Using computer-use capabilities, the agent can browse websites, fill forms, extract data, manage files, and interact with any application — just like a human assistant would." },
       { q: "What about data privacy?", a: "Your agent runs on your infrastructure — your server, your VPS, or even your office machine. Data never leaves your environment. You can use fully local LLMs for maximum privacy." },
       { q: "Which messengers and platforms are supported?", a: "Telegram, WhatsApp, LinkedIn, email (Gmail, Outlook), Slack, and any platform with an API. We can also add custom integrations." },

@@ -13,7 +13,7 @@ export function generateStaticParams(): Params[] {
 const seoOverrides: Record<string, { title: string; description: string }> = {
   "ai-assistant": {
     title: "Custom AI Agents — Self-Hosted, Secure, 24/7",
-    description: "We build self-hosted AI agents on OpenClaw, LangGraph, CrewAI. Controls your computer, integrates with Telegram, LinkedIn, WhatsApp. Free agent setup included.",
+    description: "We build self-hosted AI agents on Claude Agent SDK, LangGraph, CrewAI. Controls your computer, integrates with Telegram, LinkedIn, WhatsApp. Free agent setup included.",
   },
   "ai-automation": {
     title: "AI Process Automation — n8n, Make.com & Custom Workflows",

@@ -171,7 +171,7 @@ export function ServicePage({ service }: { service: ServiceDef }) {
               </div>
               <h2>Book a call — we&apos;ll set up your AI agent for free</h2>
               <p style={{ color: "rgba(255,231,210,0.7)" }}>
-                20-minute discovery call. No pitch, no pressure.
+                30-minute discovery call. No pitch, no pressure.
               </p>
               <div className="cta-row" style={{ justifyContent: "center" }}>
                 <Button href="#book" variant="on-forest">Claim your free AI agent</Button>
