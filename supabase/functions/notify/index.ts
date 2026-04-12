@@ -8,8 +8,31 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type",
 };
 
+/** Look up IP geolocation via ip-api.com (free, no key needed, 45 req/min) */
+async function geoLookup(ip: string): Promise<string> {
+  if (!ip || ip === "127.0.0.1" || ip === "::1") return "localhost";
+  try {
+    const res = await fetch(`http://ip-api.com/json/${ip}?fields=status,country,city,isp`);
+    const data = await res.json();
+    if (data.status === "success") {
+      const parts = [data.city, data.country].filter(Boolean).join(", ");
+      return parts + (data.isp ? ` (${data.isp})` : "");
+    }
+  } catch { /* ignore */ }
+  return ip;
+}
+
+/** Extract client IP from Supabase/CF headers */
+function getClientIp(req: Request): string {
+  return (
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("cf-connecting-ip") ||
+    req.headers.get("x-real-ip") ||
+    ""
+  );
+}
+
 Deno.serve(async (req) => {
-  // CORS preflight
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders });
   }
@@ -22,10 +45,13 @@ Deno.serve(async (req) => {
     const body = await req.json();
     const { type } = body;
 
+    const ip = getClientIp(req);
+    const geo = await geoLookup(ip);
+
     let message = "";
 
     if (type === "visit") {
-      const { page, referrer, utm, ua, ts } = body;
+      const { page, referrer, utm, ts } = body;
       const utmLine = Object.entries(utm || {})
         .filter(([, v]) => v)
         .map(([k, v]) => `${k}=${v}`)
@@ -36,6 +62,7 @@ Deno.serve(async (req) => {
         "",
         `📄 Page: <code>${page || "/"}</code>`,
         referrer && referrer !== "(direct)" ? `🔗 Referrer: ${referrer}` : "🔗 Referrer: (direct)",
+        `📍 Location: ${geo}`,
         utmLine ? `🏷 UTM: <code>${utmLine}</code>` : "",
         `🕐 ${ts || new Date().toISOString()}`,
       ]
@@ -52,6 +79,7 @@ Deno.serve(async (req) => {
         "🎉 <b>NEW BOOKING!</b>",
         "",
         `📄 Page: <code>${page || "/"}</code>`,
+        `📍 Location: ${geo}`,
         utmLine ? `🏷 UTM: <code>${utmLine}</code>` : "",
         `🕐 ${ts || new Date().toISOString()}`,
         "",
@@ -64,7 +92,6 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Send to Telegram
     const tgRes = await fetch(TG_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
