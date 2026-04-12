@@ -449,6 +449,7 @@ p { max-width: 65ch; }
   .hero-v2__desc { text-align: center; }
   .hero-v2__cta { flex-direction: column; width: 100%; }
   .hero-v2__cta .btn { width: 100%; }
+  .hero-v2__scroll { display: none; }
 }
 
 /* ── Marquee ────────────────────────────────────────── */
