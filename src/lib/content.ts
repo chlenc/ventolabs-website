@@ -145,7 +145,7 @@ export const calendly = {
   title: "Book a 20-minute discovery call",
   subtitle:
     "No pitch, no pressure. We'll look at your process and tell you what's possible. Plus — we'll set up your AI agent for free.",
-  url: "https://calendly.com/ventolabs/30min",
+  url: "https://calendly.com/alexey-ventolabs/30min",
 };
 
 export const exitPopup = {
