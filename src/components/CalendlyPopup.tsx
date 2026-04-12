@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { calendly } from "@/lib/content";
+import { trackCalendlyOpened, trackCtaClick } from "@/lib/analytics";
 
 declare global {
   interface Window {
@@ -18,7 +19,8 @@ declare global {
   }
 }
 
-export function openCalendly() {
+export function openCalendly(source: string = "unknown") {
+  trackCalendlyOpened(source);
   if (typeof window !== "undefined" && window.Calendly) {
     window.Calendly.initPopupWidget({
       url: `${calendly.url}?hide_gdpr_banner=1&primary_color=234c12`,
@@ -43,10 +45,16 @@ export function CalendlyWidget() {
     // Intercept all #book links to open popup instead of scrolling
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const anchor = target.closest('a[href$="#book"]');
+      const anchor = target.closest<HTMLAnchorElement>('a[href$="#book"]');
       if (anchor && window.Calendly) {
         e.preventDefault();
-        openCalendly();
+        trackCtaClick({
+          label: (anchor.textContent || "").trim() || "unknown",
+          location: anchor.closest("[data-section]")?.getAttribute("data-section")
+            || anchor.closest("section")?.id
+            || window.location.pathname,
+        });
+        openCalendly("anchor_link");
       }
     };
 

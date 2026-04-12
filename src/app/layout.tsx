@@ -4,6 +4,8 @@ import { Footer } from "@/components/Footer";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
 import { CalendlyWidget } from "@/components/CalendlyPopup";
 import { FloatingContact } from "@/components/FloatingContact";
+import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
+import { AnalyticsBootstrap } from "@/components/AnalyticsBootstrap";
 import { site } from "@/lib/content";
 import { asset } from "@/lib/utils";
 import "./globals.css";
@@ -63,6 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <GoogleTagManagerHead />
         <link rel="icon" href={asset("/favicon.svg")} type="image/svg+xml" />
         <script
           type="application/ld+json"
@@ -107,6 +110,8 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <GoogleTagManagerNoScript />
+        <AnalyticsBootstrap />
         <a className="skip-link" href="#main" style={{
           position: "absolute",
           top: "-100px",

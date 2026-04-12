@@ -23,8 +23,8 @@ export default function TermsPage() {
         <h2>2. Free AI Assistant Setup</h2>
         <p>
           Vento Labs offers a complimentary AI assistant setup as a demonstration of our
-          capabilities. This free setup is provided on the condition that the client agrees to
-          engage Vento Labs for additional services following the initial deployment.
+          capabilities. There is no obligation to purchase additional services. You are
+          free to keep the setup and end the engagement after the initial deployment.
         </p>
         <p>
           The free setup includes a basic AI assistant configuration as described during the
@@ -95,7 +95,7 @@ export default function TermsPage() {
 
         <p style={{ marginTop: "3rem" }}>
           Questions? Contact us at{" "}
-          <a href="mailto:hello@ventolabs.com">hello@ventolabs.com</a>.
+          <a href="mailto:alexey@ventolabs.com">alexey@ventolabs.com</a>.
         </p>
       </div>
     </div>

@@ -67,8 +67,8 @@ function SolutionSection() {
 
 function ServicesSection() {
   const items = [
-    { slug: "ai-assistant" as const, image: asset("/images/service-ai-assistant.jpg") },
-    { slug: "ai-automation" as const, image: asset("/images/service-ai-automation.jpg") },
+    { slug: "ai-assistant" as const, image: asset("/images/page-ai-agent.jpg") },
+    { slug: "ai-automation" as const, image: asset("/images/page-automation.png") },
     { slug: "ai-training" as const, image: asset("/images/service-ai-training.jpg") },
     { slug: "ai-workspace" as const, image: asset("/images/service-ai-workspace.jpg") },
   ];
@@ -227,13 +227,17 @@ function FinalCtaSection() {
     <section className="section section--dark">
       <div className="container">
         <ScrollReveal>
-          <div className="banner">
-            <h2>Start with a free AI assistant — book a call today</h2>
-            <p style={{ color: "rgba(255,255,255,0.6)" }}>
-              20-minute discovery call. No pitch, no pressure. We&apos;ll set up your AI assistant for free.
-            </p>
-            <div className="cta-row" style={{ justifyContent: "center" }}>
-              <Button href="#book" variant="on-dark">Book a free call</Button>
+          <div className="final-cta">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={asset("/images/ai-assistant-box.png")} alt="Free AI agent offer" className="final-cta__image" />
+            <div className="final-cta__content">
+              <h2>Start with a free AI agent — book a call today</h2>
+              <p style={{ color: "rgba(255,255,255,0.6)" }}>
+                30-minute discovery call. No pitch, no pressure. We&apos;ll build and deploy your AI agent for free.
+              </p>
+              <div className="cta-row">
+                <Button href="#book" variant="on-dark">Claim your free AI agent</Button>
+              </div>
             </div>
           </div>
         </ScrollReveal>

@@ -26,8 +26,13 @@ export default function PrivacyPage() {
 
         <h3>Information collected automatically</h3>
         <ul>
-          <li>Website usage data (pages visited, time on site) via analytics</li>
-          <li>Device and browser information for website optimization</li>
+          <li>Website usage data (pages visited, time on site, clicks on calls-to-action) collected via Google Analytics 4</li>
+          <li>Device, browser, approximate location, and referral source information</li>
+          <li>
+            If you arrive from an advertising campaign, the advertising platform (such as
+            Google Ads or Meta) may set cookies to measure whether the ad led to a call
+            being booked
+          </li>
         </ul>
 
         <h2>2. How We Use Your Information</h2>
@@ -95,16 +100,39 @@ export default function PrivacyPage() {
 
         <h2>7. Cookies and Tracking</h2>
         <p>
-          Our website uses minimal cookies for essential functionality. We use privacy-
-          focused analytics that do not track individual users across websites. We do not
-          use third-party advertising cookies.
+          Our website uses cookies and similar technologies to understand how visitors use
+          the site and to measure the performance of our marketing campaigns. Specifically:
+        </p>
+        <ul>
+          <li>
+            <strong>Google Tag Manager &amp; Google Analytics 4</strong> — to measure
+            page views, scroll depth, call-to-action clicks, and discovery-call bookings so
+            we can improve the site
+          </li>
+          <li>
+            <strong>Advertising measurement cookies</strong> — when you arrive from a paid
+            campaign (Google Ads, Meta, Yandex, or similar), the corresponding platform may
+            set a cookie so the advertiser can measure whether its campaign led to a booked
+            call
+          </li>
+          <li>
+            <strong>Calendly</strong> — sets its own cookies inside its scheduling widget
+            when you book a call
+          </li>
+        </ul>
+        <p>
+          We do not use cookies to build profiles for sale, and we do not share personal
+          data with data brokers. You can block analytics and advertising cookies using
+          your browser settings or a privacy extension at any time.
         </p>
 
         <h2>8. Third-Party Services</h2>
         <p>
-          Our website integrates with Calendly for appointment scheduling. When you book a
-          call, Calendly&apos;s own privacy policy applies to the data you enter in their
-          scheduling widget.
+          Our website integrates with Calendly for appointment scheduling and Google Tag
+          Manager for analytics and marketing measurement. When you book a call, Calendly&apos;s
+          own privacy policy applies to the data you enter in their scheduling widget. When
+          Google Analytics or an advertising platform collects data about your visit, the
+          respective provider&apos;s privacy policy applies.
         </p>
 
         <h2>9. Changes to This Policy</h2>
@@ -116,7 +144,7 @@ export default function PrivacyPage() {
         <h2>10. Contact</h2>
         <p>
           For privacy-related inquiries, contact us at{" "}
-          <a href="mailto:hello@ventolabs.com">hello@ventolabs.com</a>.
+          <a href="mailto:alexey@ventolabs.com">alexey@ventolabs.com</a>.
         </p>
       </div>
     </div>
