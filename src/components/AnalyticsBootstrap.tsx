@@ -2,32 +2,36 @@
 
 import { useEffect } from "react";
 import { trackCalendlyBooked } from "@/lib/analytics";
-
-type CalendlyMessage = {
-  event?: string;
-  payload?: { event?: { uri?: string } };
-};
-
-function isCalendlyEvent(data: unknown): data is CalendlyMessage {
-  return (
-    typeof data === "object" &&
-    data !== null &&
-    typeof (data as { event?: unknown }).event === "string" &&
-    (data as { event: string }).event.startsWith("calendly.")
-  );
-}
+import { notifyBooking } from "@/lib/notify";
 
 /**
- * Listens for Calendly's postMessage events and fires the `calendly_booked`
- * dataLayer event when the user actually schedules a meeting. This is the main
- * conversion we care about across all ad channels.
+ * Listens for Cal.com booking events via postMessage and fires:
+ * 1. GTM dataLayer event (calendly_booked) for ad tracking
+ * 2. Telegram notification via Supabase Edge Function
  */
 export function AnalyticsBootstrap() {
   useEffect(() => {
     const onMessage = (e: MessageEvent) => {
-      if (!isCalendlyEvent(e.data)) return;
-      if (e.data.event === "calendly.event_scheduled") {
-        trackCalendlyBooked(e.data.payload?.event?.uri);
+      // Cal.com fires __cal events
+      if (
+        typeof e.data === "object" &&
+        e.data !== null &&
+        (e.data as Record<string, unknown>).type === "CAL:event_scheduled"
+      ) {
+        trackCalendlyBooked(undefined);
+        notifyBooking();
+        return;
+      }
+
+      // Also handle Calendly legacy format (in case)
+      if (
+        typeof e.data === "object" &&
+        e.data !== null &&
+        typeof (e.data as Record<string, unknown>).event === "string" &&
+        ((e.data as Record<string, string>).event === "calendly.event_scheduled")
+      ) {
+        trackCalendlyBooked((e.data as { payload?: { event?: { uri?: string } } }).payload?.event?.uri);
+        notifyBooking();
       }
     };
 

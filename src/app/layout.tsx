@@ -6,6 +6,7 @@ import { CalendlyWidget } from "@/components/CalendlyPopup";
 import { FloatingContact } from "@/components/FloatingContact";
 import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 import { AnalyticsBootstrap } from "@/components/AnalyticsBootstrap";
+import { VisitorTracker } from "@/components/VisitorTracker";
 import { site } from "@/lib/content";
 import { asset } from "@/lib/utils";
 import "./globals.css";
@@ -112,6 +113,7 @@ export default function RootLayout({
       <body>
         <GoogleTagManagerNoScript />
         <AnalyticsBootstrap />
+        <VisitorTracker />
         <a className="skip-link" href="#main" style={{
           position: "absolute",
           top: "-100px",
