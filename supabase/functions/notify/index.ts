@@ -137,8 +137,9 @@ Deno.serve(async (req) => {
       ].filter(Boolean).join("\n");
 
     } else {
-      return new Response(JSON.stringify({ error: "Unknown type" }), {
-        status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      // Unknown type — return 200 so Cal.com ping test passes
+      return new Response(JSON.stringify({ ok: true, note: "unhandled event type" }), {
+        status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
