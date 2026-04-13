@@ -230,7 +230,7 @@ export const nav = {
     { label: "AI Agents", href: "/services/ai-assistant" },
     { label: "Automation", href: "/services/ai-automation" },
     { label: "Consulting", href: "/services/ai-training" },
-    { label: "Enterprise", href: "/services/ai-workspace" },
+    { label: "AI Platform", href: "/services/ai-workspace" },
     { label: "Cases", href: "/cases" },
   ],
   cta: { label: "Book a call", href: "#book" },
@@ -243,7 +243,7 @@ export const footer = {
     { label: "AI Agents", href: "/services/ai-assistant" },
     { label: "Automation", href: "/services/ai-automation" },
     { label: "Consulting", href: "/services/ai-training" },
-    { label: "Enterprise", href: "/services/ai-workspace" },
+    { label: "AI Platform", href: "/services/ai-workspace" },
   ],
   company: [
     { label: "Case Studies", href: "/cases" },
