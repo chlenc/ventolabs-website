@@ -3,6 +3,19 @@ import { Button } from "./Button";
 import { FaqSection } from "./FaqSection";
 import { ScrollReveal } from "./ScrollReveal";
 import { asset } from "@/lib/utils";
+import {
+  siGooglesheets,
+  siGoogledrive,
+  siGmail,
+  siNotion,
+  siHubspot,
+  siShopify,
+  siTelegram,
+  siWhatsapp,
+  siJira,
+  siTrello,
+  siZoom,
+} from "simple-icons";
 
 const agentCategories = [
   {
@@ -52,6 +65,29 @@ const aiSkills = [
   { title: "Spreadsheets & Data", description: "No more manual formulas. AI processes your files, calculates, and visualizes in seconds." },
   { title: "Knowledge Base & Docs", description: "AI indexes your company docs and becomes an internal expert your team can ask anything." },
 ];
+
+/* Simple-icons paths for brands available in v16 */
+const siIcons: Record<string, string> = {
+  "Google Sheets": siGooglesheets.path,
+  "Google Drive": siGoogledrive.path,
+  Gmail: siGmail.path,
+  Notion: siNotion.path,
+  HubSpot: siHubspot.path,
+  Shopify: siShopify.path,
+  Telegram: siTelegram.path,
+  WhatsApp: siWhatsapp.path,
+  Jira: siJira.path,
+  Trello: siTrello.path,
+  Zoom: siZoom.path,
+};
+
+/* Inline SVG paths for brands missing from simple-icons v16 */
+const customIcons: Record<string, string> = {
+  Outlook: "M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.43.34-.76.22-.34.57-.54.36-.2.87-.2t.86.2q.35.21.57.55.22.34.33.75.1.43.1.9zm-1.98-4.17L0 5.7V18.3l5.9 2.07zm.67-.14l5.53-3.66V2.53l-5.53 3.2zm6.19-.14L18.69 4v16l-5.93-3.41zm2.06-5.66L20.75 0 24 2.07v19.86L20.75 24l-5.93-5.93z",
+  Slack: "M5.04 15.16a2.52 2.52 0 01-2.52 2.52A2.52 2.52 0 010 15.16a2.52 2.52 0 012.52-2.52h2.52zm1.27 0a2.52 2.52 0 012.52-2.52 2.52 2.52 0 012.52 2.52v6.32A2.52 2.52 0 018.83 24a2.52 2.52 0 01-2.52-2.52zM8.83 5.04a2.52 2.52 0 01-2.52-2.52A2.52 2.52 0 018.83 0a2.52 2.52 0 012.52 2.52v2.52zm0 1.27a2.52 2.52 0 012.52 2.52 2.52 2.52 0 01-2.52 2.52H2.52A2.52 2.52 0 010 8.83a2.52 2.52 0 012.52-2.52zM18.96 8.83a2.52 2.52 0 012.52-2.52A2.52 2.52 0 0124 8.83a2.52 2.52 0 01-2.52 2.52h-2.52zm-1.27 0a2.52 2.52 0 01-2.52 2.52 2.52 2.52 0 01-2.52-2.52V2.52A2.52 2.52 0 0115.17 0a2.52 2.52 0 012.52 2.52zm-2.52 10.13a2.52 2.52 0 012.52 2.52A2.52 2.52 0 0115.17 24a2.52 2.52 0 01-2.52-2.52v-2.52zm0-1.27a2.52 2.52 0 01-2.52-2.52 2.52 2.52 0 012.52-2.52h6.31A2.52 2.52 0 0124 15.17a2.52 2.52 0 01-2.52 2.52z",
+  Salesforce: "M10.12 4.13a4.59 4.59 0 013.37-1.48 4.64 4.64 0 014.38 3.16 3.82 3.82 0 011.27-.21 3.89 3.89 0 013.89 3.89 3.89 3.89 0 01-3.89 3.89h-.04a4.12 4.12 0 01-3.87 2.68 4.15 4.15 0 01-2.47-.82 4.63 4.63 0 01-3.91 2.15c-2.23 0-4.08-1.58-4.52-3.68a4.22 4.22 0 01-.87.09A3.52 3.52 0 010 10.28a3.52 3.52 0 012.93-3.47 4.62 4.62 0 017.19-2.68z",
+  LinkedIn: "M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z",
+};
 
 const integrations = [
   "Google Sheets", "Google Drive", "Gmail", "Outlook", "Slack",
@@ -264,16 +300,29 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
             </div>
           </ScrollReveal>
           <ScrollReveal>
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", maxWidth: 700, marginInline: "auto" }}>
-              {integrations.map((name) => (
-                <span key={name} style={{
-                  padding: "0.5rem 1rem",
-                  borderRadius: "var(--radius-sm)",
-                  background: "var(--color-surface)",
-                  fontSize: "0.9rem",
-                  fontWeight: 500,
-                }}>{name}</span>
-              ))}
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", maxWidth: 760, marginInline: "auto" }}>
+              {integrations.map((name) => {
+                const iconPath = siIcons[name] ?? customIcons[name];
+                return (
+                  <span key={name} style={{
+                    padding: "0.5rem 1rem",
+                    borderRadius: "var(--radius-sm)",
+                    background: "var(--color-surface)",
+                    fontSize: "0.9rem",
+                    fontWeight: 500,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                  }}>
+                    {iconPath && (
+                      <svg role="img" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style={{ opacity: 0.6, flexShrink: 0 }}>
+                        <path d={iconPath} />
+                      </svg>
+                    )}
+                    {name}
+                  </span>
+                );
+              })}
               <span style={{
                 padding: "0.5rem 1rem",
                 borderRadius: "var(--radius-sm)",
