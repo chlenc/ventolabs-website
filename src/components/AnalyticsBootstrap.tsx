@@ -8,29 +8,34 @@ import { notifyBooking } from "@/lib/notify";
  * Listens for Cal.com booking events via postMessage and fires:
  * 1. GTM dataLayer event (calendly_booked) for ad tracking
  * 2. Telegram notification via Supabase Edge Function
+ *
+ * Cal.com embed sends messages in various formats depending on version:
+ * - { type: "CAL:event_scheduled", ... }
+ * - { data: { type: "booking_successful" } }
+ * - { event: "__cal:booking:created", ... }
+ * We catch all known patterns.
  */
 export function AnalyticsBootstrap() {
   useEffect(() => {
     const onMessage = (e: MessageEvent) => {
-      // Cal.com fires __cal events
-      if (
-        typeof e.data === "object" &&
-        e.data !== null &&
-        (e.data as Record<string, unknown>).type === "CAL:event_scheduled"
-      ) {
-        trackCalendlyBooked(undefined);
-        notifyBooking();
-        return;
-      }
+      if (typeof e.data !== "object" || e.data === null) return;
 
-      // Also handle Calendly legacy format (in case)
-      if (
-        typeof e.data === "object" &&
-        e.data !== null &&
-        typeof (e.data as Record<string, unknown>).event === "string" &&
-        ((e.data as Record<string, string>).event === "calendly.event_scheduled")
-      ) {
-        trackCalendlyBooked((e.data as { payload?: { event?: { uri?: string } } }).payload?.event?.uri);
+      const data = e.data as Record<string, unknown>;
+      const type = String(data.type || "");
+      const event = String(data.event || "");
+
+      const isBooking =
+        type === "CAL:event_scheduled" ||
+        type === "booking_successful" ||
+        event === "__cal:booking:created" ||
+        event === "booking_successful" ||
+        // Cal embed v2 wraps in data.type
+        (typeof data.data === "object" &&
+          data.data !== null &&
+          (data.data as Record<string, unknown>).type === "booking_successful");
+
+      if (isBooking) {
+        trackCalendlyBooked(undefined);
         notifyBooking();
       }
     };

@@ -110,6 +110,32 @@ Deno.serve(async (req) => {
         `🕐 ${ts || new Date().toISOString()}`,
       ].filter(Boolean).join("\n");
 
+    } else if (
+      // Cal.com webhook: triggerEvent = BOOKING_CREATED
+      body.triggerEvent === "BOOKING_CREATED" ||
+      body.triggerEvent === "BOOKING_RESCHEDULED"
+    ) {
+      const payload = body.payload || {};
+      const name = [payload.name, payload.email].filter(Boolean).join(" — ");
+      const title = payload.title || payload.eventTitle || "Meeting";
+      const startTime = payload.startTime
+        ? new Date(payload.startTime).toLocaleString("en-US", { timeZone: "Europe/Lisbon" })
+        : "?";
+      const responses = payload.responses || {};
+      const notes = responses.notes || responses.rescheduleReason || "";
+
+      message = [
+        "🎉 <b>NEW BOOKING via Cal.com!</b>",
+        "",
+        `👤 <b>${name || "Unknown"}</b>`,
+        `📅 ${title}`,
+        `🕐 ${startTime}`,
+        notes ? `📝 Notes: ${String(notes).slice(0, 200)}` : "",
+        `📍 ${geo}`,
+        "",
+        "👤 @defi_defiler @vlacomor",
+      ].filter(Boolean).join("\n");
+
     } else {
       return new Response(JSON.stringify({ error: "Unknown type" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
