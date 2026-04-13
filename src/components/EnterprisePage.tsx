@@ -44,6 +44,21 @@ const agentCategories = [
   },
 ];
 
+const aiSkills = [
+  { title: "Presentations & Reports", description: "AI creates polished decks, proposals, and reports from a simple brief — in your company\u2019s style." },
+  { title: "Email & Calendar", description: "AI reads your inbox, drafts replies in your voice, and prepares smart meeting briefs automatically." },
+  { title: "Research & Analysis", description: "AI analyzes competitors, market data, and industry trends — delivers structured findings you can act on." },
+  { title: "CRM & Customer Data", description: "AI connects to your CRM, finds patterns, suggests next actions, and keeps your pipeline sharp." },
+  { title: "Spreadsheets & Data", description: "No more manual formulas. AI processes your files, calculates, and visualizes in seconds." },
+  { title: "Knowledge Base & Docs", description: "AI indexes your company docs and becomes an internal expert your team can ask anything." },
+];
+
+const integrations = [
+  "Google Sheets", "Google Drive", "Gmail", "Outlook", "Slack",
+  "Notion", "HubSpot", "Salesforce", "Shopify", "Telegram",
+  "WhatsApp", "LinkedIn", "Jira", "Trello", "Zoom",
+];
+
 const pricingTiers = [
   { name: "Pilot", agents: "1–3", seats: "Up to 5", timeline: "4 weeks", setup: "From $3,000", monthly: "From $500/mo", highlight: false },
   { name: "Scale", agents: "5–8", seats: "Up to 15", timeline: "8 weeks", setup: "From $8,000", monthly: "From $2,000/mo", highlight: true },
@@ -81,6 +96,12 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
               <h2>Sound familiar?</h2>
             </div>
           </ScrollReveal>
+          <ScrollReveal delay={40}>
+            <p style={{ marginBottom: "2rem", color: "var(--color-muted)", maxWidth: 640 }}>
+              81% of business leaders say AI is pivotal to their strategy. Yet most haven&apos;t deployed it beyond a chatbot.
+              <span style={{ display: "block", fontSize: "0.8rem", marginTop: "0.25rem", opacity: 0.6 }}>— Microsoft 2025 Work Trend Index</span>
+            </p>
+          </ScrollReveal>
           <div className="problem-list">
             {service.problems.map((p, i) => (
               <ScrollReveal key={i} delay={i * 80}>
@@ -91,6 +112,34 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Live Example */}
+      <section className="section section--surface">
+        <div className="container">
+          <ScrollReveal>
+            <div className="section-header centered">
+              <p className="eyebrow">See it in action</p>
+              <h2>Not a chatbot. An AI that does the work.</h2>
+              <p>Your team types in plain English. AI reads your files, opens your tools, and executes — like a colleague who knows every system in your company.</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <div className="card" style={{ maxWidth: 720, marginInline: "auto", padding: "2rem" }}>
+              <p style={{ marginBottom: "0.75rem", color: "var(--color-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>Your team types:</p>
+              <p style={{ fontSize: "1.1rem", fontStyle: "italic", marginBottom: "1.5rem" }}>&ldquo;Pull last month&apos;s sales data, compare it to Q3, and write an exec summary in our format.&rdquo;</p>
+              <p style={{ marginBottom: "0.75rem", color: "var(--color-muted)", fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>AI does:</p>
+              <p style={{ marginBottom: "1.5rem" }}>
+                ✓ Opens Google Sheets &middot; reads your data &middot; writes the summary &middot; saves it to your Drive in your template
+              </p>
+              <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+                <span style={{ color: "var(--color-forest)", fontWeight: 600 }}>38 seconds</span>
+                <span style={{ color: "var(--color-muted)" }}>No developer involved</span>
+                <span style={{ color: "var(--color-muted)" }}>No prompts to memorize</span>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -151,6 +200,29 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
         </div>
       </section>
 
+      {/* AI Skills */}
+      <section className="section section--surface">
+        <div className="container">
+          <ScrollReveal>
+            <div className="section-header centered">
+              <p className="eyebrow">Capabilities</p>
+              <h2>What your team gets</h2>
+              <p>No coding. No prompts to memorize. No IT team needed.</p>
+            </div>
+          </ScrollReveal>
+          <div className="grid grid--3">
+            {aiSkills.map((skill, i) => (
+              <ScrollReveal key={skill.title} delay={i * 80}>
+                <div className="card">
+                  <h3>{skill.title}</h3>
+                  <p>{skill.description}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Agents Showcase — with images per category */}
       <section className="section section--surface">
         <div className="container">
@@ -179,6 +251,59 @@ export function EnterprisePage({ service }: { service: ServiceDef }) {
               </div>
             </ScrollReveal>
           ))}
+        </div>
+      </section>
+
+      {/* Integrations */}
+      <section className="section">
+        <div className="container">
+          <ScrollReveal>
+            <div className="section-header centered">
+              <p className="eyebrow">Integrations</p>
+              <h2>Connected to the tools you already use</h2>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.75rem", maxWidth: 700, marginInline: "auto" }}>
+              {integrations.map((name) => (
+                <span key={name} style={{
+                  padding: "0.5rem 1rem",
+                  borderRadius: "var(--radius-sm)",
+                  background: "var(--color-surface)",
+                  fontSize: "0.9rem",
+                  fontWeight: 500,
+                }}>{name}</span>
+              ))}
+              <span style={{
+                padding: "0.5rem 1rem",
+                borderRadius: "var(--radius-sm)",
+                background: "var(--color-forest)",
+                color: "var(--color-cream)",
+                fontSize: "0.9rem",
+                fontWeight: 500,
+              }}>+ any REST API</span>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Compounding */}
+      <section className="section section--dark">
+        <div className="container container--narrow">
+          <ScrollReveal>
+            <div className="stakes-section">
+              <p className="eyebrow" style={{ color: "rgba(255,255,255,0.5)" }}>It gets smarter</p>
+              <h2>Every week, your AI knows your business better</h2>
+              <p style={{ color: "rgba(255,255,255,0.6)", marginTop: "1.5rem", lineHeight: 1.7 }}>
+                Every conversation teaches your AI more about your business. It remembers decisions, learns your terminology, builds on past work.
+                After a month, it knows your processes. After three, it anticipates your needs. After six, it&apos;s irreplaceable.
+              </p>
+              <p style={{ color: "rgba(255,255,255,0.6)", marginTop: "1rem", lineHeight: 1.7 }}>
+                Consultants leave. Tools get abandoned. We stay — not just for the kickoff, but for the whole journey.
+                Every month: new automations, new skills, new capabilities. Your AI platform grows with your business.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
