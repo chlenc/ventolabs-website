@@ -8,6 +8,42 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type",
 };
 
+// ── Funny visitor names & avatars ────────────────────
+const ANIMALS = [
+  "Penguin", "Raccoon", "Capybara", "Hedgehog", "Octopus",
+  "Flamingo", "Axolotl", "Red Panda", "Quokka", "Narwhal",
+  "Sloth", "Otter", "Gecko", "Alpaca", "Chameleon",
+  "Platypus", "Puffin", "Pangolin", "Lemur", "Wombat",
+];
+const ADJECTIVES = [
+  "Mysterious", "Electric", "Cosmic", "Sneaky", "Turbo",
+  "Quantum", "Neon", "Stealthy", "Hyper", "Galactic",
+  "Legendary", "Atomic", "Cyber", "Shadow", "Crystal",
+  "Ultra", "Phantom", "Mega", "Astro", "Thunder",
+];
+const EMOJIS = [
+  "🐧", "🦝", "🦫", "🦔", "🐙",
+  "🦩", "🦎", "🐾", "🐨", "🦄",
+  "🦥", "🦦", "🦎", "🦙", "🦎",
+  "🥚", "🐦", "🦔", "🐒", "🐻",
+];
+
+function visitorId(ip: string): { name: string; emoji: string; hash: string } {
+  // Simple hash from IP string
+  let h = 0;
+  for (let i = 0; i < ip.length; i++) {
+    h = ((h << 5) - h + ip.charCodeAt(i)) | 0;
+  }
+  const idx = Math.abs(h);
+  const adj = ADJECTIVES[idx % ADJECTIVES.length];
+  const animal = ANIMALS[(idx >> 4) % ANIMALS.length];
+  const emoji = EMOJIS[(idx >> 4) % EMOJIS.length];
+  // Short hash for identification
+  const short = Math.abs(h).toString(36).slice(0, 4).toUpperCase();
+  return { name: `${adj} ${animal}`, emoji, hash: short };
+}
+
+// ── Geo lookup ───────────────────────────────────────
 async function geoLookup(ip: string): Promise<string> {
   if (!ip || ip === "127.0.0.1" || ip === "::1") return "localhost";
   try {
@@ -32,12 +68,10 @@ function getClientIp(req: Request): string {
 
 function utmLine(utm: Record<string, string> | null | undefined): string {
   if (!utm) return "";
-  return Object.entries(utm)
-    .filter(([, v]) => v)
-    .map(([k, v]) => `${k}=${v}`)
-    .join(", ");
+  return Object.entries(utm).filter(([, v]) => v).map(([k, v]) => `${k}=${v}`).join(", ");
 }
 
+// ── Main handler ─────────────────────────────────────
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: corsHeaders });
@@ -47,22 +81,28 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const body = await req.json();
+    // Parse body — support both application/json and text/plain (sendBeacon)
+    const raw = await req.text();
+    const body = JSON.parse(raw);
     const { type } = body;
+
     const ip = getClientIp(req);
     const geo = await geoLookup(ip);
     const utm = utmLine(body.utm);
+    const visitor = visitorId(ip);
+    const visitorTag = `${visitor.emoji} <b>${visitor.name}</b> <code>#${visitor.hash}</code>`;
 
     let message = "";
 
     if (type === "visit") {
       const { page, referrer, ts } = body;
       message = [
-        "👁 <b>New visitor</b>",
+        `👁 <b>New visitor</b> — ${visitorTag}`,
         "",
         `📄 Page: <code>${page || "/"}</code>`,
         referrer && referrer !== "(direct)" ? `🔗 Referrer: ${referrer}` : "🔗 Referrer: (direct)",
         `📍 ${geo}`,
+        ip ? `🌐 IP: <code>${ip}</code>` : "",
         utm ? `🏷 UTM: <code>${utm}</code>` : "",
         `🕐 ${ts || new Date().toISOString()}`,
       ].filter(Boolean).join("\n");
@@ -70,10 +110,11 @@ Deno.serve(async (req) => {
     } else if (type === "booking") {
       const { page, ts } = body;
       message = [
-        "🎉 <b>NEW BOOKING!</b>",
+        `🎉 <b>NEW BOOKING!</b> — ${visitorTag}`,
         "",
         `📄 Page: <code>${page || "/"}</code>`,
         `📍 ${geo}`,
+        ip ? `🌐 IP: <code>${ip}</code>` : "",
         utm ? `🏷 UTM: <code>${utm}</code>` : "",
         `🕐 ${ts || new Date().toISOString()}`,
         "",
@@ -83,25 +124,24 @@ Deno.serve(async (req) => {
     } else if (type === "session") {
       const { activeTime, pages, clicks, maxScroll, ts } = body;
 
-      // Format page journey
       const journey = (pages || []).length > 0
         ? (pages as string[]).map((p: string) => p.split("?")[0]).join(" → ")
         : "(no pages)";
 
-      // Format clicks
       const clickList = (clicks || []).length > 0
         ? (clicks as Array<{ label: string; section: string; time: number }>)
-            .map((c) => `• "${c.label}" <i>(${c.section}, ${c.time}s)</i>`)
+            .map((c) => `  • "${c.label}" <i>(${c.section}, ${c.time}s)</i>`)
             .join("\n")
-        : "(no clicks)";
+        : "  (no clicks)";
 
       message = [
-        "📊 <b>Session ended</b>",
+        `📊 <b>Session ended</b> — ${visitorTag}`,
         "",
-        `⏱ Active time: <b>${activeTime || "?"}</b>`,
+        `⏱ Active: <b>${activeTime || "?"}</b>`,
         `📄 Pages (${(pages || []).length}): <code>${journey}</code>`,
-        `📜 Scroll depth: ${maxScroll || 0}%`,
+        `📜 Scroll: ${maxScroll || 0}%`,
         `📍 ${geo}`,
+        ip ? `🌐 IP: <code>${ip}</code>` : "",
         utm ? `🏷 UTM: <code>${utm}</code>` : "",
         "",
         `🖱 <b>Clicks:</b>`,
@@ -111,7 +151,6 @@ Deno.serve(async (req) => {
       ].filter(Boolean).join("\n");
 
     } else if (
-      // Cal.com webhook: triggerEvent = BOOKING_CREATED
       body.triggerEvent === "BOOKING_CREATED" ||
       body.triggerEvent === "BOOKING_RESCHEDULED"
     ) {
@@ -122,7 +161,10 @@ Deno.serve(async (req) => {
         ? new Date(payload.startTime).toLocaleString("en-US", { timeZone: "Europe/Lisbon" })
         : "?";
       const responses = payload.responses || {};
-      const notes = responses.notes || responses.rescheduleReason || "";
+      const notes = responses["what-would-you-like-to-improve-or-automate-with-ai"]?.value
+        || responses.notes
+        || responses.rescheduleReason
+        || "";
 
       message = [
         "🎉 <b>NEW BOOKING via Cal.com!</b>",
@@ -130,15 +172,14 @@ Deno.serve(async (req) => {
         `👤 <b>${name || "Unknown"}</b>`,
         `📅 ${title}`,
         `🕐 ${startTime}`,
-        notes ? `📝 Notes: ${String(notes).slice(0, 200)}` : "",
+        notes ? `📝 ${String(notes).slice(0, 300)}` : "",
         `📍 ${geo}`,
         "",
         "👤 @defi_defiler @vlacomor",
       ].filter(Boolean).join("\n");
 
     } else {
-      // Unknown type — return 200 so Cal.com ping test passes
-      return new Response(JSON.stringify({ ok: true, note: "unhandled event type" }), {
+      return new Response(JSON.stringify({ ok: true, note: "unhandled event" }), {
         status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }

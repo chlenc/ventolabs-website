@@ -144,8 +144,8 @@ function sendSummary() {
     ts: new Date().toISOString(),
   };
 
-  // sendBeacon is fire-and-forget, works during unload
-  const blob = new Blob([JSON.stringify(payload)], { type: "application/json" });
+  // sendBeacon with text/plain avoids CORS preflight (no OPTIONS needed)
+  const blob = new Blob([JSON.stringify(payload)], { type: "text/plain" });
   navigator.sendBeacon(ENDPOINT, blob);
 }
 
