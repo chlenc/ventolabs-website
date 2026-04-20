@@ -2120,3 +2120,180 @@ em, .italic {
   right: 50%;
   transform: translateX(50%);
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Pilot offer popup (auto-leadgen, editorial style)
+   ═══════════════════════════════════════════════════════════════ */
+.pilot-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 8, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s var(--ease);
+}
+.pilot-backdrop--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.pilot {
+  position: relative;
+  width: min(520px, 100%);
+  background: var(--paper);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  transform: translateY(24px) scale(0.98);
+  opacity: 0;
+  transition: transform 0.55s var(--ease), opacity 0.45s var(--ease);
+  border: 1px solid var(--line);
+}
+.pilot-backdrop--open .pilot {
+  transform: none;
+  opacity: 1;
+}
+.pilot__media {
+  aspect-ratio: 16 / 9;
+  background: var(--forest);
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.pilot__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.35) 100%);
+  pointer-events: none;
+}
+.pilot__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.pilot__badge {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--cream);
+  padding: 0.45rem 0.75rem;
+  background: rgba(10, 10, 8, 0.45);
+  border: 1px solid rgba(243, 234, 216, 0.25);
+  border-radius: 999px;
+  z-index: 2;
+}
+.pilot__close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(10, 10, 8, 0.45);
+  color: var(--cream);
+  border: 1px solid rgba(243, 234, 216, 0.35);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+  z-index: 2;
+}
+.pilot__close:hover {
+  background: rgba(10, 10, 8, 0.7);
+  transform: rotate(90deg);
+}
+.pilot__body {
+  padding: 1.75rem 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.pilot__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+.pilot__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+  color: var(--fg);
+  text-wrap: balance;
+  max-width: 22ch;
+}
+.pilot__desc {
+  margin-top: 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 44ch;
+}
+.pilot__meta {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+.pilot__meta strong {
+  color: var(--fg);
+  font-weight: 500;
+  margin-left: 0.35rem;
+}
+.pilot__actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.pilot__actions .btn {
+  flex: 1 1 auto;
+  justify-content: center;
+}
+.pilot__skip {
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  align-self: center;
+  transition: color 0.2s;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--line-strong);
+}
+.pilot__skip:hover {
+  color: var(--fg);
+}
+@media (max-width: 500px) {
+  .pilot__body { padding: 1.5rem 1.25rem 1.25rem; }
+  .pilot__meta { gap: 0.75rem 1rem; }
+}

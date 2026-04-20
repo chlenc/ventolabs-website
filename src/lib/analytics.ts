@@ -47,7 +47,7 @@ export function trackCalendlyBooked(eventUri?: string): void {
 }
 
 /** Fired when the exit-intent / gift popups appear. */
-export function trackPopupShown(name: "exit_intent" | "gift"): void {
+export function trackPopupShown(name: "exit_intent" | "gift" | "pilot_offer"): void {
   pushEvent({
     event: "popup_shown",
     popup_name: name,

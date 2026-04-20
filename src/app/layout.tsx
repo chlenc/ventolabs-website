@@ -3,6 +3,7 @@ import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
+import { PilotOfferPopup } from "@/components/PilotOfferPopup";
 import { CalendlyWidget } from "@/components/CalendlyPopup";
 import { FloatingContact } from "@/components/FloatingContact";
 import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
@@ -136,6 +137,7 @@ export default function RootLayout({
           <Header />
           <main id="main">{children}</main>
           <Footer />
+          <PilotOfferPopup />
           <ExitIntentPopup />
           <FloatingContact />
           <CalendlyWidget />
