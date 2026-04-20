@@ -4,7 +4,7 @@ import { Suspense, useEffect, type ReactNode } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import posthog from "posthog-js";
 
-const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY ?? "";
+const POSTHOG_TOKEN = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN ?? "";
 const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
 
 /**
@@ -23,9 +23,9 @@ const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posth
  */
 export function PostHogAnalytics({ children }: { children: ReactNode }) {
   useEffect(() => {
-    if (!POSTHOG_KEY) return;
+    if (!POSTHOG_TOKEN) return;
     if ((posthog as unknown as { __loaded?: boolean }).__loaded) return;
-    posthog.init(POSTHOG_KEY, {
+    posthog.init(POSTHOG_TOKEN, {
       api_host: POSTHOG_HOST,
       defaults: "2025-05-24",
       capture_pageview: false,
@@ -51,7 +51,7 @@ function PageviewTracker() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!POSTHOG_KEY) return;
+    if (!POSTHOG_TOKEN) return;
     if (!pathname) return;
     const qs = searchParams?.toString();
     const url = qs ? `${pathname}?${qs}` : pathname;

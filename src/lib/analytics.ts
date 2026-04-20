@@ -27,7 +27,7 @@ export function pushEvent(event: DataLayerRecord): void {
  */
 function captureToPostHog(event: string, properties: Record<string, unknown>): void {
   if (typeof window === "undefined") return;
-  if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) return;
+  if (!process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) return;
   try {
     posthog.capture(event, properties);
   } catch {
