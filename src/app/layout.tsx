@@ -10,6 +10,7 @@ import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/Goo
 import { AnalyticsBootstrap } from "@/components/AnalyticsBootstrap";
 import { VisitorTracker } from "@/components/VisitorTracker";
 import { LocaleProvider } from "@/components/LocaleProvider";
+import { PostHogAnalytics } from "@/components/PostHogProvider";
 import { site } from "@/lib/site";
 import { asset } from "@/lib/utils";
 import { defaultLocale, getDictionary, htmlLangCodes, locales, localizedPath, openGraphLocales } from "@/lib/i18n";
@@ -132,16 +133,18 @@ export default function RootLayout({
         <GoogleTagManagerNoScript />
         <AnalyticsBootstrap />
         <VisitorTracker />
-        <LocaleProvider>
-          <a className="skip-link" href="#main">{dict.skipLink}</a>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <PilotOfferPopup />
-          <ExitIntentPopup />
-          <FloatingContact />
-          <CalendlyWidget />
-        </LocaleProvider>
+        <PostHogAnalytics>
+          <LocaleProvider>
+            <a className="skip-link" href="#main">{dict.skipLink}</a>
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+            <PilotOfferPopup />
+            <ExitIntentPopup />
+            <FloatingContact />
+            <CalendlyWidget />
+          </LocaleProvider>
+        </PostHogAnalytics>
       </body>
     </html>
   );

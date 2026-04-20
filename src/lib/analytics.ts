@@ -1,5 +1,8 @@
-// Google Tag Manager dataLayer helper.
-// All tracking events flow through pushEvent() -> dataLayer -> GTM -> GA4/Meta/Yandex.
+// Tracking events fan out to two tools:
+//  1) GTM dataLayer  -> GA4 / Meta / Yandex ads attribution
+//  2) PostHog        -> product analytics, session replay, funnels
+
+import posthog from "posthog-js";
 
 export const GTM_ID = "GTM-NG78TDBW";
 
@@ -18,6 +21,20 @@ export function pushEvent(event: DataLayerRecord): void {
   window.dataLayer.push(event);
 }
 
+/**
+ * Fire-and-forget capture on PostHog. Silently no-ops when the key isn't
+ * set (local dev without env, CI) so it never breaks the funnel.
+ */
+function captureToPostHog(event: string, properties: Record<string, unknown>): void {
+  if (typeof window === "undefined") return;
+  if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) return;
+  try {
+    posthog.capture(event, properties);
+  } catch {
+    // PostHog not initialized yet — drop silently, we'll still have GTM.
+  }
+}
+
 /** Fired whenever the user clicks a primary CTA that leads to Calendly. */
 export function trackCtaClick(params: {
   label: string;
@@ -25,6 +42,10 @@ export function trackCtaClick(params: {
 }): void {
   pushEvent({
     event: "cta_click",
+    cta_label: params.label,
+    cta_location: params.location,
+  });
+  captureToPostHog("cta_click", {
     cta_label: params.label,
     cta_location: params.location,
   });
@@ -36,6 +57,7 @@ export function trackCalendlyOpened(source: string): void {
     event: "calendly_opened",
     calendly_source: source,
   });
+  captureToPostHog("calendly_opened", { calendly_source: source });
 }
 
 /** Fired once when the user successfully schedules a call. Main conversion. */
@@ -44,6 +66,7 @@ export function trackCalendlyBooked(eventUri?: string): void {
     event: "calendly_booked",
     calendly_event_uri: eventUri,
   });
+  captureToPostHog("calendly_booked", { calendly_event_uri: eventUri });
 }
 
 /** Fired when the exit-intent / gift popups appear. */
@@ -52,6 +75,7 @@ export function trackPopupShown(name: "exit_intent" | "gift" | "pilot_offer"): v
     event: "popup_shown",
     popup_name: name,
   });
+  captureToPostHog("popup_shown", { popup_name: name });
 }
 
 /** Fired when a contact channel (Telegram / WhatsApp / email) is clicked from the FAB. */
@@ -60,4 +84,5 @@ export function trackContactClick(channel: "telegram" | "whatsapp" | "email"): v
     event: "contact_click",
     contact_channel: channel,
   });
+  captureToPostHog("contact_click", { contact_channel: channel });
 }
