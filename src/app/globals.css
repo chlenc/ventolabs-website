@@ -2152,7 +2152,6 @@ em, .italic {
   transform: translateY(24px) scale(0.98);
   opacity: 0;
   transition: transform 0.55s var(--ease), opacity 0.45s var(--ease);
-  border: 1px solid var(--line);
 }
 .pilot-backdrop--open .pilot {
   transform: none;

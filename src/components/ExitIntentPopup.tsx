@@ -2,35 +2,90 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useLocale } from "./LocaleProvider";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, type Locale } from "@/lib/i18n";
 import { openCalendly } from "./CalendlyPopup";
 import { isGiftPopupOpen } from "./GiftPopup";
-import { asset } from "@/lib/utils";
+import { OfferDialog } from "./OfferDialog";
+import { href } from "@/lib/utils";
 import { trackCtaClick, trackPopupShown } from "@/lib/analytics";
 
+type AuxCopy = {
+  badge: string;
+  eyebrow: string;
+  /** Split title so the italic accent word (em) can be localized. */
+  title: { lead: string; em: string; tail: string };
+  desc: string;
+  termsLinkLabel: string;
+};
+
+// Exit-intent copy is a beat more urgent — they were about to leave.
+// Same visual as PilotOfferPopup / GiftPopup (shared OfferDialog).
+const AUX: Record<Locale, AuxCopy> = {
+  en: {
+    badge: "Free pilot · setup on us",
+    eyebrow: "One more thing before you go",
+    title: { lead: "Take a working ", em: "AI agent", tail: " with you — free of charge." },
+    desc: "A 30-minute call to scope the use case, then we build your agent on Claude Agent SDK, connected to your tools and trained on your knowledge base.",
+    termsLinkLabel: "Terms apply",
+  },
+  es: {
+    badge: "Piloto gratuito · por nuestra cuenta",
+    eyebrow: "Una cosa más antes de irte",
+    title: { lead: "Llévate un ", em: "agente de IA", tail: " funcionando — sin coste." },
+    desc: "Una llamada de 30 minutos para encuadrar el caso, y construimos tu agente sobre Claude Agent SDK, conectado a tus herramientas y entrenado con tu base de conocimiento.",
+    termsLinkLabel: "Ver términos",
+  },
+  ru: {
+    badge: "Бесплатный пилот · за наш счёт",
+    eyebrow: "Одна вещь напоследок",
+    title: { lead: "Заберите рабочего ", em: "AI-агента", tail: " — бесплатно." },
+    desc: "30-минутный звонок чтобы очертить задачу, и мы собираем агента на Claude Agent SDK — подключённого к вашим инструментам и обученного на вашей базе знаний.",
+    termsLinkLabel: "Условия",
+  },
+  de: {
+    badge: "Kostenloser Pilot · geht auf uns",
+    eyebrow: "Noch eine Sache, bevor du gehst",
+    title: { lead: "Nimm einen laufenden ", em: "KI-Agenten", tail: " mit — kostenlos." },
+    desc: "Ein 30-minütiger Call, um den Use Case zu umreißen, dann bauen wir deinen Agenten auf Basis des Claude Agent SDK, verbunden mit deinen Tools und trainiert auf deiner Wissensbasis.",
+    termsLinkLabel: "Bedingungen",
+  },
+};
+
+/**
+ * Fires once per session (session-scoped) when the user looks like they're
+ * about to leave: cursor leaves the top of the viewport, tab is hidden,
+ * or they've been idle for 20 seconds after an 8-second arm delay.
+ *
+ * Shares the editorial OfferDialog with the timed pilot popup and the
+ * header gift button — only the trigger logic is different.
+ */
 export function ExitIntentPopup() {
   const locale = useLocale();
   const dict = getDictionary(locale);
-  const [show, setShow] = useState(false);
+  const aux = AUX[locale] ?? AUX.en;
+  const [open, setOpen] = useState(false);
 
   const fire = useCallback(() => {
     trackPopupShown("exit_intent");
-    setShow(true);
+    setOpen(true);
   }, []);
 
+  // Session-scope the "already shown" flag so it re-fires in a new tab/visit
+  // but not every time the user cancels within one session.
+  const STORAGE_KEY = "vl_exit_shown";
+
   useEffect(() => {
-    const key = "vl_exit_shown";
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem(key)) return;
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
 
     let armed = false;
     let firedAlready = false;
 
     const doFire = () => {
       if (firedAlready) return;
-      if (isGiftPopupOpen()) return;
+      if (isGiftPopupOpen()) return; // another popup is on screen — skip
       firedAlready = true;
-      sessionStorage.setItem(key, "1");
+      sessionStorage.setItem(STORAGE_KEY, "1");
       fire();
       teardown();
     };
@@ -82,30 +137,28 @@ export function ExitIntentPopup() {
     };
   }, [fire]);
 
-  if (!show) return null;
+  const close = useCallback(() => setOpen(false), []);
+
+  if (!open) return null;
 
   return (
-    <div className="popup-overlay" onClick={() => setShow(false)}>
-      <div className="popup popup--wide" onClick={(e) => e.stopPropagation()}>
-        <button className="popup__close" onClick={() => setShow(false)} aria-label="Close">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M4 4L14 14M14 4L4 14" stroke="currentColor" strokeWidth="1.5" />
-          </svg>
-        </button>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset("/images/ai-assistant-box.png")} alt="Free AI Agent" className="popup__image" />
-        <div className="popup__body">
-          <h3>{dict.exitPopup.title}</h3>
-          <p>{dict.exitPopup.description}</p>
-          <button className="btn btn--primary" style={{ width: "100%" }} onClick={() => {
-            setShow(false);
-            trackCtaClick({ label: dict.exitPopup.cta, location: "exit_intent_popup" });
-            openCalendly("exit_intent_popup");
-          }}>
-            {dict.exitPopup.cta}
-          </button>
-        </div>
-      </div>
-    </div>
+    <OfferDialog
+      open={open}
+      onClose={close}
+      onPrimary={() => {
+        close();
+        trackCtaClick({ label: dict.giftPopup.cta, location: "exit_intent_popup" });
+        openCalendly("exit_intent_popup");
+      }}
+      badge={aux.badge}
+      eyebrow={aux.eyebrow}
+      titleLead={aux.title.lead}
+      titleEm={aux.title.em}
+      titleTail={aux.title.tail}
+      desc={aux.desc}
+      termsHref={href("/terms", locale)}
+      termsLinkLabel={aux.termsLinkLabel}
+      primaryLabel={dict.giftPopup.cta}
+    />
   );
 }
