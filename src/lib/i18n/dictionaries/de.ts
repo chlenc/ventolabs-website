@@ -730,11 +730,12 @@ export const de: Dictionary = {
           ],
         },
         {
-          heading: "2. Kostenlose KI-Assistent-Einrichtung",
+          heading: "2. Kostenloser KI-Agent-Pilot — Bedingtes Angebot",
           content: [
-            "Vento Labs bietet eine kostenlose KI-Assistent-Einrichtung als Demonstration unserer Fähigkeiten. Es besteht keine Verpflichtung, weitere Services zu beauftragen. Sie dürfen die Einrichtung behalten und die Zusammenarbeit nach dem initialen Deployment beenden.",
-            "Die kostenlose Einrichtung umfasst eine grundlegende Konfiguration des KI-Assistenten wie im Entdeckungsgespräch besprochen. Jede Anpassung, zusätzliche Funktionen oder fortlaufende Wartung darüber hinaus sind kostenpflichtige Leistungen.",
-            "Infrastrukturkosten (Cloud-Hosting, Nutzung der KI-Modell-APIs) gehen zu Lasten des Kunden und werden von den jeweiligen Anbietern direkt berechnet.",
+            "Vento Labs bietet interessierten Kunden einen kostenfreien Aufbau eines KI-Agenten (den „Gratis-Piloten\") als Teil des Onboardings in einen bezahlten Auftrag an. Wir übernehmen Aufbau, Konfiguration und Deployment ohne Berechnung — unter der Voraussetzung, dass der Kunde im Anschluss eine Leistungsvereinbarung für eines unserer kommerziellen Pakete unterzeichnet.",
+            "Typischer Umfang: ein zweiwöchiger Aufbau auf Basis des Claude Agent SDK (oder eines gleichwertigen Agent-Frameworks), verbunden mit einer vorab abgestimmten Wissensbasis und Werkzeug-Stack, deployt in der Kundenumgebung. Das genaue Lieferergebnis wird im Entdeckungsgespräch vor Arbeitsbeginn schriftlich bestätigt.",
+            "Unterzeichnet der Kunde keinen kostenpflichtigen Auftrag, behält Vento Labs das Eigentum am Gratis-Piloten — einschließlich Code, Prompts und Konfigurationen. Für die Pilotarbeit selbst wird keine Gebühr erhoben, das Ergebnis wird jedoch nicht an den Kunden übergeben, bis eine kostenpflichtige Vereinbarung geschlossen ist.",
+            "Infrastrukturkosten (Cloud-Hosting, Nutzung der KI-Modell-APIs) gehen jederzeit zu Lasten des Kunden und werden von den jeweiligen Anbietern direkt berechnet, auch während des Gratis-Piloten.",
           ],
         },
         {

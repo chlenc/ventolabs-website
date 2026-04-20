@@ -730,11 +730,12 @@ export const es: Dictionary = {
           ],
         },
         {
-          heading: "2. Configuración gratuita del asistente de IA",
+          heading: "2. Piloto gratuito de agente de IA — oferta condicional",
           content: [
-            "Vento Labs ofrece una configuración gratuita de asistente de IA como demostración de nuestras capacidades. No hay obligación de contratar servicios adicionales. Eres libre de quedarte con la configuración y dar por finalizada la relación tras el despliegue inicial.",
-            "La configuración gratuita incluye una configuración básica de asistente de IA como se describa durante la llamada de descubrimiento. Cualquier personalización, funcionalidad adicional o mantenimiento más allá de la configuración inicial constituye servicios de pago.",
-            "Los costes de infraestructura (hosting en la nube, uso de API del modelo de IA) son responsabilidad del cliente y los facturan directamente los proveedores correspondientes.",
+            "Vento Labs ofrece a clientes potenciales una construcción gratuita de un agente de IA (el «Piloto Gratuito») como parte del onboarding hacia un contrato remunerado. Cubrimos la construcción, configuración y despliegue sin coste a cambio de que el cliente firme un contrato de servicios para uno de nuestros paquetes comerciales.",
+            "Alcance típico: una construcción de dos semanas sobre Claude Agent SDK (o un framework de agentes equivalente), conectado a una base de conocimiento y a un stack de herramientas acordados previamente, desplegado en el entorno del cliente. El entregable exacto se confirma por escrito durante la llamada de descubrimiento antes de iniciar cualquier trabajo.",
+            "Si el cliente no firma un contrato remunerado, Vento Labs conserva la propiedad del Piloto Gratuito — incluidos código, prompts y configuraciones. No se factura por el trabajo piloto en sí, pero el entregable no se transfiere al cliente hasta que se ejecute un acuerdo remunerado.",
+            "Los costes de infraestructura (hosting en la nube, uso de APIs de modelos de IA) siempre son responsabilidad del cliente y los facturan directamente los proveedores correspondientes, incluido durante el período del Piloto Gratuito.",
           ],
         },
         {

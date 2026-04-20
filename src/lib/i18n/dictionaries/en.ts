@@ -730,11 +730,12 @@ export const en: Dictionary = {
           ],
         },
         {
-          heading: "2. Free AI Assistant Setup",
+          heading: "2. Free AI Agent Pilot — Conditional Offer",
           content: [
-            "Vento Labs offers a complimentary AI assistant setup as a demonstration of our capabilities. There is no obligation to purchase additional services. You are free to keep the setup and end the engagement after the initial deployment.",
-            "The free setup includes a basic AI assistant configuration as described during the discovery call. Any customization, additional features, or ongoing maintenance beyond the initial setup constitutes paid services.",
-            "Infrastructure costs (cloud hosting, AI model API usage) are the responsibility of the client and are billed directly by the respective providers.",
+            "Vento Labs offers a complimentary AI agent build (the \"Free Pilot\") to prospective clients as part of onboarding into a paid engagement. We cover the build, configuration, and deployment at no cost in exchange for the client proceeding to a signed services agreement for one of our commercial packages.",
+            "Typical scope: a two-week build on Claude Agent SDK (or an equivalent agent framework), connected to a pre-agreed knowledge base and tool stack, deployed into the client's environment. The exact deliverable is confirmed in writing during the discovery call before any work begins.",
+            "If the client does not sign a paid engagement, Vento Labs retains ownership of the Free Pilot — including code, prompts, and configurations. No fee is charged for the pilot work itself, but the deliverable is not transferred to the client unless a paid agreement is executed.",
+            "Infrastructure costs (cloud hosting, AI model API usage) are the responsibility of the client and billed directly by the respective providers at all times, including during the Free Pilot period.",
           ],
         },
         {
