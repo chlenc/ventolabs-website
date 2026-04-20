@@ -3,15 +3,16 @@
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
 import { trackCalendlyOpened, trackCtaClick } from "@/lib/analytics";
+import { calendly } from "@/lib/site";
 
 let calReady = false;
 
 export async function openCalendly(source: string = "unknown") {
   trackCalendlyOpened(source);
   if (typeof window === "undefined") return;
-  const cal = await getCalApi({ namespace: "30min" });
+  const cal = await getCalApi({ namespace: calendly.namespace });
   cal("modal", {
-    calLink: "ventolabs/30min",
+    calLink: calendly.calLink,
     config: { layout: "month_view" },
   });
 }
@@ -22,11 +23,10 @@ export function CalendlyWidget() {
     calReady = true;
 
     (async () => {
-      const cal = await getCalApi({ namespace: "30min" });
+      const cal = await getCalApi({ namespace: calendly.namespace });
       cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
     })();
 
-    // Intercept all #book links to open Cal popup
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const anchor = target.closest<HTMLAnchorElement>('a[href$="#book"]');

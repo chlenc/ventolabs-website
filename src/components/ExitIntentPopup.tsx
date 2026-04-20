@@ -1,13 +1,16 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { exitPopup } from "@/lib/content";
+import { useLocale } from "./LocaleProvider";
+import { getDictionary } from "@/lib/i18n";
 import { openCalendly } from "./CalendlyPopup";
 import { isGiftPopupOpen } from "./GiftPopup";
 import { asset } from "@/lib/utils";
 import { trackCtaClick, trackPopupShown } from "@/lib/analytics";
 
 export function ExitIntentPopup() {
+  const locale = useLocale();
+  const dict = getDictionary(locale);
   const [show, setShow] = useState(false);
 
   const fire = useCallback(() => {
@@ -32,16 +35,13 @@ export function ExitIntentPopup() {
       teardown();
     };
 
-    // Strategy 1: Mouse leaves document upward (exit intent)
     const onMouseOut = (e: MouseEvent) => {
       if (!armed) return;
-      // Mouse went above viewport (closing tab / switching tab)
       if (e.clientY < 5 && !e.relatedTarget) {
         doFire();
       }
     };
 
-    // Strategy 2: Visibility change (user switches tab)
     const onVisibilityChange = () => {
       if (!armed) return;
       if (document.visibilityState === "hidden") {
@@ -49,7 +49,6 @@ export function ExitIntentPopup() {
       }
     };
 
-    // Strategy 3: Idle timeout (no interaction for 20s)
     let idleTimer: ReturnType<typeof setTimeout>;
     const resetIdle = () => {
       clearTimeout(idleTimer);
@@ -67,7 +66,6 @@ export function ExitIntentPopup() {
       clearTimeout(idleTimer);
     };
 
-    // Arm after 8 seconds on page
     const armDelay = setTimeout(() => {
       armed = true;
       document.addEventListener("mouseout", onMouseOut);
@@ -97,14 +95,14 @@ export function ExitIntentPopup() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={asset("/images/ai-assistant-box.png")} alt="Free AI Agent" className="popup__image" />
         <div className="popup__body">
-          <h3>{exitPopup.title}</h3>
-          <p>{exitPopup.description}</p>
+          <h3>{dict.exitPopup.title}</h3>
+          <p>{dict.exitPopup.description}</p>
           <button className="btn btn--primary" style={{ width: "100%" }} onClick={() => {
             setShow(false);
-            trackCtaClick({ label: exitPopup.cta, location: "exit_intent_popup" });
+            trackCtaClick({ label: dict.exitPopup.cta, location: "exit_intent_popup" });
             openCalendly("exit_intent_popup");
           }}>
-            {exitPopup.cta}
+            {dict.exitPopup.cta}
           </button>
         </div>
       </div>

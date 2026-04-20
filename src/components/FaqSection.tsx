@@ -1,25 +1,39 @@
 "use client";
 
 import { useState } from "react";
+import { FadeUp, PlusIcon } from "./Primitives";
+import { useLocale } from "./LocaleProvider";
+import { getDictionary } from "@/lib/i18n";
 
 type FaqItem = { q: string; a: string };
 
 export function FaqSection({
   items,
-  heading = "Frequently asked questions",
+  heading,
 }: {
   items: FaqItem[];
   heading?: string;
 }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const locale = useLocale();
+  const dict = getDictionary(locale);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const finalHeading = heading ?? dict.faq.heading;
 
   return (
-    <section className="section">
-      <div className="container container--narrow">
-        <div className="section-header centered">
-          <p className="eyebrow">FAQ</p>
-          <h2>{heading}</h2>
-        </div>
+    <section className="section section--paper">
+      <div className="container">
+        <FadeUp>
+          <div className="section-header">
+            <div className="section-header__left">
+              <p className="eyebrow">{dict.faq.eyebrow}</p>
+              <h2>{finalHeading}</h2>
+            </div>
+            <div className="section-header__right">
+              <p>{dict.finalCta.description}</p>
+            </div>
+          </div>
+        </FadeUp>
         <div className="faq-list">
           {items.map((item, i) => (
             <div
@@ -33,14 +47,9 @@ export function FaqSection({
                 aria-expanded={openIndex === i}
               >
                 <span>{item.q}</span>
-                <svg className="faq-icon" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M12 5v14M5 12h14"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <span className="faq-icon">
+                  <PlusIcon />
+                </span>
               </button>
               <div className="faq-answer">
                 <p>{item.a}</p>

@@ -1,3 +1,5 @@
+import { defaultLocale, localizedPath, type Locale } from "./i18n";
+
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 /** Prefix a path with the Next.js basePath (for static export on GH Pages) */
@@ -6,7 +8,7 @@ export function asset(path: string): string {
 }
 
 /** Prefix an internal page link with basePath. Leaves hashes/externals untouched. */
-export function href(path: string): string {
+export function href(path: string, locale: Locale = defaultLocale): string {
   if (path.startsWith("#") || path.startsWith("http") || path.startsWith("mailto:")) return path;
-  return `${base}${path}`;
+  return `${base}${localizedPath(path, locale)}`;
 }

@@ -3,10 +3,15 @@
 import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 import { GiftButton } from "./GiftPopup";
-import { nav } from "@/lib/content";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { MagneticButton, ArrowIcon } from "./Primitives";
+import { useLocale } from "./LocaleProvider";
+import { getDictionary } from "@/lib/i18n";
 import { href } from "@/lib/utils";
 
 export function Header() {
+  const locale = useLocale();
+  const dict = getDictionary(locale);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -24,21 +29,26 @@ export function Header() {
           <Logo />
 
           <nav className="header__nav">
-            {nav.links.map((link) => (
-              <a key={link.href} href={href(link.href)} className="header__link">
+            {dict.nav.links.map((link) => (
+              <a
+                key={link.href}
+                href={href(link.href, locale)}
+                className="header__link"
+              >
                 {link.label}
               </a>
             ))}
+            <LanguageSwitcher variant="desktop" />
             <GiftButton />
-            <a href={href(nav.cta.href)} className="btn btn--primary header__cta">
-              {nav.cta.label}
-            </a>
+            <MagneticButton href={href(dict.nav.cta.href, locale)} variant="primary" className="header__cta">
+              {dict.nav.cta.label} <ArrowIcon />
+            </MagneticButton>
           </nav>
 
           <button
             className="header__burger"
             onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
+            aria-label={dict.nav.openMenu}
           >
             <span />
             <span />
@@ -49,13 +59,16 @@ export function Header() {
 
       {mobileOpen && (
         <nav className="mobile-nav" onClick={() => setMobileOpen(false)}>
-          {nav.links.map((link) => (
-            <a key={link.href} href={href(link.href)}>
+          {dict.nav.links.map((link) => (
+            <a key={link.href} href={href(link.href, locale)}>
               {link.label}
             </a>
           ))}
-          <a href={href(nav.cta.href)} className="btn btn--primary">
-            {nav.cta.label}
+          <div className="mobile-nav__lang" onClick={(e) => e.stopPropagation()}>
+            <LanguageSwitcher variant="mobile" />
+          </div>
+          <a href={href(dict.nav.cta.href, locale)} className="btn btn--primary">
+            {dict.nav.cta.label} <ArrowIcon />
           </a>
         </nav>
       )}

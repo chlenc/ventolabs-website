@@ -1,12 +1,35 @@
-export function LogoMark({ className }: { className?: string }) {
+"use client";
+
+import { href } from "@/lib/utils";
+import { useLocale } from "./LocaleProvider";
+
+export function LogoMark({
+  className = "",
+  size = 28,
+  spin = false,
+  pulse = false,
+}: {
+  className?: string;
+  size?: number;
+  spin?: boolean;
+  pulse?: boolean;
+}) {
+  const cls = [
+    "logo-mark",
+    spin && "logo-mark--spin",
+    pulse && "logo-mark--pulse",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
   return (
     <svg
-      width="28"
-      height="29"
+      width={size}
+      height={size}
       viewBox="0 0 46 47"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      className={cls}
     >
       <path
         d="M27.7119 29.2666L19.9521 46.1074L16.1494 44.3555L23.9092 27.5146L27.7119 29.2666ZM38.8672 39.46L35.0615 41.2041L27.3369 24.3467L31.1436 22.6025L38.8672 39.46ZM20.2031 30.3877L2.17871 34.7402L1.19629 30.6699L19.2207 26.3184L20.2031 30.3877ZM17.1191 22.9053L14.5127 26.1826L0 14.6416L2.60645 11.3643L17.1191 22.9053ZM45.8887 19.3408L45.0244 23.4375L26.8818 19.6064L27.7461 15.5098L45.8887 19.3408ZM18.542 18.542H14.3545V0H18.542V18.542ZM37.4385 5.51367L23.1787 17.3662L20.5029 14.1465L34.7627 2.29395L37.4385 5.51367Z"
@@ -16,12 +39,11 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
-import { href } from "@/lib/utils";
-
 export function Logo() {
+  const locale = useLocale();
   return (
-    <a href={href("/")} className="header__logo">
-      <LogoMark />
+    <a href={href("/", locale)} className="header__logo">
+      <LogoMark spin pulse />
       <span className="header__wordmark">Vento Labs</span>
     </a>
   );

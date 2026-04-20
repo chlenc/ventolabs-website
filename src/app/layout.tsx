@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
@@ -7,44 +8,60 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
 import { AnalyticsBootstrap } from "@/components/AnalyticsBootstrap";
 import { VisitorTracker } from "@/components/VisitorTracker";
-import { site } from "@/lib/content";
+import { LocaleProvider } from "@/components/LocaleProvider";
+import { site } from "@/lib/site";
 import { asset } from "@/lib/utils";
+import { defaultLocale, getDictionary, htmlLangCodes, locales, localizedPath, openGraphLocales } from "@/lib/i18n";
 import "./globals.css";
 
-const seoTitle = "Vento Labs | AI Agents & Automation for Business";
-const seoDesc = "Custom AI agents that cut operating costs, automate workflows, and scale your business without adding headcount. Free AI agent setup with every engagement.";
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+  axes: ["opsz", "SOFT"],
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500"],
+});
+
+const dict = getDictionary(defaultLocale);
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: seoTitle,
-    template: "%s — Vento Labs | AI Automation Agency",
+    default: dict.seo.homeTitle,
+    template: dict.seo.titleTemplate,
   },
-  description: seoDesc,
-  keywords: [
-    "AI agents for business",
-    "AI automation agency",
-    "custom AI agents",
-    "AI process automation",
-    "enterprise AI solutions",
-    "AI business assistant",
-    "AI workflow automation",
-    "business AI implementation",
-    "AI chatbot for business",
-    "automate business operations with AI",
-    "AI agent development company",
-    "reduce operating costs AI",
-  ],
-  alternates: { canonical: site.url },
+  description: dict.seo.homeDescription,
+  keywords: dict.seo.keywords,
+  alternates: {
+    canonical: site.url,
+    languages: {
+      ...Object.fromEntries(locales.map((l) => [l, `${site.url}${localizedPath("/", l)}`])),
+      "x-default": site.url,
+    },
+  },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: openGraphLocales[defaultLocale],
+    alternateLocale: locales.filter((l) => l !== defaultLocale).map((l) => openGraphLocales[l]),
     siteName: site.name,
-    title: seoTitle,
-    description: seoDesc,
+    title: dict.seo.homeTitle,
+    description: dict.seo.homeDescription,
     url: site.url,
   },
-  twitter: { card: "summary_large_image", title: seoTitle, description: seoDesc },
+  twitter: { card: "summary_large_image", title: dict.seo.homeTitle, description: dict.seo.homeDescription },
   robots: {
     index: true,
     follow: true,
@@ -54,7 +71,7 @@ export const metadata: Metadata = {
   },
   other: {
     "geo.region": "US",
-    "theme-color": "#234c12",
+    "theme-color": "#1e3c14",
   },
 };
 
@@ -64,7 +81,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang={htmlLangCodes[defaultLocale]}
+      className={`${fraunces.variable} ${interTight.variable} ${jetBrainsMono.variable}`}
+    >
       <head>
         <GoogleTagManagerHead />
         <link rel="icon" href={asset("/favicon.svg")} type="image/svg+xml" />
@@ -80,7 +100,7 @@ export default function RootLayout({
               url: site.url,
               email: site.email,
               telephone: site.phoneDisplay,
-              description: seoDesc,
+              description: dict.seo.homeDescription,
               foundingDate: "2025-02-03",
               legalName: "Vento Labs Pte. Ltd.",
               areaServed: [
@@ -94,10 +114,7 @@ export default function RootLayout({
                 "AI Team Training & Adoption",
                 "Custom AI Solutions",
               ],
-              sameAs: [
-                site.linkedin,
-                site.telegram,
-              ],
+              sameAs: [site.linkedin, site.telegram],
               knowsAbout: [
                 "Artificial Intelligence",
                 "Business Automation",
@@ -114,24 +131,15 @@ export default function RootLayout({
         <GoogleTagManagerNoScript />
         <AnalyticsBootstrap />
         <VisitorTracker />
-        <a className="skip-link" href="#main" style={{
-          position: "absolute",
-          top: "-100px",
-          left: "1rem",
-          padding: "0.5rem 1rem",
-          background: "var(--color-forest)",
-          color: "var(--color-cream)",
-          borderRadius: "var(--radius-sm)",
-          zIndex: 999,
-        }}>
-          Skip to content
-        </a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-        <ExitIntentPopup />
-        <FloatingContact />
-        <CalendlyWidget />
+        <LocaleProvider>
+          <a className="skip-link" href="#main">{dict.skipLink}</a>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+          <ExitIntentPopup />
+          <FloatingContact />
+          <CalendlyWidget />
+        </LocaleProvider>
       </body>
     </html>
   );
