@@ -25,28 +25,28 @@ const serviceImages: Record<string, string> = {
 
 const caseCards = [
   {
-    key: "zigmund",
-    company: "Zigmund",
-    industry: "Online Therapy",
-    img: "/images/case-zigmund.jpg",
-    metric: "2 min",
-    title: "Patient response time dropped from 4 hours to under 2 minutes.",
+    key: "content-factory",
+    company: "Content Factory",
+    industry: "E-commerce / Marketplaces",
+    img: "/images/case-content-factory.png",
+    metric: "SKU → flow",
+    title: "Turn a catalog into a stream of discovery content across channels.",
   },
   {
-    key: "noconcept",
-    company: "NoConcept",
-    industry: "E-commerce",
-    img: "/images/case-noconcept.jpg",
-    metric: "25h",
-    title: "25+ hours saved per week across the team via AI automation.",
+    key: "supplier-agent",
+    company: "Supplier Agent",
+    industry: "Supplier Operations",
+    img: "/images/case-supplier-agent.png",
+    metric: "Chaos → structure",
+    title: "Emails, chats and price lists become live catalog updates by rule.",
   },
   {
-    key: "asgcompute",
-    company: "ASG Compute",
-    industry: "Cloud Infra",
-    img: "/images/case-asgcompute.jpg",
-    metric: "4 wk",
-    title: "Enterprise AI workspace deployed for 45 employees in 4 weeks.",
+    key: "erp-agent",
+    company: "1C Agent",
+    industry: "Enterprise / 1C",
+    img: "/images/case-erp-agent.png",
+    metric: "Safe by role",
+    title: "A permissioned AI layer over 1C with dev and manager flows.",
   },
 ];
 
@@ -285,7 +285,7 @@ export function HomeContent() {
           <div className="cases-grid">
             {caseCards.map((c, i) => (
               <FadeUp key={c.key} delay={i * 120}>
-                <a href={href("/cases", locale)} className="case">
+                <a href={href(`/cases/${c.key}`, locale)} className="case">
                   <div
                     className="case__img"
                     style={{ backgroundImage: `url(${asset(c.img)})` }}

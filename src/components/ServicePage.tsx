@@ -5,12 +5,24 @@ import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon } from "./Primit
 import { useLocale } from "./LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
 import type { ServiceDict } from "@/lib/i18n/types";
-import { href } from "@/lib/utils";
+import { asset, href } from "@/lib/utils";
 
-export function ServicePage({ slug, service }: { slug: string; service: ServiceDict }) {
+export function ServicePage({
+  slug,
+  service,
+  breadcrumb,
+  heroImage,
+}: {
+  slug: string;
+  service: ServiceDict;
+  breadcrumb?: { parentLabel: string; parentHref: string };
+  /** Optional marketing image shown in a full-bleed band right after the hero. */
+  heroImage?: string;
+}) {
   const locale = useLocale();
   const dict = getDictionary(locale);
   const c = dict.servicesCommon;
+  const parent = breadcrumb ?? { parentLabel: "Services", parentHref: "/#services" };
 
   return (
     <>
@@ -21,7 +33,7 @@ export function ServicePage({ slug, service }: { slug: string; service: ServiceD
             <div className="breadcrumbs">
               <a href={href("/", locale)}>Home</a>
               <span className="breadcrumbs__sep">/</span>
-              <a href={href("/#services", locale)}>Services</a>
+              <a href={href(parent.parentHref, locale)}>{parent.parentLabel}</a>
               <span className="breadcrumbs__sep">/</span>
               <span className="breadcrumbs__current">{service.title}</span>
             </div>
@@ -49,6 +61,23 @@ export function ServicePage({ slug, service }: { slug: string; service: ServiceD
           </FadeUp>
         </div>
       </section>
+
+      {/* 1b. Hero marketing image (optional) */}
+      {heroImage && (
+        <section className="case-hero-image">
+          <div className="container">
+            <FadeUp>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset(heroImage)}
+                alt={service.title}
+                className="case-hero-image__img"
+                loading="eager"
+              />
+            </FadeUp>
+          </div>
+        </section>
+      )}
 
       {/* 2. Problem */}
       <section className="section section--paper">

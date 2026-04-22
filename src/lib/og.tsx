@@ -5,7 +5,7 @@ import type { ServiceSlug } from "./services";
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 
-type OgKind = "home" | "cases" | "privacy" | "terms" | "service";
+type OgKind = "home" | "cases" | "privacy" | "terms" | "service" | "case";
 
 /**
  * Render a branded OG card for a given (locale, page). Kept intentionally
@@ -48,6 +48,12 @@ export function renderOgImage({
     if (svc) {
       title = svc.heroTitle;
       eyebrow = svc.kicker;
+    }
+  } else if (kind === "case" && slug) {
+    const cs = dict.case_pages[slug];
+    if (cs) {
+      title = cs.heroTitle;
+      eyebrow = cs.kicker;
     }
   }
 

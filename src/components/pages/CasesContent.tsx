@@ -3,34 +3,45 @@
 import { FadeUp, MagneticButton, ArrowIcon } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
+import {
+  caseLandingSlugs,
+  caseStudySlugs,
+  type CaseLandingSlug,
+  type CaseStudySlug,
+} from "@/lib/cases";
 import { asset, href } from "@/lib/utils";
 
-const caseOrder = ["zigmund", "noconcept", "asgcompute"] as const;
-const caseMeta: Record<
-  (typeof caseOrder)[number],
-  { company: string; image: string; tech: string[] }
-> = {
-  zigmund: {
-    company: "Zigmund Online",
-    image: "/images/case-zigmund.jpg",
-    tech: ["AI Agent", "Telegram", "WhatsApp", "Claude API", "Notion"],
-  },
-  noconcept: {
-    company: "NoConcept",
-    image: "/images/case-noconcept.jpg",
-    tech: ["n8n", "OpenAI API", "Shopify", "Gmail", "Google Sheets"],
-  },
-  asgcompute: {
-    company: "ASG Compute",
-    image: "/images/case-asgcompute.jpg",
-    tech: ["Claude Team", "MCP Gateway", "n8n", "Supabase", "Custom Agents"],
-  },
+const landingImage: Record<CaseLandingSlug, string> = {
+  "content-factory": "/images/case-content-factory.png",
+  "supplier-agent": "/images/case-supplier-agent.png",
+  "erp-agent": "/images/case-erp-agent.png",
 };
+
+const studyMeta: Record<CaseStudySlug, { image: string; company: string }> = {
+  zigmund: { image: "/images/case-zigmund.jpg", company: "Zigmund Online" },
+  noconcept: { image: "/images/case-noconcept.jpg", company: "NoConcept" },
+  asgcompute: { image: "/images/case-asgcompute.jpg", company: "ASG Compute" },
+};
+
+const ctaLabels = {
+  en: "Read case",
+  ru: "Смотреть",
+  es: "Ver caso",
+  de: "Case ansehen",
+} as const;
+
+const kindLabels = {
+  en: { landing: "Solution", study: "Case study" },
+  ru: { landing: "Решение", study: "Кейс" },
+  es: { landing: "Solución", study: "Caso" },
+  de: { landing: "Lösung", study: "Case" },
+} as const;
 
 export function CasesContent() {
   const locale = useLocale();
   const dict = getDictionary(locale);
-  const labels = dict.cases.sectionLabels;
+  const kinds = kindLabels[locale] ?? kindLabels.en;
+  const cta = ctaLabels[locale] ?? ctaLabels.en;
 
   return (
     <>
@@ -41,7 +52,7 @@ export function CasesContent() {
             <div className="breadcrumbs">
               <a href={href("/", locale)}>Home</a>
               <span className="breadcrumbs__sep">/</span>
-              <span className="breadcrumbs__current">Cases</span>
+              <span className="breadcrumbs__current">{dict.casesIntro.eyebrow}</span>
             </div>
           </FadeUp>
           <FadeUp delay={100}>
@@ -50,9 +61,7 @@ export function CasesContent() {
             </p>
           </FadeUp>
           <FadeUp delay={180}>
-            <h1 className="page-hero__title">
-              {dict.casesIntro.heading}
-            </h1>
+            <h1 className="page-hero__title">{dict.casesIntro.heading}</h1>
           </FadeUp>
           <FadeUp delay={260}>
             <p className="page-hero__lede">{dict.casesIntro.description}</p>
@@ -60,73 +69,85 @@ export function CasesContent() {
         </div>
       </section>
 
-      {/* Case studies */}
+      {/* Unified grid — new solutions first (clickable), then case studies (static) */}
       <section className="section section--paper">
         <div className="container">
-          {caseOrder.map((key, i) => {
-            const cs = dict.cases.records[key];
-            const meta = caseMeta[key];
-            return (
-              <FadeUp key={meta.company} delay={i * 80}>
-                <article className="case-detail">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={asset(meta.image)}
-                    alt={meta.company}
-                    className="case-detail__image"
-                    loading="lazy"
-                  />
-                  <div className="case-detail__body">
-                    <div className="case-detail__header">
-                      <span style={{ fontWeight: 500, color: "var(--fg)" }}>
-                        {meta.company}
-                      </span>
-                      <span className="case-detail__industry">
-                        {cs.industry}
-                      </span>
+          <div className="cases-editorial-grid">
+            {caseLandingSlugs.map((slug, i) => {
+              const cs = dict.cases.records[slug];
+              const landing = dict.case_pages[slug];
+              return (
+                <FadeUp key={slug} delay={i * 80}>
+                  <a href={href(`/cases/${slug}`, locale)} className="case-card">
+                    <div className="case-card__media">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={asset(landingImage[slug])}
+                        alt={landing.title}
+                        className="case-card__img"
+                        loading="lazy"
+                      />
                     </div>
-                    <h3 className="case-detail__title">{cs.title}</h3>
-
-                    <div className="case-detail__metrics">
-                      {cs.metrics.map((m) => (
-                        <div key={m.label} className="case-detail__metric">
-                          <span className="case-detail__metric-value">
+                    <div className="case-card__body">
+                      <div className="case-card__meta">
+                        <span className="case-card__kind case-card__kind--landing">
+                          {kinds.landing}
+                        </span>
+                        <span>{cs.industry}</span>
+                      </div>
+                      <h3 className="case-card__title">{landing.title}</h3>
+                      <p className="case-card__summary">{landing.cardSummary}</p>
+                      <div className="case-card__metrics">
+                        {cs.metrics.map((m) => (
+                          <span key={m.label} className="case-card__chip">
                             {m.value}
                           </span>
-                          <span className="case-detail__metric-label">
-                            {m.label}
+                        ))}
+                      </div>
+                      <span className="case-card__cta">
+                        {cta} <ArrowIcon />
+                      </span>
+                    </div>
+                  </a>
+                </FadeUp>
+              );
+            })}
+
+            {caseStudySlugs.map((slug, i) => {
+              const cs = dict.cases.records[slug];
+              const meta = studyMeta[slug];
+              return (
+                <FadeUp key={slug} delay={(caseLandingSlugs.length + i) * 80}>
+                  <article className="case-card case-card--static">
+                    <div className="case-card__media">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={asset(meta.image)}
+                        alt={meta.company}
+                        className="case-card__img"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="case-card__body">
+                      <div className="case-card__meta">
+                        <span className="case-card__kind">{kinds.study}</span>
+                        <span>{cs.industry}</span>
+                      </div>
+                      <h3 className="case-card__title">{cs.title}</h3>
+                      <p className="case-card__summary">{cs.result}</p>
+                      <div className="case-card__metrics">
+                        {cs.metrics.map((m) => (
+                          <span key={m.label} className="case-card__chip">
+                            {m.value}
                           </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="case-detail__sections">
-                      <div className="case-detail__section">
-                        <h4>{labels.challenge}</h4>
-                        <p>{cs.challenge}</p>
-                      </div>
-                      <div className="case-detail__section">
-                        <h4>{labels.solution}</h4>
-                        <p>{cs.solution}</p>
-                      </div>
-                      <div className="case-detail__section">
-                        <h4>{labels.result}</h4>
-                        <p>{cs.result}</p>
+                        ))}
                       </div>
                     </div>
-
-                    <div className="case-detail__tech">
-                      {meta.tech.map((t) => (
-                        <span key={t} className="case-detail__tag">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              </FadeUp>
-            );
-          })}
+                  </article>
+                </FadeUp>
+              );
+            })}
+          </div>
         </div>
       </section>
 

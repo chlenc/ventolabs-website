@@ -3,7 +3,7 @@ import { getDictionary, locales, localizedPath, openGraphLocales, type Locale } 
 import { site } from "./site";
 import type { ServiceSlug } from "./services";
 
-type PageKind = "home" | "cases" | "privacy" | "terms" | "service";
+type PageKind = "home" | "cases" | "privacy" | "terms" | "service" | "case";
 
 type Args = {
   locale: Locale;
@@ -11,6 +11,7 @@ type Args = {
   path: string;
   kind: PageKind;
   serviceSlug?: string;
+  caseSlug?: string;
 };
 
 /**
@@ -20,7 +21,7 @@ type Args = {
  * Canonical URL is the current-locale URL. `alternates.languages` points at
  * the equivalent page in every supported locale plus `x-default` (English).
  */
-export function buildPageMetadata({ locale, path, kind, serviceSlug }: Args): Metadata {
+export function buildPageMetadata({ locale, path, kind, serviceSlug, caseSlug }: Args): Metadata {
   const dict = getDictionary(locale);
   const url = `${site.url}${localizedPath(path, locale)}`;
 
@@ -41,6 +42,12 @@ export function buildPageMetadata({ locale, path, kind, serviceSlug }: Args): Me
     if (svc) {
       title = svc.seo.title;
       description = svc.seo.description;
+    }
+  } else if (kind === "case" && caseSlug) {
+    const cs = dict.case_pages[caseSlug];
+    if (cs) {
+      title = cs.seo.title;
+      description = cs.seo.description;
     }
   }
 

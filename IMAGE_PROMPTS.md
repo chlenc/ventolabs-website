@@ -23,14 +23,17 @@ Recommended size: 1200x800px, high quality JPG/PNG.
 
 ## Case Study Images
 
-### 5. `case-zigmund.jpg`
-**Prompt:** Modern telehealth/online therapy app interface on a laptop screen in a calming office environment. Soft warm lighting, plants, professional but welcoming. Shows a chat interface with an AI assistant helping with patient scheduling.
+### 5. `case-content-factory.jpg`
+**Prompt:** Editorial e-commerce content wall — a grid of product lifestyle shots, shoppable carousels, short-form video stills and AI-presenter thumbnails, all in one consistent brand style. Soft studio lighting, clean background, premium editorial feel. Communicates volume + consistency + channel fit (Pinterest board + TikTok Shop + product card).
 
-### 6. `case-noconcept.jpg`
-**Prompt:** E-commerce operations dashboard on a large monitor showing product grids, order flows, and real-time analytics. Modern warehouse/office hybrid in background. Professional, clean, shows scale of operations.
+### 6. `case-supplier-agent.jpg`
+**Prompt:** A flow visualisation — chaotic emails, chat bubbles, PDFs and spreadsheet screenshots on the left converging into a clean, structured product catalog on the right. Dark background with forest-green accent lines. Conveys "chaos in, structure out" — supplier messages becoming live SKUs, prices and stock.
 
-### 7. `case-asgcompute.jpg`
-**Prompt:** Server room with rows of racks, blue/green LED lights, with transparent holographic AI agent icons floating above the servers. High-tech, enterprise, cinematic lighting. Shows the scale of infrastructure with AI overlay.
+### 7. `case-erp-agent.jpg`
+**Prompt:** Split-screen concept: on one side a developer editing 1C extensions with an AI review panel showing diffs and an approval step; on the other side a manager asking a natural-language question over business data with a role-scoped response. Clean UI abstraction, dark theme with green/gold accents. Enterprise, permissioned, auditable.
+
+### Legacy (removed from site — kept for archival):
+- `case-zigmund.jpg`, `case-noconcept.jpg`, `case-asgcompute.jpg`
 
 ---
 

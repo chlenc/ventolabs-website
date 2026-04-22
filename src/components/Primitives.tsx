@@ -16,26 +16,21 @@ export function FadeUp({
   as?: keyof React.JSX.IntrinsicElements;
 }) {
   const ref = useRef<HTMLElement>(null);
-  const [shown, setShown] = useState(false);
+  // Default to visible so SSR and first paint never show a blank page.
+  // Elements below the fold re-hide after mount and animate in on scroll.
+  const [shown, setShown] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
-    // Hard failsafe: content must always become visible, even if IO never
-    // fires (iOS Safari quirks, hydration races, broken ref attach, etc).
-    const failsafe = window.setTimeout(() => setShown(true), 2500);
-
-    if (!el) return () => window.clearTimeout(failsafe);
+    if (!el) return;
 
     const r = el.getBoundingClientRect();
-    // Already on-screen or scrolled past — reveal immediately.
-    if (r.top < window.innerHeight) {
-      const t = window.setTimeout(() => setShown(true), 50);
-      return () => {
-        window.clearTimeout(t);
-        window.clearTimeout(failsafe);
-      };
-    }
+    // Above-the-fold content stays visible — no animation, no flash.
+    if (r.top < window.innerHeight) return;
 
+    // Below the fold — hide, then reveal when it enters the viewport.
+    setShown(false);
+    const failsafe = window.setTimeout(() => setShown(true), 2500);
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {

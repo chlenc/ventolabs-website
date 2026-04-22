@@ -184,6 +184,8 @@ export type Dictionary = {
 
   services_pages: Record<string, ServiceDict>;
 
+  case_pages: Record<string, ServiceDict>;
+
   enterprise: {
     heroCta: string;
     heroSecondary: string;
