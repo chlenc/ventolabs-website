@@ -80,6 +80,7 @@ export const en: Dictionary = {
   solution: {
     eyebrow: "How We Work",
     heading: "From audit to results in weeks, not months",
+    lead: "Three phases, zero fluff. We start small, prove value, then scale — so you're never stuck paying for something that doesn't work.",
     steps: [
       { title: "Audit", description: "We analyze your key processes in a 30-minute call. No fluff — we identify where AI can save the most time and money right now." },
       { title: "Build", description: "We set up your first AI agent — connected to your tools, knowledge base, and workflows. You see a working solution in days, not months." },
@@ -90,6 +91,7 @@ export const en: Dictionary = {
   services: {
     eyebrow: "What We Do",
     heading: "Four ways we help your business work smarter",
+    lead: "We cover the full cycle — from idea to production release. Every engagement starts with a free AI agent, so you see value before you commit.",
   },
 
   leadMagnet: {
@@ -141,6 +143,7 @@ export const en: Dictionary = {
   },
 
   finalCta: {
+    eyebrow: "Start here",
     heading: "Start with a free AI agent — book a call today",
     description: "30-minute discovery call. No pitch, no pressure. We'll build and deploy your AI agent for free.",
     cta: "Claim your free AI agent",
@@ -163,6 +166,10 @@ export const en: Dictionary = {
     heading: "Three AI operating systems for e-commerce",
     lead: "Content speed. Catalog speed. Internal speed.",
     description: "Three product directions, one thesis: AI removes the delays between signal and action. Between an SKU and a published post. Between a supplier message and an updated catalog. Between a business request and a safe change inside your core systems.",
+    homeHeadingLead: "Real businesses.",
+    homeHeadingEm: "Real",
+    homeHeadingTail: "results.",
+    homeCardMetrics: { contentFactory: "SKU → flow", supplierAgent: "Chaos → structure", erpAgent: "Safe by role" },
   },
 
   cases: {

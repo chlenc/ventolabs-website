@@ -23,31 +23,10 @@ const serviceImages: Record<string, string> = {
   "ai-workspace": "/images/service-ai-workspace.jpg",
 };
 
-const caseCards = [
-  {
-    key: "content-factory",
-    company: "Content Factory",
-    industry: "E-commerce / Marketplaces",
-    img: "/images/case-content-factory.png",
-    metric: "SKU → flow",
-    title: "Turn a catalog into a stream of discovery content across channels.",
-  },
-  {
-    key: "supplier-agent",
-    company: "Supplier Agent",
-    industry: "Supplier Operations",
-    img: "/images/case-supplier-agent.png",
-    metric: "Chaos → structure",
-    title: "Emails, chats and price lists become live catalog updates by rule.",
-  },
-  {
-    key: "erp-agent",
-    company: "1C Agent",
-    industry: "Enterprise / 1C",
-    img: "/images/case-erp-agent.png",
-    metric: "Safe by role",
-    title: "A permissioned AI layer over 1C with dev and manager flows.",
-  },
+const caseCardKeys = [
+  { key: "content-factory", img: "/images/case-content-factory.png", metricKey: "contentFactory" as const },
+  { key: "supplier-agent", img: "/images/case-supplier-agent.png", metricKey: "supplierAgent" as const },
+  { key: "erp-agent", img: "/images/case-erp-agent.png", metricKey: "erpAgent" as const },
 ];
 
 function useCountUp(target: number, duration = 1800, start = false) {
@@ -129,11 +108,7 @@ export function HomeContent() {
                 <h2>{dict.services.heading}</h2>
               </div>
               <div className="section-header__right">
-                <p>
-                  We cover the full cycle — from idea to production release. Every
-                  engagement starts with a free AI agent, so you see value before
-                  you commit.
-                </p>
+                <p>{dict.services.lead}</p>
               </div>
             </div>
           </FadeUp>
@@ -180,11 +155,7 @@ export function HomeContent() {
                 <h2>{dict.solution.heading}</h2>
               </div>
               <div className="section-header__right">
-                <p>
-                  Three phases, zero fluff. We start small, prove value, then
-                  scale — so you&apos;re never stuck paying for something that
-                  doesn&apos;t work.
-                </p>
+                <p>{dict.solution.lead}</p>
               </div>
             </div>
           </FadeUp>
@@ -273,8 +244,8 @@ export function HomeContent() {
               <div className="section-header__left">
                 <p className="eyebrow">{dict.casesIntro.eyebrow}</p>
                 <h2>
-                  Real businesses.<br />
-                  <em className="italic">Real</em> results.
+                  {dict.casesIntro.homeHeadingLead}<br />
+                  <em className="italic">{dict.casesIntro.homeHeadingEm}</em> {dict.casesIntro.homeHeadingTail}
                 </h2>
               </div>
               <div className="section-header__right">
@@ -283,25 +254,30 @@ export function HomeContent() {
             </div>
           </FadeUp>
           <div className="cases-grid">
-            {caseCards.map((c, i) => (
-              <FadeUp key={c.key} delay={i * 120}>
-                <a href={href(`/cases/${c.key}`, locale)} className="case">
-                  <div
-                    className="case__img"
-                    style={{ backgroundImage: `url(${asset(c.img)})` }}
-                  />
-                  <div className="case__scrim" />
-                  <div className="case__metric">{c.metric}</div>
-                  <div>
-                    <div className="case__meta">
-                      <span>{c.company}</span>
-                      <span>{c.industry}</span>
+            {caseCardKeys.map((c, i) => {
+              const cp = dict.case_pages[c.key];
+              const cr = dict.cases.records[c.key];
+              if (!cp || !cr) return null;
+              return (
+                <FadeUp key={c.key} delay={i * 120}>
+                  <a href={href(`/cases/${c.key}`, locale)} className="case">
+                    <div
+                      className="case__img"
+                      style={{ backgroundImage: `url(${asset(c.img)})` }}
+                    />
+                    <div className="case__scrim" />
+                    <div className="case__metric">{dict.casesIntro.homeCardMetrics[c.metricKey]}</div>
+                    <div>
+                      <div className="case__meta">
+                        <span>{cp.title}</span>
+                        <span>{cr.industry}</span>
+                      </div>
+                      <div className="case__title">{cp.cardSummary}</div>
                     </div>
-                    <div className="case__title">{c.title}</div>
-                  </div>
-                </a>
-              </FadeUp>
-            ))}
+                  </a>
+                </FadeUp>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -353,7 +329,7 @@ export function HomeContent() {
           <div className="cta">
             <FadeUp>
               <div>
-                <p className="eyebrow">Start here</p>
+                <p className="eyebrow">{dict.finalCta.eyebrow}</p>
                 <h2 style={{ marginTop: "1.5rem" }}>{dict.finalCta.heading}</h2>
                 <p
                   style={{

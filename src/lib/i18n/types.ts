@@ -82,12 +82,14 @@ export type Dictionary = {
   solution: {
     eyebrow: string;
     heading: string;
+    lead: string;
     steps: { title: string; description: string }[];
   };
 
   services: {
     eyebrow: string;
     heading: string;
+    lead: string;
   };
 
   leadMagnet: {
@@ -124,6 +126,7 @@ export type Dictionary = {
   };
 
   finalCta: {
+    eyebrow: string;
     heading: string;
     description: string;
     cta: string;
@@ -146,6 +149,10 @@ export type Dictionary = {
     heading: string;
     lead: string;
     description: string;
+    homeHeadingLead: string;
+    homeHeadingEm: string;
+    homeHeadingTail: string;
+    homeCardMetrics: { contentFactory: string; supplierAgent: string; erpAgent: string };
   };
 
   cases: {

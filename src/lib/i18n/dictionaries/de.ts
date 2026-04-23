@@ -80,6 +80,7 @@ export const de: Dictionary = {
   solution: {
     eyebrow: "So arbeiten wir",
     heading: "Von der Analyse zum Ergebnis in Wochen, nicht Monaten",
+    lead: "Drei Phasen, kein Blabla. Wir starten klein, liefern echten Mehrwert und skalieren danach — damit Sie nie für etwas zahlen, das nicht funktioniert.",
     steps: [
       { title: "Analyse", description: "Wir analysieren Ihre Schlüsselprozesse in einem 30-minütigen Gespräch. Kein Blabla — wir finden, wo KI jetzt am meisten Zeit und Geld spart." },
       { title: "Aufbau", description: "Wir setzen Ihren ersten KI-Agenten auf — verbunden mit Ihren Tools, Wissensbasis und Workflows. Eine funktionierende Lösung in Tagen, nicht Monaten." },
@@ -90,6 +91,7 @@ export const de: Dictionary = {
   services: {
     eyebrow: "Was wir tun",
     heading: "Vier Wege, Ihr Unternehmen intelligenter arbeiten zu lassen",
+    lead: "Wir decken den gesamten Zyklus ab — von der Idee bis zum Produktions-Release. Jedes Projekt startet mit einem kostenlosen KI-Agenten, damit Sie den Wert sehen, bevor Sie sich binden.",
   },
 
   leadMagnet: {
@@ -141,6 +143,7 @@ export const de: Dictionary = {
   },
 
   finalCta: {
+    eyebrow: "Hier starten",
     heading: "Starten Sie mit einem kostenlosen KI-Agenten — Termin heute buchen",
     description: "30-minütiges Entdeckungsgespräch. Kein Pitch, kein Druck. Wir bauen und deployen Ihren KI-Agenten kostenlos.",
     cta: "Meinen kostenlosen KI-Agenten holen",
@@ -163,6 +166,10 @@ export const de: Dictionary = {
     heading: "Drei KI-Betriebssysteme für E-Commerce",
     lead: "Content-Tempo. Katalog-Tempo. Internes Tempo.",
     description: "Drei Produktrichtungen, eine These: KI beseitigt die Verzögerungen zwischen Signal und Handlung. Zwischen einem SKU und einem veröffentlichten Post. Zwischen einer Lieferanten-Nachricht und einem aktuellen Katalog. Zwischen einer Business-Anfrage und einer sicheren Änderung in Ihren Systemen.",
+    homeHeadingLead: "Echte Unternehmen.",
+    homeHeadingEm: "Echte",
+    homeHeadingTail: "Ergebnisse.",
+    homeCardMetrics: { contentFactory: "SKU → Flow", supplierAgent: "Chaos → Struktur", erpAgent: "Sicher nach Rolle" },
   },
 
   cases: {

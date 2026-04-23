@@ -80,6 +80,7 @@ export const es: Dictionary = {
   solution: {
     eyebrow: "Cómo trabajamos",
     heading: "De la auditoría a los resultados en semanas, no meses",
+    lead: "Tres fases, sin rodeos. Empezamos pequeño, probamos el valor y luego escalamos — para que nunca pagues por algo que no funciona.",
     steps: [
       { title: "Auditamos", description: "Analizamos tus procesos clave en una llamada de 30 minutos. Sin rodeos — identificamos dónde la IA puede ahorrarte más tiempo y dinero ahora mismo." },
       { title: "Construimos", description: "Configuramos tu primer agente de IA — conectado a tus herramientas, base de conocimiento y flujos de trabajo. Ves una solución funcionando en días, no meses." },
@@ -90,6 +91,7 @@ export const es: Dictionary = {
   services: {
     eyebrow: "Qué hacemos",
     heading: "Cuatro formas de ayudar a tu negocio a trabajar de forma más inteligente",
+    lead: "Cubrimos el ciclo completo — desde la idea hasta el release a producción. Cada proyecto empieza con un agente de IA gratuito, para que veas el valor antes de comprometerte.",
   },
 
   leadMagnet: {
@@ -141,6 +143,7 @@ export const es: Dictionary = {
   },
 
   finalCta: {
+    eyebrow: "Empieza aquí",
     heading: "Empieza con un agente de IA gratis — reserva una llamada hoy",
     description: "Llamada de descubrimiento de 30 minutos. Sin venta, sin presión. Construiremos y desplegaremos tu agente de IA gratis.",
     cta: "Obtener mi agente de IA gratis",
@@ -163,6 +166,10 @@ export const es: Dictionary = {
     heading: "Tres sistemas operativos de IA para e-commerce",
     lead: "Velocidad de contenido. Velocidad de catálogo. Velocidad interna.",
     description: "Tres direcciones de producto, una misma tesis: la IA elimina las demoras entre la señal y la acción. Entre un SKU y una publicación. Entre un mensaje de proveedor y un catálogo actualizado. Entre una petición de negocio y un cambio seguro dentro de tus sistemas.",
+    homeHeadingLead: "Negocios reales.",
+    homeHeadingEm: "Resultados",
+    homeHeadingTail: "reales.",
+    homeCardMetrics: { contentFactory: "SKU → flujo", supplierAgent: "Caos → estructura", erpAgent: "Seguro por rol" },
   },
 
   cases: {
