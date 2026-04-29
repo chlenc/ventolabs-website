@@ -3,6 +3,7 @@
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
 import { ServicePage } from "@/components/ServicePage";
+import { ErpAgentPage } from "@/components/pages/ErpAgentPage";
 import { isLandingSlug, type CaseLandingSlug } from "@/lib/cases";
 
 const landingHeroImage: Record<CaseLandingSlug, string> = {
@@ -16,6 +17,10 @@ export function CaseWrapper({ slug }: { slug: string }) {
   const dict = getDictionary(locale);
 
   if (!isLandingSlug(slug)) return null;
+
+  // ERP-agent has its own bespoke layout (interactive permission demo,
+  // diptych spec, two-mode comparison, architecture diagram).
+  if (slug === "erp-agent") return <ErpAgentPage />;
 
   const caseDict = dict.case_pages[slug];
   if (!caseDict) return null;

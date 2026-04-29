@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { useLocale } from "./LocaleProvider";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { openCalendly } from "./CalendlyPopup";
 import { OfferDialog } from "./OfferDialog";
-import { href } from "@/lib/utils";
+import { href, isFocusFunnelPath } from "@/lib/utils";
 import { trackCtaClick, trackPopupShown } from "@/lib/analytics";
 import { isGiftPopupOpen } from "./GiftPopup";
 
@@ -64,6 +65,8 @@ export function PilotOfferPopup() {
   const locale = useLocale();
   const dict = getDictionary(locale);
   const aux = AUX[locale] ?? AUX.en;
+  const pathname = usePathname();
+  const focusFunnel = isFocusFunnelPath(pathname);
 
   const [open, setOpen] = useState(false);
   const [dismissed, setDismissed] = useState(false);
@@ -100,7 +103,7 @@ export function PilotOfferPopup() {
     window.setTimeout(() => setDismissed(true), 500);
   }, []);
 
-  if (dismissed) return null;
+  if (dismissed || focusFunnel) return null;
 
   return (
     <OfferDialog

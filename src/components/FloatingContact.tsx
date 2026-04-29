@@ -1,16 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useLocale } from "./LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { openCalendly } from "./CalendlyPopup";
 import { trackContactClick, trackCtaClick } from "@/lib/analytics";
+import { isFocusFunnelPath } from "@/lib/utils";
 
 export function FloatingContact() {
   const locale = useLocale();
   const dict = getDictionary(locale);
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  if (isFocusFunnelPath(pathname)) return null;
 
   return (
     <div className="fab">
