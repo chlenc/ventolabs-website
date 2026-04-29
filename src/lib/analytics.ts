@@ -70,7 +70,14 @@ export function trackCalendlyBooked(eventUri?: string): void {
 }
 
 /** Fired when the exit-intent / gift popups appear. */
-export function trackPopupShown(name: "exit_intent" | "gift" | "pilot_offer"): void {
+export function trackPopupShown(
+  name:
+    | "exit_intent"
+    | "gift"
+    | "pilot_offer"
+    | "erp_leadmagnet_exit_intent"
+    | "erp_leadmagnet_idle"
+): void {
   pushEvent({
     event: "popup_shown",
     popup_name: name,
