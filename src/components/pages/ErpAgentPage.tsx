@@ -5,6 +5,7 @@ import { FadeUp, MagneticButton, CheckIcon, GiftIcon, PhoneIcon, MailIcon, Teleg
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
 import { asset, href } from "@/lib/utils";
+import { ErpLeadMagnetModal } from "./ErpLeadMagnetModal";
 import {
   erpHero,
   erpDiptych,
@@ -31,29 +32,42 @@ const ROLE_BG: Record<DemoScenario["id"], { bg: string; fg: string }> = {
   finance: { bg: "#3d3a52", fg: "#d6d2f2" },
 };
 
-function ChatBubble({ m }: { m: ChatMessage }) {
+function TermLine({ m }: { m: ChatMessage }) {
   if (m.kind === "plan") {
     return (
-      <div className="erp-bubble erp-bubble--plan">
-        <span className="erp-bubble__plan-title">{m.title}</span>
-        {m.lines.map((l, i) => (
-          <span key={i} className="erp-bubble__plan-line">
-            {l}
-          </span>
-        ))}
+      <div className="erp-term__plan">
+        <div className="erp-term__plan-title">
+          <span className="erp-term__plan-glyph">▎</span>
+          {m.title}
+        </div>
+        <div className="erp-term__plan-body">
+          {m.lines.map((l, i) => (
+            <div key={i} className="erp-term__plan-line">{l}</div>
+          ))}
+        </div>
       </div>
     );
   }
-  const cls =
-    m.kind === "user"
-      ? "erp-bubble erp-bubble--user"
-      : m.kind === "blocked"
-        ? "erp-bubble erp-bubble--blocked"
-        : "erp-bubble erp-bubble--ai";
+  if (m.kind === "user") {
+    return (
+      <div className="erp-term__line erp-term__line--user">
+        <span className="erp-term__sigil">&gt;</span>
+        <span className="erp-term__text">{m.text}</span>
+      </div>
+    );
+  }
+  if (m.kind === "blocked") {
+    return (
+      <div className="erp-term__line erp-term__line--blocked">
+        <span className="erp-term__tag">{m.meta}</span>
+        <span className="erp-term__text">{m.text}</span>
+      </div>
+    );
+  }
   return (
-    <div className={cls}>
-      {"meta" in m && m.meta && <div className="erp-bubble__meta">{m.meta}</div>}
-      <span className="erp-bubble__text">{m.text}</span>
+    <div className="erp-term__line erp-term__line--ai">
+      <span className="erp-term__tag">{m.meta}</span>
+      <span className="erp-term__text">{m.text}</span>
     </div>
   );
 }
@@ -98,12 +112,11 @@ function PermissionDemo() {
         <FadeUp delay={200}>
           <div className="erp-demo__shell">
             <div className="erp-demo__bar">
-              <div className="erp-demo__dots" aria-hidden>
-                <span />
-                <span />
-                <span />
+              <div className="erp-demo__cli">
+                <span className="erp-demo__cli-prompt">claude code</span>
+                <span className="erp-demo__cli-sep">/</span>
+                <span className="erp-demo__cli-path">1c-agent · workspace</span>
               </div>
-              <div className="erp-demo__addr">{erpDemo.addr}</div>
               <div className="erp-demo__pill">{erpDemo.pill}</div>
             </div>
             <div className="erp-demo__body">
@@ -135,9 +148,9 @@ function PermissionDemo() {
               <div className="erp-demo__chat">
                 <div className="erp-demo__chat-head">
                   <span>
-                    <b>{active.name}</b> · {erpDemo.sessionLabel}
+                    <b>{active.name}</b> · session #4821
                   </span>
-                  <span>{erpDemo.flowLabel}</span>
+                  <span>plan-review · approve-required</span>
                 </div>
                 <div key={active.id} className="erp-demo__chat-body">
                   {active.messages.map((m, i) => (
@@ -146,12 +159,13 @@ function PermissionDemo() {
                       className="erp-demo__msg-wrap"
                       style={{ animationDelay: `${i * 80}ms` }}
                     >
-                      <ChatBubble m={m} />
+                      <TermLine m={m} />
                     </div>
                   ))}
                 </div>
                 <div className="erp-demo__input">
-                  <span>{active.ghost}</span>
+                  <span className="erp-demo__input-prompt">&gt;</span>
+                  <span className="erp-demo__input-ghost">{active.ghost}</span>
                   <span className="erp-demo__caret" aria-hidden />
                 </div>
               </div>
@@ -249,16 +263,6 @@ export function ErpAgentPage() {
                     <span className="cta-meta">{erpHero.secondaryMeta}</span>
                   </div>
                 </div>
-                <div className="erp-hero__chips">
-                  {erpHero.chips.map((c, i) => (
-                    <span
-                      key={c}
-                      className={`erp-chip${i === 0 ? " erp-chip--solid" : ""}`}
-                    >
-                      {c}
-                    </span>
-                  ))}
-                </div>
               </div>
             </FadeUp>
           </div>
@@ -354,7 +358,7 @@ export function ErpAgentPage() {
                 </ul>
               </div>
               <div className="lead-magnet__action">
-                <MagneticButton href={erpLeadMagnet.ctaHref} variant="on-forest">
+                <MagneticButton href={erpLeadMagnet.ctaHref}>
                   {erpLeadMagnet.ctaLabel} <TelegramIcon size={16} />
                 </MagneticButton>
                 <p className="lead-magnet__footnote">{erpLeadMagnet.footnote}</p>
@@ -637,6 +641,9 @@ export function ErpAgentPage() {
 
       {/* 14. FAQ */}
       <ErpFaqAccordion />
+
+      {/* Exit-intent + idle lead-magnet modal (page-scoped) */}
+      <ErpLeadMagnetModal />
     </>
   );
 }
