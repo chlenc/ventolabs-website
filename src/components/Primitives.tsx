@@ -249,3 +249,39 @@ export function PlusIcon({ size = 24 }: { size?: number }) {
     </svg>
   );
 }
+
+export function PhoneIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M5 4.5c0-.55.45-1 1-1h2.6c.5 0 .92.36 1 .85l.7 4.13a1 1 0 0 1-.27.86l-1.84 1.84a14.04 14.04 0 0 0 6.62 6.62l1.84-1.84a1 1 0 0 1 .86-.27l4.13.7c.49.08.85.5.85 1V20a1 1 0 0 1-1 1A16 16 0 0 1 5 5v-.5z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function MailIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M3.5 6.5l8.5 6.5 8.5-6.5" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function TelegramIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M21.5 4.2 2.7 11.6c-.9.36-.9 1.65 0 2l4.7 1.6 1.8 5.7c.2.65 1 .85 1.5.4l2.7-2.4 4.7 3.5c.6.45 1.5.1 1.6-.65L21.95 5.3c.1-.75-.6-1.4-1.45-1.1Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <path d="m9.2 15.2 7.8-6.4-5.4 7.8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}

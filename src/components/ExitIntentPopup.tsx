@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { useLocale } from "./LocaleProvider";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { openCalendly } from "./CalendlyPopup";
 import { isGiftPopupOpen } from "./GiftPopup";
 import { OfferDialog } from "./OfferDialog";
-import { href } from "@/lib/utils";
+import { href, isFocusFunnelPath } from "@/lib/utils";
 import { trackCtaClick, trackPopupShown } from "@/lib/analytics";
 
 type AuxCopy = {
@@ -63,6 +64,8 @@ export function ExitIntentPopup() {
   const locale = useLocale();
   const dict = getDictionary(locale);
   const aux = AUX[locale] ?? AUX.en;
+  const pathname = usePathname();
+  const focusFunnel = isFocusFunnelPath(pathname);
   const [open, setOpen] = useState(false);
 
   const fire = useCallback(() => {
@@ -139,7 +142,7 @@ export function ExitIntentPopup() {
 
   const close = useCallback(() => setOpen(false), []);
 
-  if (!open) return null;
+  if (!open || focusFunnel) return null;
 
   return (
     <OfferDialog

@@ -14,6 +14,44 @@ export type ServiceDict = {
   socialProof?: { company: string; result: string };
   faq: { q: string; a: string }[];
   seo: { title: string; description: string };
+  /** Optional KPI table (before/after) — block 6 of long-form case landings. */
+  metrics?: {
+    eyebrow: string;
+    heading: string;
+    columns: { metric: string; before: string; after: string; change: string };
+    rows: { metric: string; before: string; after: string; change: string }[];
+    source: string;
+  };
+  /** Optional security/guarantee section — block 7 of long-form case landings. */
+  guarantees?: {
+    eyebrow: string;
+    heading: string;
+    items: { title: string; description: string }[];
+  };
+  /** Per-page override for hero CTAs (e.g. tel:/mailto: instead of #book). */
+  ctaPrimary?: { label: string; href: string; meta?: string; kind?: "phone" | "mail" | "telegram" | "arrow" };
+  ctaSecondary?: { label: string; href: string; meta?: string; kind?: "phone" | "mail" | "telegram" | "arrow" };
+  /** Optional big-numbers band shown right after the hero. */
+  trustStrip?: { value: string; label: string }[];
+  /** Optional Telegram-driven lead magnet block. */
+  leadMagnet?: {
+    badge: string;
+    heading: string;
+    description: string;
+    bullets: string[];
+    ctaLabel: string;
+    ctaHref: string;
+    footnote: string;
+  };
+  /** Optional override for the bottom conversion banner (replaces shared bookFree* copy). */
+  finalCta?: {
+    badge: string;
+    heading: string;
+    subtitle: string;
+    primary: { label: string; href: string; meta?: string; kind?: "phone" | "mail" | "telegram" | "arrow" };
+    secondary?: { label: string; href: string; meta?: string; kind?: "phone" | "mail" | "telegram" | "arrow" };
+    tertiary?: { label: string; href: string; meta?: string; kind?: "phone" | "mail" | "telegram" | "arrow" };
+  };
 };
 
 export type CaseStudyDict = {

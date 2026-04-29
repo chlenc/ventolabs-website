@@ -1,7 +1,7 @@
 "use client";
 
 import { FaqSection } from "./FaqSection";
-import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon } from "./Primitives";
+import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon, PhoneIcon, MailIcon, TelegramIcon } from "./Primitives";
 import { useLocale } from "./LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
 import type { ServiceDict } from "@/lib/i18n/types";
@@ -23,6 +23,13 @@ export function ServicePage({
   const dict = getDictionary(locale);
   const c = dict.servicesCommon;
   const parent = breadcrumb ?? { parentLabel: "Services", parentHref: "/#services" };
+
+  function ctaIcon(kind?: "phone" | "mail" | "telegram" | "arrow") {
+    if (kind === "phone") return <PhoneIcon size={16} />;
+    if (kind === "mail") return <MailIcon size={16} />;
+    if (kind === "telegram") return <TelegramIcon size={16} />;
+    return <ArrowIcon />;
+  }
 
   return (
     <>
@@ -51,12 +58,34 @@ export function ServicePage({
           </FadeUp>
           <FadeUp delay={360}>
             <div className="page-hero__cta">
-              <MagneticButton href="#book">
-                {c.heroCta} <ArrowIcon />
-              </MagneticButton>
-              <MagneticButton href={href("#included", locale)} variant="ghost">
-                {c.heroSecondary}
-              </MagneticButton>
+              {service.ctaPrimary ? (
+                <div className="cta-stack">
+                  <MagneticButton href={service.ctaPrimary.href}>
+                    {service.ctaPrimary.label} {ctaIcon(service.ctaPrimary.kind)}
+                  </MagneticButton>
+                  {service.ctaPrimary.meta && (
+                    <span className="cta-meta">{service.ctaPrimary.meta}</span>
+                  )}
+                </div>
+              ) : (
+                <MagneticButton href="#book">
+                  {c.heroCta} <ArrowIcon />
+                </MagneticButton>
+              )}
+              {service.ctaSecondary ? (
+                <div className="cta-stack">
+                  <MagneticButton href={service.ctaSecondary.href} variant="ghost">
+                    {service.ctaSecondary.label} {ctaIcon(service.ctaSecondary.kind)}
+                  </MagneticButton>
+                  {service.ctaSecondary.meta && (
+                    <span className="cta-meta">{service.ctaSecondary.meta}</span>
+                  )}
+                </div>
+              ) : (
+                <MagneticButton href={href("#included", locale)} variant="ghost">
+                  {c.heroSecondary}
+                </MagneticButton>
+              )}
             </div>
           </FadeUp>
         </div>
@@ -74,6 +103,24 @@ export function ServicePage({
                 className="case-hero-image__img"
                 loading="eager"
               />
+            </FadeUp>
+          </div>
+        </section>
+      )}
+
+      {/* 1c. Trust strip — big numbers band, optional */}
+      {service.trustStrip && (
+        <section className="trust-strip-section">
+          <div className="container">
+            <FadeUp>
+              <div className="trust-strip">
+                {service.trustStrip.map((s, i) => (
+                  <div key={i} className="trust-strip__cell">
+                    <div className="trust-strip__value">{s.value}</div>
+                    <div className="trust-strip__label">{s.label}</div>
+                  </div>
+                ))}
+              </div>
             </FadeUp>
           </div>
         </section>
@@ -104,6 +151,40 @@ export function ServicePage({
           </div>
         </div>
       </section>
+
+      {/* 2b. Lead magnet — Telegram-driven guide download */}
+      {service.leadMagnet && (
+        <section className="section section--surface lead-magnet-section">
+          <div className="container">
+            <FadeUp>
+              <div className="lead-magnet">
+                <div className="lead-magnet__copy">
+                  <span className="lead-magnet__badge">
+                    <GiftIcon size={16} />
+                    {service.leadMagnet.badge}
+                  </span>
+                  <h2 className="lead-magnet__heading">{service.leadMagnet.heading}</h2>
+                  <p className="lead-magnet__desc">{service.leadMagnet.description}</p>
+                  <ul className="lead-magnet__bullets">
+                    {service.leadMagnet.bullets.map((b) => (
+                      <li key={b}>
+                        <span className="lead-magnet__bullet-icon"><CheckIcon size={16} /></span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="lead-magnet__action">
+                  <MagneticButton href={service.leadMagnet.ctaHref} variant="on-forest">
+                    {service.leadMagnet.ctaLabel} <TelegramIcon size={16} />
+                  </MagneticButton>
+                  <p className="lead-magnet__footnote">{service.leadMagnet.footnote}</p>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
+        </section>
+      )}
 
       {/* 3. Guide (forest) */}
       <section className="section section--forest">
@@ -207,6 +288,84 @@ export function ServicePage({
         </div>
       </section>
 
+      {/* 6b. Metrics table — optional, only on long-form case landings */}
+      {service.metrics && (
+        <section className="section section--surface">
+          <div className="container">
+            <FadeUp>
+              <div className="section-header">
+                <div className="section-header__left">
+                  <p className="eyebrow">{service.metrics.eyebrow}</p>
+                  <h2>{service.metrics.heading}</h2>
+                </div>
+              </div>
+            </FadeUp>
+            <FadeUp delay={120}>
+              <div className="kpi-table" role="table">
+                <div className="kpi-table__row kpi-table__row--head" role="row">
+                  <span role="columnheader">{service.metrics.columns.metric}</span>
+                  <span role="columnheader">{service.metrics.columns.before}</span>
+                  <span role="columnheader">{service.metrics.columns.after}</span>
+                  <span role="columnheader">{service.metrics.columns.change}</span>
+                </div>
+                {service.metrics.rows.map((row) => (
+                  <div key={row.metric} className="kpi-table__row" role="row">
+                    <span className="kpi-table__metric" role="cell">
+                      <span className="kpi-table__label">{service.metrics!.columns.metric}</span>
+                      {row.metric}
+                    </span>
+                    <span className="kpi-table__before" role="cell">
+                      <span className="kpi-table__label">{service.metrics!.columns.before}</span>
+                      {row.before}
+                    </span>
+                    <span className="kpi-table__after" role="cell">
+                      <span className="kpi-table__label">{service.metrics!.columns.after}</span>
+                      {row.after}
+                    </span>
+                    <span className="kpi-table__change" role="cell">
+                      <span className="kpi-table__label">{service.metrics!.columns.change}</span>
+                      {row.change}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="kpi-table__source">{service.metrics.source}</p>
+            </FadeUp>
+          </div>
+        </section>
+      )}
+
+      {/* 6c. Guarantees / security guardrails — optional */}
+      {service.guarantees && (
+        <section className="section section--paper">
+          <div className="container">
+            <FadeUp>
+              <div className="section-header">
+                <div className="section-header__left">
+                  <p className="eyebrow">{service.guarantees.eyebrow}</p>
+                  <h2>{service.guarantees.heading}</h2>
+                </div>
+              </div>
+            </FadeUp>
+            <div className="guarantees">
+              {service.guarantees.items.map((g, i) => (
+                <FadeUp key={g.title} delay={i * 60}>
+                  <div className="guarantee">
+                    <div className="guarantee__idx">
+                      {String(i + 1).padStart(2, "0")}
+                    </div>
+                    <div>
+                      <h3 className="guarantee__title">{g.title}</h3>
+                      <p className="guarantee__desc">{g.description}</p>
+                    </div>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 7. Stakes (ink) */}
       <section className="section section--ink">
         <div className="container container--narrow">
@@ -246,20 +405,53 @@ export function ServicePage({
               <span className="magnet__giftIcon">
                 <GiftIcon size={18} />
               </span>
-              <span>{c.bookFreeGiftLabel}</span>
+              <span>{service.finalCta?.badge ?? c.bookFreeGiftLabel}</span>
             </div>
           </FadeUp>
           <FadeUp delay={120}>
             <div className="banner">
-              <h2>{c.bookFreeHeading}</h2>
+              <h2>{service.finalCta?.heading ?? c.bookFreeHeading}</h2>
               <p style={{ color: "rgba(243,234,216,0.78)" }}>
-                {c.bookFreeSubtitle}
+                {service.finalCta?.subtitle ?? c.bookFreeSubtitle}
               </p>
-              <div className="cta-row" style={{ justifyContent: "center" }}>
-                <MagneticButton href="#book" variant="on-forest">
-                  {c.bookFreeCta} <ArrowIcon />
-                </MagneticButton>
-              </div>
+              {service.finalCta ? (
+                <div className="final-cta-row">
+                  <div className="cta-stack cta-stack--center">
+                    <MagneticButton href={service.finalCta.primary.href} variant="on-forest">
+                      {service.finalCta.primary.label} {ctaIcon(service.finalCta.primary.kind)}
+                    </MagneticButton>
+                    {service.finalCta.primary.meta && (
+                      <span className="cta-meta cta-meta--on-forest">{service.finalCta.primary.meta}</span>
+                    )}
+                  </div>
+                  {service.finalCta.secondary && (
+                    <div className="cta-stack cta-stack--center">
+                      <MagneticButton href={service.finalCta.secondary.href} variant="ghost">
+                        {service.finalCta.secondary.label} {ctaIcon(service.finalCta.secondary.kind)}
+                      </MagneticButton>
+                      {service.finalCta.secondary.meta && (
+                        <span className="cta-meta cta-meta--on-forest">{service.finalCta.secondary.meta}</span>
+                      )}
+                    </div>
+                  )}
+                  {service.finalCta.tertiary && (
+                    <div className="cta-stack cta-stack--center">
+                      <MagneticButton href={service.finalCta.tertiary.href} variant="ghost">
+                        {service.finalCta.tertiary.label} {ctaIcon(service.finalCta.tertiary.kind)}
+                      </MagneticButton>
+                      {service.finalCta.tertiary.meta && (
+                        <span className="cta-meta cta-meta--on-forest">{service.finalCta.tertiary.meta}</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="cta-row" style={{ justifyContent: "center" }}>
+                  <MagneticButton href="#book" variant="on-forest">
+                    {c.bookFreeCta} <ArrowIcon />
+                  </MagneticButton>
+                </div>
+              )}
             </div>
           </FadeUp>
         </div>
