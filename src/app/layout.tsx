@@ -91,6 +91,11 @@ export default function RootLayout({
       <head>
         <GoogleTagManagerHead />
         <link rel="icon" href={asset("/favicon.svg")} type="image/svg+xml" />
+        <link rel="api-catalog" href="/.well-known/api-catalog" />
+        <meta
+          httpEquiv="Link"
+          content='</.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills"'
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
