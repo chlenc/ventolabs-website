@@ -14,6 +14,12 @@ export const site = {
   linkedin: "https://www.linkedin.com/company/vento-labs/",
 };
 
+export const erpAgentContact = {
+  phone: "+79032333525",
+  phoneDisplay: "+7 903 233 35 25",
+  whatsapp: "https://wa.me/79032333525",
+};
+
 export const calendly = {
   url: "https://calendly.com/alexey-ventolabs/30min",
   calLink: "ventolabs/30min",
