@@ -675,7 +675,7 @@ export const en: Dictionary = {
         title: "1C Agent — Managed AI layer over 1C on Claude",
         description: "Permission-based AI on Claude accelerates 1C: developers ship extensions through review, managers act strictly within their role. Free 30-minute pilot.",
       },
-      ctaPrimary: { label: "Call us now", href: "tel:+79639612515", meta: "+7 963 961-25-15", kind: "phone" },
+      ctaPrimary: { label: "Call us now", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
       ctaSecondary: { label: "Email us", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       trustStrip: [
         { value: "−70%", label: "routine dev tickets" },
@@ -701,7 +701,7 @@ export const en: Dictionary = {
         badge: "Free 14-day pilot",
         heading: "Run a managed AI layer over your 1C — no payment, no commitment",
         subtitle: "Setup in your test perimeter in 30–45 minutes. After the pilot: KPIs and a clear go/no-go. No hidden terms.",
-        primary: { label: "Call us now", href: "tel:+79639612515", meta: "+7 963 961-25-15", kind: "phone" },
+        primary: { label: "Call us now", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
         secondary: { label: "Email us", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       },
     },

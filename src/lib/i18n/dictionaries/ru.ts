@@ -675,7 +675,7 @@ export const ru: Dictionary = {
         title: "1C Agent — управляемый AI-слой над 1С на базе Claude",
         description: "Permission-based AI-агент на Claude ускоряет работу с 1С: разработчики готовят расширения через ревью, менеджеры действуют строго в рамках ролей. Бесплатный пилот за 30 минут.",
       },
-      ctaPrimary: { label: "Позвонить и обсудить", href: "tel:+79639612515", meta: "+7 963 961-25-15", kind: "phone" },
+      ctaPrimary: { label: "Позвонить и обсудить", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
       ctaSecondary: { label: "Написать на почту", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       trustStrip: [
         { value: "−70%", label: "типовых задач в разработку" },
@@ -701,7 +701,7 @@ export const ru: Dictionary = {
         badge: "Бесплатный пилот · 14 дней",
         heading: "Запустим управляемый AI-слой над вашей 1С — без оплаты и обязательств",
         subtitle: "Настройка в тестовом контуре за 30–45 минут. По итогам пилота — KPI и решение: масштабировать или демонтировать. Никаких скрытых условий.",
-        primary: { label: "Позвонить сейчас", href: "tel:+79639612515", meta: "+7 963 961-25-15", kind: "phone" },
+        primary: { label: "Позвонить сейчас", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
         secondary: { label: "Написать на почту", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       },
     },

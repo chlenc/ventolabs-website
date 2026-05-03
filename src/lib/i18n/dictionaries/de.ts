@@ -675,7 +675,7 @@ export const de: Dictionary = {
         title: "1C Agent — Verwaltete KI-Schicht über 1C auf Claude",
         description: "Permission-based AI auf Claude beschleunigt 1C: Entwickler liefern Erweiterungen über Review, Manager handeln streng innerhalb ihrer Rolle. Kostenfreier 30-Minuten-Pilot.",
       },
-      ctaPrimary: { label: "Jetzt anrufen", href: "tel:+79639612515", meta: "+7 963 961-25-15", kind: "phone" },
+      ctaPrimary: { label: "Jetzt anrufen", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
       ctaSecondary: { label: "Per E-Mail schreiben", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       trustStrip: [
         { value: "−70%", label: "Routine-Tickets in der Entwicklung" },
@@ -701,7 +701,7 @@ export const de: Dictionary = {
         badge: "Kostenfreier 14-Tage-Pilot",
         heading: "Verwaltete KI-Schicht über Ihr 1C — ohne Zahlung, ohne Verpflichtung",
         subtitle: "Setup in Ihrem Test-Perimeter in 30–45 Minuten. Nach dem Pilot: KPIs und klare Go/No-go-Entscheidung. Keine versteckten Bedingungen.",
-        primary: { label: "Jetzt anrufen", href: "tel:+79639612515", meta: "+7 963 961-25-15", kind: "phone" },
+        primary: { label: "Jetzt anrufen", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
         secondary: { label: "Per E-Mail schreiben", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       },
     },

@@ -675,7 +675,7 @@ export const es: Dictionary = {
         title: "1C Agent — Capa de IA gestionada sobre 1C en Claude",
         description: "IA con permisos sobre Claude acelera 1C: los desarrolladores entregan extensiones con revisión, los responsables actúan estrictamente dentro de su rol. Piloto gratuito de 30 minutos.",
       },
-      ctaPrimary: { label: "Llamar ahora", href: "tel:+79639612515", meta: "+7 963 961-25-15", kind: "phone" },
+      ctaPrimary: { label: "Llamar ahora", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
       ctaSecondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       trustStrip: [
         { value: "−70%", label: "tickets rutinarios de desarrollo" },
@@ -701,7 +701,7 @@ export const es: Dictionary = {
         badge: "Piloto gratuito · 14 días",
         heading: "Lanza una capa de IA gestionada sobre tu 1C — sin pago, sin compromiso",
         subtitle: "Setup en tu perímetro de pruebas en 30–45 minutos. Tras el piloto: KPIs y decisión clara. Sin letra pequeña.",
-        primary: { label: "Llamar ahora", href: "tel:+79639612515", meta: "+7 963 961-25-15", kind: "phone" },
+        primary: { label: "Llamar ahora", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
         secondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       },
     },
