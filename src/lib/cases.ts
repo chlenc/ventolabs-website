@@ -3,6 +3,7 @@ export const caseLandingSlugs = [
   "content-factory",
   "supplier-agent",
   "erp-agent",
+  "bankruptcy-agent",
 ] as const;
 
 /** Client case studies shown inline on /cases, without dedicated landing pages. */

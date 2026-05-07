@@ -77,6 +77,8 @@ export function trackPopupShown(
     | "pilot_offer"
     | "erp_leadmagnet_exit_intent"
     | "erp_leadmagnet_idle"
+    | "bankruptcy_leadmagnet_exit_intent"
+    | "bankruptcy_leadmagnet_idle"
 ): void {
   pushEvent({
     event: "popup_shown",

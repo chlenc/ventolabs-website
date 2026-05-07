@@ -15,6 +15,7 @@ const landingImage: Record<CaseLandingSlug, string> = {
   "content-factory": "/images/case-content-factory.png",
   "supplier-agent": "/images/case-supplier-agent.png",
   "erp-agent": "/images/case-erp-agent.png",
+  "bankruptcy-agent": "/images/case-bankruptcy-agent.png",
 };
 
 const studyMeta: Record<CaseStudySlug, { image: string; company: string }> = {
@@ -73,45 +74,47 @@ export function CasesContent() {
       <section className="section section--paper">
         <div className="container">
           <div className="cases-editorial-grid">
-            {caseLandingSlugs.map((slug, i) => {
-              const cs = dict.cases.records[slug];
-              const landing = dict.case_pages[slug];
-              return (
-                <FadeUp key={slug} delay={i * 80}>
-                  <a href={href(`/cases/${slug}`, locale)} className="case-card">
-                    <div className="case-card__media">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={asset(landingImage[slug])}
-                        alt={landing.title}
-                        className="case-card__img"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="case-card__body">
-                      <div className="case-card__meta">
-                        <span className="case-card__kind case-card__kind--landing">
-                          {kinds.landing}
-                        </span>
-                        <span>{cs.industry}</span>
+            {caseLandingSlugs
+              .filter((slug) => locale === "ru" || slug !== "bankruptcy-agent")
+              .map((slug, i) => {
+                const cs = dict.cases.records[slug];
+                const landing = dict.case_pages[slug];
+                return (
+                  <FadeUp key={slug} delay={i * 80}>
+                    <a href={href(`/cases/${slug}`, locale)} className="case-card">
+                      <div className="case-card__media">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={asset(landingImage[slug])}
+                          alt={landing.title}
+                          className="case-card__img"
+                          loading="lazy"
+                        />
                       </div>
-                      <h3 className="case-card__title">{landing.title}</h3>
-                      <p className="case-card__summary">{landing.cardSummary}</p>
-                      <div className="case-card__metrics">
-                        {cs.metrics.map((m) => (
-                          <span key={m.label} className="case-card__chip">
-                            {m.value}
+                      <div className="case-card__body">
+                        <div className="case-card__meta">
+                          <span className="case-card__kind case-card__kind--landing">
+                            {kinds.landing}
                           </span>
-                        ))}
+                          <span>{cs.industry}</span>
+                        </div>
+                        <h3 className="case-card__title">{landing.title}</h3>
+                        <p className="case-card__summary">{landing.cardSummary}</p>
+                        <div className="case-card__metrics">
+                          {cs.metrics.map((m) => (
+                            <span key={m.label} className="case-card__chip">
+                              {m.value}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="case-card__cta">
+                          {cta} <ArrowIcon />
+                        </span>
                       </div>
-                      <span className="case-card__cta">
-                        {cta} <ArrowIcon />
-                      </span>
-                    </div>
-                  </a>
-                </FadeUp>
-              );
-            })}
+                    </a>
+                  </FadeUp>
+                );
+              })}
 
             {caseStudySlugs.map((slug, i) => {
               const cs = dict.cases.records[slug];

@@ -32,6 +32,9 @@ Recommended size: 1200x800px, high quality JPG/PNG.
 ### 7. `case-erp-agent.jpg`
 **Prompt:** Split-screen concept: on one side a developer editing 1C extensions with an AI review panel showing diffs and an approval step; on the other side a manager asking a natural-language question over business data with a role-scoped response. Clean UI abstraction, dark theme with green/gold accents. Enterprise, permissioned, auditable.
 
+### 8. `case-bankruptcy-agent.png`
+**Prompt:** Editorial UI mockup of an AI workspace for a Russian arbitration trustee — a clean dashboard split into three panels: (1) a procedural-document drafting pane with citations to fresh Supreme Court practice, (2) a deadlines and EFRSB publications calendar, (3) a debtor affiliation map with challengeable transactions highlighted (arts. 61.2 / 61.3). Dark theme with forest-green and warm-gold accents, premium legal-tech feel. Communicates "trust, control, audit trail".
+
 ### Legacy (removed from site — kept for archival):
 - `case-zigmund.jpg`, `case-noconcept.jpg`, `case-asgcompute.jpg`
 
