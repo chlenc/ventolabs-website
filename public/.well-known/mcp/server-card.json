@@ -1,0 +1,48 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card.json",
+  "name": "com.ventolabs/website",
+  "title": "Vento Labs",
+  "description": "AI agency in Lisbon. The MCP surface is exposed in-page via the WebMCP API (navigator.modelContext) — a visiting agent can book a consultation or retrieve Vento Labs contact details without leaving the page.",
+  "version": "1.0.0",
+  "websiteUrl": "https://ventolabs.com",
+  "repository": {
+    "url": "https://github.com/chlenc/ventolabs-website",
+    "source": "github"
+  },
+  "serverInfo": {
+    "name": "com.ventolabs/website",
+    "version": "1.0.0"
+  },
+  "endpoint": "https://ventolabs.com/",
+  "remotes": [
+    {
+      "url": "https://ventolabs.com/",
+      "transport": "webmcp"
+    }
+  ],
+  "capabilities": {
+    "tools": {}
+  },
+  "tools": [
+    {
+      "name": "book_consultation",
+      "description": "Open Vento Labs' Calendly to book a 30-minute AI consultation with Alexey.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_contact_info",
+      "description": "Return Vento Labs contact details (email, phone, Telegram, WhatsApp, LinkedIn).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    }
+  ],
+  "resources": [],
+  "prompts": []
+}
