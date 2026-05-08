@@ -1,5 +1,5 @@
 import { parseLocaleFromPath } from "@/lib/i18n";
-import { erpAgentContact, site } from "@/lib/site";
+import { bankruptcyAgentContact, erpAgentContact, site } from "@/lib/site";
 
 export function getContactForPath(pathname: string) {
   const { path } = parseLocaleFromPath(pathname);
@@ -9,6 +9,14 @@ export function getContactForPath(pathname: string) {
       phone: erpAgentContact.phone,
       phoneDisplay: erpAgentContact.phoneDisplay,
       whatsapp: erpAgentContact.whatsapp,
+    };
+  }
+
+  if (path === "/cases/bankruptcy-agent") {
+    return {
+      phone: bankruptcyAgentContact.phone,
+      phoneDisplay: bankruptcyAgentContact.phoneDisplay,
+      whatsapp: bankruptcyAgentContact.whatsapp,
     };
   }
 

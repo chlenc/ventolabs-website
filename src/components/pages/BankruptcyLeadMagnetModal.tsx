@@ -4,18 +4,18 @@ import { useEffect, useState, useCallback } from "react";
 import { OfferDialog } from "@/components/OfferDialog";
 import { TelegramIcon } from "@/components/Primitives";
 import { trackPopupShown, trackCtaClick } from "@/lib/analytics";
-import { bankLeadMagnet } from "./bankruptcy-agent-content";
+import { bankLeadMagnet, bankTelegram, bankPhone } from "./bankruptcy-agent-content";
 
 const DISMISS_KEY = "vl_bank_leadmagnet_dismissed";
 const IDLE_MS = 60_000;
-const TG_HREF = bankLeadMagnet.ctaHref;
 
 /**
  * Bankruptcy-page lead magnet — fires once per session on:
  * - exit-intent (mouse leaves top of viewport, desktop only)
  * - idle (no activity for IDLE_MS)
  *
- * After dismissal it stays quiet for the session.
+ * Primary action goes to Telegram (lowest friction for users
+ * about to leave). Phone is offered in the description copy.
  */
 export function BankruptcyLeadMagnetModal() {
   const [open, setOpen] = useState(false);
@@ -89,8 +89,11 @@ export function BankruptcyLeadMagnetModal() {
   }, [dismissed, fire]);
 
   const onPrimary = useCallback(() => {
-    trackCtaClick({ label: "Lead magnet — Free demo", location: "bankruptcy_leadmagnet_modal" });
-    window.open(TG_HREF, "_blank", "noopener");
+    trackCtaClick({
+      label: "Lead magnet — Free demo",
+      location: "bankruptcy_leadmagnet_modal",
+    });
+    window.open(bankTelegram.href, "_blank", "noopener");
     close();
   }, [close]);
 
@@ -106,12 +109,12 @@ export function BankruptcyLeadMagnetModal() {
       titleLead="30 минут — и вы видите "
       titleEm="AI"
       titleTail=" на своей процедуре"
-      desc={bankLeadMagnet.description}
+      desc={`${bankLeadMagnet.description} Или позвоните напрямую — ${bankPhone.display}.`}
       termsHref="/privacy"
       termsLinkLabel="Политика обработки данных"
       primaryLabel={
         <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-          {bankLeadMagnet.ctaLabel}
+          Написать в Telegram
           <TelegramIcon size={14} />
         </span>
       }

@@ -3590,3 +3590,181 @@ em, .italic {
   .erp-cta__row { flex-direction: column; align-items: stretch; }
   .erp-cta__row .cta-stack { width: 100%; align-items: center; }
 }
+
+/* ─── Bankruptcy AI bespoke pieces ────────────────────────────────────── */
+
+/* Hero trust strip — inline pill list under the dual CTA. */
+.bank-trust {
+  list-style: none; padding: 0; margin: 1.25rem 0 0;
+  display: flex; flex-wrap: wrap; gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.bank-trust li {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Capabilities — six-card grid mapping the client brief 1:1.
+   2 columns desktop, 1 column mobile. Each card has an italic index,
+   a serif title, a short description and a tick-bullet list. */
+.bank-caps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+@media (max-width: 800px) { .bank-caps { grid-template-columns: 1fr; } }
+.bank-cap {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.5rem 1.5rem 1.4rem;
+  display: flex; flex-direction: column; gap: 0.85rem;
+  transition: transform 0.4s cubic-bezier(.22,1,.36,1), border-color 0.3s;
+}
+.bank-cap:hover {
+  transform: translateY(-2px);
+  border-color: var(--forest);
+}
+.bank-cap__head {
+  display: flex; align-items: baseline; gap: 0.85rem;
+}
+.bank-cap__idx {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--forest);
+  line-height: 1;
+}
+.bank-cap__title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.bank-cap__desc {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.96rem;
+  margin: 0;
+}
+.bank-cap__points {
+  list-style: none;
+  padding: 0.5rem 0 0;
+  margin: 0.25rem 0 0;
+  border-top: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 0.55rem;
+}
+.bank-cap__points li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 0.55rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.bank-cap__tick {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--forest); color: var(--cream);
+  display: grid; place-items: center; flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Social proof — three metrics + pulled quote. */
+.bank-proof {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: 1.5rem;
+  align-items: stretch;
+}
+@media (max-width: 900px) {
+  .bank-proof { grid-template-columns: 1fr; }
+}
+.bank-proof__metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.bank-proof__metric {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.bank-proof__metric:first-child { padding-top: 0; }
+.bank-proof__metric:last-child { border-bottom: 0; padding-bottom: 0; }
+.bank-proof__value {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  letter-spacing: -0.025em;
+  line-height: 1;
+  color: var(--ink);
+}
+.bank-proof__value sup {
+  font-size: 0.4em;
+  font-style: italic;
+  color: var(--muted);
+  margin-left: 0.2rem;
+  vertical-align: baseline;
+}
+.bank-proof__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+.bank-proof__quote-wrap {
+  background: var(--paper);
+  border-left: 3px solid var(--forest);
+  padding: 1.5rem 1.75rem;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+.bank-proof__quote {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin: 0;
+}
+.bank-proof__attr {
+  font-size: 0.9rem;
+  display: flex; flex-direction: column; gap: 0.15rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.85rem;
+}
+.bank-proof__attr b { color: var(--ink); font-weight: 600; }
+.bank-proof__attr span { color: var(--muted); font-size: 0.82rem; }
+
+/* Lead magnet hint badges — under bullets, before the action stack. */
+.lead-magnet__hints {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+.lead-magnet__hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--muted);
+}
+.lead-magnet__hint::before {
+  content: "✓"; color: var(--forest);
+  margin-right: 0.35rem;
+  font-weight: 700;
+}
+
+/* Lead magnet action stack — accommodate two CTAs vertically. */
+.lead-magnet__action .cta-stack + .cta-stack { margin-top: 0.85rem; }

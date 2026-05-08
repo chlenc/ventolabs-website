@@ -32,8 +32,12 @@ Recommended size: 1200x800px, high quality JPG/PNG.
 ### 7. `case-erp-agent.jpg`
 **Prompt:** Split-screen concept: on one side a developer editing 1C extensions with an AI review panel showing diffs and an approval step; on the other side a manager asking a natural-language question over business data with a role-scoped response. Clean UI abstraction, dark theme with green/gold accents. Enterprise, permissioned, auditable.
 
-### 8. `case-bankruptcy-agent.png` (placeholder in repo — copy of case-erp-agent.png)
-**Prompt:** Editorial UI mockup of an AI workspace for a Russian arbitration trustee — a clean dashboard split into three panels: (1) a procedural-document drafting pane with citations to fresh Supreme Court practice, (2) a deadlines and EFRSB publications calendar, (3) a debtor affiliation map with challengeable transactions highlighted (arts. 61.2 / 61.3). Dark theme with forest-green and warm-gold accents, premium legal-tech feel. Communicates "trust, control, audit trail".
+### 8. `case-bankruptcy-agent.png` (PLACEHOLDER — currently a copy of case-erp-agent.png; replace before launch)
+**Context:** Product-launch positioning for an AI platform aimed at Russian arbitration trustees («арбитражные управляющие»). Page is in Russian, the visual must signal "legal-tech platform, not a chatbot."
+
+**Prompt:** Editorial UI mockup of a six-panel AI workspace for a Russian arbitration trustee — clean dashboard layout split into: (1) procedural-document drafter with inline citations to recent Supreme Court determinations and Plenum № 63, (2) deadline calendar showing 127-ФЗ / АПК / ЕФРСБ obligations with traffic-light statuses, (3) debtor affiliation map with challengeable transactions highlighted (arts. 61.2 / 61.3 ФЗ-127), (4) creditors' meeting report assembly view following Government Decree № 22 form, (5) structured correspondence threads grouped by counterparty, (6) audit trail of "request → result → signature" with KEC (qualified e-signature) marks. Dark workspace background with forest-green and warm-gold accents (matching the rest of ventolabs.com). Russian UI labels visible. Premium legal-tech aesthetic — communicates "trust, control, audit trail, in your perimeter."
+
+**Avoid:** generic AI/robot imagery, gavel/scales-of-justice clichés, stock-photo people in suits, anything resembling consumer chatbot UIs.
 
 ### Legacy (removed from site — kept for archival):
 - `case-zigmund.jpg`, `case-noconcept.jpg`, `case-asgcompute.jpg`
