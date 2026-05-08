@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vento Labs Notify API</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="describedby" href="/.well-known/openapi/notify.json" type="application/json">
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 ui-sans-serif, system-ui, sans-serif; max-width: 720px; margin: 2.5rem auto; padding: 0 1.25rem; }
+  h1 { margin-bottom: 0.25rem; }
+  h2 { margin-top: 2rem; line-height: 1.2; }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+  pre { background: rgba(127,127,127,0.12); padding: 1rem; border-radius: 6px; overflow-x: auto; }
+  code { background: rgba(127,127,127,0.12); padding: 0.1em 0.35em; border-radius: 3px; }
+  pre code { background: transparent; padding: 0; }
+  a { color: #0066cc; }
+  small { opacity: 0.7; }
+</style>
+</head>
+<body>
+<h1>Vento Labs Notify API</h1>
+<p><small>Part of the <a href="/.well-known/api-catalog">/.well-known/api-catalog</a> (RFC 9727).</small></p>
+
+<p>Webhook used by <a href="https://ventolabs.com">ventolabs.com</a> to forward visitor, booking, and session events to a Telegram channel. Also accepts Cal.com booking webhooks. Unauthenticated and CORS-open — the URL is exposed in the site's client bundle.</p>
+
+<h2>Endpoint</h2>
+<pre><code>POST https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1/notify</code></pre>
+
+<h2>Machine-readable spec</h2>
+<p>OpenAPI 3.1 — <a href="/.well-known/openapi/notify.json"><code>/.well-known/openapi/notify.json</code></a></p>
+
+<h2>Event types</h2>
+<ul>
+  <li><code>type: "visit"</code> — page view (sent once per session)</li>
+  <li><code>type: "booking"</code> — booking-flow CTA clicked</li>
+  <li><code>type: "session"</code> — session summary on tab hide / unload, sent via <code>navigator.sendBeacon</code> with <code>Content-Type: text/plain</code></li>
+  <li>Cal.com webhook envelopes with <code>triggerEvent</code> ∈ { <code>BOOKING_CREATED</code>, <code>BOOKING_RESCHEDULED</code> }</li>
+</ul>
+
+<h2>Example</h2>
+<pre><code>curl -X POST https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1/notify \
+  -H "Content-Type: application/json" \
+  -d '{"type":"visit","page":"/","referrer":"(direct)","ts":"2026-05-08T12:00:00Z"}'</code></pre>
+
+<p>Response: <code>{ "ok": true }</code></p>
+
+<h2>Status codes</h2>
+<ul>
+  <li><code>200</code> — accepted (and forwarded, or noted as unhandled)</li>
+  <li><code>405</code> — method other than POST/OPTIONS</li>
+  <li><code>500</code> — error forwarding to Telegram</li>
+</ul>
+
+<h2>Contact</h2>
+<p>Intended for first-party use by the Vento Labs site. For partnership or programmatic access, contact <a href="mailto:alexey@ventolabs.com">alexey@ventolabs.com</a>.</p>
+</body>
+</html>

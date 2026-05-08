@@ -1,0 +1,166 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Vento Labs Notify API",
+    "version": "1.0.0",
+    "summary": "Webhook for site events (visit, booking, session) and Cal.com booking notifications.",
+    "description": "Public webhook used by ventolabs.com to forward visitor, booking, and session events to a Telegram channel. Also accepts Cal.com booking webhooks. The endpoint is unauthenticated and CORS-open by design — it is exposed in the site's client bundle.",
+    "contact": {
+      "name": "Vento Labs",
+      "url": "https://ventolabs.com",
+      "email": "alexey@ventolabs.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1",
+      "description": "Production (Supabase Edge Functions)"
+    }
+  ],
+  "paths": {
+    "/notify": {
+      "post": {
+        "operationId": "sendNotification",
+        "summary": "Forward a site event to the Vento Labs Telegram channel",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  { "$ref": "#/components/schemas/VisitEvent" },
+                  { "$ref": "#/components/schemas/BookingEvent" },
+                  { "$ref": "#/components/schemas/SessionEvent" },
+                  { "$ref": "#/components/schemas/CalcomWebhook" }
+                ]
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "type": "string",
+                "description": "JSON-encoded event sent via navigator.sendBeacon (avoids the CORS preflight)."
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Event accepted (and forwarded to Telegram, or noted as unhandled).",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Ack" }
+              }
+            }
+          },
+          "405": { "description": "Only POST and OPTIONS are accepted." },
+          "500": {
+            "description": "Server error while forwarding to Telegram.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      },
+      "options": {
+        "operationId": "preflight",
+        "summary": "CORS preflight",
+        "responses": {
+          "204": { "description": "CORS allowed for any origin." }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UtmParams": {
+        "type": "object",
+        "additionalProperties": { "type": "string" },
+        "description": "UTM tracking parameters captured from the visitor's URL."
+      },
+      "VisitEvent": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": { "type": "string", "const": "visit" },
+          "page": { "type": "string", "description": "Path + query string." },
+          "referrer": { "type": "string" },
+          "utm": { "$ref": "#/components/schemas/UtmParams" },
+          "ua": { "type": "string", "description": "User agent (truncated to 200 chars)." },
+          "ts": { "type": "string", "format": "date-time" }
+        }
+      },
+      "BookingEvent": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": { "type": "string", "const": "booking" },
+          "page": { "type": "string" },
+          "utm": { "$ref": "#/components/schemas/UtmParams" },
+          "ts": { "type": "string", "format": "date-time" }
+        }
+      },
+      "SessionEvent": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": { "type": "string", "const": "session" },
+          "activeTime": {
+            "type": "string",
+            "description": "Human-readable active duration, e.g. '5m 12s'."
+          },
+          "activeMs": { "type": "integer", "minimum": 0 },
+          "pages": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Ordered page journey for the session."
+          },
+          "clicks": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ClickEvent" }
+          },
+          "maxScroll": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "utm": { "$ref": "#/components/schemas/UtmParams" },
+          "ts": { "type": "string", "format": "date-time" }
+        }
+      },
+      "ClickEvent": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string", "description": "Visible text of the clicked element (≤ 60 chars)." },
+          "section": { "type": "string", "description": "Page section the click occurred in." },
+          "time": { "type": "integer", "description": "Seconds since session start." }
+        }
+      },
+      "CalcomWebhook": {
+        "type": "object",
+        "required": ["triggerEvent", "payload"],
+        "properties": {
+          "triggerEvent": {
+            "type": "string",
+            "enum": ["BOOKING_CREATED", "BOOKING_RESCHEDULED"]
+          },
+          "payload": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Cal.com booking payload (name, email, title, startTime, responses, …)."
+          }
+        }
+      },
+      "Ack": {
+        "type": "object",
+        "properties": {
+          "ok": { "type": "boolean" },
+          "note": { "type": "string" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string" }
+        }
+      }
+    }
+  }
+}
