@@ -1,26 +1,38 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { FadeUp, MagneticButton, CheckIcon, GiftIcon, PhoneIcon, ArrowIcon, TelegramIcon, PlusIcon } from "@/components/Primitives";
+import {
+  FadeUp,
+  MagneticButton,
+  CheckIcon,
+  GiftIcon,
+  PhoneIcon,
+  ArrowIcon,
+  TelegramIcon,
+  PlusIcon,
+} from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, localizedPath } from "@/lib/i18n";
 import { asset, href } from "@/lib/utils";
+import { site } from "@/lib/site";
 import { BankruptcyLeadMagnetModal } from "./BankruptcyLeadMagnetModal";
 import {
   bankHero,
   bankDiptych,
   bankProblem,
+  bankCapabilities,
   bankDemo,
   bankProcess,
-  bankModes,
-  bankIncluded,
-  bankOutcomes,
   bankArch,
-  bankStakes,
+  bankSecurity,
+  bankIncluded,
   bankProof,
+  bankStakes,
   bankFinalCta,
   bankFaq,
   bankLeadMagnet,
+  bankPhone,
+  bankTelegram,
   type DemoScenario,
   type ChatMessage,
   type Permission,
@@ -31,6 +43,9 @@ const ROLE_BG: Record<DemoScenario["id"], { bg: string; fg: string }> = {
   filing: { bg: "#5a3f25", fg: "#f3d8b5" },
   audit: { bg: "#3d3a52", fg: "#d6d2f2" },
 };
+
+const PAGE_PATH = "/cases/bankruptcy-agent";
+const RU_URL = `${site.url}${localizedPath(PAGE_PATH, "ru")}`;
 
 function TermLine({ m }: { m: ChatMessage }) {
   if (m.kind === "plan") {
@@ -198,12 +213,132 @@ function ScenarioDemo() {
   );
 }
 
+/**
+ * JSON-LD structured data: BreadcrumbList + Service + FAQPage.
+ * Embedded inline so the static HTML carries the schemas without
+ * waiting for client hydration.
+ */
+function BankruptcyJsonLd() {
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Vento Labs", item: site.url },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Кейсы",
+        item: `${site.url}${localizedPath("/cases", "ru")}`,
+      },
+      { "@type": "ListItem", position: 3, name: "Bankruptcy AI", item: RU_URL },
+    ],
+  };
+
+  const service = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Bankruptcy AI — ИИ-платформа для арбитражных управляющих",
+    serviceType: "AI platform for arbitration trustees",
+    provider: {
+      "@type": "Organization",
+      name: site.name,
+      url: site.url,
+      email: site.email,
+    },
+    areaServed: { "@type": "Country", name: "Russia" },
+    description:
+      "Готовит отчёты собранию и в АС, формирует процессуальные документы со ссылками на свежую практику ВС, контролирует сроки 127-ФЗ и АПК, собирает данные по должнику.",
+    offers: {
+      "@type": "Offer",
+      name: "Бесплатное демо на вашей процедуре",
+      price: "0",
+      priceCurrency: "RUB",
+      availability: "https://schema.org/InStock",
+      url: RU_URL,
+    },
+    url: RU_URL,
+  };
+
+  const faq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: bankFaq.items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
+    </>
+  );
+}
+
+/**
+ * Stub shown to non-RU visitors. The product targets Russian arbitration
+ * trustees working under 127-ФЗ — translating doesn't add value.
+ */
+function RussianOnlyStub() {
+  return (
+    <section className="page-hero">
+      <div className="container" style={{ paddingBlock: "clamp(3rem, 6vw, 5rem)" }}>
+        <div className="breadcrumbs">
+          <a href="/">Home</a>
+          <span className="breadcrumbs__sep">/</span>
+          <a href="/cases">Cases</a>
+          <span className="breadcrumbs__sep">/</span>
+          <span className="breadcrumbs__current">Bankruptcy AI</span>
+        </div>
+        <p className="eyebrow" style={{ marginTop: "1.5rem" }}>
+          Bankruptcy AI · LegalTech
+        </p>
+        <h1 className="page-hero__title">
+          AI platform for Russian arbitration trustees
+        </h1>
+        <p className="page-hero__lede">
+          This case targets Russian arbitration trustees («арбитражные
+          управляющие») working under 127-ФЗ. The product, demo materials and
+          documentation are Russian-only. The full landing page is at{" "}
+          <a href={RU_URL}>ventolabs.com/ru/cases/bankruptcy-agent</a>.
+        </p>
+        <div className="cta-row" style={{ marginTop: "2rem" }}>
+          <MagneticButton href={RU_URL}>
+            View Russian version <ArrowIcon />
+          </MagneticButton>
+          <MagneticButton href="/cases" variant="ghost">
+            Back to cases
+          </MagneticButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function BankruptcyAgentPage() {
   const locale = useLocale();
   const dict = getDictionary(locale);
 
+  if (locale !== "ru") {
+    return <RussianOnlyStub />;
+  }
+
   return (
     <>
+      <BankruptcyJsonLd />
+
       {/* 1. Hero */}
       <section className="erp-hero">
         <div className="container">
@@ -220,7 +355,10 @@ export function BankruptcyAgentPage() {
           <FadeUp delay={80}>
             <div className="erp-hero__top">
               <div className="erp-hero__stamp">
-                <span>Кейс № <b>{bankHero.caseNumber.split(" · ")[0]}</b> · {bankHero.caseNumber.split(" · ")[1]}</span>
+                <span>
+                  Кейс № <b>{bankHero.caseNumber.split(" · ")[0]}</b> ·{" "}
+                  {bankHero.caseNumber.split(" · ")[1]}
+                </span>
                 <span>{bankHero.caseLabel}</span>
               </div>
               <div className="erp-hero__center">
@@ -262,6 +400,11 @@ export function BankruptcyAgentPage() {
                     <span className="cta-meta">{bankHero.secondaryMeta}</span>
                   </div>
                 </div>
+                <ul className="bank-trust" aria-label="Что внутри">
+                  {bankHero.trustStrip.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
               </div>
             </FadeUp>
           </div>
@@ -276,7 +419,11 @@ export function BankruptcyAgentPage() {
               <div className="erp-diptych__img">
                 <span className="erp-diptych__tag">{bankDiptych.imageTag}</span>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={asset("/images/case-bankruptcy-agent.png")} alt="Bankruptcy AI — рабочее место управляющего" loading="eager" />
+                <img
+                  src={asset("/images/case-bankruptcy-agent.png")}
+                  alt="Рабочее место арбитражного управляющего с Bankruptcy AI — отчёты, ходатайства, контроль сроков 127-ФЗ"
+                  loading="eager"
+                />
                 <div className="erp-diptych__brand">
                   <i>{bankDiptych.brandSmall}</i>
                   {bankDiptych.brandBig}
@@ -333,41 +480,47 @@ export function BankruptcyAgentPage() {
         </div>
       </section>
 
-      {/* 4. Lead magnet — free demo */}
-      <section className="section section--paper lead-magnet-section">
+      {/* 4. Capabilities — replaces "Two modes". 6-card grid mapping client brief 1:1 */}
+      <section className="section section--paper">
         <div className="container">
           <FadeUp>
-            <div className="lead-magnet">
-              <div className="lead-magnet__copy">
-                <span className="lead-magnet__badge">
-                  <GiftIcon size={16} />
-                  {bankLeadMagnet.badge}
-                </span>
-                <h2 className="lead-magnet__heading">{bankLeadMagnet.heading}</h2>
-                <p className="lead-magnet__desc">{bankLeadMagnet.description}</p>
-                <ul className="lead-magnet__bullets">
-                  {bankLeadMagnet.bullets.map((b) => (
-                    <li key={b}>
-                      <span className="lead-magnet__bullet-icon">
-                        <CheckIcon size={16} />
-                      </span>
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{bankCapabilities.eyebrow}</p>
+                <h2>{bankCapabilities.heading}</h2>
               </div>
-              <div className="lead-magnet__action">
-                <MagneticButton href={bankLeadMagnet.ctaHref}>
-                  {bankLeadMagnet.ctaLabel} <TelegramIcon size={16} />
-                </MagneticButton>
-                <p className="lead-magnet__footnote">{bankLeadMagnet.footnote}</p>
+              <div className="section-header__right">
+                <p>{bankCapabilities.lede}</p>
               </div>
             </div>
           </FadeUp>
+          <div className="bank-caps">
+            {bankCapabilities.items.map((cap, i) => (
+              <FadeUp key={cap.idx} delay={i * 60}>
+                <article className="bank-cap">
+                  <div className="bank-cap__head">
+                    <span className="bank-cap__idx">{cap.idx}</span>
+                    <h3 className="bank-cap__title">{cap.title}</h3>
+                  </div>
+                  <p className="bank-cap__desc">{cap.description}</p>
+                  <ul className="bank-cap__points">
+                    {cap.points.map((pt) => (
+                      <li key={pt}>
+                        <span className="bank-cap__tick" aria-hidden>
+                          <CheckIcon size={12} />
+                        </span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 5. Scenario demo (interactive) */}
+      {/* 5. Demo (interactive scenarios) */}
       <ScenarioDemo />
 
       {/* 6. Process */}
@@ -400,137 +553,7 @@ export function BankruptcyAgentPage() {
         </div>
       </section>
 
-      {/* 7. Two modes */}
-      <section className="section section--surface">
-        <div className="container">
-          <FadeUp>
-            <div className="section-header">
-              <div className="section-header__left">
-                <p className="eyebrow">{bankModes.eyebrow}</p>
-                <h2>{bankModes.heading}</h2>
-              </div>
-              <div className="section-header__right">
-                <p>{bankModes.lede}</p>
-              </div>
-            </div>
-          </FadeUp>
-          <div className="erp-modes">
-            <FadeUp>
-              <div className="erp-mode erp-mode--dark">
-                <span className="erp-mode__bg" aria-hidden />
-                <div className="erp-mode__head">
-                  <span className="erp-mode__icon">{bankModes.dev.initial}</span>
-                  <div>
-                    <p className="eyebrow">{bankModes.dev.eyebrow}</p>
-                    <h3 className="erp-mode__title">{bankModes.dev.title}</h3>
-                  </div>
-                </div>
-                <p className="erp-mode__lede">{bankModes.dev.lede}</p>
-                <div className="erp-mode__flow">
-                  {bankModes.dev.flow.map((step, i) => (
-                    <span key={step} className="erp-mode__contents">
-                      <span className="erp-flow-step">{step}</span>
-                      {i < bankModes.dev.flow.length - 1 && <span className="erp-flow-arrow">→</span>}
-                    </span>
-                  ))}
-                </div>
-                <ul className="erp-mode__list">
-                  {bankModes.dev.list.map((item) => (
-                    <li key={item}>
-                      <span className="erp-mode__tick">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </FadeUp>
-            <FadeUp delay={120}>
-              <div className="erp-mode">
-                <span className="erp-mode__bg" aria-hidden />
-                <div className="erp-mode__head">
-                  <span className="erp-mode__icon">{bankModes.manager.initial}</span>
-                  <div>
-                    <p className="eyebrow">{bankModes.manager.eyebrow}</p>
-                    <h3 className="erp-mode__title">{bankModes.manager.title}</h3>
-                  </div>
-                </div>
-                <p className="erp-mode__lede">{bankModes.manager.lede}</p>
-                <div className="erp-mode__flow">
-                  {bankModes.manager.flow.map((step, i) => (
-                    <span key={step} className="erp-mode__contents">
-                      <span className="erp-flow-step">{step}</span>
-                      {i < bankModes.manager.flow.length - 1 && <span className="erp-flow-arrow">→</span>}
-                    </span>
-                  ))}
-                </div>
-                <ul className="erp-mode__list">
-                  {bankModes.manager.list.map((item) => (
-                    <li key={item}>
-                      <span className="erp-mode__tick">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. What's included */}
-      <section className="section section--paper" id="included">
-        <div className="container">
-          <FadeUp>
-            <div className="section-header">
-              <div className="section-header__left">
-                <p className="eyebrow">{bankIncluded.eyebrow}</p>
-                <h2>{bankIncluded.heading}</h2>
-              </div>
-              <div className="section-header__right">
-                <p>{bankIncluded.lede}</p>
-              </div>
-            </div>
-          </FadeUp>
-          <FadeUp delay={120}>
-            <div className="erp-checklist">
-              {bankIncluded.items.map((item) => (
-                <div key={item} className="erp-check">
-                  <span className="erp-check__icon">
-                    <CheckIcon size={14} />
-                  </span>
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* 9. Outcomes */}
-      <section className="section section--surface">
-        <div className="container">
-          <FadeUp>
-            <div className="section-header">
-              <div className="section-header__left">
-                <p className="eyebrow">{bankOutcomes.eyebrow}</p>
-                <h2>{bankOutcomes.heading}</h2>
-              </div>
-            </div>
-          </FadeUp>
-          <FadeUp delay={120}>
-            <div className="erp-features">
-              {bankOutcomes.items.map((item, i) => (
-                <div key={item} className="erp-feature">
-                  <span className="erp-feature__idx">{String(i + 1).padStart(2, "0")}</span>
-                  <div className="erp-feature__title">{item}</div>
-                </div>
-              ))}
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* 10. Architecture */}
+      {/* 7. Architecture */}
       <section className="erp-arch">
         <div className="container">
           <FadeUp>
@@ -565,12 +588,106 @@ export function BankruptcyAgentPage() {
         </div>
       </section>
 
-      {/* 11. Stakes */}
+      {/* 8. Security — NEW */}
+      <section className="section section--surface">
+        <div className="container">
+          <FadeUp>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{bankSecurity.eyebrow}</p>
+                <h2>{bankSecurity.heading}</h2>
+              </div>
+              <div className="section-header__right">
+                <p>{bankSecurity.lede}</p>
+              </div>
+            </div>
+          </FadeUp>
+          <div className="erp-process">
+            {bankSecurity.items.map((row, i) => (
+              <FadeUp key={row.title} delay={i * 60}>
+                <div className="erp-process__row">
+                  <span className="erp-process__num">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="erp-process__title">{row.title}</h3>
+                  <p className="erp-process__desc">{row.desc}</p>
+                </div>
+              </FadeUp>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 9. Included */}
+      <section className="section section--paper" id="included">
+        <div className="container">
+          <FadeUp>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{bankIncluded.eyebrow}</p>
+                <h2>{bankIncluded.heading}</h2>
+              </div>
+              <div className="section-header__right">
+                <p>{bankIncluded.lede}</p>
+              </div>
+            </div>
+          </FadeUp>
+          <FadeUp delay={120}>
+            <div className="erp-checklist">
+              {bankIncluded.items.map((item) => (
+                <div key={item} className="erp-check">
+                  <span className="erp-check__icon">
+                    <CheckIcon size={14} />
+                  </span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* 10. Social proof — 3 metrics + quote */}
+      <section className="section section--surface">
+        <div className="container">
+          <FadeUp>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{bankProof.eyebrow}</p>
+                <h2>{bankProof.heading}</h2>
+              </div>
+            </div>
+          </FadeUp>
+          <FadeUp delay={120}>
+            <div className="bank-proof">
+              <div className="bank-proof__metrics">
+                {bankProof.metrics.map((m) => (
+                  <div key={m.label} className="bank-proof__metric">
+                    <div className="bank-proof__value">
+                      {m.value}
+                      {m.unit && <sup>{m.unit}</sup>}
+                    </div>
+                    <div className="bank-proof__label">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="bank-proof__quote-wrap">
+                <p className="bank-proof__quote">{bankProof.quote}</p>
+                <div className="bank-proof__attr">
+                  <b>{bankProof.name}</b>
+                  <span>{bankProof.role}</span>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* 11. Stakes — dark callout */}
       <section className="section--ink erp-stakes">
         <div className="container">
           <FadeUp>
             <div className="erp-stakes__inner">
-              <p className="eyebrow eyebrow--plain">{bankStakes.eyebrow}</p>
               <h2>
                 {bankStakes.textLead}
                 <em>{bankStakes.em1}</em>
@@ -583,31 +700,58 @@ export function BankruptcyAgentPage() {
         </div>
       </section>
 
-      {/* 12. Social proof */}
-      <section className="section section--paper">
+      {/* 12. Lead magnet — main CTA block (id="book") */}
+      <section className="section section--paper lead-magnet-section" id="book">
         <div className="container">
           <FadeUp>
-            <div className="erp-proof">
-              <div>
-                <div className="erp-proof__metric">
-                  {bankProof.metric}
-                  <small>{bankProof.metricLabel}</small>
+            <div className="lead-magnet">
+              <div className="lead-magnet__copy">
+                <span className="lead-magnet__badge">
+                  <GiftIcon size={16} />
+                  {bankLeadMagnet.badge}
+                </span>
+                <h2 className="lead-magnet__heading">{bankLeadMagnet.heading}</h2>
+                <p className="lead-magnet__desc">{bankLeadMagnet.description}</p>
+                <ul className="lead-magnet__bullets">
+                  {bankLeadMagnet.bullets.map((b) => (
+                    <li key={b}>
+                      <span className="lead-magnet__bullet-icon">
+                        <CheckIcon size={16} />
+                      </span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="lead-magnet__hints">
+                  {bankLeadMagnet.hints.map((h) => (
+                    <span key={h} className="lead-magnet__hint">
+                      {h}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <div>
-                <p className="erp-proof__quote">{bankProof.quote}</p>
-                <div className="erp-proof__attr">
-                  <b>{bankProof.name}</b>
-                  <span>{bankProof.role}</span>
+              <div className="lead-magnet__action">
+                <div className="cta-stack">
+                  <MagneticButton href={bankLeadMagnet.primaryHref}>
+                    {bankLeadMagnet.primaryLabel} <PhoneIcon size={16} />
+                  </MagneticButton>
+                  <span className="cta-meta">демо ведёт основатель</span>
                 </div>
+                <div className="cta-stack">
+                  <MagneticButton href={bankLeadMagnet.secondaryHref} variant="ghost">
+                    {bankLeadMagnet.secondaryLabel} <TelegramIcon size={16} />
+                  </MagneticButton>
+                  <span className="cta-meta">{bankTelegram.display}</span>
+                </div>
+                <p className="lead-magnet__footnote">{bankLeadMagnet.footnote}</p>
               </div>
             </div>
           </FadeUp>
         </div>
       </section>
 
-      {/* 13. CTA — forest card · free demo */}
-      <section className="erp-cta-section section--paper" id="book">
+      {/* 13. Final CTA — last-chance pitch */}
+      <section className="erp-cta-section section--paper">
         <div className="container">
           <FadeUp>
             <div className="erp-cta">
@@ -616,16 +760,16 @@ export function BankruptcyAgentPage() {
               <p>{bankFinalCta.subtitle}</p>
               <div className="erp-cta__row">
                 <div className="cta-stack cta-stack--center">
-                  <MagneticButton href={bankLeadMagnet.ctaHref} variant="on-forest">
-                    {bankLeadMagnet.ctaLabel} <TelegramIcon size={16} />
+                  <MagneticButton href={bankPhone.href} variant="on-forest">
+                    Позвонить {bankPhone.display} <PhoneIcon size={16} />
                   </MagneticButton>
-                  <span className="cta-meta cta-meta--on-forest">{bankLeadMagnet.footnote}</span>
+                  <span className="cta-meta cta-meta--on-forest">прямо сейчас</span>
                 </div>
                 <div className="cta-stack cta-stack--center">
-                  <MagneticButton href={bankHero.secondaryHref} variant="ghost">
-                    {bankHero.secondaryLabel} <PhoneIcon size={16} />
+                  <MagneticButton href={bankTelegram.href} variant="ghost">
+                    Написать в Telegram <TelegramIcon size={16} />
                   </MagneticButton>
-                  <span className="cta-meta cta-meta--on-forest">{bankHero.secondaryMeta}</span>
+                  <span className="cta-meta cta-meta--on-forest">{bankTelegram.display}</span>
                 </div>
               </div>
               <div className="erp-cta__hint">

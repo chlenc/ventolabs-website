@@ -20,6 +20,12 @@ export const erpAgentContact = {
   whatsapp: "https://wa.me/79032333525",
 };
 
+export const bankruptcyAgentContact = {
+  phone: "+79943182188",
+  phoneDisplay: "+7 994 318 21 88",
+  whatsapp: "https://wa.me/79943182188",
+};
+
 export const calendly = {
   url: "https://calendly.com/alexey-ventolabs/30min",
   calLink: "ventolabs/30min",
