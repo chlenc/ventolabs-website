@@ -91,11 +91,11 @@ export default function RootLayout({
       <head>
         <GoogleTagManagerHead />
         <link rel="icon" href={asset("/favicon.svg")} type="image/svg+xml" />
-        <link rel="api-catalog" href="/.well-known/api-catalog" />
-        <meta
-          httpEquiv="Link"
-          content='</.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills"'
-        />
+        {/* RFC 8288 link relations for agents (GH Pages can't set HTTP Link headers, so we expose them in HTML). */}
+        <link rel="sitemap" type="application/xml" href={asset("/sitemap.xml")} />
+        <link rel="terms-of-service" href={`${site.url}/terms/`} />
+        <link rel="privacy-policy" href={`${site.url}/privacy/`} />
+        <link rel="author" href={site.linkedin} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
