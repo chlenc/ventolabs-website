@@ -31,6 +31,10 @@ export function PostHogAnalytics({ children }: { children: ReactNode }) {
       capture_pageview: false,
       capture_pageleave: true,
       person_profiles: "identified_only",
+      // Skip optional bundles we don't use — us-assets.i.posthog.com serves
+      // them without CORS headers, so loading them throws a console error.
+      disable_surveys: true,
+      capture_performance: { web_vitals: false },
     });
   }, []);
 
