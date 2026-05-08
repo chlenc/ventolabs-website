@@ -1,3 +1,25 @@
 {
-  "linkset": []
+  "linkset": [
+    {
+      "anchor": "https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1/notify",
+      "service-desc": [
+        {
+          "href": "https://ventolabs.com/.well-known/openapi/notify.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://ventolabs.com/.well-known/api-docs/notify.html",
+          "type": "text/html"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://ventolabs.com/privacy/",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
 }
