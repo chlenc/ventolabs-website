@@ -158,25 +158,43 @@ Deno.serve(async (req) => {
       body.triggerEvent === "BOOKING_RESCHEDULED"
     ) {
       const payload = body.payload || {};
-      const name = [payload.name, payload.email].filter(Boolean).join(" — ");
+      const responses = payload.responses || {};
+      const attendee = (payload.attendees && payload.attendees[0]) || {};
+
+      // Cal.com responses are { label, value } objects — extract value safely
+      const respValue = (v: unknown): string => {
+        if (!v) return "";
+        if (typeof v === "string") return v;
+        if (typeof v === "object" && v !== null && "value" in v) {
+          const inner = (v as { value: unknown }).value;
+          return typeof inner === "string" ? inner : "";
+        }
+        return "";
+      };
+
+      const attendeeName = respValue(responses.name) || attendee.name || "";
+      const attendeeEmail = respValue(responses.email) || attendee.email || "";
+      const who = [attendeeName, attendeeEmail].filter(Boolean).join(" — ");
+
       const title = payload.title || payload.eventTitle || "Meeting";
       const startTime = payload.startTime
         ? new Date(payload.startTime).toLocaleString("en-US", { timeZone: "Europe/Lisbon" })
         : "?";
-      const responses = payload.responses || {};
-      const notes = responses["what-would-you-like-to-improve-or-automate-with-ai"]?.value
-        || responses.notes
-        || responses.rescheduleReason
-        || "";
+
+      const notes =
+        respValue(responses["what-would-you-like-to-improve-or-automate-with-ai"]) ||
+        (typeof payload.additionalNotes === "string" ? payload.additionalNotes : "") ||
+        respValue(responses.notes) ||
+        respValue(responses.rescheduleReason) ||
+        "";
 
       message = [
         "🎉 <b>NEW BOOKING via Cal.com!</b>",
         "",
-        `👤 <b>${name || "Unknown"}</b>`,
+        `👤 <b>${who || "Unknown"}</b>`,
         `📅 ${title}`,
         `🕐 ${startTime}`,
-        notes ? `📝 ${String(notes).slice(0, 300)}` : "",
-        `📍 ${geo}`,
+        notes ? `📝 ${notes.slice(0, 300)}` : "",
         "",
         "👤 @defi_defiler @vlacomor",
       ].filter(Boolean).join("\n");
