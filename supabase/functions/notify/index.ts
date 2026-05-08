@@ -5,7 +5,10 @@ const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  // Wildcard so emerging client-injected headers like `signature-agent`
+  // (Web Bot Auth, RFC 9421) don't trip preflight. Origin is `*` and the
+  // function takes no credentials, so widening this is safe.
+  "Access-Control-Allow-Headers": "*",
 };
 
 // ── Funny visitor names & avatars ────────────────────
