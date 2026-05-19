@@ -661,7 +661,7 @@ export const es: Dictionary = {
           { metric: "De petición a ejecución (días)", before: "2,3", after: "0,2", change: "−91%" },
           { metric: "Incidentes por cambios incorrectos en datos (al mes)", before: "4–6", after: "0", change: "totalmente eliminados" },
         ],
-        source: "Fuente: analítica interna de Ventolabs en tres proyectos — manufactura, distribución y servicios profesionales (Q1–Q2 2025).",
+        source: "Fuente: analítica interna de Vento Labs en tres proyectos — manufactura, distribución y servicios profesionales (Q1–Q2 2025).",
       },
       guarantees: {
         eyebrow: "Seguridad y garantías",
@@ -671,14 +671,14 @@ export const es: Dictionary = {
           { title: "Aprobación manual en cada cambio", description: "En el flujo dev el desarrollador ve el plan y el diff antes de aplicar. En el flujo manager el agente nunca ejecuta una acción fuera del rol — ni siquiera aparece en la lista de disponibles." },
           { title: "Localización y privacidad de datos", description: "Claude se invoca en el tier business de la API: tus datos no se almacenan ni se usan para entrenar. Bajo petición, despliegue del modelo on-premise dentro de tu perímetro — con todas las funciones." },
           { title: "Auditoría completa", description: "El registro de peticiones y operaciones vive en tu infraestructura. Listo para entregar a auditores externos o reguladores en el formato que pidan." },
-          { title: "Compromiso de garantía", description: "Si 1C falla por un error del agente IA (con el procedimiento estándar de actualizaciones cumplido) — Ventolabs restaura el sistema sin coste adicional." },
+          { title: "Compromiso de garantía", description: "Si 1C falla por un error del agente IA (con el procedimiento estándar de actualizaciones cumplido) — Vento Labs restaura el sistema sin coste adicional." },
         ],
       },
       stakes: "El negocio quiere velocidad. IT quiere seguridad. Un chatbot no resuelve ninguna. Una capa de IA gestionada sobre 1C sí — con roles, aprobación y auditoría desde el primer día.",
       faq: [
         { q: "¿Qué riesgos hay para el sistema contable al introducir IA?", a: "Los riesgos están minimizados por arquitectura. El agente no tiene acceso directo al núcleo de configuración: todos los cambios pasan por extensiones aprobadas previamente por el desarrollador. En modo Manager el agente solo ejecuta acciones permitidas explícitamente por la política de roles; las violaciones de límites se bloquean a nivel de prompt." },
         { q: "¿Se usan nuestros datos para entrenar modelos?", a: "No. Trabajamos con la API de Claude en tier business, que garantiza que los datos no se almacenan ni se usan para reentreno. Para clientes con requisitos de seguridad reforzados está disponible una versión on-premise con despliegue dentro del perímetro de la empresa." },
-        { q: "¿Con qué configuraciones de 1C es compatible la solución?", a: "1C:Enterprise 8.3 y superior. Configuraciones estándar: Contabilidad, Trade, ERP, KA, UNF. Cualquier configuración a medida que soporte OData, servicios HTTP o web-services. Si faltan las interfaces necesarias — desarrollo por Ventolabs en 1–2 días." },
+        { q: "¿Con qué configuraciones de 1C es compatible la solución?", a: "1C:Enterprise 8.3 y superior. Configuraciones estándar: Contabilidad, Trade, ERP, KA, UNF. Cualquier configuración a medida que soporte OData, servicios HTTP o web-services. Si faltan las interfaces necesarias — desarrollo por Vento Labs en 1–2 días." },
         { q: "¿Cuál es el coste del licenciamiento productivo tras el piloto?", a: "Cuota fija desde 2.500 USD al mes: peticiones ilimitadas, hasta 5 usuarios responsables, todas las actualizaciones y soporte técnico. Costes de la API de Claude incluidos. Para empresas con más usuarios o requisitos específicos — precios a medida." },
         { q: "¿La automatización llevará a recortes en el equipo de desarrollo?", a: "Nuestra experiencia muestra el efecto contrario: los desarrolladores se liberan de la rutina y se enfocan en proyectos arquitectónicamente complejos e innovadores. En ninguno de nuestros proyectos ha habido recortes en IT." },
         { q: "¿Cómo se alinean las acciones con la política contable de la empresa?", a: "En la fase de definición de roles fijamos contigo escenarios permitidos y prohibidos. Cada petición posterior al agente se valida contra estas reglas. Adicionalmente puedes activar aprobación manual para cualquier acción por encima de un umbral definido — por importe, tipo de operación u otros criterios." },
@@ -698,7 +698,7 @@ export const es: Dictionary = {
       leadMagnet: {
         badge: "Guía gratuita",
         heading: "Playbook de implementación de IA — práctica, no teoría",
-        description: "Una guía paso a paso para introducir IA en procesos contables y operativos sin caos: desde roles y permisos hasta el go-live del piloto y ROI. Basada en proyectos reales de Ventolabs en manufactura, distribución y servicios.",
+        description: "Una guía paso a paso para introducir IA en procesos contables y operativos sin caos: desde roles y permisos hasta el go-live del piloto y ROI. Basada en proyectos reales de Vento Labs en manufactura, distribución y servicios.",
         bullets: [
           "Qué procesos retornan en 2–4 semanas",
           "Cómo separar roles IA / desarrollador / responsable sin riesgos",

@@ -661,7 +661,7 @@ export const en: Dictionary = {
           { metric: "From manager request to execution (days)", before: "2.3", after: "0.2", change: "−91%" },
           { metric: "Incidents from incorrect data changes (per month)", before: "4–6", after: "0", change: "fully eliminated" },
         ],
-        source: "Source: Ventolabs internal analytics across three projects — manufacturing, distribution and professional services (Q1–Q2 2025).",
+        source: "Source: Vento Labs internal analytics across three projects — manufacturing, distribution and professional services (Q1–Q2 2025).",
       },
       guarantees: {
         eyebrow: "Security & guarantees",
@@ -671,14 +671,14 @@ export const en: Dictionary = {
           { title: "Manual approval on every change", description: "In the dev flow the developer sees the plan and the diff before apply. In the manager flow the agent never executes an action outside the role — it doesn't even appear in the available list." },
           { title: "Data localisation and privacy", description: "Claude is called on the business tier of the API: your data isn't stored or used for training. On request, an on-premise model deployment inside your perimeter — full feature parity." },
           { title: "Full audit trail", description: "The journal of requests and operations lives in your infrastructure. Ready to be handed to external auditors or regulators in any required format." },
-          { title: "Warranty obligations", description: "If 1C is disrupted by an AI-agent error (with the standard upgrade procedure followed) — Ventolabs restores the system at no extra cost." },
+          { title: "Warranty obligations", description: "If 1C is disrupted by an AI-agent error (with the standard upgrade procedure followed) — Vento Labs restores the system at no extra cost." },
         ],
       },
       stakes: "The business wants speed. IT wants safety. A chatbot solves neither. A managed AI layer over 1C does — with roles, approval and audit out of the box.",
       faq: [
         { q: "What are the risks to the accounting system from AI?", a: "Risks are minimised by architecture. The agent has no direct access to the configuration core: all changes ship through extensions pre-approved by a developer. In Manager mode the agent only executes actions explicitly allowed by the role policy; out-of-bounds attempts are blocked at the prompt level." },
         { q: "Is our data used to train models?", a: "No. We run Claude on the business tier of the API, which guarantees data isn't stored or used for training. For customers with stricter security requirements, an on-premise model deployed inside the company perimeter is available." },
-        { q: "Which 1C configurations are supported?", a: "1C:Enterprise 8.3 and above. Standard configurations: Accounting, Trade Management, ERP, KA, UNF. Any custom configuration that supports OData, HTTP services or web-services. If the required interfaces are missing — Ventolabs builds them in 1–2 days." },
+        { q: "Which 1C configurations are supported?", a: "1C:Enterprise 8.3 and above. Standard configurations: Accounting, Trade Management, ERP, KA, UNF. Any custom configuration that supports OData, HTTP services or web-services. If the required interfaces are missing — Vento Labs builds them in 1–2 days." },
         { q: "What does production licensing cost after the pilot?", a: "Fixed subscription from USD 2,500/month: unlimited requests, up to 5 manager users, all updates and technical support. Claude API costs are included. For companies with more users or specific requirements — custom pricing." },
         { q: "Will automation lead to layoffs in the dev team?", a: "Our experience shows the opposite: developers are freed from routine work and shift focus to architecturally complex, innovative projects. None of our projects has resulted in IT-team layoffs." },
         { q: "How do you align actions with our accounting policy?", a: "During the role-mapping stage we jointly fix allowed scenarios and prohibitions. Every subsequent agent request is checked against these rules. You can also enable manual approval for any action above a defined threshold — by amount, operation type or other criteria." },
@@ -698,7 +698,7 @@ export const en: Dictionary = {
       leadMagnet: {
         badge: "Free playbook",
         heading: "AI Implementation Playbook — practice, not theory",
-        description: "A step-by-step guide to rolling out AI inside accounting and operational processes without chaos: from roles and permissions to pilot go-live and ROI. Based on real Ventolabs projects in manufacturing, distribution and services.",
+        description: "A step-by-step guide to rolling out AI inside accounting and operational processes without chaos: from roles and permissions to pilot go-live and ROI. Based on real Vento Labs projects in manufacturing, distribution and services.",
         bullets: [
           "Which processes pay back in 2–4 weeks",
           "How to split AI / developer / manager roles without risk",

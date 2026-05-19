@@ -661,7 +661,7 @@ export const de: Dictionary = {
           { metric: "Vom Manager-Request bis zur Ausführung (Tage)", before: "2,3", after: "0,2", change: "−91%" },
           { metric: "Vorfälle durch falsche Datenänderungen (pro Monat)", before: "4–6", after: "0", change: "vollständig eliminiert" },
         ],
-        source: "Quelle: Ventolabs-interne Auswertung über drei Projekte — Fertigung, Distribution und Professional Services (Q1–Q2 2025).",
+        source: "Quelle: Vento Labs-interne Auswertung über drei Projekte — Fertigung, Distribution und Professional Services (Q1–Q2 2025).",
       },
       guarantees: {
         eyebrow: "Sicherheit & Garantien",
@@ -671,14 +671,14 @@ export const de: Dictionary = {
           { title: "Manuelle Freigabe bei jeder Änderung", description: "Im Dev-Flow sieht der Entwickler Plan und Diff vor Anwendung. Im Manager-Flow führt der Agent niemals eine Aktion außerhalb der Rolle aus — sie erscheint gar nicht erst in der Liste der Möglichkeiten." },
           { title: "Datenlokalisierung und Privatsphäre", description: "Claude wird im Business-Tier der API aufgerufen: Ihre Daten werden weder gespeichert noch zum Training verwendet. Auf Wunsch On-Premise-Deployment des Modells in Ihrem Perimeter — bei vollem Funktionsumfang." },
           { title: "Vollständiger Audit-Trail", description: "Das Journal von Anfragen und Operationen bleibt in Ihrer Infrastruktur. Bereit zur Übergabe an externe Auditoren oder Regulatoren in jedem geforderten Format." },
-          { title: "Garantieleistungen", description: "Wenn 1C aufgrund eines KI-Agent-Fehlers gestört wird (bei Einhaltung des regulären Update-Vorgehens) — stellt Ventolabs das System ohne zusätzliche Kosten wieder her." },
+          { title: "Garantieleistungen", description: "Wenn 1C aufgrund eines KI-Agent-Fehlers gestört wird (bei Einhaltung des regulären Update-Vorgehens) — stellt Vento Labs das System ohne zusätzliche Kosten wieder her." },
         ],
       },
       stakes: "Das Geschäft will Tempo. Die IT will Sicherheit. Ein Chatbot löst nichts davon. Eine verwaltete KI-Schicht über 1C schon — mit Rollen, Freigabe und Audit ab Tag eins.",
       faq: [
         { q: "Welche Risiken bestehen für das Buchhaltungssystem durch die KI?", a: "Risiken werden architektonisch minimiert. Der Agent hat keinen direkten Zugriff auf den Konfigurationskern: alle Änderungen laufen über vom Entwickler vorab freigegebene Erweiterungen. Im Manager-Modus führt der Agent ausschließlich Aktionen aus, die die Rollenrichtlinie ausdrücklich erlaubt; Grenzverletzungen werden auf Prompt-Ebene blockiert." },
         { q: "Werden unsere Daten zum Training von Modellen verwendet?", a: "Nein. Wir nutzen Claude im Business-Tier der API, der garantiert, dass Daten weder gespeichert noch zum Training verwendet werden. Für Kunden mit erhöhten Sicherheitsanforderungen steht eine On-Premise-Variante mit Deployment innerhalb des Unternehmensperimeters bereit." },
-        { q: "Mit welchen 1C-Konfigurationen ist die Lösung kompatibel?", a: "1C:Enterprise 8.3 und höher. Standardkonfigurationen: Accounting, Trade Management, ERP, KA, UNF. Beliebige Custom-Konfigurationen, die OData, HTTP-Services oder Web-Services unterstützen. Falls die nötigen Schnittstellen fehlen — Anpassung durch Ventolabs in 1–2 Tagen." },
+        { q: "Mit welchen 1C-Konfigurationen ist die Lösung kompatibel?", a: "1C:Enterprise 8.3 und höher. Standardkonfigurationen: Accounting, Trade Management, ERP, KA, UNF. Beliebige Custom-Konfigurationen, die OData, HTTP-Services oder Web-Services unterstützen. Falls die nötigen Schnittstellen fehlen — Anpassung durch Vento Labs in 1–2 Tagen." },
         { q: "Was kostet die Produktivlizenzierung nach dem Piloten?", a: "Feste Abogebühr ab 2.500 USD pro Monat: unbegrenzte Anfragen, bis zu 5 Manager-Nutzer, alle Updates und technischer Support. Claude-API-Kosten inklusive. Für Unternehmen mit mehr Nutzern oder besonderen Anforderungen — individuelle Preisgestaltung." },
         { q: "Führt die Automatisierung zu Stellenabbau im Entwicklerteam?", a: "Die Praxis zeigt das Gegenteil: Entwickler werden von Routine entlastet und konzentrieren sich auf architektonisch anspruchsvolle, innovative Projekte. In keinem unserer Projekte gab es IT-Stellenabbau." },
         { q: "Wie werden Aktionen mit unserer Rechnungslegungspolitik abgestimmt?", a: "In der Phase Rollendefinition fixieren wir gemeinsam erlaubte Szenarien und Verbote. Jede nachfolgende Anfrage an den Agenten wird gegen diese Regeln geprüft. Zusätzlich können Sie eine manuelle Freigabe für Aktionen oberhalb einer definierten Schwelle aktivieren — nach Betrag, Operationstyp oder anderen Kriterien." },
@@ -698,7 +698,7 @@ export const de: Dictionary = {
       leadMagnet: {
         badge: "Kostenfreier Leitfaden",
         heading: "KI-Einführungs-Playbook — Praxis statt Theorie",
-        description: "Schritt für Schritt: KI in Buchhaltungs- und operative Prozesse einführen — ohne Chaos. Von Rollen und Rechten bis zum Pilot-Go-Live und ROI. Basierend auf realen Ventolabs-Projekten in Fertigung, Distribution und Services.",
+        description: "Schritt für Schritt: KI in Buchhaltungs- und operative Prozesse einführen — ohne Chaos. Von Rollen und Rechten bis zum Pilot-Go-Live und ROI. Basierend auf realen Vento Labs-Projekten in Fertigung, Distribution und Services.",
         bullets: [
           "Welche Prozesse sich in 2–4 Wochen rechnen",
           "Wie man die Rollen KI / Entwickler / Manager risikofrei trennt",
