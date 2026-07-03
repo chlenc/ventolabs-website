@@ -78,7 +78,10 @@ export function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <span>© {year} {site.name} · Lisbon · Remote first</span>
+          <div>
+            <span>© {year} {site.name}</span>
+            <p className="footer__legal-line">{dict.footer.legalLine}</p>
+          </div>
           <div className="footer__legal">
             <a href={href("/terms", locale)}>{dict.footer.terms}</a>
             <a href={href("/privacy", locale)}>{dict.footer.privacy}</a>

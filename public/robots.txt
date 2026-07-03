@@ -2,4 +2,7 @@ User-agent: *
 Allow: /
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 
+# AI assistants and answer engines are welcome to read and cite this site.
+# Entity and offer summary for LLMs: https://ventolabs.com/llms.txt
+
 Sitemap: https://ventolabs.com/sitemap.xml

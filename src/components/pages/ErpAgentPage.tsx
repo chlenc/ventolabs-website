@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { FadeUp, MagneticButton, CheckIcon, GiftIcon, PhoneIcon, MailIcon, TelegramIcon, PlusIcon } from "@/components/Primitives";
+import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon, PhoneIcon, MailIcon, TelegramIcon, PlusIcon } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
 import { asset, href } from "@/lib/utils";
@@ -203,6 +203,16 @@ export function ErpAgentPage() {
   const dict = getDictionary(locale);
   const caseDict = dict.case_pages["erp-agent"];
 
+  // Primary CTA is locale-aware: the RU dictionary keeps the direct +7 phone
+  // (the 1C product sells into the RU market); other locales book a call.
+  const primaryCta = caseDict.ctaPrimary ?? {
+    label: erpHero.primaryLabel,
+    href: erpHero.primaryHref,
+    meta: erpHero.primaryMeta,
+    kind: "phone" as const,
+  };
+  const primaryIcon = primaryCta.kind === "phone" ? <PhoneIcon size={16} /> : <ArrowIcon />;
+
   return (
     <>
       {/* 1. Hero */}
@@ -251,10 +261,10 @@ export function ErpAgentPage() {
                 <p className="erp-hero__lede">{caseDict.heroDescription}</p>
                 <div className="erp-hero__cta">
                   <div className="cta-stack">
-                    <MagneticButton href={erpHero.primaryHref}>
-                      {erpHero.primaryLabel} <PhoneIcon size={16} />
+                    <MagneticButton href={primaryCta.href}>
+                      {primaryCta.label} {primaryIcon}
                     </MagneticButton>
-                    <span className="cta-meta">{erpHero.primaryMeta}</span>
+                    {primaryCta.meta && <span className="cta-meta">{primaryCta.meta}</span>}
                   </div>
                   <div className="cta-stack">
                     <MagneticButton href={erpHero.secondaryHref} variant="ghost">
@@ -617,10 +627,10 @@ export function ErpAgentPage() {
               <p>{erpFinalCta.subtitle}</p>
               <div className="erp-cta__row">
                 <div className="cta-stack cta-stack--center">
-                  <MagneticButton href={erpHero.primaryHref} variant="on-forest">
-                    {erpHero.primaryLabel} <PhoneIcon size={16} />
+                  <MagneticButton href={primaryCta.href} variant="on-forest">
+                    {primaryCta.label} {primaryIcon}
                   </MagneticButton>
-                  <span className="cta-meta cta-meta--on-forest">{erpHero.primaryMeta}</span>
+                  {primaryCta.meta && <span className="cta-meta cta-meta--on-forest">{primaryCta.meta}</span>}
                 </div>
                 <div className="cta-stack cta-stack--center">
                   <MagneticButton href={erpHero.secondaryHref} variant="ghost">

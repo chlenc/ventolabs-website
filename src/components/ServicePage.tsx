@@ -1,6 +1,7 @@
 "use client";
 
 import { FaqSection } from "./FaqSection";
+import { LeadForm } from "./LeadForm";
 import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon, PhoneIcon, MailIcon, TelegramIcon } from "./Primitives";
 import { useLocale } from "./LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
@@ -452,6 +453,11 @@ export function ServicePage({
                   </MagneticButton>
                 </div>
               )}
+            </div>
+          </FadeUp>
+          <FadeUp delay={200}>
+            <div style={{ maxWidth: "640px", margin: "3rem auto 0" }}>
+              <LeadForm location={`service_${slug}_final_cta`} />
             </div>
           </FadeUp>
         </div>

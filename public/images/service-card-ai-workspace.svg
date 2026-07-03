@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="AI agents for every team on one platform">
+  <rect width="800" height="500" fill="#eeeae0"/>
+  <g fill="#1e3c14" opacity="0.08">
+    <circle cx="40" cy="40" r="1.5"/><circle cx="120" cy="40" r="1.5"/><circle cx="200" cy="40" r="1.5"/><circle cx="280" cy="40" r="1.5"/><circle cx="360" cy="40" r="1.5"/><circle cx="440" cy="40" r="1.5"/><circle cx="520" cy="40" r="1.5"/><circle cx="600" cy="40" r="1.5"/><circle cx="680" cy="40" r="1.5"/><circle cx="760" cy="40" r="1.5"/>
+  </g>
+  <!-- knowledge vault base -->
+  <rect x="180" y="330" width="440" height="64" rx="8" fill="#1e3c14"/>
+  <text x="400" y="368" font-family="Menlo, Consolas, monospace" font-size="13" letter-spacing="2" fill="#f3ead8" text-anchor="middle">KNOWLEDGE VAULT</text>
+  <!-- team agent cells -->
+  <g font-family="Menlo, Consolas, monospace" font-size="12" letter-spacing="1.5" fill="#1e3c14">
+    <rect x="110" y="150" width="140" height="90" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="180" y="188" text-anchor="middle">SALES</text>
+    <text x="180" y="214" text-anchor="middle" opacity="0.55">agent</text>
+    <rect x="270" y="150" width="140" height="90" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="340" y="188" text-anchor="middle">SUPPORT</text>
+    <text x="340" y="214" text-anchor="middle" opacity="0.55">agent</text>
+    <rect x="430" y="150" width="140" height="90" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="500" y="188" text-anchor="middle">OPS</text>
+    <text x="500" y="214" text-anchor="middle" opacity="0.55">agent</text>
+    <rect x="590" y="150" width="140" height="90" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="660" y="188" text-anchor="middle">MARKETING</text>
+    <text x="660" y="214" text-anchor="middle" opacity="0.55">agent</text>
+  </g>
+  <!-- connectors -->
+  <g stroke="#1e3c14" stroke-width="1.2" stroke-dasharray="3 5">
+    <line x1="180" y1="240" x2="240" y2="330"/>
+    <line x1="340" y1="240" x2="360" y2="330"/>
+    <line x1="500" y1="240" x2="460" y2="330"/>
+    <line x1="660" y1="240" x2="560" y2="330"/>
+  </g>
+  <text x="400" y="110" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="26" fill="#1e3c14" text-anchor="middle">one platform, every team</text>
+  <text x="48" y="470" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1e3c14" opacity="0.55">VL / PLATFORM · LIVE IN 4 WEEKS</text>
+  <text x="752" y="470" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1e3c14" opacity="0.55" text-anchor="end">04</text>
+</svg>

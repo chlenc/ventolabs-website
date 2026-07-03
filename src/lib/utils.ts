@@ -20,5 +20,5 @@ export function href(path: string, locale: Locale = defaultLocale): string {
  */
 export function isFocusFunnelPath(pathname: string | null | undefined): boolean {
   if (!pathname) return false;
-  return /\/cases\/erp-agent\/?$/.test(pathname);
+  return /\/cases\/(erp-agent|bankruptcy-agent)\/?$/.test(pathname);
 }

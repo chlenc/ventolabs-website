@@ -35,6 +35,7 @@
   <li><code>type: "visit"</code> — page view (sent once per session)</li>
   <li><code>type: "booking"</code> — booking-flow CTA clicked</li>
   <li><code>type: "session"</code> — session summary on tab hide / unload, sent via <code>navigator.sendBeacon</code> with <code>Content-Type: text/plain</code></li>
+  <li><code>type: "lead"</code> — lead-form submission (name, work email, free-text ask)</li>
   <li>Cal.com webhook envelopes with <code>triggerEvent</code> ∈ { <code>BOOKING_CREATED</code>, <code>BOOKING_RESCHEDULED</code> }</li>
 </ul>
 

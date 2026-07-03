@@ -74,6 +74,11 @@ function utmLine(utm: Record<string, string> | null | undefined): string {
   return Object.entries(utm).filter(([, v]) => v).map(([k, v]) => `${k}=${v}`).join(", ");
 }
 
+/** Escape user-supplied text for Telegram parse_mode=HTML. */
+function esc(s: unknown): string {
+  return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 // ── Main handler ─────────────────────────────────────
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -123,6 +128,24 @@ Deno.serve(async (req) => {
         "",
         "👤 @defi_defiler @vlacomor",
       ].join("\n");
+
+    } else if (type === "lead") {
+      // Lead-form submission from the site (name + work email + free text).
+      const { name, email, message: ask, page, ts } = body;
+      message = [
+        `📨 <b>NEW LEAD (form)</b> — ${visitorTag}`,
+        "",
+        `👤 <b>${esc(name) || "Unknown"}</b>`,
+        email ? `✉️ <code>${esc(email)}</code>` : "",
+        ask ? `📝 ${esc(String(ask).slice(0, 800))}` : "",
+        `📄 Page: <code>${esc(page) || "/"}</code>`,
+        `📍 ${geo}`,
+        ip ? `🌐 IP: <code>${ip}</code>` : "",
+        utm ? `🏷 UTM: <code>${utm}</code>` : "",
+        `🕐 ${ts || new Date().toISOString()}`,
+        "",
+        "👤 @defi_defiler @vlacomor",
+      ].filter(Boolean).join("\n");
 
     } else if (type === "session") {
       const { activeTime, pages, clicks, maxScroll, ts } = body;

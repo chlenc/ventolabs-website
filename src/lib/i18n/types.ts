@@ -100,6 +100,8 @@ export type Dictionary = {
   };
 
   hero: {
+    /** Offer pill rendered above the H1 — the free-pilot differentiator. */
+    badge: string;
     line1: string;
     line2: string;
     line3: string;
@@ -180,6 +182,42 @@ export type Dictionary = {
     title: string;
     description: string;
     cta: string;
+  };
+
+  /** Named client outcomes strip on the homepage (real engagements). */
+  clientProof: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    cta: string;
+  };
+
+  /** "Who you'll talk to" — founder block on the homepage. */
+  founder: {
+    eyebrow: string;
+    heading: string;
+    name: string;
+    role: string;
+    bio: string;
+    points: string[];
+    note: string;
+  };
+
+  /** Low-friction lead capture form (alternative to booking a call). */
+  leadForm: {
+    heading: string;
+    subheading: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+    submit: string;
+    sending: string;
+    success: string;
+    error: string;
+    privacyNote: string;
   };
 
   casesIntro: {
@@ -312,6 +350,8 @@ export type Dictionary = {
     privacy: string;
     rights: string;
     blurb: string;
+    /** Legal identity line — company entity, registration, operating base. */
+    legalLine: string;
     telegramLabel: string;
     linkedinLabel: string;
   };

@@ -12,7 +12,7 @@ export const es: Dictionary = {
     homeTitle: "Vento Labs | Agentes de IA y automatización para negocios",
     homeDescription:
       "Agentes de IA a medida que reducen costes operativos, automatizan flujos de trabajo y escalan tu negocio sin añadir personal. Configuración gratuita con cada proyecto.",
-    titleTemplate: "%s — Vento Labs | Agencia de automatización con IA",
+    titleTemplate: "%s | Vento Labs",
     casesTitle: "Casos de IA — Tres sistemas operativos de IA para e-commerce",
     casesDescription:
       "Tres direcciones para e-commerce: una fábrica de contenido que convierte SKUs en contenido de descubrimiento diario, un agente de proveedores que mantiene el catálogo al día y una capa de IA con permisos sobre 1C.",
@@ -51,16 +51,17 @@ export const es: Dictionary = {
   },
 
   hero: {
+    badge: "Piloto gratuito de 2 semanas — construimos tu primer agente de IA sin coste",
     line1: "Diseñamos y construimos",
     line2: "agentes de IA",
     line3: "que hacen crecer tu negocio",
     tags: [
-      "Reduce costes operativos un 20–40%",
-      "Sustituye 1–2 puestos a tiempo completo con IA",
+      "Autoalojado — tus datos se quedan en tu infraestructura",
+      "Construido sobre Claude Agent SDK y frameworks abiertos",
       "En producción en días, no meses",
     ],
     desc: "Agentes de IA y automatizaciones a medida que se encargan del trabajo repetitivo — para que tu equipo se enfoque en crecer en vez de en tareas rutinarias.",
-    sub: "Reserva una llamada — construiremos tu agente de IA gratis.",
+    sub: "Reserva una llamada de 30 minutos — definimos el caso de uso y construimos tu primer agente gratis.",
     ctaPrimary: "Reservar llamada gratis",
     ctaSecondary: "Nuestros servicios",
     scroll: "Desplazar",
@@ -125,7 +126,7 @@ export const es: Dictionary = {
       { title: "Sin entrenar modelos con tus datos", description: "Usamos acceso a nivel API únicamente. Tus datos de negocio nunca se usan para entrenar modelos de IA." },
       { title: "Transparencia total", description: "Todo funciona en tus propias cuentas. Ves cada coste, cada llamada a la API y cada registro de acceso." },
       { title: "Control de accesos desde el día uno", description: "Permisos por rol, rastros de auditoría y límites claros sobre lo que la IA puede y no puede hacer." },
-      { title: "Nada se filtra, nada se rompe", description: "Tu asistente opera dentro de barreras estrictas. No puede borrar, modificar ni compartir datos fuera de su ámbito definido." },
+      { title: "Guardrails estrictos por diseño", description: "Cada agente opera dentro de un ámbito explícito: qué puede leer, qué puede escribir y qué requiere siempre aprobación humana. Las acciones fuera de ámbito se bloquean, no solo se desaconsejan." },
     ],
   },
 
@@ -137,7 +138,7 @@ export const es: Dictionary = {
       { q: "¿Qué datos van a los modelos de IA externos?", a: "Solo los que tú permitas expresamente. Usamos acceso API de nivel business donde tus datos no se usan para entrenar modelos. También podemos configurar modelos autoalojados para el máximo control si tu cumplimiento normativo lo requiere." },
       { q: "¿Cuánto cuesta mensualmente?", a: "Los costes típicos de modelos de IA son de 20–200 $/mes según el uso. Te damos una estimación detallada antes de empezar y pagas a los proveedores directamente — sin márgenes nuestros." },
       { q: "¿Cuánto tarda la implementación?", a: "Un agente de IA básico se lanza en 3–7 días. Los flujos de automatización tardan 1–3 semanas. La configuración enterprise suele ser de 2–4 semanas. Siempre obtienes primero una solución funcionando." },
-      { q: "¿Podemos parar tras la configuración inicial?", a: "Por supuesto. La configuración inicial es tuya. Muchos clientes empiezan ahí y vuelven cuando están listos para automatizar más. No hay atadura ni compromiso a largo plazo." },
+      { q: "¿Podemos parar tras la configuración inicial?", a: "Sí — no hay atadura ni compromiso a largo plazo. El piloto gratuito sigue funcionando para que puedas seguir evaluándolo; si continúas con cualquier contrato de pago, todo lo que construimos se transfiere a ti, incluidos el código y las configuraciones. Muchos clientes empiezan pequeño y vuelven cuando están listos para automatizar más." },
       { q: "¿Trabajáis con nuestro sector?", a: "Nuestro enfoque funciona en todos los sectores — las herramientas de IA son flexibles y adaptamos la base de conocimiento, flujos y políticas a tus necesidades. Hemos trabajado con servicios profesionales, e-commerce, SaaS y consultoras." },
     ],
   },
@@ -161,14 +162,51 @@ export const es: Dictionary = {
     cta: "Reservar llamada gratis",
   },
 
+  clientProof: {
+    eyebrow: "Resultados de clientes",
+    heading: "Clientes reales. Resultados medidos.",
+    lead: "Tres proyectos, tres resultados medibles — admisión de pacientes, operaciones de marketplace, adopción de IA en toda la empresa.",
+    cta: "Leer los casos de éxito",
+  },
+
+  founder: {
+    eyebrow: "Con quién hablarás",
+    heading: "Sin equipo comercial. Hablas con la persona que construye tu agente.",
+    name: "Alexey Nagorny",
+    role: "Fundador e ingeniero principal, Vento Labs",
+    bio: "Alexey lleva más de 10 años construyendo software de producción y hoy diseña agentes de IA sobre Claude Agent SDK, LangGraph y n8n para empresas de e-commerce, SaaS y servicios profesionales. Cada llamada de descubrimiento, decisión de arquitectura y despliegue pasa por él — sin account managers de por medio.",
+    points: [
+      "Define y construye personalmente cada piloto",
+      "Responde en un día laborable — por email o Telegram",
+      "Vento Labs Pte. Ltd. — registrada en Singapur, trabajando en remoto desde Lisboa",
+    ],
+    note: "¿Prefieres async? Sáltate la llamada y escríbele directamente:",
+  },
+
+  leadForm: {
+    heading: "¿Aún no estás listo para una llamada?",
+    subheading: "Cuéntanos qué te gustaría automatizar — te responderemos con un plan concreto y una estimación en un día laborable.",
+    nameLabel: "Nombre",
+    namePlaceholder: "Tu nombre",
+    emailLabel: "Email de trabajo",
+    emailPlaceholder: "tu@empresa.com",
+    messageLabel: "¿Qué te gustaría automatizar?",
+    messagePlaceholder: "P. ej.: pasamos horas al día respondiendo las mismas preguntas de clientes…",
+    submit: "Enviar solicitud",
+    sending: "Enviando…",
+    success: "Gracias — hemos recibido tu solicitud. Te responderemos en un día laborable.",
+    error: "Algo ha salido mal. Escríbenos por email: alexey@ventolabs.com",
+    privacyNote: "Sin newsletters, sin spam — solo respondemos a tu solicitud.",
+  },
+
   casesIntro: {
     eyebrow: "Casos de éxito",
     heading: "Tres sistemas operativos de IA para e-commerce",
     lead: "Velocidad de contenido. Velocidad de catálogo. Velocidad interna.",
     description: "Tres direcciones de producto, una misma tesis: la IA elimina las demoras entre la señal y la acción. Entre un SKU y una publicación. Entre un mensaje de proveedor y un catálogo actualizado. Entre una petición de negocio y un cambio seguro dentro de tus sistemas.",
-    homeHeadingLead: "Negocios reales.",
-    homeHeadingEm: "Resultados",
-    homeHeadingTail: "reales.",
+    homeHeadingLead: "Tres sistemas de IA",
+    homeHeadingEm: "que construimos",
+    homeHeadingTail: "para operaciones.",
     homeCardMetrics: { contentFactory: "SKU → flujo", supplierAgent: "Caos → estructura", erpAgent: "Seguro por rol" },
   },
 
@@ -436,7 +474,7 @@ export const es: Dictionary = {
         "Tienes datos medibles sobre adopción de IA y ganancias de productividad",
       ],
       stakes: "Las empresas que adopten IA ahora serán 10 veces más productivas en 2 años. Las que esperen gastarán 10 veces más para ponerse al día. La ventana se cierra.",
-      socialProof: { company: "Odivo Pro", result: "La adopción de IA del equipo pasó del 12% al 89% en 60 días" },
+      socialProof: { company: "ASG Compute", result: "Adopción total de IA en 5 departamentos en menos de 4 semanas" },
       faq: [
         { q: "¿Y si nuestro equipo nunca ha usado IA?", a: "Es habitual y está perfecto. Diseñamos la formación desde cero, empezando por los fundamentos y avanzando hacia flujos avanzados al ritmo de tu equipo." },
         { q: "¿Es un taller único o algo continuo?", a: "Ambas opciones disponibles. Empezamos con una serie intensiva de talleres y luego ofrecemos seguimientos mensuales para sostener la adopción. Medimos a 30 y 60 días y ajustamos." },
@@ -661,7 +699,7 @@ export const es: Dictionary = {
           { metric: "De petición a ejecución (días)", before: "2,3", after: "0,2", change: "−91%" },
           { metric: "Incidentes por cambios incorrectos en datos (al mes)", before: "4–6", after: "0", change: "totalmente eliminados" },
         ],
-        source: "Fuente: analítica interna de Ventolabs en tres proyectos — manufactura, distribución y servicios profesionales (Q1–Q2 2025).",
+        source: "Fuente: analítica interna de Vento Labs en tres proyectos — manufactura, distribución y servicios profesionales (Q1–Q2 2025).",
       },
       guarantees: {
         eyebrow: "Seguridad y garantías",
@@ -671,14 +709,14 @@ export const es: Dictionary = {
           { title: "Aprobación manual en cada cambio", description: "En el flujo dev el desarrollador ve el plan y el diff antes de aplicar. En el flujo manager el agente nunca ejecuta una acción fuera del rol — ni siquiera aparece en la lista de disponibles." },
           { title: "Localización y privacidad de datos", description: "Claude se invoca en el tier business de la API: tus datos no se almacenan ni se usan para entrenar. Bajo petición, despliegue del modelo on-premise dentro de tu perímetro — con todas las funciones." },
           { title: "Auditoría completa", description: "El registro de peticiones y operaciones vive en tu infraestructura. Listo para entregar a auditores externos o reguladores en el formato que pidan." },
-          { title: "Compromiso de garantía", description: "Si 1C falla por un error del agente IA (con el procedimiento estándar de actualizaciones cumplido) — Ventolabs restaura el sistema sin coste adicional." },
+          { title: "Compromiso de garantía", description: "Si 1C falla por un error del agente IA (con el procedimiento estándar de actualizaciones cumplido) — Vento Labs restaura el sistema sin coste adicional." },
         ],
       },
       stakes: "El negocio quiere velocidad. IT quiere seguridad. Un chatbot no resuelve ninguna. Una capa de IA gestionada sobre 1C sí — con roles, aprobación y auditoría desde el primer día.",
       faq: [
         { q: "¿Qué riesgos hay para el sistema contable al introducir IA?", a: "Los riesgos están minimizados por arquitectura. El agente no tiene acceso directo al núcleo de configuración: todos los cambios pasan por extensiones aprobadas previamente por el desarrollador. En modo Manager el agente solo ejecuta acciones permitidas explícitamente por la política de roles; las violaciones de límites se bloquean a nivel de prompt." },
         { q: "¿Se usan nuestros datos para entrenar modelos?", a: "No. Trabajamos con la API de Claude en tier business, que garantiza que los datos no se almacenan ni se usan para reentreno. Para clientes con requisitos de seguridad reforzados está disponible una versión on-premise con despliegue dentro del perímetro de la empresa." },
-        { q: "¿Con qué configuraciones de 1C es compatible la solución?", a: "1C:Enterprise 8.3 y superior. Configuraciones estándar: Contabilidad, Trade, ERP, KA, UNF. Cualquier configuración a medida que soporte OData, servicios HTTP o web-services. Si faltan las interfaces necesarias — desarrollo por Ventolabs en 1–2 días." },
+        { q: "¿Con qué configuraciones de 1C es compatible la solución?", a: "1C:Enterprise 8.3 y superior. Configuraciones estándar: Contabilidad, Trade, ERP, KA, UNF. Cualquier configuración a medida que soporte OData, servicios HTTP o web-services. Si faltan las interfaces necesarias — desarrollo por Vento Labs en 1–2 días." },
         { q: "¿Cuál es el coste del licenciamiento productivo tras el piloto?", a: "Cuota fija desde 2.500 USD al mes: peticiones ilimitadas, hasta 5 usuarios responsables, todas las actualizaciones y soporte técnico. Costes de la API de Claude incluidos. Para empresas con más usuarios o requisitos específicos — precios a medida." },
         { q: "¿La automatización llevará a recortes en el equipo de desarrollo?", a: "Nuestra experiencia muestra el efecto contrario: los desarrolladores se liberan de la rutina y se enfocan en proyectos arquitectónicamente complejos e innovadores. En ninguno de nuestros proyectos ha habido recortes en IT." },
         { q: "¿Cómo se alinean las acciones con la política contable de la empresa?", a: "En la fase de definición de roles fijamos contigo escenarios permitidos y prohibidos. Cada petición posterior al agente se valida contra estas reglas. Adicionalmente puedes activar aprobación manual para cualquier acción por encima de un umbral definido — por importe, tipo de operación u otros criterios." },
@@ -687,7 +725,7 @@ export const es: Dictionary = {
         title: "1C Agent — Capa de IA gestionada sobre 1C en Claude",
         description: "IA con permisos sobre Claude acelera 1C: los desarrolladores entregan extensiones con revisión, los responsables actúan estrictamente dentro de su rol. Piloto gratuito de 30 minutos.",
       },
-      ctaPrimary: { label: "Llamar ahora", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
+      ctaPrimary: { label: "Reservar llamada gratis", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       trustStrip: [
         { value: "−70%", label: "tickets rutinarios de desarrollo" },
@@ -698,7 +736,7 @@ export const es: Dictionary = {
       leadMagnet: {
         badge: "Guía gratuita",
         heading: "Playbook de implementación de IA — práctica, no teoría",
-        description: "Una guía paso a paso para introducir IA en procesos contables y operativos sin caos: desde roles y permisos hasta el go-live del piloto y ROI. Basada en proyectos reales de Ventolabs en manufactura, distribución y servicios.",
+        description: "Una guía paso a paso para introducir IA en procesos contables y operativos sin caos: desde roles y permisos hasta el go-live del piloto y ROI. Basada en proyectos reales de Vento Labs en manufactura, distribución y servicios.",
         bullets: [
           "Qué procesos retornan en 2–4 semanas",
           "Cómo separar roles IA / desarrollador / responsable sin riesgos",
@@ -713,7 +751,7 @@ export const es: Dictionary = {
         badge: "Piloto gratuito · 14 días",
         heading: "Lanza una capa de IA gestionada sobre tu 1C — sin pago, sin compromiso",
         subtitle: "Setup en tu perímetro de pruebas en 30–45 minutos. Tras el piloto: KPIs y decisión clara. Sin letra pequeña.",
-        primary: { label: "Llamar ahora", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
+        primary: { label: "Reservar llamada gratis", href: "#book", kind: "arrow" },
         secondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       },
     },
@@ -946,7 +984,8 @@ export const es: Dictionary = {
     terms: "Condiciones",
     privacy: "Privacidad",
     rights: "Todos los derechos reservados.",
-    blurb: "Diseñamos y construimos agentes de IA que reducen costes, automatizan operaciones y ayudan a las empresas a escalar sin contratar más personal.",
+    blurb: "Vento Labs es una agencia de automatización con IA: diseñamos y construimos agentes de IA a medida que reducen costes, automatizan operaciones y ayudan a las empresas a escalar sin contratar más personal.",
+    legalLine: "Vento Labs Pte. Ltd. · UEN 202504485G · Registrada en Singapur · Trabajando en remoto desde Lisboa",
     telegramLabel: "Telegram",
     linkedinLabel: "LinkedIn",
   },
@@ -964,7 +1003,7 @@ export const es: Dictionary = {
   legal: {
     privacy: {
       title: "Política de privacidad",
-      updated: "Última actualización: abril de 2026",
+      updated: "Última actualización: julio de 2026",
       intro: "Esta política aplica a Vento Labs Pte. Ltd. (UEN 202504485G), una sociedad constituida en la República de Singapur.",
       sections: [
         {
@@ -978,7 +1017,7 @@ export const es: Dictionary = {
             ],
             "**Información recopilada automáticamente**",
             [
-              "Datos de uso del sitio (páginas vistas, tiempo en sitio, clics en llamadas a la acción) recogidos vía Google Analytics 4",
+              "Datos de uso del sitio (páginas vistas, tiempo en sitio, clics en llamadas a la acción) recogidos vía la analítica de PostHog y Google Tag Manager",
               "Dispositivo, navegador, ubicación aproximada y origen de referencia",
               "Si llegas desde una campaña publicitaria, la plataforma (como Google Ads o Meta) puede instalar cookies para medir si el anuncio llevó a reservar una llamada",
             ],
@@ -1044,9 +1083,9 @@ export const es: Dictionary = {
           content: [
             "Nuestro sitio usa cookies y tecnologías similares para entender cómo los visitantes usan el sitio y medir el rendimiento de nuestras campañas. En concreto:",
             [
-              "**Google Tag Manager y Google Analytics 4** — para medir páginas vistas, profundidad de scroll, clics en llamadas a la acción y reservas de llamadas para mejorar el sitio",
+              "**PostHog y Google Tag Manager** — para medir páginas vistas, profundidad de scroll, clics en llamadas a la acción y reservas de llamadas para mejorar el sitio",
               "**Cookies de medición publicitaria** — si llegas desde una campaña de pago (Google Ads, Meta, Yandex u otra), la plataforma correspondiente puede instalar una cookie para que el anunciante pueda medir si su campaña llevó a reservar una llamada",
-              "**Calendly** — instala sus propias cookies dentro de su widget cuando reservas una llamada",
+              "**Cal.com** — instala sus propias cookies dentro de su widget de reservas cuando reservas una llamada",
             ],
             "No usamos cookies para construir perfiles a la venta ni compartimos datos personales con data brokers. Puedes bloquear cookies analíticas y publicitarias con los ajustes de tu navegador o una extensión de privacidad en cualquier momento.",
           ],
@@ -1054,7 +1093,7 @@ export const es: Dictionary = {
         {
           heading: "8. Servicios de terceros",
           content: [
-            "Nuestro sitio se integra con Calendly para agendar citas y Google Tag Manager para analítica y medición de marketing. Al reservar una llamada, la política de privacidad de Calendly se aplica a los datos introducidos en su widget. Cuando Google Analytics o una plataforma publicitaria recopila datos de tu visita, se aplica la política de privacidad del proveedor correspondiente.",
+            "Nuestro sitio se integra con Cal.com para agendar citas, PostHog para analítica de producto y Google Tag Manager para medición de marketing. Al reservar una llamada, la política de privacidad de Cal.com se aplica a los datos que introduces en su widget de reservas. Cuando PostHog o una plataforma publicitaria recopila datos de tu visita, se aplica la política de privacidad del proveedor correspondiente.",
           ],
         },
         {

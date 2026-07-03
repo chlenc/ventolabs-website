@@ -26,7 +26,7 @@
   "tools": [
     {
       "name": "book_consultation",
-      "description": "Open Vento Labs' Calendly to book a 30-minute AI consultation with Alexey.",
+      "description": "Open Vento Labs' booking page (Cal.com) for a 30-minute AI consultation with Alexey.",
       "inputSchema": {
         "type": "object",
         "properties": {},

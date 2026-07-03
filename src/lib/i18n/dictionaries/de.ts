@@ -12,7 +12,7 @@ export const de: Dictionary = {
     homeTitle: "Vento Labs | KI-Agenten & Automatisierung für Unternehmen",
     homeDescription:
       "Maßgeschneiderte KI-Agenten, die Betriebskosten senken, Workflows automatisieren und Ihr Unternehmen skalieren — ohne zusätzliche Mitarbeiter. Kostenlose KI-Agent-Einrichtung in jedem Projekt.",
-    titleTemplate: "%s — Vento Labs | Agentur für KI-Automatisierung",
+    titleTemplate: "%s | Vento Labs",
     casesTitle: "KI-Case-Studies — drei KI-Betriebssysteme für E-Commerce",
     casesDescription:
       "Drei Produktrichtungen für E-Commerce: eine Content-Fabrik, die SKUs in täglichen Discovery-Content verwandelt, ein Supplier-Agent, der Kataloge aktuell hält, und eine permissionierte KI-Schicht über 1C.",
@@ -51,16 +51,17 @@ export const de: Dictionary = {
   },
 
   hero: {
+    badge: "Kostenloser 2-Wochen-Pilot — wir bauen Ihren ersten KI-Agenten gratis",
     line1: "Wir entwerfen & bauen",
     line2: "KI-Agenten",
     line3: "die Ihr Geschäft wachsen lassen",
     tags: [
-      "Betriebskosten um 20–40 % senken",
-      "1–2 Vollzeitstellen durch KI ersetzen",
+      "Self-hosted — Ihre Daten bleiben in Ihrer Infrastruktur",
+      "Gebaut auf Claude Agent SDK und offenen Frameworks",
       "Live in Tagen, nicht Monaten",
     ],
     desc: "Maßgeschneiderte KI-Agenten und Automatisierungen, die Ihre repetitive Arbeit übernehmen — damit Ihr Team sich auf Wachstum statt Routine konzentriert.",
-    sub: "Termin buchen — wir bauen Ihren KI-Agenten kostenlos.",
+    sub: "Buchen Sie ein 30-minütiges Gespräch — wir definieren den Use Case und bauen Ihren ersten Agenten kostenlos.",
     ctaPrimary: "Kostenlosen Termin buchen",
     ctaSecondary: "Unsere Leistungen",
     scroll: "Scrollen",
@@ -125,7 +126,7 @@ export const de: Dictionary = {
       { title: "Kein Training mit Ihren Daten", description: "Wir nutzen ausschließlich API-Zugang. Ihre Geschäftsdaten werden nie zum Training von KI-Modellen verwendet." },
       { title: "Volle Transparenz", description: "Alles läuft auf Ihren eigenen Konten. Sie sehen jeden Euro, jeden API-Call und jedes Zugriffslog." },
       { title: "Zugriffskontrollen ab Tag eins", description: "Rollenbasierte Berechtigungen, Audit-Logs und klare Grenzen, was die KI darf und was nicht." },
-      { title: "Nichts leakt, nichts bricht", description: "Ihr Assistent arbeitet innerhalb strenger Leitplanken. Er kann nichts außerhalb seines Zuständigkeitsbereichs löschen, ändern oder teilen." },
+      { title: "Strikte Leitplanken von Grund auf", description: "Jeder Agent arbeitet innerhalb eines explizit definierten Rahmens: was er lesen darf, was er schreiben darf und was immer eine menschliche Freigabe erfordert. Aktionen außerhalb dieses Rahmens werden blockiert — nicht bloß per Richtlinie untersagt." },
     ],
   },
 
@@ -137,7 +138,7 @@ export const de: Dictionary = {
       { q: "Welche Daten gehen an externe KI-Modelle?", a: "Nur die, die Sie ausdrücklich freigeben. Wir nutzen API-Zugänge auf Business-Tarif, bei denen Ihre Daten nicht zum Modelltraining verwendet werden. Bei strengen Compliance-Vorgaben richten wir auch self-hosted Modelle ein." },
       { q: "Was kostet der laufende Betrieb pro Monat?", a: "Typische KI-Modellkosten liegen bei 20–200 $/Monat je nach Nutzung. Wir geben Ihnen vor Beginn eine detaillierte Schätzung, und Sie zahlen Anbieter direkt — ohne Aufschlag von uns." },
       { q: "Wie lange dauert die Umsetzung?", a: "Ein einfacher KI-Agent ist in 3–7 Tagen live. Prozessautomatisierungen brauchen 1–3 Wochen. Enterprise-Workspace 2–4 Wochen. Sie bekommen immer zuerst eine funktionierende Lösung." },
-      { q: "Können wir nach der ersten Einrichtung aufhören?", a: "Natürlich. Die initiale Umsetzung gehört Ihnen. Viele Kunden starten so und kommen zurück, wenn sie mehr automatisieren wollen. Kein Lock-in, keine Langzeitbindung." },
+      { q: "Können wir nach der ersten Einrichtung aufhören?", a: "Ja — es gibt kein Lock-in und keine Langzeitbindung. Der kostenlose Pilot bleibt live, damit Sie ihn weiter evaluieren können; wenn Sie mit einem bezahlten Auftrag fortfahren, geht alles Gebaute an Sie über — einschließlich Code und Konfigurationen. Viele Kunden starten klein und kommen zurück, wenn sie mehr automatisieren wollen." },
       { q: "Arbeiten Sie mit unserer Branche?", a: "Unser Ansatz funktioniert branchenübergreifend — die KI-Tools sind flexibel, und wir passen Wissensbasis, Workflows und Richtlinien an Sie an. Wir haben mit professionellen Dienstleistern, E-Commerce, SaaS und Beratungen gearbeitet." },
     ],
   },
@@ -161,14 +162,51 @@ export const de: Dictionary = {
     cta: "Kostenlosen Termin buchen",
   },
 
+  clientProof: {
+    eyebrow: "Kundenergebnisse",
+    heading: "Echte Kunden. Messbare Ergebnisse.",
+    lead: "Drei Projekte, drei messbare Ergebnisse — Patientenaufnahme, Marktplatz-Operations, unternehmensweite KI-Adoption.",
+    cta: "Case Studies lesen",
+  },
+
+  founder: {
+    eyebrow: "Mit wem Sie sprechen",
+    heading: "Kein Sales-Team. Sie sprechen mit der Person, die Ihren Agenten baut.",
+    name: "Alexey Nagorny",
+    role: "Founder & Lead Engineer, Vento Labs",
+    bio: "Alexey baut seit über 10 Jahren Produktionssoftware und entwirft heute KI-Agenten auf Claude Agent SDK, LangGraph und n8n für Unternehmen in E-Commerce, SaaS und Professional Services. Jedes Entdeckungsgespräch, jede Architekturentscheidung und jedes Deployment läuft über ihn — ohne Account-Manager dazwischen.",
+    points: [
+      "Definiert und baut jeden Piloten persönlich",
+      "Antwortet innerhalb eines Werktags — per E-Mail oder Telegram",
+      "Vento Labs Pte. Ltd. — eingetragen in Singapur, remote tätig aus Lissabon",
+    ],
+    note: "Lieber asynchron? Überspringen Sie den Call und schreiben Sie direkt:",
+  },
+
+  leadForm: {
+    heading: "Noch nicht bereit für ein Gespräch?",
+    subheading: "Sagen Sie uns, was Sie automatisieren möchten — wir antworten innerhalb eines Werktags mit einem konkreten Plan und einer Schätzung.",
+    nameLabel: "Name",
+    namePlaceholder: "Ihr Name",
+    emailLabel: "Geschäftliche E-Mail",
+    emailPlaceholder: "name@firma.de",
+    messageLabel: "Was möchten Sie automatisieren?",
+    messagePlaceholder: "Z. B.: Wir verbringen täglich Stunden damit, dieselben Kundenfragen zu beantworten…",
+    submit: "Anfrage senden",
+    sending: "Wird gesendet…",
+    success: "Danke — Ihre Anfrage ist eingegangen. Wir antworten innerhalb eines Werktags.",
+    error: "Etwas ist schiefgelaufen. Schreiben Sie uns stattdessen: alexey@ventolabs.com",
+    privacyNote: "Keine Newsletter, kein Spam — wir antworten nur auf Ihre Anfrage.",
+  },
+
   casesIntro: {
     eyebrow: "Case Studies",
     heading: "Drei KI-Betriebssysteme für E-Commerce",
     lead: "Content-Tempo. Katalog-Tempo. Internes Tempo.",
     description: "Drei Produktrichtungen, eine These: KI beseitigt die Verzögerungen zwischen Signal und Handlung. Zwischen einem SKU und einem veröffentlichten Post. Zwischen einer Lieferanten-Nachricht und einem aktuellen Katalog. Zwischen einer Business-Anfrage und einer sicheren Änderung in Ihren Systemen.",
-    homeHeadingLead: "Echte Unternehmen.",
-    homeHeadingEm: "Echte",
-    homeHeadingTail: "Ergebnisse.",
+    homeHeadingLead: "Drei KI-Systeme,",
+    homeHeadingEm: "die wir bauen",
+    homeHeadingTail: "— für Ihre Operations.",
     homeCardMetrics: { contentFactory: "SKU → Flow", supplierAgent: "Chaos → Struktur", erpAgent: "Sicher nach Rolle" },
   },
 
@@ -436,7 +474,7 @@ export const de: Dictionary = {
         "Sie haben messbare Daten zu KI-Adoption und Produktivitätsgewinnen",
       ],
       stakes: "Unternehmen, die KI jetzt einführen, werden in 2 Jahren 10× produktiver sein. Wer wartet, wird 10× mehr ausgeben, um aufzuholen. Das Zeitfenster schließt sich.",
-      socialProof: { company: "Odivo Pro", result: "KI-Adoption des Teams stieg in 60 Tagen von 12 % auf 89 %" },
+      socialProof: { company: "ASG Compute", result: "Vollständige KI-Adoption in 5 Abteilungen in unter 4 Wochen" },
       faq: [
         { q: "Was, wenn unser Team noch nie KI genutzt hat?", a: "Das ist häufig und absolut in Ordnung. Wir konzipieren das Training von Grund auf, starten mit den Grundlagen und arbeiten uns im Tempo Ihres Teams zu fortgeschrittenen Workflows vor." },
         { q: "Ist das ein einmaliger Workshop oder fortlaufend?", a: "Beides möglich. Wir starten mit einer intensiven Workshop-Reihe und bieten dann monatliche Check-ins zur Verankerung. Wir messen nach 30 und 60 Tagen und justieren." },
@@ -661,7 +699,7 @@ export const de: Dictionary = {
           { metric: "Vom Manager-Request bis zur Ausführung (Tage)", before: "2,3", after: "0,2", change: "−91%" },
           { metric: "Vorfälle durch falsche Datenänderungen (pro Monat)", before: "4–6", after: "0", change: "vollständig eliminiert" },
         ],
-        source: "Quelle: Ventolabs-interne Auswertung über drei Projekte — Fertigung, Distribution und Professional Services (Q1–Q2 2025).",
+        source: "Quelle: Interne Auswertung von Vento Labs über drei Projekte — Fertigung, Distribution und Professional Services (Q1–Q2 2025).",
       },
       guarantees: {
         eyebrow: "Sicherheit & Garantien",
@@ -671,14 +709,14 @@ export const de: Dictionary = {
           { title: "Manuelle Freigabe bei jeder Änderung", description: "Im Dev-Flow sieht der Entwickler Plan und Diff vor Anwendung. Im Manager-Flow führt der Agent niemals eine Aktion außerhalb der Rolle aus — sie erscheint gar nicht erst in der Liste der Möglichkeiten." },
           { title: "Datenlokalisierung und Privatsphäre", description: "Claude wird im Business-Tier der API aufgerufen: Ihre Daten werden weder gespeichert noch zum Training verwendet. Auf Wunsch On-Premise-Deployment des Modells in Ihrem Perimeter — bei vollem Funktionsumfang." },
           { title: "Vollständiger Audit-Trail", description: "Das Journal von Anfragen und Operationen bleibt in Ihrer Infrastruktur. Bereit zur Übergabe an externe Auditoren oder Regulatoren in jedem geforderten Format." },
-          { title: "Garantieleistungen", description: "Wenn 1C aufgrund eines KI-Agent-Fehlers gestört wird (bei Einhaltung des regulären Update-Vorgehens) — stellt Ventolabs das System ohne zusätzliche Kosten wieder her." },
+          { title: "Garantieleistungen", description: "Wenn 1C aufgrund eines KI-Agent-Fehlers gestört wird (bei Einhaltung des regulären Update-Vorgehens) — stellt Vento Labs das System ohne zusätzliche Kosten wieder her." },
         ],
       },
       stakes: "Das Geschäft will Tempo. Die IT will Sicherheit. Ein Chatbot löst nichts davon. Eine verwaltete KI-Schicht über 1C schon — mit Rollen, Freigabe und Audit ab Tag eins.",
       faq: [
         { q: "Welche Risiken bestehen für das Buchhaltungssystem durch die KI?", a: "Risiken werden architektonisch minimiert. Der Agent hat keinen direkten Zugriff auf den Konfigurationskern: alle Änderungen laufen über vom Entwickler vorab freigegebene Erweiterungen. Im Manager-Modus führt der Agent ausschließlich Aktionen aus, die die Rollenrichtlinie ausdrücklich erlaubt; Grenzverletzungen werden auf Prompt-Ebene blockiert." },
         { q: "Werden unsere Daten zum Training von Modellen verwendet?", a: "Nein. Wir nutzen Claude im Business-Tier der API, der garantiert, dass Daten weder gespeichert noch zum Training verwendet werden. Für Kunden mit erhöhten Sicherheitsanforderungen steht eine On-Premise-Variante mit Deployment innerhalb des Unternehmensperimeters bereit." },
-        { q: "Mit welchen 1C-Konfigurationen ist die Lösung kompatibel?", a: "1C:Enterprise 8.3 und höher. Standardkonfigurationen: Accounting, Trade Management, ERP, KA, UNF. Beliebige Custom-Konfigurationen, die OData, HTTP-Services oder Web-Services unterstützen. Falls die nötigen Schnittstellen fehlen — Anpassung durch Ventolabs in 1–2 Tagen." },
+        { q: "Mit welchen 1C-Konfigurationen ist die Lösung kompatibel?", a: "1C:Enterprise 8.3 und höher. Standardkonfigurationen: Accounting, Trade Management, ERP, KA, UNF. Beliebige Custom-Konfigurationen, die OData, HTTP-Services oder Web-Services unterstützen. Falls die nötigen Schnittstellen fehlen — Anpassung durch Vento Labs in 1–2 Tagen." },
         { q: "Was kostet die Produktivlizenzierung nach dem Piloten?", a: "Feste Abogebühr ab 2.500 USD pro Monat: unbegrenzte Anfragen, bis zu 5 Manager-Nutzer, alle Updates und technischer Support. Claude-API-Kosten inklusive. Für Unternehmen mit mehr Nutzern oder besonderen Anforderungen — individuelle Preisgestaltung." },
         { q: "Führt die Automatisierung zu Stellenabbau im Entwicklerteam?", a: "Die Praxis zeigt das Gegenteil: Entwickler werden von Routine entlastet und konzentrieren sich auf architektonisch anspruchsvolle, innovative Projekte. In keinem unserer Projekte gab es IT-Stellenabbau." },
         { q: "Wie werden Aktionen mit unserer Rechnungslegungspolitik abgestimmt?", a: "In der Phase Rollendefinition fixieren wir gemeinsam erlaubte Szenarien und Verbote. Jede nachfolgende Anfrage an den Agenten wird gegen diese Regeln geprüft. Zusätzlich können Sie eine manuelle Freigabe für Aktionen oberhalb einer definierten Schwelle aktivieren — nach Betrag, Operationstyp oder anderen Kriterien." },
@@ -687,7 +725,7 @@ export const de: Dictionary = {
         title: "1C Agent — Verwaltete KI-Schicht über 1C auf Claude",
         description: "Permission-based AI auf Claude beschleunigt 1C: Entwickler liefern Erweiterungen über Review, Manager handeln streng innerhalb ihrer Rolle. Kostenfreier 30-Minuten-Pilot.",
       },
-      ctaPrimary: { label: "Jetzt anrufen", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
+      ctaPrimary: { label: "Kostenlosen Termin buchen", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Per E-Mail schreiben", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       trustStrip: [
         { value: "−70%", label: "Routine-Tickets in der Entwicklung" },
@@ -698,7 +736,7 @@ export const de: Dictionary = {
       leadMagnet: {
         badge: "Kostenfreier Leitfaden",
         heading: "KI-Einführungs-Playbook — Praxis statt Theorie",
-        description: "Schritt für Schritt: KI in Buchhaltungs- und operative Prozesse einführen — ohne Chaos. Von Rollen und Rechten bis zum Pilot-Go-Live und ROI. Basierend auf realen Ventolabs-Projekten in Fertigung, Distribution und Services.",
+        description: "Schritt für Schritt: KI in Buchhaltungs- und operative Prozesse einführen — ohne Chaos. Von Rollen und Rechten bis zum Pilot-Go-Live und ROI. Basierend auf realen Vento Labs-Projekten in Fertigung, Distribution und Services.",
         bullets: [
           "Welche Prozesse sich in 2–4 Wochen rechnen",
           "Wie man die Rollen KI / Entwickler / Manager risikofrei trennt",
@@ -713,7 +751,7 @@ export const de: Dictionary = {
         badge: "Kostenfreier 14-Tage-Pilot",
         heading: "Verwaltete KI-Schicht über Ihr 1C — ohne Zahlung, ohne Verpflichtung",
         subtitle: "Setup in Ihrem Test-Perimeter in 30–45 Minuten. Nach dem Pilot: KPIs und klare Go/No-go-Entscheidung. Keine versteckten Bedingungen.",
-        primary: { label: "Jetzt anrufen", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
+        primary: { label: "Kostenlosen Termin buchen", href: "#book", kind: "arrow" },
         secondary: { label: "Per E-Mail schreiben", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       },
     },
@@ -946,7 +984,8 @@ export const de: Dictionary = {
     terms: "Nutzungsbedingungen",
     privacy: "Datenschutz",
     rights: "Alle Rechte vorbehalten.",
-    blurb: "Wir entwerfen und bauen KI-Agenten, die Kosten senken, Abläufe automatisieren und Unternehmen beim Skalieren helfen — ohne zusätzliche Mitarbeiter.",
+    blurb: "Vento Labs ist eine Agentur für KI-Automatisierung: Wir entwerfen und bauen maßgeschneiderte KI-Agenten, die Kosten senken, Abläufe automatisieren und Unternehmen beim Skalieren helfen — ohne zusätzliche Mitarbeiter.",
+    legalLine: "Vento Labs Pte. Ltd. · UEN 202504485G · Eingetragen in Singapur · Remote tätig aus Lissabon",
     telegramLabel: "Telegram",
     linkedinLabel: "LinkedIn",
   },
@@ -964,7 +1003,7 @@ export const de: Dictionary = {
   legal: {
     privacy: {
       title: "Datenschutzerklärung",
-      updated: "Letzte Aktualisierung: April 2026",
+      updated: "Letzte Aktualisierung: Juli 2026",
       intro: "Diese Erklärung gilt für Vento Labs Pte. Ltd. (UEN 202504485G), einem in der Republik Singapur eingetragenen Unternehmen.",
       sections: [
         {
@@ -978,7 +1017,7 @@ export const de: Dictionary = {
             ],
             "**Automatisch erhobene Informationen**",
             [
-              "Website-Nutzungsdaten (besuchte Seiten, Verweildauer, Klicks auf CTAs) via Google Analytics 4",
+              "Website-Nutzungsdaten (besuchte Seiten, Verweildauer, Klicks auf CTAs) via PostHog Analytics und Google Tag Manager",
               "Gerät, Browser, ungefährer Standort und Herkunftsquelle",
               "Kommen Sie über eine Werbekampagne, kann die Plattform (z. B. Google Ads oder Meta) Cookies setzen, um zu messen, ob die Anzeige zur Terminbuchung führte",
             ],
@@ -1044,9 +1083,9 @@ export const de: Dictionary = {
           content: [
             "Unsere Website nutzt Cookies und ähnliche Technologien, um zu verstehen, wie Besucher die Seite nutzen, und um die Performance unserer Marketingkampagnen zu messen. Im Einzelnen:",
             [
-              "**Google Tag Manager & Google Analytics 4** — zur Messung von Seitenaufrufen, Scrolltiefe, CTA-Klicks und Terminbuchungen zur Optimierung der Seite",
+              "**PostHog & Google Tag Manager** — zur Messung von Seitenaufrufen, Scrolltiefe, CTA-Klicks und Terminbuchungen zur Optimierung der Seite",
               "**Werbe-Messcookies** — kommen Sie aus einer bezahlten Kampagne (Google Ads, Meta, Yandex o. ä.), kann die jeweilige Plattform ein Cookie setzen, damit der Werbetreibende messen kann, ob seine Kampagne zu einer Terminbuchung führte",
-              "**Calendly** — setzt eigene Cookies in seinem Buchungswidget",
+              "**Cal.com** — setzt eigene Cookies in seinem Buchungswidget, wenn Sie einen Termin buchen",
             ],
             "Wir nutzen Cookies nicht zur Profilerstellung zum Verkauf und teilen keine personenbezogenen Daten mit Datenbrokern. Analyse- und Werbecookies können Sie jederzeit in den Browsereinstellungen oder per Privacy-Erweiterung blockieren.",
           ],
@@ -1054,7 +1093,7 @@ export const de: Dictionary = {
         {
           heading: "8. Dienste Dritter",
           content: [
-            "Unsere Website integriert Calendly zur Terminplanung und Google Tag Manager für Analyse und Marketingmessung. Bei Terminbuchung gilt die Datenschutzerklärung von Calendly für die im Widget eingegebenen Daten. Wenn Google Analytics oder eine Werbeplattform Daten zu Ihrem Besuch erhebt, gilt jeweils die Datenschutzerklärung des Anbieters.",
+            "Unsere Website integriert Cal.com zur Terminplanung, PostHog für Produktanalytics und Google Tag Manager für die Marketingmessung. Bei Terminbuchung gilt die Datenschutzerklärung von Cal.com für die im Widget eingegebenen Daten. Wenn PostHog oder eine Werbeplattform Daten zu Ihrem Besuch erhebt, gilt jeweils die Datenschutzerklärung des Anbieters.",
           ],
         },
         {

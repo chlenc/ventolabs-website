@@ -4,6 +4,7 @@ import { servicesSlugs, type ServiceSlug } from "@/lib/services";
 import { ServiceWrapper } from "@/components/pages/ServiceWrapper";
 import { buildPageMetadata } from "@/lib/seo";
 import { getDictionary } from "@/lib/i18n";
+import { JsonLd, servicePageJsonLd } from "@/lib/jsonld";
 
 type Params = { slug: string };
 
@@ -28,5 +29,10 @@ export function generateMetadata({ params }: { params: Promise<Params> }): Promi
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   if (!(servicesSlugs as readonly string[]).includes(slug)) notFound();
-  return <ServiceWrapper slug={slug} />;
+  return (
+    <>
+      <JsonLd data={servicePageJsonLd({ slug, locale: "en", kind: "service" })} />
+      <ServiceWrapper slug={slug} />
+    </>
+  );
 }

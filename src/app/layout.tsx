@@ -106,15 +106,29 @@ export default function RootLayout({
               name: "Vento Labs Pte. Ltd.",
               alternateName: "Vento Labs",
               url: site.url,
+              logo: `${site.url}/favicon.svg`,
+              image: `${site.url}/opengraph-image`,
               email: site.email,
               telephone: site.phoneDisplay,
               description: dict.seo.homeDescription,
               foundingDate: "2025-02-03",
               legalName: "Vento Labs Pte. Ltd.",
-              areaServed: [
-                { "@type": "Country", name: "United States" },
-                { "@type": "Country", name: "Singapore" },
-              ],
+              identifier: {
+                "@type": "PropertyValue",
+                propertyID: "UEN",
+                value: "202504485G",
+              },
+              founder: {
+                "@type": "Person",
+                name: "Alexey Nagorny",
+                jobTitle: "Founder & Lead Engineer",
+                email: site.email,
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "SG",
+              },
+              areaServed: "Worldwide",
               serviceType: [
                 "AI Agent Development",
                 "AI Process Automation",
