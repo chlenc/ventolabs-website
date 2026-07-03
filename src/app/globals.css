@@ -148,19 +148,13 @@ em, .italic {
   align-items: start;
   max-width: 880px;
 }
-.founder__mark {
-  width: 84px;
-  height: 84px;
+.founder__photo {
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
-  background: var(--forest);
-  color: var(--cream);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-serif);
-  font-size: 1.7rem;
-  letter-spacing: 0.02em;
+  object-fit: cover;
   flex-shrink: 0;
+  border: 1px solid var(--line-strong);
 }
 .founder__name { font-family: var(--font-serif); font-size: 1.4rem; letter-spacing: -0.02em; }
 .founder__role {

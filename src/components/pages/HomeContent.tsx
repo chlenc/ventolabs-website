@@ -390,7 +390,15 @@ export function HomeContent() {
           </FadeUp>
           <FadeUp delay={120}>
             <div className="founder">
-              <div className="founder__mark" aria-hidden="true">AN</div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="founder__photo"
+                src={asset("/images/founder-alex.jpg")}
+                alt={dict.founder.name}
+                width={96}
+                height={96}
+                loading="lazy"
+              />
               <div>
                 <p className="founder__name">{dict.founder.name}</p>
                 <p className="founder__role">{dict.founder.role}</p>
