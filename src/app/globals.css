@@ -1444,7 +1444,8 @@ em, .italic {
 .lead-form__submit:hover { background: var(--forest-soft); }
 .lead-form__submit:disabled { opacity: 0.6; cursor: default; }
 .lead-form__note { font-size: 0.78rem; color: var(--muted); max-width: 24ch; }
-.lead-form__error { font-size: 0.85rem; color: #a33; }
+.lead-form__error { font-size: 0.85rem; color: #a33; display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+.lead-form__mailto { display: inline-block; text-decoration: none; }
 .lead-form--done { justify-content: center; min-height: 12rem; }
 .lead-form__success { font-family: var(--font-serif); font-size: 1.3rem; text-align: center; }
 .cta__image {

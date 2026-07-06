@@ -195,7 +195,8 @@ export const de: Dictionary = {
     submit: "Anfrage senden",
     sending: "Wird gesendet…",
     success: "Danke — Ihre Anfrage ist eingegangen. Wir antworten innerhalb eines Werktags.",
-    error: "Etwas ist schiefgelaufen. Schreiben Sie uns stattdessen: alexey@ventolabs.com",
+    error: "Automatisches Senden hat nicht geklappt. Klicken Sie unten, um es stattdessen per E-Mail zu senden — alles ist bereits ausgefüllt.",
+    mailtoCta: "Als E-Mail senden",
     privacyNote: "Keine Newsletter, kein Spam — wir antworten nur auf Ihre Anfrage.",
   },
 

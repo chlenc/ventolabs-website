@@ -217,6 +217,8 @@ export type Dictionary = {
     sending: string;
     success: string;
     error: string;
+    /** Label for the pre-filled mailto fallback shown when the POST fails. */
+    mailtoCta: string;
     privacyNote: string;
   };
 

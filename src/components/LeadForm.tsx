@@ -4,20 +4,32 @@ import { useState } from "react";
 import { useLocale } from "./LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
 import { notifyLead } from "@/lib/notify";
+import { site } from "@/lib/site";
 import { trackCtaClick } from "@/lib/analytics";
 
 type Status = "idle" | "sending" | "success" | "error";
+type Lead = { name: string; email: string; message: string };
+
+/** Pre-filled mailto so the fallback path is one click, not a copy-paste. */
+function mailtoHref(lead: Lead | null): string {
+  if (!lead) return `mailto:${site.email}`;
+  const subject = `Vento Labs — request from ${lead.name}`;
+  const body = `Name: ${lead.name}\nEmail: ${lead.email}\n\n${lead.message}`;
+  return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 /**
- * Low-friction lead capture: name + work email + free-text ask, posted to the
- * existing Supabase notify function. The fallback conversion path for visitors
- * who aren't ready to book a 30-minute call.
+ * Low-friction lead capture: name + work email + free-text ask. Posts to the
+ * notify function; if that isn't reachable (or the lead handler isn't deployed
+ * yet), it falls back to a one-click pre-filled email so a lead is never lost.
+ * The fallback conversion path for visitors who aren't ready to book a call.
  */
 export function LeadForm({ location = "lead_form" }: { location?: string }) {
   const locale = useLocale();
   const dict = getDictionary(locale);
   const t = dict.leadForm;
   const [status, setStatus] = useState<Status>("idle");
+  const [last, setLast] = useState<Lead | null>(null);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -29,11 +41,16 @@ export function LeadForm({ location = "lead_form" }: { location?: string }) {
     const message = String(data.get("message") ?? "").trim();
     if (!name || !email || !message) return;
 
+    const lead: Lead = { name, email, message };
+    setLast(lead);
     setStatus("sending");
     trackCtaClick({ label: t.submit, location });
-    const ok = await notifyLead({ name, email, message });
+    const ok = await notifyLead(lead);
     setStatus(ok ? "success" : "error");
-    if (ok) form.reset();
+    if (ok) {
+      form.reset();
+      setLast(null);
+    }
   }
 
   if (status === "success") {
@@ -89,9 +106,16 @@ export function LeadForm({ location = "lead_form" }: { location?: string }) {
         <span className="lead-form__note">{t.privacyNote}</span>
       </div>
       {status === "error" && (
-        <p className="lead-form__error" role="alert">
-          {t.error}
-        </p>
+        <div className="lead-form__error" role="alert">
+          <p>{t.error}</p>
+          <a
+            className="lead-form__submit lead-form__mailto"
+            href={mailtoHref(last)}
+            onClick={() => trackCtaClick({ label: t.mailtoCta, location: `${location}_mailto` })}
+          >
+            {t.mailtoCta} →
+          </a>
+        </div>
       )}
     </form>
   );

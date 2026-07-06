@@ -195,7 +195,8 @@ export const en: Dictionary = {
     submit: "Send request",
     sending: "Sending…",
     success: "Thanks — your request is in. We'll reply within one business day.",
-    error: "Something went wrong. Email us instead: alexey@ventolabs.com",
+    error: "We couldn't submit that automatically. Click below to send it as an email instead — everything's already filled in.",
+    mailtoCta: "Send as email",
     privacyNote: "No newsletters, no spam — we only reply to your request.",
   },
 

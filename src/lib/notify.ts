@@ -65,20 +65,27 @@ export async function notifyLead(data: { name: string; email: string; message: s
     ts: new Date().toISOString(),
   };
 
+  // Fail fast (6s) so a paused/unreachable backend never leaves the form
+  // stuck in "Sending…" — the caller falls back to the pre-filled mailto.
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 6000);
   try {
     const res = await fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
+      signal: ctrl.signal,
     });
     if (!res.ok) return false;
     // The function answers 200 {ok:true, note:"unhandled event"} for payload
     // types it doesn't know. Treat that as failure so the form falls back to
     // the direct-email path instead of dropping the lead silently.
-    const data = await res.json().catch(() => null);
-    return data?.ok === true && !data?.note;
+    const body = await res.json().catch(() => null);
+    return body?.ok === true && !body?.note;
   } catch {
     return false;
+  } finally {
+    clearTimeout(timer);
   }
 }
 

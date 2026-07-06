@@ -195,7 +195,8 @@ export const es: Dictionary = {
     submit: "Enviar solicitud",
     sending: "Enviando…",
     success: "Gracias — hemos recibido tu solicitud. Te responderemos en un día laborable.",
-    error: "Algo ha salido mal. Escríbenos por email: alexey@ventolabs.com",
+    error: "No hemos podido enviarlo automáticamente. Pulsa abajo para enviarlo por email — ya está todo rellenado.",
+    mailtoCta: "Enviar por email",
     privacyNote: "Sin newsletters, sin spam — solo respondemos a tu solicitud.",
   },
 
