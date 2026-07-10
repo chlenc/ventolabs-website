@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { caseSlugs } from "@/lib/cases";
 import { CaseWrapper } from "@/components/pages/CaseWrapper";
 import { buildPageMetadata } from "@/lib/seo";
+import { JsonLd, servicePageJsonLd } from "@/lib/jsonld";
 
 type Params = { slug: string };
 
@@ -25,5 +26,10 @@ export function generateMetadata({ params }: { params: Promise<Params> }): Promi
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   if (!(caseSlugs as readonly string[]).includes(slug)) notFound();
-  return <CaseWrapper slug={slug} />;
+  return (
+    <>
+      <JsonLd data={servicePageJsonLd({ slug, locale: "en", kind: "case" })} />
+      <CaseWrapper slug={slug} />
+    </>
+  );
 }

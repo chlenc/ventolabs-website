@@ -52,7 +52,9 @@ export function buildPageMetadata({ locale, path, kind, serviceSlug, caseSlug }:
   }
 
   return {
-    title,
+    // Home titles are already fully branded ("Vento Labs | …") — bypass the
+    // "%s | Vento Labs" template so localized homepages aren't double-branded.
+    title: kind === "home" ? { absolute: title } : title,
     description,
     alternates: {
       canonical: url,

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useLocale } from "./LocaleProvider";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import { openCalendly } from "./CalendlyPopup";
-import { isGiftPopupOpen } from "./GiftPopup";
+import { hasAutoPopupFiredThisSession, isGiftPopupOpen, markAutoPopupFired } from "./GiftPopup";
 import { OfferDialog } from "./OfferDialog";
 import { href, isFocusFunnelPath } from "@/lib/utils";
 import { trackCtaClick, trackPopupShown } from "@/lib/analytics";
@@ -79,6 +79,8 @@ export function ExitIntentPopup() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    // Never arm on focus-funnel pages — see PilotOfferPopup for rationale.
+    if (focusFunnel) return;
     if (sessionStorage.getItem(STORAGE_KEY)) return;
 
     let armed = false;
@@ -87,8 +89,10 @@ export function ExitIntentPopup() {
     const doFire = () => {
       if (firedAlready) return;
       if (isGiftPopupOpen()) return; // another popup is on screen — skip
+      if (hasAutoPopupFiredThisSession()) return; // one auto-popup per session
       firedAlready = true;
       sessionStorage.setItem(STORAGE_KEY, "1");
+      markAutoPopupFired();
       fire();
       teardown();
     };
@@ -138,7 +142,7 @@ export function ExitIntentPopup() {
       clearTimeout(armDelay);
       teardown();
     };
-  }, [fire]);
+  }, [fire, focusFunnel]);
 
   const close = useCallback(() => setOpen(false), []);
 

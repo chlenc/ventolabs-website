@@ -21,13 +21,13 @@ type SitemapPage = {
   locales?: readonly Locale[];
 };
 
-const RU_ONLY_CASE_SLUGS: readonly string[] = ["bankruptcy-agent"];
-
+// Note: /cases/bankruptcy-agent targets RU trustees, but its EN/DE/ES copies
+// are live and indexable, so the sitemap lists every locale — a RU-only
+// sitemap entry would contradict the pages' own hreflang annotations.
 const caseSitemapEntries: SitemapPage[] = caseLandingSlugs.map((slug) => ({
   path: `/cases/${slug}`,
   priority: 0.85,
   changeFrequency: "monthly" as const,
-  locales: RU_ONLY_CASE_SLUGS.includes(slug) ? (["ru"] as const) : undefined,
 }));
 
 const pages: SitemapPage[] = [
@@ -53,12 +53,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency,
         priority,
         alternates: {
-          languages: Object.fromEntries(
-            targetLocales.map((l) => [
-              l,
-              `${site.url}${localizedPath(path, l)}`.replace(/\/?$/, "/"),
-            ]),
-          ),
+          languages: {
+            ...Object.fromEntries(
+              targetLocales.map((l) => [
+                l,
+                `${site.url}${localizedPath(path, l)}`.replace(/\/?$/, "/"),
+              ]),
+            ),
+            "x-default": `${site.url}${localizedPath(path, "en")}`.replace(/\/?$/, "/"),
+          },
         },
       };
     });

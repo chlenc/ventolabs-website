@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { openCalendly } from "@/components/CalendlyPopup";
-import { site } from "@/lib/site";
+import { calendly, site } from "@/lib/site";
 
 type Tool = {
   name: string;
@@ -30,11 +30,11 @@ export function WebMCP() {
         {
           name: "book_consultation",
           description:
-            "Open Vento Labs' Calendly to book a 30-minute AI consultation with Alexey.",
+            "Open Vento Labs' booking page for a 30-minute AI consultation with Alexey.",
           inputSchema: { type: "object", properties: {}, additionalProperties: false },
           execute: async () => {
             await openCalendly("webmcp");
-            return { ok: true, url: "https://calendly.com/alexey-ventolabs/30min" };
+            return { ok: true, url: calendly.url };
           },
         },
         {

@@ -27,7 +27,8 @@ export const bankruptcyAgentContact = {
 };
 
 export const calendly = {
-  url: "https://calendly.com/alexey-ventolabs/30min",
+  /** Direct booking page — fallback when the embed can't load. */
+  url: "https://cal.com/ventolabs/30min",
   calLink: "ventolabs/30min",
   namespace: "30min",
 };

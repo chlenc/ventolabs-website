@@ -24,7 +24,7 @@ export function OfferDialog({
   termsHref,
   termsLinkLabel,
   primaryLabel,
-  imageSrc = "/images/ai-assistant-box.png",
+  imageSrc = "/images/service-card-ai-assistant.svg",
   imageAlt = "",
 }: {
   open: boolean;

@@ -1,0 +1,44 @@
+# Vento Labs
+
+> Vento Labs is an AI automation agency (Vento Labs Pte. Ltd., registered in Singapore, UEN 202504485G, working remotely from Lisbon). We design and build custom AI agents that cut operating costs, automate workflows, and scale businesses without adding headcount. Every engagement starts with a free 2-week pilot: we build the first AI agent at no cost.
+
+Key facts:
+- Founded: 2025. Founder & lead engineer: Alexey Nagorny (alexey@ventolabs.com).
+- Stack: Claude Agent SDK, LangGraph, CrewAI, n8n, Make.com, MCP servers. Self-hosted deployments — client data stays in the client's infrastructure.
+- Typical timelines: basic AI agent in 3–7 days; process automation in 1–3 weeks; company-wide AI platform in 2–4 weeks.
+- Typical running costs: AI model usage $20–200/month, paid directly to providers with no markup.
+- AI Platform pricing: Pilot from $3,000 setup + $500/month; Scale from $8,000 setup + $2,000/month; Enterprise custom.
+- Booking: https://cal.com/ventolabs/30min (30-minute discovery call, free).
+- Languages: English (default), German (/de/), Spanish (/es/), Russian (/ru/).
+
+## Services
+
+- [AI Agents](https://ventolabs.com/services/ai-assistant/): Custom self-hosted AI agents on Claude Agent SDK, LangGraph, CrewAI. Telegram, WhatsApp, LinkedIn, email integration; computer-use; any LLM backend including local models.
+- [AI Automation](https://ventolabs.com/services/ai-automation/): Intelligent workflow automation with n8n and Make.com — lead qualification, data sync, reporting, CRM/email/chat integrations.
+- [AI Consulting & Training](https://ventolabs.com/services/ai-training/): Team enablement — Claude Code, Cursor, MCP servers setup; hands-on workshops; adoption measured at 30 and 60 days.
+- [AI Platform](https://ventolabs.com/services/ai-workspace/): Company-wide AI operating system — dedicated agents per team, Knowledge Vault, role-based access, usage/ROI reporting.
+
+## Client results
+
+- [Case studies](https://ventolabs.com/cases/): Zigmund Online (online therapy): patient response time cut from 4 hours to under 2 minutes, booking conversion +40%, 200+ conversations handled daily. NoConcept (e-commerce, 3,000+ SKUs): lead response 6 hours → 8 minutes, 25+ hours/week saved. ASG Compute (cloud infrastructure): 13 AI agents deployed across 5 departments in 4 weeks, AI spend −35%.
+- [ArbitrAI](https://arbitrai.tech/): Vento Labs' own LegalTech product — an AI platform for Russian bankruptcy trustees (deadline control under the insolvency law, AI-drafted filings, transaction analysis). Results: daily deadline monitoring 2–3 hours → under 20 minutes, 99.9% of statutory publications filed on time, document prep 6× faster.
+
+## Product directions
+
+- [Content Factory](https://ventolabs.com/cases/content-factory/): Turns e-commerce catalogs into daily discovery content — lifestyle visuals, carousels, short videos, AI presenters.
+- [Supplier Agent](https://ventolabs.com/cases/supplier-agent/): Reads supplier emails, chats and price lists; extracts SKUs, prices, stock; updates catalogs by rules with approval flows.
+- [1C Agent](https://ventolabs.com/cases/erp-agent/): Permission-based AI layer over 1C ERP on Claude — faster development, safe manager actions, full audit trail (full case study in Russian at /ru/cases/erp-agent/).
+- [Bankruptcy AI](https://ventolabs.com/cases/bankruptcy-agent/): AI platform for Russian arbitration trustees — procedural documents, deadline control, transaction analysis (page in Russian).
+
+## Company
+
+- [Home](https://ventolabs.com/): Offer, process (Audit → Build → Scale), research-backed ROI data, FAQ.
+- [Privacy Policy](https://ventolabs.com/privacy/)
+- [Terms of Use](https://ventolabs.com/terms/)
+- [LinkedIn](https://www.linkedin.com/company/vento-labs/)
+
+## Machine-readable endpoints
+
+- [Agent card (A2A)](https://ventolabs.com/.well-known/agent-card.json)
+- [API catalog (RFC 9727)](https://ventolabs.com/.well-known/api-catalog)
+- [Sitemap](https://ventolabs.com/sitemap.xml)

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { LocaleProvider } from "@/components/LocaleProvider";
-import { isValidLocale, nonDefaultLocales, type Locale } from "@/lib/i18n";
+import { htmlLangCodes, isValidLocale, nonDefaultLocales, type Locale } from "@/lib/i18n";
 
 type Params = { lang: string };
 
@@ -17,5 +17,20 @@ export default async function LangLayout({
 }) {
   const { lang } = await params;
   if (!isValidLocale(lang) || lang === "en") notFound();
-  return <LocaleProvider locale={lang as Locale}>{children}</LocaleProvider>;
+  const htmlLang = htmlLangCodes[lang as Locale];
+  return (
+    <LocaleProvider locale={lang as Locale}>
+      {/* The static export renders <html lang="en"> from the root layout
+          (which can't see this segment's params). Correct it synchronously
+          during HTML parsing — before first paint — so crawlers that execute
+          JS and the :lang() CSS rules see the right language immediately.
+          Non-JS crawlers get the language from hreflang + og:locale. */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.lang=${JSON.stringify(htmlLang)}`,
+        }}
+      />
+      {children}
+    </LocaleProvider>
+  );
 }

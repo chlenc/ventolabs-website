@@ -8,11 +8,29 @@ import { openCalendly } from "./CalendlyPopup";
 import { OfferDialog } from "./OfferDialog";
 import { href, isFocusFunnelPath } from "@/lib/utils";
 import { trackCtaClick, trackPopupShown } from "@/lib/analytics";
-import { isGiftPopupOpen } from "./GiftPopup";
+import { hasAutoPopupFiredThisSession, isGiftPopupOpen, markAutoPopupFired } from "./GiftPopup";
 
-// Storage key for "user already saw / dismissed this". Persists across
-// sessions — if they said no, don't re-interrupt forever.
+// Storage key for "user already saw / dismissed this". Stores a timestamp —
+// a dismissal suppresses the popup for DISMISS_TTL_MS, then it may show again.
 const DISMISS_KEY = "vl_pilot_dismissed";
+const DISMISS_TTL_MS = 14 * 24 * 60 * 60 * 1000; // 14 days
+
+function isDismissalActive(): boolean {
+  try {
+    const raw = localStorage.getItem(DISMISS_KEY);
+    if (!raw) return false;
+    // Legacy value "1" (no timestamp) — treat as a fresh dismissal once, so
+    // existing users who said no aren't re-interrupted immediately.
+    if (raw === "1") {
+      localStorage.setItem(DISMISS_KEY, String(Date.now()));
+      return true;
+    }
+    const ts = Number(raw);
+    return Number.isFinite(ts) && Date.now() - ts < DISMISS_TTL_MS;
+  } catch {
+    return false;
+  }
+}
 
 type AuxCopy = {
   badge: string;
@@ -55,8 +73,9 @@ const AUX: Record<Locale, AuxCopy> = {
 };
 
 /**
- * Timed auto-popup: shows ~2.4s after first paint, once per user
- * (localStorage scoped). Offers a free 2-week pilot.
+ * Engagement-triggered auto-popup: shows once the visitor has demonstrably
+ * engaged — scrolled ~45% of the page or dwelled 30s — never on first paint.
+ * A dismissal suppresses it for 14 days (localStorage timestamp).
  *
  * Coordinates with the exit-intent popup via the global `__giftPopupOpen`
  * flag so the two modals never stack.
@@ -76,26 +95,49 @@ export function PilotOfferPopup() {
   }, [open]);
 
   useEffect(() => {
-    try {
-      if (localStorage.getItem(DISMISS_KEY) === "1") {
-        setDismissed(true);
-        return;
-      }
-    } catch {
-      // localStorage blocked — show anyway, no persistence is fine.
+    // Never arm on focus-funnel pages: the component renders null there, but
+    // an invisibly-fired popup would still consume the session cap, publish
+    // __giftPopupOpen=true forever, and block the page's own lead magnet.
+    if (focusFunnel) return;
+    if (isDismissalActive()) {
+      setDismissed(true);
+      return;
     }
-    const t = window.setTimeout(() => {
+
+    let fired = false;
+    const fire = () => {
+      if (fired) return;
+      fired = true;
+      teardown();
       if (isGiftPopupOpen()) return;
+      if (hasAutoPopupFiredThisSession()) return; // one auto-popup per session
+      markAutoPopupFired();
       trackPopupShown("pilot_offer");
       setOpen(true);
-    }, 2400);
-    return () => window.clearTimeout(t);
-  }, []);
+    };
+
+    // Engaged = scrolled ~45% of the page, or 30s of dwell time.
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - window.innerHeight;
+      if (scrollable <= 0) return;
+      if (window.scrollY / scrollable >= 0.45) fire();
+    };
+
+    const dwellTimer = window.setTimeout(fire, 30000);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const teardown = () => {
+      window.clearTimeout(dwellTimer);
+      window.removeEventListener("scroll", onScroll);
+    };
+    return teardown;
+  }, [focusFunnel]);
 
   const close = useCallback(() => {
     setOpen(false);
     try {
-      localStorage.setItem(DISMISS_KEY, "1");
+      localStorage.setItem(DISMISS_KEY, String(Date.now()));
     } catch {
       // ignore
     }

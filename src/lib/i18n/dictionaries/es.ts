@@ -12,10 +12,10 @@ export const es: Dictionary = {
     homeTitle: "Vento Labs | Agentes de IA y automatización para negocios",
     homeDescription:
       "Agentes de IA a medida que reducen costes operativos, automatizan flujos de trabajo y escalan tu negocio sin añadir personal. Configuración gratuita con cada proyecto.",
-    titleTemplate: "%s — Vento Labs | Agencia de automatización con IA",
-    casesTitle: "Casos de IA — Tres sistemas operativos de IA para e-commerce",
+    titleTemplate: "%s | Vento Labs",
+    casesTitle: "Casos de IA — resultados reales con agentes de IA",
     casesDescription:
-      "Tres direcciones para e-commerce: una fábrica de contenido que convierte SKUs en contenido de descubrimiento diario, un agente de proveedores que mantiene el catálogo al día y una capa de IA con permisos sobre 1C.",
+      "Resultados medibles de clientes en salud, e-commerce, cloud y legaltech — más cuatro soluciones de IA productizadas, incluido nuestro producto ArbitrAI.",
     privacyTitle: "Política de privacidad",
     privacyDescription: "Política de privacidad de Vento Labs — cómo tratamos tus datos.",
     termsTitle: "Condiciones de uso",
@@ -51,16 +51,17 @@ export const es: Dictionary = {
   },
 
   hero: {
+    badge: "Piloto gratuito de 2 semanas — construimos tu primer agente de IA sin coste",
     line1: "Diseñamos y construimos",
     line2: "agentes de IA",
     line3: "que hacen crecer tu negocio",
     tags: [
-      "Reduce costes operativos un 20–40%",
-      "Sustituye 1–2 puestos a tiempo completo con IA",
+      "Autoalojado — tus datos se quedan en tu infraestructura",
+      "Construido sobre Claude Agent SDK y frameworks abiertos",
       "En producción en días, no meses",
     ],
     desc: "Agentes de IA y automatizaciones a medida que se encargan del trabajo repetitivo — para que tu equipo se enfoque en crecer en vez de en tareas rutinarias.",
-    sub: "Reserva una llamada — construiremos tu agente de IA gratis.",
+    sub: "Reserva una llamada de 30 minutos — definimos el caso de uso y construimos tu primer agente gratis.",
     ctaPrimary: "Reservar llamada gratis",
     ctaSecondary: "Nuestros servicios",
     scroll: "Desplazar",
@@ -125,7 +126,7 @@ export const es: Dictionary = {
       { title: "Sin entrenar modelos con tus datos", description: "Usamos acceso a nivel API únicamente. Tus datos de negocio nunca se usan para entrenar modelos de IA." },
       { title: "Transparencia total", description: "Todo funciona en tus propias cuentas. Ves cada coste, cada llamada a la API y cada registro de acceso." },
       { title: "Control de accesos desde el día uno", description: "Permisos por rol, rastros de auditoría y límites claros sobre lo que la IA puede y no puede hacer." },
-      { title: "Nada se filtra, nada se rompe", description: "Tu asistente opera dentro de barreras estrictas. No puede borrar, modificar ni compartir datos fuera de su ámbito definido." },
+      { title: "Guardrails estrictos por diseño", description: "Cada agente opera dentro de un ámbito explícito: qué puede leer, qué puede escribir y qué requiere siempre aprobación humana. Las acciones fuera de ámbito se bloquean, no solo se desaconsejan." },
     ],
   },
 
@@ -137,7 +138,7 @@ export const es: Dictionary = {
       { q: "¿Qué datos van a los modelos de IA externos?", a: "Solo los que tú permitas expresamente. Usamos acceso API de nivel business donde tus datos no se usan para entrenar modelos. También podemos configurar modelos autoalojados para el máximo control si tu cumplimiento normativo lo requiere." },
       { q: "¿Cuánto cuesta mensualmente?", a: "Los costes típicos de modelos de IA son de 20–200 $/mes según el uso. Te damos una estimación detallada antes de empezar y pagas a los proveedores directamente — sin márgenes nuestros." },
       { q: "¿Cuánto tarda la implementación?", a: "Un agente de IA básico se lanza en 3–7 días. Los flujos de automatización tardan 1–3 semanas. La configuración enterprise suele ser de 2–4 semanas. Siempre obtienes primero una solución funcionando." },
-      { q: "¿Podemos parar tras la configuración inicial?", a: "Por supuesto. La configuración inicial es tuya. Muchos clientes empiezan ahí y vuelven cuando están listos para automatizar más. No hay atadura ni compromiso a largo plazo." },
+      { q: "¿Podemos parar tras la configuración inicial?", a: "Sí — no hay atadura ni compromiso a largo plazo. El piloto gratuito sigue funcionando para que puedas seguir evaluándolo; si continúas con cualquier contrato de pago, todo lo que construimos se transfiere a ti, incluidos el código y las configuraciones. Muchos clientes empiezan pequeño y vuelven cuando están listos para automatizar más." },
       { q: "¿Trabajáis con nuestro sector?", a: "Nuestro enfoque funciona en todos los sectores — las herramientas de IA son flexibles y adaptamos la base de conocimiento, flujos y políticas a tus necesidades. Hemos trabajado con servicios profesionales, e-commerce, SaaS y consultoras." },
     ],
   },
@@ -161,14 +162,52 @@ export const es: Dictionary = {
     cta: "Reservar llamada gratis",
   },
 
+  clientProof: {
+    eyebrow: "Resultados de clientes",
+    heading: "Clientes reales. Resultados medidos.",
+    lead: "Tres proyectos, tres resultados medibles — admisión de pacientes, operaciones de marketplace, adopción de IA en toda la empresa.",
+    cta: "Leer los casos de éxito",
+  },
+
+  founder: {
+    eyebrow: "Con quién hablarás",
+    heading: "Sin equipo comercial. Hablas con la persona que construye tu agente.",
+    name: "Alexey Nagorny",
+    role: "Fundador e ingeniero principal, Vento Labs",
+    bio: "Alexey lleva más de 10 años construyendo software de producción y hoy diseña agentes de IA sobre Claude Agent SDK, LangGraph y n8n para empresas de e-commerce, SaaS y servicios profesionales. Cada llamada de descubrimiento, decisión de arquitectura y despliegue pasa por él — sin account managers de por medio.",
+    points: [
+      "Define y construye personalmente cada piloto",
+      "Responde en un día laborable — por email o Telegram",
+      "Vento Labs Pte. Ltd. — registrada en Singapur, trabajando en remoto desde Lisboa",
+    ],
+    note: "¿Prefieres async? Sáltate la llamada y escríbele directamente:",
+  },
+
+  leadForm: {
+    heading: "¿Aún no estás listo para una llamada?",
+    subheading: "Cuéntanos qué te gustaría automatizar — te responderemos con un plan concreto y una estimación en un día laborable.",
+    nameLabel: "Nombre",
+    namePlaceholder: "Tu nombre",
+    emailLabel: "Email de trabajo",
+    emailPlaceholder: "tu@empresa.com",
+    messageLabel: "¿Qué te gustaría automatizar?",
+    messagePlaceholder: "P. ej.: pasamos horas al día respondiendo las mismas preguntas de clientes…",
+    submit: "Enviar solicitud",
+    sending: "Enviando…",
+    success: "Gracias — hemos recibido tu solicitud. Te responderemos en un día laborable.",
+    error: "No hemos podido enviarlo automáticamente. Pulsa abajo para enviarlo por email — ya está todo rellenado.",
+    mailtoCta: "Enviar por email",
+    privacyNote: "Sin newsletters, sin spam — solo respondemos a tu solicitud.",
+  },
+
   casesIntro: {
     eyebrow: "Casos de éxito",
-    heading: "Tres sistemas operativos de IA para e-commerce",
-    lead: "Velocidad de contenido. Velocidad de catálogo. Velocidad interna.",
-    description: "Tres direcciones de producto, una misma tesis: la IA elimina las demoras entre la señal y la acción. Entre un SKU y una publicación. Entre un mensaje de proveedor y un catálogo actualizado. Entre una petición de negocio y un cambio seguro dentro de tus sistemas.",
-    homeHeadingLead: "Negocios reales.",
-    homeHeadingEm: "Resultados",
-    homeHeadingTail: "reales.",
+    heading: "Sistemas de IA que construimos — y los resultados que producen",
+    lead: "Soluciones que puedes lanzar y despliegues en clientes con resultados medidos.",
+    description: "Cuatro soluciones productizadas — una fábrica de contenido, un agente de operaciones con proveedores, una capa de IA con permisos sobre 1C y una plataforma legaltech de insolvencias — junto a proyectos entregados a clientes con resultados medibles en salud, e-commerce, infraestructura cloud y legaltech, incluido ArbitrAI, nuestro propio producto.",
+    homeHeadingLead: "Tres sistemas de IA",
+    homeHeadingEm: "que construimos",
+    homeHeadingTail: "para operaciones.",
     homeCardMetrics: { contentFactory: "SKU → flujo", supplierAgent: "Caos → estructura", erpAgent: "Seguro por rol" },
   },
 
@@ -258,6 +297,18 @@ export const es: Dictionary = {
           { value: "–35%", label: "coste de infraestructura de IA" },
         ],
       },
+      arbitrai: {
+        industry: "LegalTech · Concursal",
+        title: "ArbitrAI — nuestra plataforma de IA para administradores concursales: control de plazos, documentos con IA, analítica legal",
+        challenge: "Un administrador concursal lleva 20–300 casos a la vez. El monitoreo diario de plazos consume 2–3 horas, una publicación obligatoria fuera de plazo puede costar la inhabilitación, y los escritos rutinarios devoran horas de trabajo caro.",
+        solution: "Un producto que Vento Labs construyó y lanzó junto a un administrador en ejercicio: cálculo automático de plazos según la ley concursal rusa con alertas por Telegram, borradores de publicaciones y notificaciones generados con IA, y análisis de transacciones para acciones de reintegración. Integrado con los sistemas judiciales y registrales; datos alojados en el país por cumplimiento. Cada salida de la IA es un borrador para revisión humana — nunca se presenta automáticamente.",
+        result: "El monitoreo de plazos bajó de 2–3 horas a menos de 20 minutos al día, las publicaciones a tiempo llegaron al 99,9 % y los documentos se preparan 6 veces más rápido. Vivo y creciendo en arbitrai.tech.",
+        metrics: [
+          { value: "2–3 h → 20 min", label: "monitoreo diario de plazos" },
+          { value: "99,9 %", label: "publicaciones a tiempo" },
+          { value: "6×", label: "documentos más rápido" },
+        ],
+      },
     },
     sectionLabels: { challenge: "Reto", solution: "Solución", result: "Resultado" },
     readyHeading: "¿Listo para unirte?",
@@ -276,6 +327,7 @@ export const es: Dictionary = {
     howItWorksHeading: "Tres pasos para empezar",
     deliverablesEyebrow: "Entregables",
     deliverablesHeading: "Qué incluye",
+    deliverablesNote: "Entregables concretos. El piloto gratuito cubre tu primer agente funcional; la lista completa de abajo se entrega en un proyecto de pago — presupuesto cerrado tras la llamada inicial.",
     resultsEyebrow: "Resultados",
     resultsHeading: "Qué puedes esperar",
     stakesEyebrow: "El coste de esperar",
@@ -335,7 +387,8 @@ export const es: Dictionary = {
         { q: "¿Puede controlar mi ordenador de verdad?", a: "Sí. Con capacidades de computer-use, el agente puede navegar webs, rellenar formularios, extraer datos, gestionar archivos e interactuar con cualquier aplicación — igual que un asistente humano." },
         { q: "¿Y la privacidad de los datos?", a: "Tu agente se ejecuta en tu infraestructura — tu servidor, tu VPS o tu máquina de oficina. Los datos nunca salen de tu entorno. Puedes usar LLMs totalmente locales para máxima privacidad." },
         { q: "¿Qué mensajeros y plataformas soportáis?", a: "Telegram, WhatsApp, LinkedIn, email (Gmail, Outlook), Slack y cualquier plataforma con API. También podemos añadir integraciones a medida." },
-        { q: "¿Cuánto tarda en construirse?", a: "Un agente básico se lanza en 3–5 días. Los agentes complejos multi-plataforma con integraciones a medida tardan 1–3 semanas. Siempre obtienes primero un MVP funcional." },
+        { q: "¿Cuánto tarda en construirse?", a: "Un agente básico se lanza en 3–7 días. Los agentes complejos multi-plataforma con integraciones a medida tardan 1–3 semanas. Siempre obtienes primero un MVP funcional." },
+        { q: "¿Cuánto cuesta un agente de IA a medida?", a: "El primer agente piloto es gratis — lo construimos tras una llamada de 30 minutos. Los agentes de producción se presupuestan a precio cerrado después de la llamada, según integraciones y alcance; el tiempo típico es de 3–7 días. El coste recurrente es solo el uso del modelo de IA, normalmente 20–200 $/mes pagados directamente a los proveedores, sin recargo." },
       ],
       seo: {
         title: "Agentes de IA a medida — Autoalojados, seguros, 24/7",
@@ -391,7 +444,7 @@ export const es: Dictionary = {
         { q: "¿En qué se diferencia esto de usar Zapier?", a: "Usamos n8n (autoalojado, sin precios por tarea) y Make.com para flujos complejos. Más importante: añadimos inteligencia de IA y mantenimiento continuo — no solo conexiones de apuntar y pulsar." },
       ],
       seo: {
-        title: "Automatización de procesos con IA — n8n, Make.com y flujos a medida",
+        title: "Automatización de procesos con IA — n8n y Make.com",
         description: "Automatiza cualificación de leads, sincronización de datos, informes y flujos con automatizaciones de IA en n8n y Make.com. Cero entrada manual de datos.",
       },
     },
@@ -436,7 +489,7 @@ export const es: Dictionary = {
         "Tienes datos medibles sobre adopción de IA y ganancias de productividad",
       ],
       stakes: "Las empresas que adopten IA ahora serán 10 veces más productivas en 2 años. Las que esperen gastarán 10 veces más para ponerse al día. La ventana se cierra.",
-      socialProof: { company: "Odivo Pro", result: "La adopción de IA del equipo pasó del 12% al 89% en 60 días" },
+      socialProof: { company: "ASG Compute", result: "Adopción total de IA en 5 departamentos en menos de 4 semanas" },
       faq: [
         { q: "¿Y si nuestro equipo nunca ha usado IA?", a: "Es habitual y está perfecto. Diseñamos la formación desde cero, empezando por los fundamentos y avanzando hacia flujos avanzados al ritmo de tu equipo." },
         { q: "¿Es un taller único o algo continuo?", a: "Ambas opciones disponibles. Empezamos con una serie intensiva de talleres y luego ofrecemos seguimientos mensuales para sostener la adopción. Medimos a 30 y 60 días y ajustamos." },
@@ -499,7 +552,7 @@ export const es: Dictionary = {
         { q: "¿Cuánto cuesta?", a: "Pilot desde 3.000 $ de setup + 500 $/mes. Scale desde 8.000 $ de setup + 2.000 $/mes. Enterprise con precio a medida. Los costes del modelo de IA (20–200 $/mes según uso) los facturan directamente los proveedores — sin márgenes nuestros." },
       ],
       seo: {
-        title: "Plataforma IA empresarial — Sistema operativo de IA para empresas",
+        title: "Plataforma de IA empresarial — agentes para cada equipo",
         description: "Sistema operativo de IA completo: agentes dedicados por departamento, Knowledge Vault, MCP Gateway, seguridad empresarial. Despliegue en 4 semanas. Precios de Pilot a Enterprise.",
       },
     },
@@ -608,7 +661,7 @@ export const es: Dictionary = {
         { q: "¿Cuánto tarda el arranque?", a: "MVP sobre 1–3 proveedores clave — 2–3 semanas. Cobertura total — 1–2 meses según número de fuentes y complejidad de reglas." },
       ],
       seo: {
-        title: "Supplier Agent — Capa de operaciones con IA para proveedores y catálogo",
+        title: "Supplier Agent — IA para emails de proveedores y catálogo",
         description: "El agente convierte emails, chats y listas de precios de proveedores en stock, precios y actualizaciones de web — por reglas, con aprobaciones y registro completo.",
       },
     },
@@ -684,10 +737,10 @@ export const es: Dictionary = {
         { q: "¿Cómo se alinean las acciones con la política contable de la empresa?", a: "En la fase de definición de roles fijamos contigo escenarios permitidos y prohibidos. Cada petición posterior al agente se valida contra estas reglas. Adicionalmente puedes activar aprobación manual para cualquier acción por encima de un umbral definido — por importe, tipo de operación u otros criterios." },
       ],
       seo: {
-        title: "1C Agent — Capa de IA gestionada sobre 1C en Claude",
-        description: "IA con permisos sobre Claude acelera 1C: los desarrolladores entregan extensiones con revisión, los responsables actúan estrictamente dentro de su rol. Piloto gratuito de 30 minutos.",
+        title: "1C Agent — capa de IA sobre 1C ERP (caso en ruso)",
+        description: "Capa de IA con permisos sobre 1C en Claude: acciones seguras para managers, tickets 4,2× más rápidos, auditoría completa. Caso completo en ruso.",
       },
-      ctaPrimary: { label: "Llamar ahora", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
+      ctaPrimary: { label: "Reservar llamada gratis", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       trustStrip: [
         { value: "−70%", label: "tickets rutinarios de desarrollo" },
@@ -713,7 +766,7 @@ export const es: Dictionary = {
         badge: "Piloto gratuito · 14 días",
         heading: "Lanza una capa de IA gestionada sobre tu 1C — sin pago, sin compromiso",
         subtitle: "Setup en tu perímetro de pruebas en 30–45 minutos. Tras el piloto: KPIs y decisión clara. Sin letra pequeña.",
-        primary: { label: "Llamar ahora", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
+        primary: { label: "Reservar llamada gratis", href: "#book", kind: "arrow" },
         secondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       },
     },
@@ -768,7 +821,7 @@ export const es: Dictionary = {
       ],
       seo: {
         title: "Bankruptcy AI — producto solo en ruso (página en ruso)",
-        description: "Plataforma de IA para administradores concursales rusos («арбитражные управляющие»). El producto trabaja con la 127-ФЗ, ЕФРСБ y la práctica del Tribunal Supremo de la FR — la página y los materiales están solo en ruso. Versión completa en /ru/cases/bankruptcy-agent.",
+        description: "Plataforma de IA para administradores concursales rusos: borradores con jurisprudencia, control de plazos, análisis de transacciones. Self-hosted. Página en ruso.",
       },
       ctaPrimary: { label: "Ver versión en ruso", href: "/ru/cases/bankruptcy-agent", meta: "página en ruso", kind: "telegram" },
       ctaSecondary: { label: "Volver a los casos", href: "/cases", meta: "ver otros casos", kind: "phone" },
@@ -946,7 +999,8 @@ export const es: Dictionary = {
     terms: "Condiciones",
     privacy: "Privacidad",
     rights: "Todos los derechos reservados.",
-    blurb: "Diseñamos y construimos agentes de IA que reducen costes, automatizan operaciones y ayudan a las empresas a escalar sin contratar más personal.",
+    blurb: "Vento Labs es una agencia de automatización con IA: diseñamos y construimos agentes de IA a medida que reducen costes, automatizan operaciones y ayudan a las empresas a escalar sin contratar más personal.",
+    legalLine: "Vento Labs Pte. Ltd. · UEN 202504485G · Registrada en Singapur · Trabajando en remoto desde Lisboa",
     telegramLabel: "Telegram",
     linkedinLabel: "LinkedIn",
   },
@@ -964,7 +1018,7 @@ export const es: Dictionary = {
   legal: {
     privacy: {
       title: "Política de privacidad",
-      updated: "Última actualización: abril de 2026",
+      updated: "Última actualización: julio de 2026",
       intro: "Esta política aplica a Vento Labs Pte. Ltd. (UEN 202504485G), una sociedad constituida en la República de Singapur.",
       sections: [
         {
@@ -978,7 +1032,7 @@ export const es: Dictionary = {
             ],
             "**Información recopilada automáticamente**",
             [
-              "Datos de uso del sitio (páginas vistas, tiempo en sitio, clics en llamadas a la acción) recogidos vía Google Analytics 4",
+              "Datos de uso del sitio (páginas vistas, tiempo en sitio, clics en llamadas a la acción) recogidos vía la analítica de PostHog y Google Tag Manager",
               "Dispositivo, navegador, ubicación aproximada y origen de referencia",
               "Si llegas desde una campaña publicitaria, la plataforma (como Google Ads o Meta) puede instalar cookies para medir si el anuncio llevó a reservar una llamada",
             ],
@@ -1044,9 +1098,9 @@ export const es: Dictionary = {
           content: [
             "Nuestro sitio usa cookies y tecnologías similares para entender cómo los visitantes usan el sitio y medir el rendimiento de nuestras campañas. En concreto:",
             [
-              "**Google Tag Manager y Google Analytics 4** — para medir páginas vistas, profundidad de scroll, clics en llamadas a la acción y reservas de llamadas para mejorar el sitio",
+              "**PostHog y Google Tag Manager** — para medir páginas vistas, profundidad de scroll, clics en llamadas a la acción y reservas de llamadas para mejorar el sitio",
               "**Cookies de medición publicitaria** — si llegas desde una campaña de pago (Google Ads, Meta, Yandex u otra), la plataforma correspondiente puede instalar una cookie para que el anunciante pueda medir si su campaña llevó a reservar una llamada",
-              "**Calendly** — instala sus propias cookies dentro de su widget cuando reservas una llamada",
+              "**Cal.com** — instala sus propias cookies dentro de su widget de reservas cuando reservas una llamada",
             ],
             "No usamos cookies para construir perfiles a la venta ni compartimos datos personales con data brokers. Puedes bloquear cookies analíticas y publicitarias con los ajustes de tu navegador o una extensión de privacidad en cualquier momento.",
           ],
@@ -1054,7 +1108,7 @@ export const es: Dictionary = {
         {
           heading: "8. Servicios de terceros",
           content: [
-            "Nuestro sitio se integra con Calendly para agendar citas y Google Tag Manager para analítica y medición de marketing. Al reservar una llamada, la política de privacidad de Calendly se aplica a los datos introducidos en su widget. Cuando Google Analytics o una plataforma publicitaria recopila datos de tu visita, se aplica la política de privacidad del proveedor correspondiente.",
+            "Nuestro sitio se integra con Cal.com para agendar citas, PostHog para analítica de producto y Google Tag Manager para medición de marketing. Al reservar una llamada, la política de privacidad de Cal.com se aplica a los datos que introduces en su widget de reservas. Cuando PostHog o una plataforma publicitaria recopila datos de tu visita, se aplica la política de privacidad del proveedor correspondiente.",
           ],
         },
         {

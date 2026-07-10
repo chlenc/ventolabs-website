@@ -1,5 +1,12 @@
 User-agent: *
 Allow: /
+# Next.js RSC payloads — not for indexing (llms.txt stays crawlable)
+Disallow: /__next.
+Disallow: /index.txt
+Disallow: /*/index.txt
 Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+# AI assistants and answer engines are welcome to read and cite this site.
+# Entity and offer summary for LLMs: https://ventolabs.com/llms.txt
 
 Sitemap: https://ventolabs.com/sitemap.xml

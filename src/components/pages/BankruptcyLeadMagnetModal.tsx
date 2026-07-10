@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { OfferDialog } from "@/components/OfferDialog";
 import { TelegramIcon } from "@/components/Primitives";
 import { trackPopupShown, trackCtaClick } from "@/lib/analytics";
+import { isGiftPopupOpen } from "@/components/GiftPopup";
 import { bankLeadMagnet, bankTelegram, bankPhone } from "./bankruptcy-agent-content";
 
 const DISMISS_KEY = "vl_bank_leadmagnet_dismissed";
@@ -21,10 +22,21 @@ export function BankruptcyLeadMagnetModal() {
   const [open, setOpen] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
-  const fire = useCallback((reason: "exit_intent" | "idle") => {
+  // Returns true when the modal actually opened — callers only latch their
+  // one-shot flag on success, so a decline (another dialog on screen) doesn't
+  // permanently kill the trigger.
+  const fire = useCallback((reason: "exit_intent" | "idle"): boolean => {
+    if (isGiftPopupOpen()) return false; // another dialog is on screen — never stack
     setOpen(true);
     trackPopupShown(`bankruptcy_leadmagnet_${reason}`);
+    return true;
   }, []);
+
+  // Publish open state so the global popups (exit-intent, pilot offer) skip
+  // firing while this dialog is on screen.
+  useEffect(() => {
+    (window as unknown as { __giftPopupOpen?: boolean }).__giftPopupOpen = open;
+  }, [open]);
 
   const close = useCallback(() => {
     setOpen(false);
@@ -54,8 +66,9 @@ export function BankruptcyLeadMagnetModal() {
       window.clearTimeout(idleTimer);
       idleTimer = window.setTimeout(() => {
         if (firedAlready) return;
-        firedAlready = true;
-        fire("idle");
+        // Latch only if the modal actually opened; otherwise re-arm and retry.
+        if (fire("idle")) firedAlready = true;
+        else armIdle();
       }, IDLE_MS);
     };
 
@@ -64,8 +77,7 @@ export function BankruptcyLeadMagnetModal() {
       if (firedAlready) return;
       if (!window.matchMedia("(pointer: fine)").matches) return;
       if (e.clientY <= 8 && e.relatedTarget === null) {
-        firedAlready = true;
-        fire("exit_intent");
+        if (fire("exit_intent")) firedAlready = true;
       }
     };
 

@@ -10,11 +10,23 @@ let calReady = false;
 export async function openCalendly(source: string = "unknown") {
   trackCalendlyOpened(source);
   if (typeof window === "undefined") return;
-  const cal = await getCalApi({ namespace: calendly.namespace });
-  cal("modal", {
-    calLink: calendly.calLink,
-    config: { layout: "month_view" },
-  });
+  try {
+    // If the embed script is blocked or slow (ad blockers, flaky networks),
+    // don't let the primary CTA die silently — fall through to the direct
+    // booking page instead.
+    const cal = await Promise.race([
+      getCalApi({ namespace: calendly.namespace }),
+      new Promise<never>((_, reject) =>
+        window.setTimeout(() => reject(new Error("cal embed timeout")), 4000),
+      ),
+    ]);
+    cal("modal", {
+      calLink: calendly.calLink,
+      config: { layout: "month_view" },
+    });
+  } catch {
+    window.open(calendly.url, "_blank", "noopener");
+  }
 }
 
 export function CalendlyWidget() {

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon } from "@/components/Primitives";
 import { HeroSection } from "@/components/HeroSection";
 import { TrustBar } from "@/components/TrustBar";
+import { LeadForm } from "@/components/LeadForm";
 import { FaqSection } from "@/components/FaqSection";
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
@@ -17,10 +18,10 @@ const roiLinks = [
 ];
 
 const serviceImages: Record<string, string> = {
-  "ai-assistant": "/images/page-ai-agent.jpg",
-  "ai-automation": "/images/page-automation.png",
-  "ai-training": "/images/service-ai-training.jpg",
-  "ai-workspace": "/images/service-ai-workspace.jpg",
+  "ai-assistant": "/images/service-card-ai-assistant.svg",
+  "ai-automation": "/images/service-card-ai-automation.svg",
+  "ai-training": "/images/service-card-ai-training.svg",
+  "ai-workspace": "/images/service-card-ai-workspace.svg",
 };
 
 const caseCardKeys = [
@@ -29,8 +30,18 @@ const caseCardKeys = [
   { key: "erp-agent", img: "/images/case-erp-agent.png", metricKey: "erpAgent" as const },
 ];
 
+// Company names are proper nouns — locale-agnostic, so they live here rather
+// than in the dictionaries.
+const clientProofKeys = [
+  { key: "zigmund", company: "Zigmund Online" },
+  { key: "noconcept", company: "NoConcept" },
+  { key: "asgcompute", company: "ASG Compute" },
+];
+
 function useCountUp(target: number, duration = 1800, start = false) {
-  const [val, setVal] = useState(0);
+  // Initialize at the target so the prerendered HTML (and no-JS visitors)
+  // show the real number; the count-up runs only once the section is in view.
+  const [val, setVal] = useState(target);
   useEffect(() => {
     if (!start) return;
     let raf: number;
@@ -236,6 +247,52 @@ export function HomeContent() {
         </div>
       </section>
 
+      {/* Client proof — named engagements with measured outcomes */}
+      <section className="section section--paper">
+        <div className="container">
+          <FadeUp>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{dict.clientProof.eyebrow}</p>
+                <h2>{dict.clientProof.heading}</h2>
+              </div>
+              <div className="section-header__right">
+                <p>{dict.clientProof.lead}</p>
+              </div>
+            </div>
+          </FadeUp>
+          <div className="stats-grid">
+            {clientProofKeys.map((c, i) => {
+              const rec = dict.cases.records[c.key];
+              if (!rec) return null;
+              const metric = rec.metrics[0];
+              return (
+                <FadeUp key={c.key} delay={i * 120}>
+                  <a href={href("/cases", locale)} className="stat">
+                    <div className="stat__source">
+                      <span>{c.company} · {rec.industry}</span>
+                      <ArrowIcon size={14} />
+                    </div>
+                    <div className="stat__num">
+                      <span>{metric.value}</span>
+                      <sup>{metric.label}</sup>
+                    </div>
+                    <p className="stat__desc">{rec.title}</p>
+                  </a>
+                </FadeUp>
+              );
+            })}
+          </div>
+          <FadeUp>
+            <p className="text-center" style={{ marginTop: "2rem" }}>
+              <a className="text-link" href={href("/cases", locale)}>
+                {dict.clientProof.cta} →
+              </a>
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* Cases — 3 image cards */}
       <section className="section section--paper" id="cases">
         <div className="container">
@@ -320,6 +377,49 @@ export function HomeContent() {
         </div>
       </section>
 
+      {/* Founder — who you'll actually talk to */}
+      <section className="section section--paper">
+        <div className="container">
+          <FadeUp>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{dict.founder.eyebrow}</p>
+                <h2>{dict.founder.heading}</h2>
+              </div>
+            </div>
+          </FadeUp>
+          <FadeUp delay={120}>
+            <div className="founder">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="founder__photo"
+                src={asset("/images/founder-alex.jpg")}
+                alt={dict.founder.name}
+                width={96}
+                height={96}
+                loading="lazy"
+              />
+              <div>
+                <p className="founder__name">{dict.founder.name}</p>
+                <p className="founder__role">{dict.founder.role}</p>
+                <p className="founder__bio">{dict.founder.bio}</p>
+                <div className="founder__points">
+                  {dict.founder.points.map((p) => (
+                    <p key={p} className="founder__point">{p}</p>
+                  ))}
+                </div>
+                <div className="founder__contacts">
+                  <span className="text-muted" style={{ fontSize: "0.9rem" }}>{dict.founder.note}</span>
+                  <a href="mailto:alexey@ventolabs.com">alexey@ventolabs.com</a>
+                  <a href="https://t.me/defi_defiler" target="_blank" rel="noopener noreferrer">Telegram</a>
+                  <a href="https://www.linkedin.com/company/vento-labs/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* FAQ */}
       <FaqSection items={dict.faq.items} />
 
@@ -354,16 +454,7 @@ export function HomeContent() {
               </div>
             </FadeUp>
             <FadeUp delay={200}>
-              <div className="cta__visual cta__visual--image">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={asset("/images/ai-assistant-box.png")}
-                  alt="Free AI agent"
-                  className="cta__image"
-                  loading="lazy"
-                />
-                <div className="cta__label">Vento Labs · VL/free_agent_v1</div>
-              </div>
+              <LeadForm location="home_final_cta" />
             </FadeUp>
           </div>
         </div>

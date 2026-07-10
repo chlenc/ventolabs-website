@@ -45,15 +45,20 @@ export function Header() {
             </MagneticButton>
           </nav>
 
-          <button
-            className="header__burger"
-            onClick={() => setMobileOpen(true)}
-            aria-label={dict.nav.openMenu}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <div className="header__mobile-actions">
+            <a href={href(dict.nav.cta.href, locale)} className="btn btn--primary header__cta-mobile">
+              {dict.nav.cta.label}
+            </a>
+            <button
+              className="header__burger"
+              onClick={() => setMobileOpen(true)}
+              aria-label={dict.nav.openMenu}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </header>
 

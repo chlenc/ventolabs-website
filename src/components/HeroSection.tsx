@@ -14,8 +14,8 @@ export function HeroSection() {
     <section className="hero container">
       <div className="hero-v1__meta">
         <FadeUp className="hero-v1__stamp">
-          <span>Ventures</span>
-          <b>/ Labs 2020—26</b>
+          <span>Vento Labs</span>
+          <b>/ AI agents & automation</b>
         </FadeUp>
         <FadeUp className="hero-v1__center" delay={120}>
           <LogoMark size={42} spin />
@@ -34,10 +34,17 @@ export function HeroSection() {
         <FadeUp className="hero-v1__right" delay={240}>
           <div className="hero-v1__stamp" style={{ justifyContent: "flex-end" }}>
             <b>Lisbon — remote</b>
-            <span>/ 41.1579, -8.6291</span>
+            <span>/ 38.7223, -9.1393</span>
           </div>
         </FadeUp>
       </div>
+
+      <FadeUp delay={80}>
+        <a href="#book" className="hero-offer-badge">
+          <span className="hero-offer-badge__dot" aria-hidden="true" />
+          {dict.hero.badge}
+        </a>
+      </FadeUp>
 
       <FadeUp delay={120}>
         <h1 className="hero-v1__title">
@@ -61,7 +68,7 @@ export function HeroSection() {
         <FadeUp delay={450}>
           <div className="hero-v1__desc">
             <p>{dict.hero.desc}</p>
-            <p className="muted">{dict.hero.sub}</p>
+            <p className="hero-v1__offer">{dict.hero.sub}</p>
           </div>
         </FadeUp>
         <FadeUp delay={550}>

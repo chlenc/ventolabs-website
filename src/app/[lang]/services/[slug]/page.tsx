@@ -4,6 +4,7 @@ import { servicesSlugs } from "@/lib/services";
 import { ServiceWrapper } from "@/components/pages/ServiceWrapper";
 import { buildPageMetadata } from "@/lib/seo";
 import { isValidLocale, nonDefaultLocales, type Locale } from "@/lib/i18n";
+import { JsonLd, servicePageJsonLd } from "@/lib/jsonld";
 
 type Params = { lang: string; slug: string };
 
@@ -29,7 +30,13 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 }
 
 export default async function LocalizedServicePage({ params }: { params: Promise<Params> }) {
-  const { slug } = await params;
+  const { lang, slug } = await params;
   if (!(servicesSlugs as readonly string[]).includes(slug)) notFound();
-  return <ServiceWrapper slug={slug} />;
+  const locale: Locale = isValidLocale(lang) ? lang : "en";
+  return (
+    <>
+      <JsonLd data={servicePageJsonLd({ slug, locale, kind: "service" })} />
+      <ServiceWrapper slug={slug} />
+    </>
+  );
 }

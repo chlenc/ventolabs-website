@@ -12,10 +12,10 @@ export const en: Dictionary = {
     homeTitle: "Vento Labs | AI Agents & Automation for Business",
     homeDescription:
       "Custom AI agents that cut operating costs, automate workflows, and scale your business without adding headcount. Free AI agent setup with every engagement.",
-    titleTemplate: "%s — Vento Labs | AI Automation Agency",
-    casesTitle: "AI Case Studies — Three AI Operating Systems for E-commerce",
+    titleTemplate: "%s | Vento Labs",
+    casesTitle: "AI Case Studies — Real Results from AI Agents & Automation",
     casesDescription:
-      "Three directions for e-commerce: a content factory turning SKUs into daily discovery content, a supplier agent that keeps catalogs live, and a permissioned AI layer over 1C.",
+      "Measurable client results in healthcare, e-commerce, cloud and legaltech — plus four productized AI solutions, including our own product ArbitrAI.",
     privacyTitle: "Privacy Policy",
     privacyDescription: "Privacy Policy for Vento Labs — how we handle your data.",
     termsTitle: "Terms of Use",
@@ -51,16 +51,17 @@ export const en: Dictionary = {
   },
 
   hero: {
+    badge: "Free 2-week pilot — we build your first AI agent at no cost",
     line1: "We design & build",
     line2: "AI agents",
     line3: "that grow your business",
     tags: [
-      "Cut operational costs by 20–40%",
-      "Replace 1–2 full-time roles with AI",
-      "Go live in days, not months",
+      "Self-hosted — your data stays in your infrastructure",
+      "Built on Claude Agent SDK and open frameworks",
+      "Live in days, not months",
     ],
     desc: "Custom AI agents and automations that handle your repetitive work — so your team focuses on growth instead of busywork.",
-    sub: "Book a call — we'll build your AI agent for free.",
+    sub: "Book a 30-minute call — we scope the use case and build your first agent for free.",
     ctaPrimary: "Book a free call",
     ctaSecondary: "Our services",
     scroll: "Scroll",
@@ -125,7 +126,7 @@ export const en: Dictionary = {
       { title: "No training on your data", description: "We use API-level access only. Your business data is never used to train AI models." },
       { title: "Full transparency", description: "Everything runs on your own accounts. You see every cost, every API call, every access log." },
       { title: "Access controls from day one", description: "Role-based permissions, audit trails, and clear boundaries for what the AI can and cannot do." },
-      { title: "Nothing leaks, nothing breaks", description: "Your assistant operates within strict guardrails. It can't delete, modify, or share data outside its defined scope." },
+      { title: "Strict guardrails by design", description: "Every agent operates within an explicit scope: what it can read, what it can write, and what always requires human approval. Out-of-scope actions are blocked, not just discouraged." },
     ],
   },
 
@@ -137,7 +138,7 @@ export const en: Dictionary = {
       { q: "What data goes to external AI models?", a: "Only the data you explicitly allow. We use business-tier API access where your data is not used for model training. We can also set up self-hosted models for maximum control if your compliance requires it." },
       { q: "How much does it cost to run monthly?", a: "Typical AI model costs are $20–200/month depending on usage volume. We give you a detailed cost estimate before starting, and you pay providers directly — no markups." },
       { q: "How long does implementation take?", a: "A basic AI agent launches in 3-7 days. Process automation workflows take 1-3 weeks. Enterprise workspace setup is typically 2-4 weeks. You always get a working solution first." },
-      { q: "Can we stop after the first setup?", a: "Absolutely. The initial build is yours to keep. Many clients start there and come back when they're ready to automate more. There's no lock-in or long-term commitment required." },
+      { q: "Can we stop after the first setup?", a: "Yes — there's no lock-in or long-term commitment. The free pilot stays live so you can keep evaluating it; if you continue with any paid engagement, everything we built transfers to you, including code and configurations. Many clients start small and come back when they're ready to automate more." },
       { q: "Do you work with our industry?", a: "Our approach works across industries — the AI tools are flexible and we customize the knowledge base, workflows, and policies to your specific needs. We've worked with professional services, e-commerce, SaaS, and consulting firms." },
     ],
   },
@@ -161,14 +162,52 @@ export const en: Dictionary = {
     cta: "Book a free call",
   },
 
+  clientProof: {
+    eyebrow: "Client Results",
+    heading: "Real clients. Measured results.",
+    lead: "Three engagements, three measurable outcomes — patient intake, marketplace operations, company-wide AI adoption.",
+    cta: "Read the case studies",
+  },
+
+  founder: {
+    eyebrow: "Who you'll talk to",
+    heading: "No sales team. You talk to the person who builds your agent.",
+    name: "Alexey Nagorny",
+    role: "Founder & Lead Engineer, Vento Labs",
+    bio: "Alexey has spent 10+ years building production software and now designs AI agents on Claude Agent SDK, LangGraph, and n8n for companies in e-commerce, SaaS, and professional services. Every discovery call, architecture decision, and deployment goes through him — no account managers in between.",
+    points: [
+      "Personally scopes and builds every pilot",
+      "Answers within one business day — email or Telegram",
+      "Vento Labs Pte. Ltd. — registered in Singapore, working remotely from Lisbon",
+    ],
+    note: "Prefer async? Skip the call and write directly:",
+  },
+
+  leadForm: {
+    heading: "Not ready for a call?",
+    subheading: "Tell us what you'd like to automate — we'll reply with a concrete plan and an estimate within one business day.",
+    nameLabel: "Name",
+    namePlaceholder: "Your name",
+    emailLabel: "Work email",
+    emailPlaceholder: "you@company.com",
+    messageLabel: "What would you like to automate?",
+    messagePlaceholder: "E.g. we spend hours a day answering the same customer questions…",
+    submit: "Send request",
+    sending: "Sending…",
+    success: "Thanks — your request is in. We'll reply within one business day.",
+    error: "We couldn't submit that automatically. Click below to send it as an email instead — everything's already filled in.",
+    mailtoCta: "Send as email",
+    privacyNote: "No newsletters, no spam — we only reply to your request.",
+  },
+
   casesIntro: {
     eyebrow: "Case Studies",
-    heading: "Three AI operating systems for e-commerce",
-    lead: "Content speed. Catalog speed. Internal speed.",
-    description: "Three product directions, one thesis: AI removes the delays between signal and action. Between an SKU and a published post. Between a supplier message and an updated catalog. Between a business request and a safe change inside your core systems.",
-    homeHeadingLead: "Real businesses.",
-    homeHeadingEm: "Real",
-    homeHeadingTail: "results.",
+    heading: "AI systems we build — and the results they produce",
+    lead: "Solutions you can launch, and client deployments with measured outcomes.",
+    description: "Four productized solutions — a content factory, a supplier-operations agent, a permissioned AI layer over 1C, and a bankruptcy legaltech platform — alongside shipped client work with measurable results across healthcare, e-commerce, cloud infrastructure and legaltech, including ArbitrAI, our own product.",
+    homeHeadingLead: "Three AI systems",
+    homeHeadingEm: "we build",
+    homeHeadingTail: "for operations.",
     homeCardMetrics: { contentFactory: "SKU → flow", supplierAgent: "Chaos → structure", erpAgent: "Safe by role" },
   },
 
@@ -258,6 +297,18 @@ export const en: Dictionary = {
           { value: "–35%", label: "AI infrastructure costs" },
         ],
       },
+      arbitrai: {
+        industry: "LegalTech · Bankruptcy",
+        title: "ArbitrAI — our own AI platform for bankruptcy trustees: deadline control, AI documents, legal analytics",
+        challenge: "A bankruptcy trustee runs 20–300 cases at once. Daily deadline monitoring takes 2–3 hours, one missed statutory publication risks disqualification, and routine court filings consume hours of highly-paid time.",
+        solution: "A product Vento Labs built and launched together with a practicing trustee: automatic deadline calculation under the Russian insolvency law with Telegram alerts, AI-drafted publications and notices, transaction analysis for clawback claims. Integrated with the court and registry systems (KAD, EFRSB); data hosted in-country for compliance. Every AI output ships as a draft for human review — never auto-filed.",
+        result: "Daily deadline monitoring dropped from 2–3 hours to under 20 minutes, 99.9% of statutory registry filings now go out on time, and document prep is 6× faster. Live at arbitrai.tech — our own product for the Russian legaltech market.",
+        metrics: [
+          { value: "2–3 h → 20 min", label: "daily deadline monitoring" },
+          { value: "99.9%", label: "publications filed on time" },
+          { value: "6×", label: "faster document prep" },
+        ],
+      },
     },
     sectionLabels: { challenge: "Challenge", solution: "Solution", result: "Result" },
     readyHeading: "Ready to join them?",
@@ -276,6 +327,7 @@ export const en: Dictionary = {
     howItWorksHeading: "Three steps to get started",
     deliverablesEyebrow: "Deliverables",
     deliverablesHeading: "What's included",
+    deliverablesNote: "Concrete deliverables. The free pilot covers your first working agent; the full list below ships in a paid engagement — fixed quote after the discovery call.",
     resultsEyebrow: "Results",
     resultsHeading: "What you can expect",
     stakesEyebrow: "The cost of waiting",
@@ -335,7 +387,8 @@ export const en: Dictionary = {
         { q: "Can it really control my computer?", a: "Yes. Using computer-use capabilities, the agent can browse websites, fill forms, extract data, manage files, and interact with any application — just like a human assistant would." },
         { q: "What about data privacy?", a: "Your agent runs on your infrastructure — your server, your VPS, or even your office machine. Data never leaves your environment. You can use fully local LLMs for maximum privacy." },
         { q: "Which messengers and platforms are supported?", a: "Telegram, WhatsApp, LinkedIn, email (Gmail, Outlook), Slack, and any platform with an API. We can also add custom integrations." },
-        { q: "How long does it take to build?", a: "A basic agent launches in 3-5 days. Complex multi-platform agents with custom integrations take 1-3 weeks. You always get a working MVP first." },
+        { q: "How long does it take to build?", a: "A basic agent launches in 3–7 days. Complex multi-platform agents with custom integrations take 1-3 weeks. You always get a working MVP first." },
+        { q: "How much does a custom AI agent cost?", a: "The first pilot agent is free — we build it after a 30-minute discovery call. Production agents are quoted fixed-price after the call, depending on integrations and scope; typical build time is 3–7 days. Ongoing costs are just AI model usage, usually $20–200/month paid directly to providers with no markup." },
       ],
       seo: {
         title: "Custom AI Agents — Self-Hosted, Secure, 24/7",
@@ -436,7 +489,7 @@ export const en: Dictionary = {
         "You have measurable data on AI adoption and productivity gains",
       ],
       stakes: "Companies that adopt AI now will be 10x more productive in 2 years. Companies that wait will spend 10x more catching up. The window is closing.",
-      socialProof: { company: "Odivo Pro", result: "Team AI adoption went from 12% to 89% in 60 days" },
+      socialProof: { company: "ASG Compute", result: "Full AI adoption across 5 departments in under 4 weeks" },
       faq: [
         { q: "What if our team has never used AI before?", a: "That's common and perfectly fine. We design training from the ground up, starting with fundamentals and progressing to advanced workflows based on your team's pace." },
         { q: "Is this a one-time workshop or ongoing?", a: "Both options available. We start with an intensive workshop series, then offer monthly check-ins to sustain adoption. We measure at 30 and 60 days and adjust." },
@@ -608,7 +661,7 @@ export const en: Dictionary = {
         { q: "How long does it take to launch?", a: "MVP on 1–3 key suppliers — 2–3 weeks. Full supplier coverage — 1–2 months depending on the number of sources and rule complexity." },
       ],
       seo: {
-        title: "Supplier Agent — AI operations layer for suppliers and catalog",
+        title: "Supplier Agent — AI for Supplier Emails & Catalog Updates",
         description: "AI agent turns supplier emails, chats and price lists into live stock, prices and storefront updates — by your rules, with approvals and a full change journal.",
       },
     },
@@ -684,10 +737,10 @@ export const en: Dictionary = {
         { q: "How do you align actions with our accounting policy?", a: "During the role-mapping stage we jointly fix allowed scenarios and prohibitions. Every subsequent agent request is checked against these rules. You can also enable manual approval for any action above a defined threshold — by amount, operation type or other criteria." },
       ],
       seo: {
-        title: "1C Agent — Managed AI layer over 1C on Claude",
-        description: "Permission-based AI on Claude accelerates 1C: developers ship extensions through review, managers act strictly within their role. Free 30-minute pilot.",
+        title: "1C Agent — AI Layer over 1C ERP (full case in Russian)",
+        description: "Permission-based AI layer over 1C ERP on Claude: safe manager self-service, 4.2× faster dev tickets, full audit trail. Full case study in Russian.",
       },
-      ctaPrimary: { label: "Call us now", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
+      ctaPrimary: { label: "Book a free call", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Email us", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       trustStrip: [
         { value: "−70%", label: "routine dev tickets" },
@@ -713,7 +766,7 @@ export const en: Dictionary = {
         badge: "Free 14-day pilot",
         heading: "Run a managed AI layer over your 1C — no payment, no commitment",
         subtitle: "Setup in your test perimeter in 30–45 minutes. After the pilot: KPIs and a clear go/no-go. No hidden terms.",
-        primary: { label: "Call us now", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
+        primary: { label: "Book a free call", href: "#book", kind: "arrow" },
         secondary: { label: "Email us", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
       },
     },
@@ -768,7 +821,7 @@ export const en: Dictionary = {
       ],
       seo: {
         title: "Bankruptcy AI — Russian-only product (page in Russian)",
-        description: "AI platform for Russian arbitration trustees («арбитражные управляющие»). Product works with 127-ФЗ, ЕФРСБ and the Russian Supreme Court practice — page and materials are in Russian only. Visit /ru/cases/bankruptcy-agent for the full landing.",
+        description: "AI platform for Russian bankruptcy trustees: court-ready drafts with fresh case law, deadline control under 127-FZ, transaction analysis. Self-hosted. Page in Russian.",
       },
       ctaPrimary: { label: "View Russian version", href: "/ru/cases/bankruptcy-agent", meta: "page in Russian", kind: "telegram" },
       ctaSecondary: { label: "Back to cases", href: "/cases", meta: "browse other cases", kind: "phone" },
@@ -946,7 +999,8 @@ export const en: Dictionary = {
     terms: "Terms",
     privacy: "Privacy",
     rights: "All rights reserved.",
-    blurb: "We design and build AI agents that cut costs, automate operations, and help businesses scale without adding headcount.",
+    blurb: "Vento Labs is an AI automation agency: we design and build custom AI agents that cut costs, automate operations, and help businesses scale without adding headcount.",
+    legalLine: "Vento Labs Pte. Ltd. · UEN 202504485G · Registered in Singapore · Working remotely from Lisbon",
     telegramLabel: "Telegram",
     linkedinLabel: "LinkedIn",
   },
@@ -964,7 +1018,7 @@ export const en: Dictionary = {
   legal: {
     privacy: {
       title: "Privacy Policy",
-      updated: "Last updated: April 2026",
+      updated: "Last updated: July 2026",
       intro: "This policy applies to Vento Labs Pte. Ltd. (UEN 202504485G), a company incorporated in the Republic of Singapore.",
       sections: [
         {
@@ -978,7 +1032,7 @@ export const en: Dictionary = {
             ],
             "**Information collected automatically**",
             [
-              "Website usage data (pages visited, time on site, clicks on calls-to-action) collected via Google Analytics 4",
+              "Website usage data (pages visited, time on site, clicks on calls-to-action) collected via PostHog analytics and Google Tag Manager",
               "Device, browser, approximate location, and referral source information",
               "If you arrive from an advertising campaign, the advertising platform (such as Google Ads or Meta) may set cookies to measure whether the ad led to a call being booked",
             ],
@@ -1044,9 +1098,9 @@ export const en: Dictionary = {
           content: [
             "Our website uses cookies and similar technologies to understand how visitors use the site and to measure the performance of our marketing campaigns. Specifically:",
             [
-              "**Google Tag Manager & Google Analytics 4** — to measure page views, scroll depth, call-to-action clicks, and discovery-call bookings so we can improve the site",
+              "**PostHog & Google Tag Manager** — to measure page views, scroll depth, call-to-action clicks, and discovery-call bookings so we can improve the site",
               "**Advertising measurement cookies** — when you arrive from a paid campaign (Google Ads, Meta, Yandex, or similar), the corresponding platform may set a cookie so the advertiser can measure whether its campaign led to a booked call",
-              "**Calendly** — sets its own cookies inside its scheduling widget when you book a call",
+              "**Cal.com** — sets its own cookies inside its scheduling widget when you book a call",
             ],
             "We do not use cookies to build profiles for sale, and we do not share personal data with data brokers. You can block analytics and advertising cookies using your browser settings or a privacy extension at any time.",
           ],
@@ -1054,7 +1108,7 @@ export const en: Dictionary = {
         {
           heading: "8. Third-Party Services",
           content: [
-            "Our website integrates with Calendly for appointment scheduling and Google Tag Manager for analytics and marketing measurement. When you book a call, Calendly's own privacy policy applies to the data you enter in their scheduling widget. When Google Analytics or an advertising platform collects data about your visit, the respective provider's privacy policy applies.",
+            "Our website integrates with Cal.com for appointment scheduling, PostHog for product analytics, and Google Tag Manager for marketing measurement. When you book a call, Cal.com's own privacy policy applies to the data you enter in their scheduling widget. When PostHog or an advertising platform collects data about your visit, the respective provider's privacy policy applies.",
           ],
         },
         {

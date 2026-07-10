@@ -12,7 +12,7 @@ import {
   PlusIcon,
 } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
-import { getDictionary, localizedPath } from "@/lib/i18n";
+import { getDictionary, localizedPath, type Locale } from "@/lib/i18n";
 import { asset, href } from "@/lib/utils";
 import { site } from "@/lib/site";
 import { BankruptcyLeadMagnetModal } from "./BankruptcyLeadMagnetModal";
@@ -291,35 +291,73 @@ function BankruptcyJsonLd() {
  * Stub shown to non-RU visitors. The product targets Russian arbitration
  * trustees working under 127-ФЗ — translating doesn't add value.
  */
+const STUB_STRINGS: Record<
+  Exclude<Locale, "ru">,
+  {
+    eyebrow: string;
+    title: string;
+    lede: string;
+    primaryCta: string;
+    secondaryCta: string;
+    breadcrumbHome: string;
+    breadcrumbCases: string;
+  }
+> = {
+  en: {
+    eyebrow: "Bankruptcy AI · LegalTech",
+    title: "AI platform for Russian arbitration trustees",
+    lede: "This case targets Russian arbitration trustees («арбитражные управляющие») working under 127-ФЗ. The product, demo materials and documentation are Russian-only. The full landing page is at",
+    primaryCta: "View Russian version",
+    secondaryCta: "Back to cases",
+    breadcrumbHome: "Home",
+    breadcrumbCases: "Cases",
+  },
+  de: {
+    eyebrow: "Bankruptcy AI · LegalTech",
+    title: "KI-Plattform für russische Insolvenzverwalter",
+    lede: "Dieser Case richtet sich an russische Insolvenzverwalter («арбитражные управляющие»), die nach dem Gesetz 127-FZ arbeiten. Produkt, Demo-Materialien und Dokumentation sind ausschließlich auf Russisch. Die vollständige Landingpage finden Sie unter",
+    primaryCta: "Russische Version öffnen",
+    secondaryCta: "Zurück zu den Cases",
+    breadcrumbHome: "Startseite",
+    breadcrumbCases: "Cases",
+  },
+  es: {
+    eyebrow: "Bankruptcy AI · LegalTech",
+    title: "Plataforma de IA para administradores concursales rusos",
+    lede: "Este caso está dirigido a administradores concursales rusos («арбитражные управляющие») que trabajan bajo la ley 127-FZ. El producto, los materiales de demo y la documentación están solo en ruso. La página completa está en",
+    primaryCta: "Ver versión en ruso",
+    secondaryCta: "Volver a los casos",
+    breadcrumbHome: "Inicio",
+    breadcrumbCases: "Casos",
+  },
+};
+
 function RussianOnlyStub() {
+  const locale = useLocale();
+  const s = locale !== "ru" ? STUB_STRINGS[locale] : STUB_STRINGS.en;
   return (
     <section className="page-hero">
       <div className="container" style={{ paddingBlock: "clamp(3rem, 6vw, 5rem)" }}>
         <div className="breadcrumbs">
-          <a href="/">Home</a>
+          <a href={href("/", locale)}>{s.breadcrumbHome}</a>
           <span className="breadcrumbs__sep">/</span>
-          <a href="/cases">Cases</a>
+          <a href={href("/cases", locale)}>{s.breadcrumbCases}</a>
           <span className="breadcrumbs__sep">/</span>
           <span className="breadcrumbs__current">Bankruptcy AI</span>
         </div>
         <p className="eyebrow" style={{ marginTop: "1.5rem" }}>
-          Bankruptcy AI · LegalTech
+          {s.eyebrow}
         </p>
-        <h1 className="page-hero__title">
-          AI platform for Russian arbitration trustees
-        </h1>
+        <h1 className="page-hero__title">{s.title}</h1>
         <p className="page-hero__lede">
-          This case targets Russian arbitration trustees («арбитражные
-          управляющие») working under 127-ФЗ. The product, demo materials and
-          documentation are Russian-only. The full landing page is at{" "}
-          <a href={RU_URL}>ventolabs.com/ru/cases/bankruptcy-agent</a>.
+          {s.lede} <a href={RU_URL}>ventolabs.com/ru/cases/bankruptcy-agent</a>.
         </p>
         <div className="cta-row" style={{ marginTop: "2rem" }}>
           <MagneticButton href={RU_URL}>
-            View Russian version <ArrowIcon />
+            {s.primaryCta} <ArrowIcon />
           </MagneticButton>
-          <MagneticButton href="/cases" variant="ghost">
-            Back to cases
+          <MagneticButton href={href("/cases", locale)} variant="ghost">
+            {s.secondaryCta}
           </MagneticButton>
         </div>
       </div>
@@ -420,7 +458,7 @@ export function BankruptcyAgentPage() {
                 <span className="erp-diptych__tag">{bankDiptych.imageTag}</span>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={asset("/images/case-bankruptcy-agent.png")}
+                  src={asset("/images/case-bankruptcy-agent.svg")}
                   alt="Рабочее место арбитражного управляющего с Bankruptcy AI — отчёты, ходатайства, контроль сроков 127-ФЗ"
                   loading="eager"
                 />

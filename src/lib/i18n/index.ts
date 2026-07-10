@@ -78,16 +78,24 @@ export function parseLocaleFromPath(pathname: string): { locale: Locale; path: s
  * Build a localized href. English routes stay at root; other locales get a
  * `/[lang]` prefix. Hashes, externals, and mailtos are left untouched.
  * The basePath (for GH Pages) is prepended by the existing `href()` helper.
+ *
+ * Internal paths always get a trailing slash — the site is exported with
+ * `trailingSlash: true`, so slash-less URLs cost a 301 on GitHub Pages.
  */
 export function localizedPath(path: string, locale: Locale): string {
   if (path.startsWith("#") || path.startsWith("http") || path.startsWith("mailto:")) {
     return path;
   }
-  if (locale === defaultLocale) return path;
-  // Avoid double prefix if already localized
-  if (path === `/${locale}` || path.startsWith(`/${locale}/`)) return path;
-  if (path === "/") return `/${locale}`;
-  return `/${locale}${path}`;
+  // Split off an anchor so "/cases#zigmund" becomes "/cases/#zigmund".
+  const hashIdx = path.indexOf("#");
+  const hash = hashIdx >= 0 ? path.slice(hashIdx) : "";
+  let p = hashIdx >= 0 ? path.slice(0, hashIdx) : path;
+
+  if (locale !== defaultLocale && p !== `/${locale}` && !p.startsWith(`/${locale}/`)) {
+    p = p === "/" ? `/${locale}` : `/${locale}${p}`;
+  }
+  if (!p.endsWith("/")) p += "/";
+  return `${p}${hash}`;
 }
 
 /**

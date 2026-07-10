@@ -9,19 +9,20 @@ import {
   type CaseLandingSlug,
   type CaseStudySlug,
 } from "@/lib/cases";
-import { asset, href } from "@/lib/utils";
+import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 
 const landingImage: Record<CaseLandingSlug, string> = {
   "content-factory": "/images/case-content-factory.png",
   "supplier-agent": "/images/case-supplier-agent.png",
   "erp-agent": "/images/case-erp-agent.png",
-  "bankruptcy-agent": "/images/case-bankruptcy-agent.png",
+  "bankruptcy-agent": "/images/case-bankruptcy-agent.svg",
 };
 
-const studyMeta: Record<CaseStudySlug, { image: string; company: string }> = {
+const studyMeta: Record<CaseStudySlug, { image: string; company: string; url?: string }> = {
   zigmund: { image: "/images/case-zigmund.jpg", company: "Zigmund Online" },
   noconcept: { image: "/images/case-noconcept.jpg", company: "NoConcept" },
   asgcompute: { image: "/images/case-asgcompute.jpg", company: "ASG Compute" },
+  arbitrai: { image: "/images/case-arbitrai.svg", company: "ArbitrAI", url: "https://arbitrai.tech/" },
 };
 
 const ctaLabels = {
@@ -51,7 +52,7 @@ export function CasesContent() {
         <div className="container">
           <FadeUp>
             <div className="breadcrumbs">
-              <a href={href("/", locale)}>Home</a>
+              <a href={href("/", locale)}>{breadcrumbHomeLabels[locale]}</a>
               <span className="breadcrumbs__sep">/</span>
               <span className="breadcrumbs__current">{dict.casesIntro.eyebrow}</span>
             </div>
@@ -119,34 +120,53 @@ export function CasesContent() {
             {caseStudySlugs.map((slug, i) => {
               const cs = dict.cases.records[slug];
               const meta = studyMeta[slug];
+              const body = (
+                <>
+                  <div className="case-card__media">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={asset(meta.image)}
+                      alt={meta.company}
+                      className="case-card__img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="case-card__body">
+                    <div className="case-card__meta">
+                      <span className="case-card__kind">{kinds.study}</span>
+                      <span>{cs.industry}</span>
+                    </div>
+                    <h3 className="case-card__title">{cs.title}</h3>
+                    <p className="case-card__summary">{cs.result}</p>
+                    <div className="case-card__metrics">
+                      {cs.metrics.map((m) => (
+                        <span key={m.label} className="case-card__chip">
+                          {m.value}
+                        </span>
+                      ))}
+                    </div>
+                    {meta.url && (
+                      <span className="case-card__cta">
+                        {new URL(meta.url).hostname} <ArrowIcon />
+                      </span>
+                    )}
+                  </div>
+                </>
+              );
               return (
                 <FadeUp key={slug} delay={(caseLandingSlugs.length + i) * 80}>
-                  <article className="case-card case-card--static">
-                    <div className="case-card__media">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={asset(meta.image)}
-                        alt={meta.company}
-                        className="case-card__img"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="case-card__body">
-                      <div className="case-card__meta">
-                        <span className="case-card__kind">{kinds.study}</span>
-                        <span>{cs.industry}</span>
-                      </div>
-                      <h3 className="case-card__title">{cs.title}</h3>
-                      <p className="case-card__summary">{cs.result}</p>
-                      <div className="case-card__metrics">
-                        {cs.metrics.map((m) => (
-                          <span key={m.label} className="case-card__chip">
-                            {m.value}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </article>
+                  {meta.url ? (
+                    <a
+                      href={meta.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="case-card"
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    <article className="case-card case-card--static">{body}</article>
+                  )}
                 </FadeUp>
               );
             })}

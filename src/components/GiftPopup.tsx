@@ -18,6 +18,27 @@ export function isGiftPopupOpen() {
   );
 }
 
+// Session-level frequency cap: at most ONE auto-fired offer dialog (pilot
+// offer / exit intent) per browsing session. The header gift button is
+// user-initiated and ignores the cap.
+const SESSION_CAP_KEY = "vl_offer_popup_shown";
+
+export function hasAutoPopupFiredThisSession(): boolean {
+  try {
+    return sessionStorage.getItem(SESSION_CAP_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function markAutoPopupFired(): void {
+  try {
+    sessionStorage.setItem(SESSION_CAP_KEY, "1");
+  } catch {
+    // ignore
+  }
+}
+
 type AuxCopy = {
   badge: string;
   eyebrow: string;

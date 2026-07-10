@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="ArbitrAI — deadline control and AI documents for bankruptcy trustees">
+  <rect width="800" height="500" fill="#eeeae0"/>
+  <g fill="#1e3c14" opacity="0.08">
+    <circle cx="40" cy="40" r="1.5"/><circle cx="120" cy="40" r="1.5"/><circle cx="200" cy="40" r="1.5"/><circle cx="280" cy="40" r="1.5"/><circle cx="360" cy="40" r="1.5"/><circle cx="440" cy="40" r="1.5"/><circle cx="520" cy="40" r="1.5"/><circle cx="600" cy="40" r="1.5"/><circle cx="680" cy="40" r="1.5"/><circle cx="760" cy="40" r="1.5"/>
+    <circle cx="40" cy="460" r="1.5"/><circle cx="120" cy="460" r="1.5"/><circle cx="200" cy="460" r="1.5"/><circle cx="280" cy="460" r="1.5"/><circle cx="360" cy="460" r="1.5"/><circle cx="440" cy="460" r="1.5"/><circle cx="520" cy="460" r="1.5"/><circle cx="600" cy="460" r="1.5"/><circle cx="680" cy="460" r="1.5"/><circle cx="760" cy="460" r="1.5"/>
+  </g>
+  <!-- deadline calendar -->
+  <g>
+    <rect x="90" y="110" width="290" height="250" rx="10" fill="none" stroke="#1e3c14" stroke-width="1.5"/>
+    <line x1="90" y1="162" x2="380" y2="162" stroke="#1e3c14" stroke-width="1.5"/>
+    <text x="110" y="144" font-family="Menlo, Consolas, monospace" font-size="13" letter-spacing="2" fill="#1e3c14">DEADLINES · 127-FZ</text>
+    <!-- grid of days -->
+    <g fill="none" stroke="#1e3c14" stroke-width="0.8" opacity="0.35">
+      <rect x="110" y="182" width="46" height="34" rx="4"/><rect x="166" y="182" width="46" height="34" rx="4"/><rect x="222" y="182" width="46" height="34" rx="4"/><rect x="278" y="182" width="46" height="34" rx="4"/>
+      <rect x="110" y="226" width="46" height="34" rx="4"/><rect x="222" y="226" width="46" height="34" rx="4"/><rect x="278" y="226" width="46" height="34" rx="4"/>
+      <rect x="110" y="270" width="46" height="34" rx="4"/><rect x="166" y="270" width="46" height="34" rx="4"/><rect x="278" y="270" width="46" height="34" rx="4"/>
+    </g>
+    <!-- flagged deadline cells -->
+    <rect x="166" y="226" width="46" height="34" rx="4" fill="#1e3c14"/>
+    <text x="189" y="248" font-family="Menlo, Consolas, monospace" font-size="12" fill="#f3ead8" text-anchor="middle">EFRSB</text>
+    <rect x="222" y="270" width="46" height="34" rx="4" fill="none" stroke="#1e3c14" stroke-width="1.5"/>
+    <circle cx="268" cy="270" r="6" fill="#1e3c14"/>
+    <text x="110" y="336" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="1.5" fill="#1e3c14" opacity="0.6">ALERTS → TELEGRAM</text>
+  </g>
+  <!-- AI document draft -->
+  <g>
+    <rect x="440" y="90" width="270" height="290" rx="10" fill="#faf7ef" stroke="#1e3c14" stroke-width="1.5"/>
+    <text x="462" y="128" font-family="Menlo, Consolas, monospace" font-size="12" letter-spacing="2" fill="#1e3c14">AI DRAFT · NOTICE</text>
+    <g stroke="#1e3c14" stroke-width="1.4" opacity="0.5">
+      <line x1="462" y1="156" x2="688" y2="156"/>
+      <line x1="462" y1="180" x2="688" y2="180"/>
+      <line x1="462" y1="204" x2="640" y2="204"/>
+      <line x1="462" y1="228" x2="688" y2="228"/>
+      <line x1="462" y1="252" x2="600" y2="252"/>
+    </g>
+    <rect x="462" y="286" width="130" height="40" rx="20" fill="#1e3c14"/>
+    <text x="527" y="311" font-family="Menlo, Consolas, monospace" font-size="12" letter-spacing="1.5" fill="#f3ead8" text-anchor="middle">REVIEW ✓</text>
+    <text x="462" y="360" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="21" fill="#1e3c14">draft in 5–10 min</text>
+  </g>
+  <!-- connector -->
+  <path d="M 380 235 C 410 235 410 235 440 235" fill="none" stroke="#1e3c14" stroke-width="1.2" stroke-dasharray="3 5"/>
+  <text x="48" y="470" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1e3c14" opacity="0.55">VL / ARBITRAI · LEGALTECH · ARBITRAI.TECH</text>
+  <text x="752" y="470" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1e3c14" opacity="0.55" text-anchor="end">05</text>
+</svg>

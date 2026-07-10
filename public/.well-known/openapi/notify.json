@@ -28,10 +28,21 @@
             "application/json": {
               "schema": {
                 "oneOf": [
-                  { "$ref": "#/components/schemas/VisitEvent" },
-                  { "$ref": "#/components/schemas/BookingEvent" },
-                  { "$ref": "#/components/schemas/SessionEvent" },
-                  { "$ref": "#/components/schemas/CalcomWebhook" }
+                  {
+                    "$ref": "#/components/schemas/VisitEvent"
+                  },
+                  {
+                    "$ref": "#/components/schemas/BookingEvent"
+                  },
+                  {
+                    "$ref": "#/components/schemas/LeadEvent"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SessionEvent"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CalcomWebhook"
+                  }
                 ]
               }
             },
@@ -48,16 +59,22 @@
             "description": "Event accepted (and forwarded to Telegram, or noted as unhandled).",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Ack" }
+                "schema": {
+                  "$ref": "#/components/schemas/Ack"
+                }
               }
             }
           },
-          "405": { "description": "Only POST and OPTIONS are accepted." },
+          "405": {
+            "description": "Only POST and OPTIONS are accepted."
+          },
           "500": {
             "description": "Server error while forwarding to Telegram.",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           }
@@ -67,7 +84,9 @@
         "operationId": "preflight",
         "summary": "CORS preflight",
         "responses": {
-          "204": { "description": "CORS allowed for any origin." }
+          "204": {
+            "description": "CORS allowed for any origin."
+          }
         }
       }
     }
@@ -76,70 +95,138 @@
     "schemas": {
       "UtmParams": {
         "type": "object",
-        "additionalProperties": { "type": "string" },
+        "additionalProperties": {
+          "type": "string"
+        },
         "description": "UTM tracking parameters captured from the visitor's URL."
       },
       "VisitEvent": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
-          "type": { "type": "string", "const": "visit" },
-          "page": { "type": "string", "description": "Path + query string." },
-          "referrer": { "type": "string" },
-          "utm": { "$ref": "#/components/schemas/UtmParams" },
-          "ua": { "type": "string", "description": "User agent (truncated to 200 chars)." },
-          "ts": { "type": "string", "format": "date-time" }
+          "type": {
+            "type": "string",
+            "const": "visit"
+          },
+          "page": {
+            "type": "string",
+            "description": "Path + query string."
+          },
+          "referrer": {
+            "type": "string"
+          },
+          "utm": {
+            "$ref": "#/components/schemas/UtmParams"
+          },
+          "ua": {
+            "type": "string",
+            "description": "User agent (truncated to 200 chars)."
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "BookingEvent": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
-          "type": { "type": "string", "const": "booking" },
-          "page": { "type": "string" },
-          "utm": { "$ref": "#/components/schemas/UtmParams" },
-          "ts": { "type": "string", "format": "date-time" }
+          "type": {
+            "type": "string",
+            "const": "booking"
+          },
+          "page": {
+            "type": "string"
+          },
+          "utm": {
+            "$ref": "#/components/schemas/UtmParams"
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "SessionEvent": {
         "type": "object",
-        "required": ["type"],
+        "required": [
+          "type"
+        ],
         "properties": {
-          "type": { "type": "string", "const": "session" },
+          "type": {
+            "type": "string",
+            "const": "session"
+          },
           "activeTime": {
             "type": "string",
             "description": "Human-readable active duration, e.g. '5m 12s'."
           },
-          "activeMs": { "type": "integer", "minimum": 0 },
+          "activeMs": {
+            "type": "integer",
+            "minimum": 0
+          },
           "pages": {
             "type": "array",
-            "items": { "type": "string" },
+            "items": {
+              "type": "string"
+            },
             "description": "Ordered page journey for the session."
           },
           "clicks": {
             "type": "array",
-            "items": { "$ref": "#/components/schemas/ClickEvent" }
+            "items": {
+              "$ref": "#/components/schemas/ClickEvent"
+            }
           },
-          "maxScroll": { "type": "integer", "minimum": 0, "maximum": 100 },
-          "utm": { "$ref": "#/components/schemas/UtmParams" },
-          "ts": { "type": "string", "format": "date-time" }
+          "maxScroll": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "utm": {
+            "$ref": "#/components/schemas/UtmParams"
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "ClickEvent": {
         "type": "object",
         "properties": {
-          "label": { "type": "string", "description": "Visible text of the clicked element (≤ 60 chars)." },
-          "section": { "type": "string", "description": "Page section the click occurred in." },
-          "time": { "type": "integer", "description": "Seconds since session start." }
+          "label": {
+            "type": "string",
+            "description": "Visible text of the clicked element (≤ 60 chars)."
+          },
+          "section": {
+            "type": "string",
+            "description": "Page section the click occurred in."
+          },
+          "time": {
+            "type": "integer",
+            "description": "Seconds since session start."
+          }
         }
       },
       "CalcomWebhook": {
         "type": "object",
-        "required": ["triggerEvent", "payload"],
+        "required": [
+          "triggerEvent",
+          "payload"
+        ],
         "properties": {
           "triggerEvent": {
             "type": "string",
-            "enum": ["BOOKING_CREATED", "BOOKING_RESCHEDULED"]
+            "enum": [
+              "BOOKING_CREATED",
+              "BOOKING_RESCHEDULED"
+            ]
           },
           "payload": {
             "type": "object",
@@ -151,15 +238,60 @@
       "Ack": {
         "type": "object",
         "properties": {
-          "ok": { "type": "boolean" },
-          "note": { "type": "string" }
+          "ok": {
+            "type": "boolean"
+          },
+          "note": {
+            "type": "string"
+          }
         }
       },
       "Error": {
         "type": "object",
         "properties": {
-          "error": { "type": "string" }
+          "error": {
+            "type": "string"
+          }
         }
+      },
+      "LeadEvent": {
+        "type": "object",
+        "required": [
+          "type",
+          "name",
+          "email",
+          "message"
+        ],
+        "properties": {
+          "type": {
+            "const": "lead"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 200
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 2000,
+            "description": "What the visitor wants to automate."
+          },
+          "page": {
+            "type": "string"
+          },
+          "utm": {
+            "type": "object"
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "description": "Lead-form submission from the site (name + work email + free-text ask)."
       }
     }
   }
