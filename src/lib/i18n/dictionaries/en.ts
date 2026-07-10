@@ -13,9 +13,9 @@ export const en: Dictionary = {
     homeDescription:
       "Custom AI agents that cut operating costs, automate workflows, and scale your business without adding headcount. Free AI agent setup with every engagement.",
     titleTemplate: "%s | Vento Labs",
-    casesTitle: "AI Case Studies — Three AI Operating Systems for E-commerce",
+    casesTitle: "AI Case Studies — Real Results from AI Agents & Automation",
     casesDescription:
-      "Three directions for e-commerce: a content factory turning SKUs into daily discovery content, a supplier agent that keeps catalogs live, and a permissioned AI layer over 1C.",
+      "Measurable client results in healthcare, e-commerce, cloud and legaltech — plus four productized AI solutions, including our own product ArbitrAI.",
     privacyTitle: "Privacy Policy",
     privacyDescription: "Privacy Policy for Vento Labs — how we handle your data.",
     termsTitle: "Terms of Use",
@@ -202,9 +202,9 @@ export const en: Dictionary = {
 
   casesIntro: {
     eyebrow: "Case Studies",
-    heading: "Three AI operating systems for e-commerce",
-    lead: "Content speed. Catalog speed. Internal speed.",
-    description: "Three product directions, one thesis: AI removes the delays between signal and action. Between an SKU and a published post. Between a supplier message and an updated catalog. Between a business request and a safe change inside your core systems.",
+    heading: "AI systems we build — and the results they produce",
+    lead: "Solutions you can launch, and client deployments with measured outcomes.",
+    description: "Four productized solutions — a content factory, a supplier-operations agent, a permissioned AI layer over 1C, and a bankruptcy legaltech platform — alongside shipped client work with measurable results across healthcare, e-commerce, cloud infrastructure and legaltech, including ArbitrAI, our own product.",
     homeHeadingLead: "Three AI systems",
     homeHeadingEm: "we build",
     homeHeadingTail: "for operations.",
@@ -297,6 +297,18 @@ export const en: Dictionary = {
           { value: "–35%", label: "AI infrastructure costs" },
         ],
       },
+      arbitrai: {
+        industry: "LegalTech · Bankruptcy",
+        title: "ArbitrAI — our own AI platform for bankruptcy trustees: deadline control, AI documents, legal analytics",
+        challenge: "A bankruptcy trustee runs 20–300 cases at once. Daily deadline monitoring takes 2–3 hours, one missed statutory publication risks disqualification, and routine court filings consume hours of highly-paid time.",
+        solution: "A product Vento Labs built and launched together with a practicing trustee: automatic deadline calculation under the Russian insolvency law with Telegram alerts, AI-drafted publications and notices, transaction analysis for clawback claims. Integrated with the court and registry systems (KAD, EFRSB); data hosted in-country for compliance. Every AI output ships as a draft for human review — never auto-filed.",
+        result: "Daily deadline monitoring dropped from 2–3 hours to under 20 minutes, 99.9% of statutory registry filings now go out on time, and document prep is 6× faster. Live at arbitrai.tech — our own product for the Russian legaltech market.",
+        metrics: [
+          { value: "2–3 h → 20 min", label: "daily deadline monitoring" },
+          { value: "99.9%", label: "publications filed on time" },
+          { value: "6×", label: "faster document prep" },
+        ],
+      },
     },
     sectionLabels: { challenge: "Challenge", solution: "Solution", result: "Result" },
     readyHeading: "Ready to join them?",
@@ -315,6 +327,7 @@ export const en: Dictionary = {
     howItWorksHeading: "Three steps to get started",
     deliverablesEyebrow: "Deliverables",
     deliverablesHeading: "What's included",
+    deliverablesNote: "Concrete deliverables. The free pilot covers your first working agent; the full list below ships in a paid engagement — fixed quote after the discovery call.",
     resultsEyebrow: "Results",
     resultsHeading: "What you can expect",
     stakesEyebrow: "The cost of waiting",
@@ -374,7 +387,8 @@ export const en: Dictionary = {
         { q: "Can it really control my computer?", a: "Yes. Using computer-use capabilities, the agent can browse websites, fill forms, extract data, manage files, and interact with any application — just like a human assistant would." },
         { q: "What about data privacy?", a: "Your agent runs on your infrastructure — your server, your VPS, or even your office machine. Data never leaves your environment. You can use fully local LLMs for maximum privacy." },
         { q: "Which messengers and platforms are supported?", a: "Telegram, WhatsApp, LinkedIn, email (Gmail, Outlook), Slack, and any platform with an API. We can also add custom integrations." },
-        { q: "How long does it take to build?", a: "A basic agent launches in 3-5 days. Complex multi-platform agents with custom integrations take 1-3 weeks. You always get a working MVP first." },
+        { q: "How long does it take to build?", a: "A basic agent launches in 3–7 days. Complex multi-platform agents with custom integrations take 1-3 weeks. You always get a working MVP first." },
+        { q: "How much does a custom AI agent cost?", a: "The first pilot agent is free — we build it after a 30-minute discovery call. Production agents are quoted fixed-price after the call, depending on integrations and scope; typical build time is 3–7 days. Ongoing costs are just AI model usage, usually $20–200/month paid directly to providers with no markup." },
       ],
       seo: {
         title: "Custom AI Agents — Self-Hosted, Secure, 24/7",
@@ -647,7 +661,7 @@ export const en: Dictionary = {
         { q: "How long does it take to launch?", a: "MVP on 1–3 key suppliers — 2–3 weeks. Full supplier coverage — 1–2 months depending on the number of sources and rule complexity." },
       ],
       seo: {
-        title: "Supplier Agent — AI operations layer for suppliers and catalog",
+        title: "Supplier Agent — AI for Supplier Emails & Catalog Updates",
         description: "AI agent turns supplier emails, chats and price lists into live stock, prices and storefront updates — by your rules, with approvals and a full change journal.",
       },
     },
@@ -723,8 +737,8 @@ export const en: Dictionary = {
         { q: "How do you align actions with our accounting policy?", a: "During the role-mapping stage we jointly fix allowed scenarios and prohibitions. Every subsequent agent request is checked against these rules. You can also enable manual approval for any action above a defined threshold — by amount, operation type or other criteria." },
       ],
       seo: {
-        title: "1C Agent — Managed AI layer over 1C on Claude",
-        description: "Permission-based AI on Claude accelerates 1C: developers ship extensions through review, managers act strictly within their role. Free 30-minute pilot.",
+        title: "1C Agent — AI Layer over 1C ERP (full case in Russian)",
+        description: "Permission-based AI layer over 1C ERP on Claude: safe manager self-service, 4.2× faster dev tickets, full audit trail. Full case study in Russian.",
       },
       ctaPrimary: { label: "Book a free call", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Email us", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
@@ -807,7 +821,7 @@ export const en: Dictionary = {
       ],
       seo: {
         title: "Bankruptcy AI — Russian-only product (page in Russian)",
-        description: "AI platform for Russian arbitration trustees («арбитражные управляющие»). Product works with 127-ФЗ, ЕФРСБ and the Russian Supreme Court practice — page and materials are in Russian only. Visit /ru/cases/bankruptcy-agent for the full landing.",
+        description: "AI platform for Russian bankruptcy trustees: court-ready drafts with fresh case law, deadline control under 127-FZ, transaction analysis. Self-hosted. Page in Russian.",
       },
       ctaPrimary: { label: "View Russian version", href: "/ru/cases/bankruptcy-agent", meta: "page in Russian", kind: "telegram" },
       ctaSecondary: { label: "Back to cases", href: "/cases", meta: "browse other cases", kind: "phone" },

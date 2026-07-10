@@ -3,8 +3,9 @@
 import { useState, useMemo } from "react";
 import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon, PhoneIcon, MailIcon, TelegramIcon, PlusIcon } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, localizedPath, type Locale } from "@/lib/i18n";
 import { asset, href } from "@/lib/utils";
+import { site } from "@/lib/site";
 import { ErpLeadMagnetModal } from "./ErpLeadMagnetModal";
 import {
   erpHero,
@@ -31,6 +32,89 @@ const ROLE_BG: Record<DemoScenario["id"], { bg: string; fg: string }> = {
   ops: { bg: "#5a3f25", fg: "#f3d8b5" },
   finance: { bg: "#3d3a52", fg: "#d6d2f2" },
 };
+
+const PAGE_PATH = "/cases/erp-agent";
+const RU_URL = `${site.url}${localizedPath(PAGE_PATH, "ru")}`;
+
+/**
+ * Localized stub strings for non-RU visitors. The bespoke landing below is
+ * Russian-only (1C is a Russian-market ERP) — serving it under en/de/es URLs
+ * is a title/body language mismatch, so those locales get a short localized
+ * summary with a link to the full Russian case instead.
+ */
+const ERP_STUB: Record<Exclude<Locale, "ru">, {
+  breadcrumbHome: string;
+  breadcrumbCases: string;
+  eyebrow: string;
+  h1: string;
+  p1: string;
+  p2: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+}> = {
+  en: {
+    breadcrumbHome: "Home",
+    breadcrumbCases: "Cases",
+    eyebrow: "1C Agent · AI-ops",
+    h1: "1C Agent — a permission-based AI layer over 1C ERP",
+    p1: "1C is the dominant ERP platform in the Russian-speaking market. 1C Agent lets managers work with it in plain business language: an AI layer on Claude with role-based permissions, plan-review flows and a full audit trail — managers get safe self-service actions, developers stop drowning in routine tickets, and the 1C core stays untouched.",
+    p2: "Results across three deployments: typical development tickets close 4.2× faster, managers get answers in minutes instead of days, and every AI action is logged and reversible. The product targets the Russian market, so the full case study is in Russian.",
+    ctaPrimary: "Read the full case in Russian",
+    ctaSecondary: "Back to cases",
+  },
+  de: {
+    breadcrumbHome: "Start",
+    breadcrumbCases: "Cases",
+    eyebrow: "1C Agent · AI-Ops",
+    h1: "1C Agent — eine berechtigungsbasierte KI-Schicht über dem 1C-ERP",
+    p1: "1C ist die dominierende ERP-Plattform im russischsprachigen Markt. Mit 1C Agent arbeiten Manager in normaler Geschäftssprache damit: eine KI-Schicht auf Claude mit rollenbasierten Berechtigungen, Plan-Review-Abläufen und lückenlosem Audit-Trail — Manager erhalten sichere Self-Service-Aktionen, Entwickler ertrinken nicht mehr in Routine-Tickets, und der 1C-Kern bleibt unangetastet.",
+    p2: "Ergebnisse aus drei Einführungen: typische Entwicklungs-Tickets schließen 4,2× schneller, Manager bekommen Antworten in Minuten statt Tagen, und jede KI-Aktion ist protokolliert und umkehrbar. Das Produkt zielt auf den russischen Markt — die vollständige Case Study ist auf Russisch.",
+    ctaPrimary: "Vollständige Case Study auf Russisch lesen",
+    ctaSecondary: "Zurück zu den Cases",
+  },
+  es: {
+    breadcrumbHome: "Inicio",
+    breadcrumbCases: "Casos",
+    eyebrow: "1C Agent · AI-ops",
+    h1: "1C Agent — una capa de IA con permisos sobre el ERP 1C",
+    p1: "1C es la plataforma ERP dominante en el mercado rusohablante. Con 1C Agent, los managers trabajan con ella en lenguaje de negocio normal: una capa de IA sobre Claude con permisos por rol, flujos de plan-review y un registro de auditoría completo — los managers obtienen acciones seguras de autoservicio, los desarrolladores dejan de ahogarse en tickets rutinarios y el núcleo de 1C queda intacto.",
+    p2: "Resultados en tres implantaciones: los tickets de desarrollo típicos se cierran 4,2× más rápido, los managers reciben respuestas en minutos en lugar de días, y cada acción de la IA queda registrada y es reversible. El producto apunta al mercado ruso, por lo que el caso completo está en ruso.",
+    ctaPrimary: "Leer el caso completo en ruso",
+    ctaSecondary: "Volver a los casos",
+  },
+};
+
+/** Short localized summary shown to non-RU visitors instead of the Russian landing. */
+function ErpRussianOnlyStub({ locale }: { locale: Exclude<Locale, "ru"> }) {
+  const t = ERP_STUB[locale] ?? ERP_STUB.en;
+  return (
+    <section className="page-hero">
+      <div className="container" style={{ paddingBlock: "clamp(3rem, 6vw, 5rem)" }}>
+        <div className="breadcrumbs">
+          <a href={href("/", locale)}>{t.breadcrumbHome}</a>
+          <span className="breadcrumbs__sep">/</span>
+          <a href={href("/cases", locale)}>{t.breadcrumbCases}</a>
+          <span className="breadcrumbs__sep">/</span>
+          <span className="breadcrumbs__current">1C Agent</span>
+        </div>
+        <p className="eyebrow" style={{ marginTop: "1.5rem" }}>
+          {t.eyebrow}
+        </p>
+        <h1 className="page-hero__title">{t.h1}</h1>
+        <p className="page-hero__lede">{t.p1}</p>
+        <p className="page-hero__lede">{t.p2}</p>
+        <div className="cta-row" style={{ marginTop: "2rem" }}>
+          <MagneticButton href={RU_URL}>
+            {t.ctaPrimary} <ArrowIcon />
+          </MagneticButton>
+          <MagneticButton href={href("/cases", locale)} variant="ghost">
+            {t.ctaSecondary}
+          </MagneticButton>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function TermLine({ m }: { m: ChatMessage }) {
   if (m.kind === "plan") {
@@ -202,6 +286,12 @@ export function ErpAgentPage() {
   const locale = useLocale();
   const dict = getDictionary(locale);
   const caseDict = dict.case_pages["erp-agent"];
+
+  // The bespoke landing below is Russian-only copy. Non-RU locales get a
+  // short localized summary instead (no lead-magnet modal, no Russian body).
+  if (locale !== "ru") {
+    return <ErpRussianOnlyStub locale={locale} />;
+  }
 
   // Primary CTA is locale-aware: the RU dictionary keeps the direct +7 phone
   // (the 1C product sells into the RU market); other locales book a call.

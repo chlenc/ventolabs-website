@@ -6,7 +6,7 @@ import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon, PhoneIcon, Mail
 import { useLocale } from "./LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
 import type { ServiceDict } from "@/lib/i18n/types";
-import { asset, href } from "@/lib/utils";
+import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 
 export function ServicePage({
   slug,
@@ -39,7 +39,7 @@ export function ServicePage({
         <div className="container">
           <FadeUp>
             <div className="breadcrumbs">
-              <a href={href("/", locale)}>Home</a>
+              <a href={href("/", locale)}>{breadcrumbHomeLabels[locale]}</a>
               <span className="breadcrumbs__sep">/</span>
               <a href={href(parent.parentHref, locale)}>{parent.parentLabel}</a>
               <span className="breadcrumbs__sep">/</span>
@@ -239,10 +239,7 @@ export function ServicePage({
                 <h2>{c.deliverablesHeading}</h2>
               </div>
               <div className="section-header__right">
-                <p>
-                  Concrete deliverables. Each item below ships as part of the
-                  initial engagement, not as a future upsell.
-                </p>
+                <p>{c.deliverablesNote}</p>
               </div>
             </div>
           </FadeUp>

@@ -21,12 +21,13 @@ Key facts:
 ## Client results
 
 - [Case studies](https://ventolabs.com/cases/): Zigmund Online (online therapy): patient response time cut from 4 hours to under 2 minutes, booking conversion +40%, 200+ conversations handled daily. NoConcept (e-commerce, 3,000+ SKUs): lead response 6 hours → 8 minutes, 25+ hours/week saved. ASG Compute (cloud infrastructure): 13 AI agents deployed across 5 departments in 4 weeks, AI spend −35%.
+- [ArbitrAI](https://arbitrai.tech/): Vento Labs' own LegalTech product — an AI platform for Russian bankruptcy trustees (deadline control under the insolvency law, AI-drafted filings, transaction analysis). Results: daily deadline monitoring 2–3 hours → under 20 minutes, 99.9% of statutory publications filed on time, document prep 6× faster.
 
 ## Product directions
 
 - [Content Factory](https://ventolabs.com/cases/content-factory/): Turns e-commerce catalogs into daily discovery content — lifestyle visuals, carousels, short videos, AI presenters.
 - [Supplier Agent](https://ventolabs.com/cases/supplier-agent/): Reads supplier emails, chats and price lists; extracts SKUs, prices, stock; updates catalogs by rules with approval flows.
-- [1C Agent](https://ventolabs.com/cases/erp-agent/): Permission-based AI layer over 1C ERP on Claude — faster development, safe manager actions, full audit trail.
+- [1C Agent](https://ventolabs.com/cases/erp-agent/): Permission-based AI layer over 1C ERP on Claude — faster development, safe manager actions, full audit trail (full case study in Russian at /ru/cases/erp-agent/).
 - [Bankruptcy AI](https://ventolabs.com/cases/bankruptcy-agent/): AI platform for Russian arbitration trustees — procedural documents, deadline control, transaction analysis (page in Russian).
 
 ## Company

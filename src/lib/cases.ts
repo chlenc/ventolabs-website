@@ -7,7 +7,7 @@ export const caseLandingSlugs = [
 ] as const;
 
 /** Client case studies shown inline on /cases, without dedicated landing pages. */
-export const caseStudySlugs = ["zigmund", "noconcept", "asgcompute"] as const;
+export const caseStudySlugs = ["zigmund", "noconcept", "asgcompute", "arbitrai"] as const;
 
 /** Slugs that have their own route. Only landings do. */
 export const caseSlugs = caseLandingSlugs;

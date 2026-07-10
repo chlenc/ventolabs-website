@@ -13,6 +13,14 @@ export function href(path: string, locale: Locale = defaultLocale): string {
   return `${base}${localizedPath(path, locale)}`;
 }
 
+/** Localized "Home" breadcrumb label (proper nouns elsewhere don't translate). */
+export const breadcrumbHomeLabels: Record<Locale, string> = {
+  en: "Home",
+  ru: "Главная",
+  es: "Inicio",
+  de: "Start",
+};
+
 /**
  * Pages that funnel to a single conversion goal (call or email) and must
  * suppress all competing CTAs, popups, and floating widgets. Match against

@@ -1001,7 +1001,9 @@ em, .italic {
   isolation: isolate;
 }
 @media (max-width: 900px) {
-  .case { aspect-ratio: 16/11; min-height: 260px; padding: 1.25rem; }
+  /* No min-height: with aspect-ratio 16/11 a fixed 260px floor makes the
+     card wider than the container on 375-410px phones (horizontal clip). */
+  .case { aspect-ratio: 16/11; padding: 1.25rem; }
   .case__metric { top: 0.9rem; right: 0.9rem; font-size: 1.4rem; }
   .case__title { font-size: 1.1rem; }
 }
@@ -1019,7 +1021,7 @@ em, .italic {
   inset: 0;
   background:
     radial-gradient(ellipse 70% 55% at top right, rgba(0,0,0,0.55), transparent 70%),
-    linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.05) 45%, rgba(0,0,0,0.85) 100%);
+    linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.88) 100%);
   z-index: -1;
 }
 .case__meta {
@@ -1408,7 +1410,8 @@ em, .italic {
 .lead-form input,
 .lead-form textarea {
   font: inherit;
-  font-size: 0.95rem;
+  /* Never below 16px: iOS Safari auto-zooms the page on focus of smaller inputs. */
+  font-size: 1rem;
   color: var(--ink);
   background: transparent;
   border: 1px solid var(--line-strong);

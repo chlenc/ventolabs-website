@@ -256,6 +256,8 @@ export type Dictionary = {
     howItWorksHeading: string;
     deliverablesEyebrow: string;
     deliverablesHeading: string;
+    /** Right-column note clarifying what the free pilot covers vs paid scope. */
+    deliverablesNote: string;
     resultsEyebrow: string;
     resultsHeading: string;
     stakesEyebrow: string;

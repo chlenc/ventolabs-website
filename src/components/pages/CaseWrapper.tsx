@@ -11,7 +11,7 @@ const landingHeroImage: Record<CaseLandingSlug, string> = {
   "content-factory": "/images/case-content-factory.png",
   "supplier-agent": "/images/case-supplier-agent.png",
   "erp-agent": "/images/case-erp-agent.png",
-  "bankruptcy-agent": "/images/case-bankruptcy-agent.png",
+  "bankruptcy-agent": "/images/case-bankruptcy-agent.svg",
 };
 
 export function CaseWrapper({ slug }: { slug: string }) {

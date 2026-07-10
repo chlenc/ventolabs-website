@@ -13,9 +13,9 @@ export const de: Dictionary = {
     homeDescription:
       "Maßgeschneiderte KI-Agenten, die Betriebskosten senken, Workflows automatisieren und Ihr Unternehmen skalieren — ohne zusätzliche Mitarbeiter. Kostenlose KI-Agent-Einrichtung in jedem Projekt.",
     titleTemplate: "%s | Vento Labs",
-    casesTitle: "KI-Case-Studies — drei KI-Betriebssysteme für E-Commerce",
+    casesTitle: "KI-Case-Studies — echte Ergebnisse mit KI-Agenten",
     casesDescription:
-      "Drei Produktrichtungen für E-Commerce: eine Content-Fabrik, die SKUs in täglichen Discovery-Content verwandelt, ein Supplier-Agent, der Kataloge aktuell hält, und eine permissionierte KI-Schicht über 1C.",
+      "Messbare Kundenergebnisse in Healthcare, E-Commerce, Cloud und Legaltech — plus vier produktisierte KI-Lösungen, inkl. unserem eigenen Produkt ArbitrAI.",
     privacyTitle: "Datenschutzerklärung",
     privacyDescription: "Datenschutzerklärung von Vento Labs — wie wir mit Ihren Daten umgehen.",
     termsTitle: "Nutzungsbedingungen",
@@ -202,9 +202,9 @@ export const de: Dictionary = {
 
   casesIntro: {
     eyebrow: "Case Studies",
-    heading: "Drei KI-Betriebssysteme für E-Commerce",
-    lead: "Content-Tempo. Katalog-Tempo. Internes Tempo.",
-    description: "Drei Produktrichtungen, eine These: KI beseitigt die Verzögerungen zwischen Signal und Handlung. Zwischen einem SKU und einem veröffentlichten Post. Zwischen einer Lieferanten-Nachricht und einem aktuellen Katalog. Zwischen einer Business-Anfrage und einer sicheren Änderung in Ihren Systemen.",
+    heading: "KI-Systeme, die wir bauen — und die Ergebnisse, die sie liefern",
+    lead: "Lösungen, die Sie starten können, und Kundenprojekte mit gemessenen Resultaten.",
+    description: "Vier produktisierte Lösungen — eine Content-Fabrik, ein Agent für Lieferanten-Operations, eine permissionierte KI-Schicht über 1C und eine Legaltech-Plattform für Insolvenzverfahren — plus ausgelieferte Kundenprojekte mit messbaren Ergebnissen in Healthcare, E-Commerce, Cloud-Infrastruktur und Legaltech, darunter ArbitrAI, unser eigenes Produkt.",
     homeHeadingLead: "Drei KI-Systeme,",
     homeHeadingEm: "die wir bauen",
     homeHeadingTail: "— für Ihre Operations.",
@@ -297,6 +297,18 @@ export const de: Dictionary = {
           { value: "–35 %", label: "KI-Infrastrukturkosten" },
         ],
       },
+      arbitrai: {
+        industry: "LegalTech · Insolvenz",
+        title: "ArbitrAI — unsere eigene KI-Plattform für Insolvenzverwalter: Fristenkontrolle, KI-Dokumente, Rechtsanalytik",
+        challenge: "Ein Insolvenzverwalter betreut 20–300 Verfahren gleichzeitig. Das tägliche Fristenmonitoring kostet 2–3 Stunden, eine verpasste Pflichtveröffentlichung riskiert die Disqualifikation, und Routineschriftsätze verschlingen Stunden teurer Arbeitszeit.",
+        solution: "Ein Produkt, das Vento Labs gemeinsam mit einem praktizierenden Verwalter gebaut und gelauncht hat: automatische Fristenberechnung nach russischem Insolvenzrecht mit Telegram-Alerts, KI-Entwürfe für Veröffentlichungen und Bescheide, Transaktionsanalyse für Anfechtungsklagen. Integriert mit den Gerichts- und Registersystemen; Daten werden compliance-konform im Land gehostet. Jede KI-Ausgabe ist ein Entwurf zur menschlichen Prüfung — nie eine automatische Einreichung.",
+        result: "Das Fristenmonitoring sank von 2–3 Stunden auf unter 20 Minuten pro Tag, pünktliche Veröffentlichungen erreichten 99,9 %, und Dokumente entstehen 6× schneller. Live und wachsend auf arbitrai.tech.",
+        metrics: [
+          { value: "2–3 h → 20 min", label: "tägliches Fristenmonitoring" },
+          { value: "99,9 %", label: "pünktliche Veröffentlichungen" },
+          { value: "6×", label: "schnellere Dokumentenerstellung" },
+        ],
+      },
     },
     sectionLabels: { challenge: "Herausforderung", solution: "Lösung", result: "Ergebnis" },
     readyHeading: "Bereit dazuzugehören?",
@@ -315,6 +327,7 @@ export const de: Dictionary = {
     howItWorksHeading: "Drei Schritte zum Start",
     deliverablesEyebrow: "Leistungen",
     deliverablesHeading: "Was enthalten ist",
+    deliverablesNote: "Konkrete Leistungen. Der kostenlose Pilot umfasst Ihren ersten funktionierenden Agenten; die vollständige Liste unten liefern wir im bezahlten Projekt — Festpreis nach dem Erstgespräch.",
     resultsEyebrow: "Ergebnisse",
     resultsHeading: "Was Sie erwarten können",
     stakesEyebrow: "Der Preis des Wartens",
@@ -374,7 +387,8 @@ export const de: Dictionary = {
         { q: "Kann er wirklich meinen Rechner steuern?", a: "Ja. Mit Computer-Use-Fähigkeiten kann der Agent Websites navigieren, Formulare ausfüllen, Daten extrahieren, Dateien verwalten und mit jeder Anwendung interagieren — genau wie ein menschlicher Assistent." },
         { q: "Was ist mit dem Datenschutz?", a: "Ihr Agent läuft auf Ihrer Infrastruktur — Ihr Server, VPS oder Büro-Rechner. Daten verlassen Ihre Umgebung nie. Für maximalen Datenschutz können Sie rein lokale LLMs verwenden." },
         { q: "Welche Messenger und Plattformen werden unterstützt?", a: "Telegram, WhatsApp, LinkedIn, E-Mail (Gmail, Outlook), Slack und jede Plattform mit API. Individuelle Integrationen ergänzen wir gern." },
-        { q: "Wie lange dauert der Bau?", a: "Ein einfacher Agent startet in 3–5 Tagen. Komplexe Multi-Plattform-Agenten mit Individualintegrationen 1–3 Wochen. Sie bekommen immer zuerst ein funktionierendes MVP." },
+        { q: "Wie lange dauert der Bau?", a: "Ein einfacher Agent startet in 3–7 Tagen. Komplexe Multi-Plattform-Agenten mit Individualintegrationen 1–3 Wochen. Sie bekommen immer zuerst ein funktionierendes MVP." },
+        { q: "Was kostet ein individueller KI-Agent?", a: "Der erste Pilot-Agent ist kostenlos — wir bauen ihn nach einem 30-minütigen Erstgespräch. Produktions-Agenten kalkulieren wir danach zum Festpreis, je nach Integrationen und Umfang; typische Bauzeit sind 3–7 Tage. Laufende Kosten sind nur die KI-Modellnutzung, meist 20–200 $/Monat direkt an die Anbieter, ohne Aufschlag." },
       ],
       seo: {
         title: "Maßgeschneiderte KI-Agenten — Self-hosted, sicher, 24/7",
@@ -430,7 +444,7 @@ export const de: Dictionary = {
         { q: "Wie unterscheidet sich das von Zapier?", a: "Wir nutzen n8n (self-hosted, keine Pro-Task-Preise) und Make.com für komplexe Workflows. Wichtiger: Wir fügen KI-Intelligenz und laufende Wartung hinzu — nicht nur Point-and-Click-Verbindungen." },
       ],
       seo: {
-        title: "KI-Prozessautomatisierung — n8n, Make.com & individuelle Workflows",
+        title: "KI-Prozessautomatisierung mit n8n und Make.com",
         description: "Automatisieren Sie Lead-Qualifizierung, Datensynchronisation, Reports und Workflows mit KI-gestützten n8n- und Make.com-Automatisierungen. Null manuelle Dateneingabe.",
       },
     },
@@ -647,7 +661,7 @@ export const de: Dictionary = {
         { q: "Wie lange dauert der Start?", a: "MVP auf 1–3 Schlüsselkonten — 2–3 Wochen. Volle Abdeckung — 1–2 Monate, je nach Anzahl der Quellen und Komplexität der Regeln." },
       ],
       seo: {
-        title: "Supplier Agent — KI-Operations-Layer für Lieferanten und Katalog",
+        title: "Supplier Agent — KI für Lieferanten-Mails und Katalog",
         description: "Der KI-Agent verwandelt Lieferanten-Mails, Chats und Preislisten in Live-Bestände, Preise und Storefront-Updates — nach Regeln, mit Freigaben und Journal.",
       },
     },
@@ -723,8 +737,8 @@ export const de: Dictionary = {
         { q: "Wie werden Aktionen mit unserer Rechnungslegungspolitik abgestimmt?", a: "In der Phase Rollendefinition fixieren wir gemeinsam erlaubte Szenarien und Verbote. Jede nachfolgende Anfrage an den Agenten wird gegen diese Regeln geprüft. Zusätzlich können Sie eine manuelle Freigabe für Aktionen oberhalb einer definierten Schwelle aktivieren — nach Betrag, Operationstyp oder anderen Kriterien." },
       ],
       seo: {
-        title: "1C Agent — Verwaltete KI-Schicht über 1C auf Claude",
-        description: "Permission-based AI auf Claude beschleunigt 1C: Entwickler liefern Erweiterungen über Review, Manager handeln streng innerhalb ihrer Rolle. Kostenfreier 30-Minuten-Pilot.",
+        title: "1C Agent — KI-Schicht über 1C ERP (Case auf Russisch)",
+        description: "Berechtigungsbasierte KI-Schicht über 1C auf Claude: sichere Manager-Aktionen, 4,2× schnellere Dev-Tickets, Audit-Trail. Vollständige Case Study auf Russisch.",
       },
       ctaPrimary: { label: "Kostenlosen Termin buchen", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Per E-Mail schreiben", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
@@ -807,7 +821,7 @@ export const de: Dictionary = {
       ],
       seo: {
         title: "Bankruptcy AI — Russisch-only-Produkt (Seite auf Russisch)",
-        description: "KI-Plattform für russische Insolvenzverwalter («арбитражные управляющие»). Produkt arbeitet mit 127-ФЗ, ЕФРСБ und der Praxis des Obersten Gerichtshofs der RF — Seite und Materialien sind nur auf Russisch verfügbar. Volle Landingpage unter /ru/cases/bankruptcy-agent.",
+        description: "KI-Plattform für russische Insolvenzverwalter: Schriftsatz-Entwürfe mit aktueller Rechtsprechung, Fristenkontrolle, Transaktionsanalyse. Self-hosted. Seite auf Russisch.",
       },
       ctaPrimary: { label: "Russische Version öffnen", href: "/ru/cases/bankruptcy-agent", meta: "Seite auf Russisch", kind: "telegram" },
       ctaSecondary: { label: "Zurück zu den Cases", href: "/cases", meta: "andere Cases ansehen", kind: "phone" },

@@ -13,9 +13,9 @@ export const es: Dictionary = {
     homeDescription:
       "Agentes de IA a medida que reducen costes operativos, automatizan flujos de trabajo y escalan tu negocio sin añadir personal. Configuración gratuita con cada proyecto.",
     titleTemplate: "%s | Vento Labs",
-    casesTitle: "Casos de IA — Tres sistemas operativos de IA para e-commerce",
+    casesTitle: "Casos de IA — resultados reales con agentes de IA",
     casesDescription:
-      "Tres direcciones para e-commerce: una fábrica de contenido que convierte SKUs en contenido de descubrimiento diario, un agente de proveedores que mantiene el catálogo al día y una capa de IA con permisos sobre 1C.",
+      "Resultados medibles de clientes en salud, e-commerce, cloud y legaltech — más cuatro soluciones de IA productizadas, incluido nuestro producto ArbitrAI.",
     privacyTitle: "Política de privacidad",
     privacyDescription: "Política de privacidad de Vento Labs — cómo tratamos tus datos.",
     termsTitle: "Condiciones de uso",
@@ -202,9 +202,9 @@ export const es: Dictionary = {
 
   casesIntro: {
     eyebrow: "Casos de éxito",
-    heading: "Tres sistemas operativos de IA para e-commerce",
-    lead: "Velocidad de contenido. Velocidad de catálogo. Velocidad interna.",
-    description: "Tres direcciones de producto, una misma tesis: la IA elimina las demoras entre la señal y la acción. Entre un SKU y una publicación. Entre un mensaje de proveedor y un catálogo actualizado. Entre una petición de negocio y un cambio seguro dentro de tus sistemas.",
+    heading: "Sistemas de IA que construimos — y los resultados que producen",
+    lead: "Soluciones que puedes lanzar y despliegues en clientes con resultados medidos.",
+    description: "Cuatro soluciones productizadas — una fábrica de contenido, un agente de operaciones con proveedores, una capa de IA con permisos sobre 1C y una plataforma legaltech de insolvencias — junto a proyectos entregados a clientes con resultados medibles en salud, e-commerce, infraestructura cloud y legaltech, incluido ArbitrAI, nuestro propio producto.",
     homeHeadingLead: "Tres sistemas de IA",
     homeHeadingEm: "que construimos",
     homeHeadingTail: "para operaciones.",
@@ -297,6 +297,18 @@ export const es: Dictionary = {
           { value: "–35%", label: "coste de infraestructura de IA" },
         ],
       },
+      arbitrai: {
+        industry: "LegalTech · Concursal",
+        title: "ArbitrAI — nuestra plataforma de IA para administradores concursales: control de plazos, documentos con IA, analítica legal",
+        challenge: "Un administrador concursal lleva 20–300 casos a la vez. El monitoreo diario de plazos consume 2–3 horas, una publicación obligatoria fuera de plazo puede costar la inhabilitación, y los escritos rutinarios devoran horas de trabajo caro.",
+        solution: "Un producto que Vento Labs construyó y lanzó junto a un administrador en ejercicio: cálculo automático de plazos según la ley concursal rusa con alertas por Telegram, borradores de publicaciones y notificaciones generados con IA, y análisis de transacciones para acciones de reintegración. Integrado con los sistemas judiciales y registrales; datos alojados en el país por cumplimiento. Cada salida de la IA es un borrador para revisión humana — nunca se presenta automáticamente.",
+        result: "El monitoreo de plazos bajó de 2–3 horas a menos de 20 minutos al día, las publicaciones a tiempo llegaron al 99,9 % y los documentos se preparan 6 veces más rápido. Vivo y creciendo en arbitrai.tech.",
+        metrics: [
+          { value: "2–3 h → 20 min", label: "monitoreo diario de plazos" },
+          { value: "99,9 %", label: "publicaciones a tiempo" },
+          { value: "6×", label: "documentos más rápido" },
+        ],
+      },
     },
     sectionLabels: { challenge: "Reto", solution: "Solución", result: "Resultado" },
     readyHeading: "¿Listo para unirte?",
@@ -315,6 +327,7 @@ export const es: Dictionary = {
     howItWorksHeading: "Tres pasos para empezar",
     deliverablesEyebrow: "Entregables",
     deliverablesHeading: "Qué incluye",
+    deliverablesNote: "Entregables concretos. El piloto gratuito cubre tu primer agente funcional; la lista completa de abajo se entrega en un proyecto de pago — presupuesto cerrado tras la llamada inicial.",
     resultsEyebrow: "Resultados",
     resultsHeading: "Qué puedes esperar",
     stakesEyebrow: "El coste de esperar",
@@ -374,7 +387,8 @@ export const es: Dictionary = {
         { q: "¿Puede controlar mi ordenador de verdad?", a: "Sí. Con capacidades de computer-use, el agente puede navegar webs, rellenar formularios, extraer datos, gestionar archivos e interactuar con cualquier aplicación — igual que un asistente humano." },
         { q: "¿Y la privacidad de los datos?", a: "Tu agente se ejecuta en tu infraestructura — tu servidor, tu VPS o tu máquina de oficina. Los datos nunca salen de tu entorno. Puedes usar LLMs totalmente locales para máxima privacidad." },
         { q: "¿Qué mensajeros y plataformas soportáis?", a: "Telegram, WhatsApp, LinkedIn, email (Gmail, Outlook), Slack y cualquier plataforma con API. También podemos añadir integraciones a medida." },
-        { q: "¿Cuánto tarda en construirse?", a: "Un agente básico se lanza en 3–5 días. Los agentes complejos multi-plataforma con integraciones a medida tardan 1–3 semanas. Siempre obtienes primero un MVP funcional." },
+        { q: "¿Cuánto tarda en construirse?", a: "Un agente básico se lanza en 3–7 días. Los agentes complejos multi-plataforma con integraciones a medida tardan 1–3 semanas. Siempre obtienes primero un MVP funcional." },
+        { q: "¿Cuánto cuesta un agente de IA a medida?", a: "El primer agente piloto es gratis — lo construimos tras una llamada de 30 minutos. Los agentes de producción se presupuestan a precio cerrado después de la llamada, según integraciones y alcance; el tiempo típico es de 3–7 días. El coste recurrente es solo el uso del modelo de IA, normalmente 20–200 $/mes pagados directamente a los proveedores, sin recargo." },
       ],
       seo: {
         title: "Agentes de IA a medida — Autoalojados, seguros, 24/7",
@@ -430,7 +444,7 @@ export const es: Dictionary = {
         { q: "¿En qué se diferencia esto de usar Zapier?", a: "Usamos n8n (autoalojado, sin precios por tarea) y Make.com para flujos complejos. Más importante: añadimos inteligencia de IA y mantenimiento continuo — no solo conexiones de apuntar y pulsar." },
       ],
       seo: {
-        title: "Automatización de procesos con IA — n8n, Make.com y flujos a medida",
+        title: "Automatización de procesos con IA — n8n y Make.com",
         description: "Automatiza cualificación de leads, sincronización de datos, informes y flujos con automatizaciones de IA en n8n y Make.com. Cero entrada manual de datos.",
       },
     },
@@ -538,7 +552,7 @@ export const es: Dictionary = {
         { q: "¿Cuánto cuesta?", a: "Pilot desde 3.000 $ de setup + 500 $/mes. Scale desde 8.000 $ de setup + 2.000 $/mes. Enterprise con precio a medida. Los costes del modelo de IA (20–200 $/mes según uso) los facturan directamente los proveedores — sin márgenes nuestros." },
       ],
       seo: {
-        title: "Plataforma IA empresarial — Sistema operativo de IA para empresas",
+        title: "Plataforma de IA empresarial — agentes para cada equipo",
         description: "Sistema operativo de IA completo: agentes dedicados por departamento, Knowledge Vault, MCP Gateway, seguridad empresarial. Despliegue en 4 semanas. Precios de Pilot a Enterprise.",
       },
     },
@@ -647,7 +661,7 @@ export const es: Dictionary = {
         { q: "¿Cuánto tarda el arranque?", a: "MVP sobre 1–3 proveedores clave — 2–3 semanas. Cobertura total — 1–2 meses según número de fuentes y complejidad de reglas." },
       ],
       seo: {
-        title: "Supplier Agent — Capa de operaciones con IA para proveedores y catálogo",
+        title: "Supplier Agent — IA para emails de proveedores y catálogo",
         description: "El agente convierte emails, chats y listas de precios de proveedores en stock, precios y actualizaciones de web — por reglas, con aprobaciones y registro completo.",
       },
     },
@@ -723,8 +737,8 @@ export const es: Dictionary = {
         { q: "¿Cómo se alinean las acciones con la política contable de la empresa?", a: "En la fase de definición de roles fijamos contigo escenarios permitidos y prohibidos. Cada petición posterior al agente se valida contra estas reglas. Adicionalmente puedes activar aprobación manual para cualquier acción por encima de un umbral definido — por importe, tipo de operación u otros criterios." },
       ],
       seo: {
-        title: "1C Agent — Capa de IA gestionada sobre 1C en Claude",
-        description: "IA con permisos sobre Claude acelera 1C: los desarrolladores entregan extensiones con revisión, los responsables actúan estrictamente dentro de su rol. Piloto gratuito de 30 minutos.",
+        title: "1C Agent — capa de IA sobre 1C ERP (caso en ruso)",
+        description: "Capa de IA con permisos sobre 1C en Claude: acciones seguras para managers, tickets 4,2× más rápidos, auditoría completa. Caso completo en ruso.",
       },
       ctaPrimary: { label: "Reservar llamada gratis", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
@@ -807,7 +821,7 @@ export const es: Dictionary = {
       ],
       seo: {
         title: "Bankruptcy AI — producto solo en ruso (página en ruso)",
-        description: "Plataforma de IA para administradores concursales rusos («арбитражные управляющие»). El producto trabaja con la 127-ФЗ, ЕФРСБ y la práctica del Tribunal Supremo de la FR — la página y los materiales están solo en ruso. Versión completa en /ru/cases/bankruptcy-agent.",
+        description: "Plataforma de IA para administradores concursales rusos: borradores con jurisprudencia, control de plazos, análisis de transacciones. Self-hosted. Página en ruso.",
       },
       ctaPrimary: { label: "Ver versión en ruso", href: "/ru/cases/bankruptcy-agent", meta: "página en ruso", kind: "telegram" },
       ctaSecondary: { label: "Volver a los casos", href: "/cases", meta: "ver otros casos", kind: "phone" },
