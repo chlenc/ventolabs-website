@@ -43,6 +43,7 @@ export const ru: Dictionary = {
       { label: "Консалтинг", href: "/services/ai-training" },
       { label: "AI Workspace", href: "/services/ai-workspace" },
       { label: "Кейсы", href: "/cases" },
+      { label: "Гайды", href: "/blog" },
     ],
     cta: { label: "Записаться на звонок", href: "#book" },
     openMenu: "Открыть меню",
