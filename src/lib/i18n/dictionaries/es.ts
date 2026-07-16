@@ -43,6 +43,7 @@ export const es: Dictionary = {
       { label: "Consultoría", href: "/services/ai-training" },
       { label: "Plataforma IA", href: "/services/ai-workspace" },
       { label: "Casos", href: "/cases" },
+      { label: "Guías", href: "/blog" },
     ],
     cta: { label: "Reservar llamada", href: "#book" },
     openMenu: "Abrir menú",

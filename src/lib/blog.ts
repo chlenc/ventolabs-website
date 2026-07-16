@@ -14,7 +14,13 @@ import type { Locale } from "./i18n";
  * `src/components/pages/blog/<slug>-content.ts`.
  */
 
-export const blogSlugs = ["instrumenty-1c-claude-code-codex"] as const;
+export const blogSlugs = [
+  "instrumenty-1c-claude-code-codex",
+  "ai-agent-dlya-1c-vnedrenie",
+  "ai-agent-dlya-marketpleysov-wb-ozon",
+  "ii-dlya-arbitrazhnogo-upravlyayushchego",
+  "custom-ai-agent-cost",
+] as const;
 
 export type BlogSlug = (typeof blogSlugs)[number];
 
@@ -111,8 +117,293 @@ const oneCTools: BlogEntry = {
   },
 };
 
+const oneCAgent: BlogEntry = {
+  slug: "ai-agent-dlya-1c-vnedrenie",
+  articleLocale: "ru",
+  datePublished: "2026-07-16",
+  dateModified: "2026-07-16",
+  readingMinutes: 14,
+  keywords: [
+    "AI-агент для 1С",
+    "ИИ в 1С",
+    "автоматизация 1С нейросетью",
+    "внедрение искусственного интеллекта в 1С",
+    "безопасность AI в 1С",
+    "1С:Предприятие",
+    "AI-агенты в учётных системах",
+    "read-only доступ к 1С",
+  ],
+  seo: {
+    ru: {
+      title: "AI-агент для 1С: возможности, ограничения, внедрение",
+      description:
+        "Что AI-агент умеет поверх 1С, как устроен безопасный доступ — read-only роли, ревью планов, аудит-лог — где ИИ не работает и как внедрить за 2–4 недели.",
+    },
+    en: {
+      title: "AI agent for 1C: capabilities, limits, rollout (RU guide)",
+      description:
+        "What an AI agent does on top of 1C:Enterprise — safe access architecture, honest limits, step-by-step rollout. Published in Russian; English summary here.",
+    },
+    de: {
+      title: "KI-Agent für 1C: Fähigkeiten, Grenzen, Einführung (RU)",
+      description:
+        "Was ein KI-Agent über 1C leistet — sichere Zugriffsarchitektur, ehrliche Grenzen, Einführung Schritt für Schritt. Der vollständige Guide ist auf Russisch.",
+    },
+    es: {
+      title: "Agente de IA para 1C: qué hace, límites e implantación",
+      description:
+        "Qué hace un agente de IA sobre 1C — arquitectura de acceso seguro, límites honestos e implantación paso a paso. La guía completa está en ruso.",
+    },
+  },
+  card: {
+    ru: {
+      eyebrow: "Гайд · AI-агент для 1С",
+      title: "AI-агент для 1С: что он реально умеет, где ломается и как внедрить без риска для базы",
+      summary:
+        "Ответы по данным, отчёты без программиста, рутина с подтверждением и помощь разработчику — и архитектура, которая делает это безопасным: read-only роли, ревью планов перед записью, аудит-лог. Плюс честный список зон, куда ИИ пускать нельзя, этапы внедрения за 2–4 недели и разбор, во что упирается стоимость.",
+      readLabel: "Читать гайд",
+    },
+    en: {
+      eyebrow: "Guide · AI agents for 1C",
+      title: "An AI agent for 1C:Enterprise: what it can do, where it breaks, and how to deploy it safely",
+      summary:
+        "What AI agents genuinely handle on top of 1C — data Q&A, ad-hoc reports, routine operations, developer assistance — and the architecture that keeps the database safe: read-only roles, plan review before any write, a full audit log. Written in Russian for the market it serves.",
+      readLabel: "English summary",
+    },
+    de: {
+      eyebrow: "Guide · KI-Agenten für 1C",
+      title: "Ein KI-Agent für 1C:Enterprise: was er kann, wo er scheitert und wie man ihn sicher einführt",
+      summary:
+        "Was KI-Agenten über 1C tatsächlich leisten — Datenabfragen, Ad-hoc-Berichte, Routineoperationen, Entwickler-Unterstützung — und die Architektur, die die Datenbank schützt: Read-only-Rollen, Plan-Review vor jedem Schreibzugriff, vollständiges Audit-Log. Auf Russisch verfasst.",
+      readLabel: "Deutsche Zusammenfassung",
+    },
+    es: {
+      eyebrow: "Guía · Agentes de IA para 1C",
+      title: "Un agente de IA para 1C:Enterprise: qué sabe hacer, dónde falla y cómo implantarlo sin riesgo",
+      summary:
+        "Lo que los agentes de IA resuelven de verdad sobre 1C — consultas de datos, informes puntuales, operaciones rutinarias, asistencia al desarrollador — y la arquitectura que protege la base: roles de solo lectura, revisión de planes antes de escribir, registro de auditoría completo. Escrita en ruso.",
+      readLabel: "Resumen en español",
+    },
+  },
+};
+
+const marketplaceAgent: BlogEntry = {
+  slug: "ai-agent-dlya-marketpleysov-wb-ozon",
+  articleLocale: "ru",
+  datePublished: "2026-07-16",
+  dateModified: "2026-07-16",
+  readingMinutes: 14,
+  keywords: [
+    "автоматизация Wildberries",
+    "автоматизация Ozon",
+    "ИИ для маркетплейсов",
+    "AI-агент для маркетплейсов",
+    "аналитика маркетплейсов",
+    "API Wildberries",
+    "Ozon Seller API",
+    "юнит-экономика маркетплейсов",
+    "цифровой сотрудник",
+  ],
+  seo: {
+    ru: {
+      title: "Автоматизация Wildberries и Ozon: AI-агент для селлера",
+      description:
+        "Как AI-агент забирает рутину селлера на Wildberries и Ozon: API площадок, ETL в свою базу, отчёты в Telegram, юнит-экономика и честные ограничения.",
+    },
+    en: {
+      title: "AI agent for Wildberries and Ozon: seller automation guide",
+      description:
+        "How an AI agent takes over seller routine on Wildberries and Ozon: marketplace APIs, ETL into your own database, Telegram reports, honest limits. In Russian.",
+    },
+    de: {
+      title: "KI-Agent für Wildberries und Ozon: Seller-Automatisierung",
+      description:
+        "Wie ein KI-Agent die Seller-Routine auf Wildberries und Ozon übernimmt: Marktplatz-APIs, ETL in die eigene Datenbank, Telegram-Reports. Auf Russisch.",
+    },
+    es: {
+      title: "Agente de IA para Wildberries y Ozon: automatiza tu rutina",
+      description:
+        "Cómo un agente de IA asume la rutina del seller en Wildberries y Ozon: APIs, ETL a una base propia, informes en Telegram y límites honestos. Guía en ruso.",
+    },
+  },
+  card: {
+    ru: {
+      eyebrow: "Гайд · Маркетплейсы",
+      title: "Цифровой сотрудник для маркетплейсов: AI-агент против рутины на Wildberries и Ozon",
+      summary:
+        "Утро селлера — выгрузки из двух ЛК, склейка в Excel и пересчёт маржи. Разбираем, как AI-агент поверх API WB и Ozon забирает эту рутину: ETL в свою базу, отчёты в Telegram, контент карточек. И честно — где автоматизация хрупкая и когда достаточно готового SaaS.",
+      readLabel: "Читать гайд",
+    },
+    en: {
+      eyebrow: "Guide · Marketplaces",
+      title: "A digital employee for marketplaces: an AI agent for Wildberries and Ozon sellers",
+      summary:
+        "A seller's morning is exports from two dashboards, spreadsheet merging and margin recalculation. The guide shows how an AI agent on top of the WB and Ozon APIs takes that routine over — and where automation stays fragile. Written in Russian, the language of both marketplaces.",
+      readLabel: "English summary",
+    },
+    de: {
+      eyebrow: "Guide · Marktplätze",
+      title: "Ein digitaler Mitarbeiter für Marktplätze: KI-Agent für Wildberries- und Ozon-Seller",
+      summary:
+        "Der Alltag eines Sellers: Exporte aus zwei Dashboards, Excel und Margen-Neuberechnung. Der Guide zeigt, wie ein KI-Agent über die WB- und Ozon-APIs diese Routine übernimmt — und wo Automatisierung fragil bleibt. Auf Russisch verfasst.",
+      readLabel: "Deutsche Zusammenfassung",
+    },
+    es: {
+      eyebrow: "Guía · Marketplaces",
+      title: "Un empleado digital para marketplaces: agente de IA para sellers de Wildberries y Ozon",
+      summary:
+        "La mañana de un seller: exportaciones de dos paneles, Excel y recálculo de márgenes. La guía muestra cómo un agente de IA sobre las APIs de WB y Ozon asume esa rutina — y dónde la automatización sigue siendo frágil. Escrita en ruso.",
+      readLabel: "Resumen en español",
+    },
+  },
+};
+
+const bankruptcyAi: BlogEntry = {
+  slug: "ii-dlya-arbitrazhnogo-upravlyayushchego",
+  articleLocale: "ru",
+  datePublished: "2026-07-16",
+  dateModified: "2026-07-16",
+  readingMinutes: 14,
+  keywords: [
+    "ИИ для арбитражного управляющего",
+    "автоматизация процедур банкротства",
+    "программа для арбитражного управляющего",
+    "анализ банковских выписок",
+    "127-ФЗ",
+    "ЕФРСБ",
+    "оспаривание сделок должника",
+    "AI-агент для юристов",
+  ],
+  seo: {
+    ru: {
+      title: "ИИ для арбитражного управляющего: что доверить агенту",
+      description:
+        "Что AI-агент уже делает в процедурах банкротства: сроки 127-ФЗ, анализ банковских выписок, черновики отчётов и публикаций. И где граница ответственности АУ.",
+    },
+    en: {
+      title: "AI for bankruptcy trustees: what an agent can handle",
+      description:
+        "What a bankruptcy AI agent already handles — deadlines, bank statement screening, report drafts — and where the trustee's personal liability draws the line.",
+    },
+    de: {
+      title: "KI für Insolvenzverwalter: was ein Agent übernehmen kann",
+      description:
+        "Was ein KI-Agent in Insolvenzverfahren schon übernimmt — Fristen, Kontoauszug-Screening, Berichtsentwürfe — und wo die persönliche Haftung die Grenze zieht.",
+    },
+    es: {
+      title: "IA para administradores concursales: qué asume un agente",
+      description:
+        "Qué asume un agente de IA en un concurso — plazos, cribado de extractos bancarios, borradores de informes — y dónde marca el límite la responsabilidad personal.",
+    },
+  },
+  card: {
+    ru: {
+      eyebrow: "Гайд · Банкротство",
+      title: "ИИ для арбитражного управляющего: какие процедуры уже можно доверить агенту",
+      summary:
+        "Контроль сроков по 127-ФЗ, разбор банковских выписок на оспоримые сделки, черновики отчётов и публикаций, мониторинг КАД и ЕФРСБ — что из рутины АУ агент уже забирает. И честно о границе: агент готовит, а решает и подписывает управляющий — ответственность персональная.",
+      readLabel: "Читать гайд",
+    },
+    en: {
+      eyebrow: "Guide · AI in bankruptcy",
+      title: "AI for bankruptcy trustees: which parts of the procedure an agent can already handle",
+      summary:
+        "Deadline tracking under Law 127-FZ, bank statement screening for voidable transactions, report and filing drafts, court docket monitoring — what an AI agent already takes over, and where personal liability draws the line. Written in Russian for the market it serves.",
+      readLabel: "English summary",
+    },
+    de: {
+      eyebrow: "Guide · KI in der Insolvenzpraxis",
+      title: "KI für Insolvenzverwalter: welche Teile des Verfahrens ein Agent schon übernehmen kann",
+      summary:
+        "Fristenkontrolle nach 127-FZ, Screening von Kontoauszügen auf anfechtbare Transaktionen, Berichts- und Schriftsatzentwürfe, Akten-Monitoring — was ein KI-Agent schon übernimmt und wo die persönliche Haftung die Grenze zieht. Auf Russisch verfasst.",
+      readLabel: "Deutsche Zusammenfassung",
+    },
+    es: {
+      eyebrow: "Guía · IA en procedimientos concursales",
+      title: "IA para administradores concursales: qué partes del procedimiento puede asumir ya un agente",
+      summary:
+        "Control de plazos según la ley 127-FZ, cribado de extractos bancarios en busca de operaciones impugnables, borradores de informes y escritos, monitorización de expedientes: lo que un agente ya asume y dónde marca el límite la responsabilidad personal. Escrita en ruso.",
+      readLabel: "Resumen en español",
+    },
+  },
+};
+
+const aiAgentCost: BlogEntry = {
+  slug: "custom-ai-agent-cost",
+  articleLocale: "en",
+  datePublished: "2026-07-16",
+  dateModified: "2026-07-16",
+  readingMinutes: 14,
+  keywords: [
+    "custom AI agent cost",
+    "AI agent development price",
+    "how much does an AI agent cost",
+    "AI automation cost for business",
+    "AI agent pricing 2026",
+    "AI agent build vs buy",
+    "AI agent maintenance cost",
+    "AI agent ROI",
+  ],
+  seo: {
+    ru: {
+      title: "Сколько стоит кастомный AI-агент в 2026: честный разбор",
+      description:
+        "Рыночные вилки на разработку и эксплуатацию AI-агента в 2026, сравнение no-code, SaaS и заказной разработки, скрытые расходы и вопросы подрядчику.",
+    },
+    en: {
+      title: "Custom AI Agent Cost in 2026: An Honest Breakdown",
+      description:
+        "What a custom AI agent really costs in 2026: build and monthly run ranges from market data, no-code vs SaaS vs custom break-even math, and hidden costs.",
+    },
+    de: {
+      title: "Was kostet ein KI-Agent 2026? Ehrliche Aufschlüsselung",
+      description:
+        "Marktpreise für Entwicklung und Betrieb von KI-Agenten 2026, Break-even-Vergleich von No-Code, SaaS und Individualentwicklung, versteckte Kosten, Checkliste.",
+    },
+    es: {
+      title: "Cuánto cuesta un agente de IA a medida en 2026",
+      description:
+        "Rangos de mercado para crear y operar un agente de IA en 2026, comparación no-code vs SaaS vs desarrollo a medida, costes ocultos y preguntas al proveedor.",
+    },
+  },
+  card: {
+    ru: {
+      eyebrow: "Гайд · Цены на AI-агентов",
+      title: "Сколько стоит кастомный AI-агент в 2026 году: честный разбор",
+      summary:
+        "Рыночные вилки на разработку и ежемесячную эксплуатацию, пять факторов, из которых складывается любая смета, формула окупаемости no-code против SaaS и заказной разработки, скрытые расходы. Написано командой, которая строит агентов, — включая честные случаи, когда строить не стоит. На английском.",
+      readLabel: "Читать гайд",
+    },
+    en: {
+      eyebrow: "AI agents · Pricing",
+      title: "How much does a custom AI agent cost in 2026? An honest breakdown",
+      summary:
+        "Market ranges for build and monthly run, the five drivers behind any quote, break-even math for no-code vs SaaS vs custom, and the hidden costs vendors leave out of proposals. Written by a team that builds agents — including the honest cases where you shouldn't buy one.",
+      readLabel: "Read the guide",
+    },
+    de: {
+      eyebrow: "Guide · Kosten von KI-Agenten",
+      title: "Was kostet ein maßgeschneiderter KI-Agent 2026? Eine ehrliche Aufschlüsselung",
+      summary:
+        "Marktspannen für Entwicklung und monatlichen Betrieb, die fünf Faktoren hinter jedem Angebot, Break-even-Rechnung für No-Code, SaaS und Individualentwicklung sowie versteckte Kosten. Geschrieben von einem Team, das Agenten baut — inklusive der ehrlichen Fälle, in denen sich der Bau nicht lohnt. Auf Englisch.",
+      readLabel: "Guide lesen",
+    },
+    es: {
+      eyebrow: "Guía · Costes de agentes de IA",
+      title: "Cuánto cuesta un agente de IA a medida en 2026: un desglose honesto",
+      summary:
+        "Rangos de mercado para el desarrollo y la operación mensual, los cinco factores detrás de cualquier presupuesto, la fórmula de retorno para comparar no-code, SaaS y desarrollo a medida, y los costes ocultos. Escrito por un equipo que construye agentes — incluidos los casos honestos en que no conviene construir. En inglés.",
+      readLabel: "Leer la guía",
+    },
+  },
+};
+
 const entries: Record<BlogSlug, BlogEntry> = {
   "instrumenty-1c-claude-code-codex": oneCTools,
+  "ai-agent-dlya-1c-vnedrenie": oneCAgent,
+  "ai-agent-dlya-marketpleysov-wb-ozon": marketplaceAgent,
+  "ii-dlya-arbitrazhnogo-upravlyayushchego": bankruptcyAi,
+  "custom-ai-agent-cost": aiAgentCost,
 };
 
 export function getBlogEntry(slug: BlogSlug): BlogEntry {
