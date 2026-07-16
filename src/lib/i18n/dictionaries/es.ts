@@ -994,6 +994,7 @@ export const es: Dictionary = {
     ],
     companyLinks: [
       { label: "Casos de éxito", href: "/cases" },
+      { label: "Guías", href: "/blog" },
       { label: "Reservar llamada", href: "#book" },
     ],
     terms: "Condiciones",

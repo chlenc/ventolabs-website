@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { getDictionary, locales, localizedPath, openGraphLocales, type Locale } from "./i18n";
 import { site } from "./site";
 import type { ServiceSlug } from "./services";
+import { blogIndexCopy, getBlogEntry, isBlogSlug } from "./blog";
 
-type PageKind = "home" | "cases" | "privacy" | "terms" | "service" | "case";
+type PageKind = "home" | "cases" | "privacy" | "terms" | "service" | "case" | "blog" | "article";
 
 type Args = {
   locale: Locale;
@@ -12,6 +13,7 @@ type Args = {
   kind: PageKind;
   serviceSlug?: string;
   caseSlug?: string;
+  blogSlug?: string;
 };
 
 /**
@@ -21,7 +23,14 @@ type Args = {
  * Canonical URL is the current-locale URL. `alternates.languages` points at
  * the equivalent page in every supported locale plus `x-default` (English).
  */
-export function buildPageMetadata({ locale, path, kind, serviceSlug, caseSlug }: Args): Metadata {
+export function buildPageMetadata({
+  locale,
+  path,
+  kind,
+  serviceSlug,
+  caseSlug,
+  blogSlug,
+}: Args): Metadata {
   const dict = getDictionary(locale);
   const url = `${site.url}${localizedPath(path, locale)}`;
 
@@ -49,7 +58,18 @@ export function buildPageMetadata({ locale, path, kind, serviceSlug, caseSlug }:
       title = cs.seo.title;
       description = cs.seo.description;
     }
+  } else if (kind === "blog") {
+    title = blogIndexCopy[locale].metaTitle;
+    description = blogIndexCopy[locale].metaDescription;
+  } else if (kind === "article" && blogSlug && isBlogSlug(blogSlug)) {
+    const post = getBlogEntry(blogSlug).seo[locale];
+    title = post.title;
+    description = post.description;
   }
+
+  // Guides are `og:type=article` with real publish dates; everything else on
+  // the site is an evergreen marketing page.
+  const entry = kind === "article" && blogSlug && isBlogSlug(blogSlug) ? getBlogEntry(blogSlug) : null;
 
   return {
     // Home titles are already fully branded ("Vento Labs | …") — bypass the
@@ -66,7 +86,15 @@ export function buildPageMetadata({ locale, path, kind, serviceSlug, caseSlug }:
       },
     },
     openGraph: {
-      type: "website",
+      ...(entry
+        ? {
+            type: "article" as const,
+            publishedTime: entry.datePublished,
+            modifiedTime: entry.dateModified,
+            authors: ["Alexey Nagorny"],
+            tags: entry.keywords,
+          }
+        : { type: "website" as const }),
       locale: openGraphLocales[locale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => openGraphLocales[l]),
       siteName: site.name,

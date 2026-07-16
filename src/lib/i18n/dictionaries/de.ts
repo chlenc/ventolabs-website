@@ -994,6 +994,7 @@ export const de: Dictionary = {
     ],
     companyLinks: [
       { label: "Case Studies", href: "/cases" },
+      { label: "Guides", href: "/blog" },
       { label: "Termin buchen", href: "#book" },
     ],
     terms: "Nutzungsbedingungen",

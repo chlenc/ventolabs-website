@@ -993,6 +993,7 @@ export const ru: Dictionary = {
     ],
     companyLinks: [
       { label: "Кейсы", href: "/cases" },
+      { label: "Гайды", href: "/blog" },
       { label: "Записаться на звонок", href: "#book" },
     ],
     terms: "Условия",
