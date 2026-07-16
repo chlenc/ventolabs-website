@@ -1,0 +1,77 @@
+"use client";
+
+import { FadeUp, ArrowIcon } from "@/components/Primitives";
+import { useLocale } from "@/components/LocaleProvider";
+import { localeNames } from "@/lib/i18n";
+import { href, breadcrumbHomeLabels } from "@/lib/utils";
+import { blogIndex, blogIndexCopy } from "@/lib/blog";
+
+/** "16 июля 2026" / "16 July 2026" — locale-aware, no dependency. */
+function formatDate(iso: string, locale: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString(locale, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+export function BlogIndexPage() {
+  const locale = useLocale();
+  const copy = blogIndexCopy[locale];
+
+  return (
+    <>
+      <section className="page-hero">
+        <div className="container">
+          <div className="breadcrumbs">
+            <a href={href("/", locale)}>{breadcrumbHomeLabels[locale]}</a>
+            <span className="breadcrumbs__sep">/</span>
+            <span className="breadcrumbs__current">{copy.eyebrow}</span>
+          </div>
+          <FadeUp>
+            <p className="eyebrow" style={{ marginTop: "1.5rem" }}>
+              {copy.eyebrow}
+            </p>
+            <h1 className="page-hero__title">{copy.heading}</h1>
+            <p className="page-hero__lede">{copy.lede}</p>
+          </FadeUp>
+        </div>
+      </section>
+
+      <section className="section section--paper" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="post-cards">
+            {blogIndex.map((entry) => {
+              const card = entry.card[locale];
+              const foreign = locale !== entry.articleLocale;
+              return (
+                <FadeUp key={entry.slug}>
+                  <a className="post-card" href={href(`/blog/${entry.slug}`, locale)}>
+                    <div className="post-card__meta">
+                      <span>{card.eyebrow}</span>
+                      <span className="post-card__dot">·</span>
+                      <time dateTime={entry.datePublished}>
+                        {formatDate(entry.datePublished, locale)}
+                      </time>
+                      <span className="post-card__dot">·</span>
+                      <span>{entry.readingMinutes} min</span>
+                      {foreign && (
+                        <span className="post-card__lang">{localeNames[entry.articleLocale]}</span>
+                      )}
+                    </div>
+                    <h2 className="post-card__title">{card.title}</h2>
+                    <p className="post-card__summary">{card.summary}</p>
+                    <span className="post-card__cta">
+                      {card.readLabel} <ArrowIcon />
+                    </span>
+                  </a>
+                </FadeUp>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

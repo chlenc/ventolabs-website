@@ -1,11 +1,12 @@
 import { ImageResponse } from "next/og";
 import { getDictionary, type Locale } from "./i18n";
 import type { ServiceSlug } from "./services";
+import { blogIndexCopy, getBlogEntry, isBlogSlug } from "./blog";
 
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 
-type OgKind = "home" | "cases" | "privacy" | "terms" | "service" | "case";
+type OgKind = "home" | "cases" | "privacy" | "terms" | "service" | "case" | "blog" | "article";
 
 /**
  * Render a branded OG card for a given (locale, page). Kept intentionally
@@ -55,6 +56,13 @@ export function renderOgImage({
       title = cs.heroTitle;
       eyebrow = cs.kicker;
     }
+  } else if (kind === "blog") {
+    title = blogIndexCopy[locale].heading;
+    eyebrow = blogIndexCopy[locale].eyebrow;
+  } else if (kind === "article" && slug && isBlogSlug(slug)) {
+    const card = getBlogEntry(slug).card[locale];
+    title = card.title;
+    eyebrow = card.eyebrow;
   }
 
   // Star mark (Vento Labs favicon path).
