@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { servicesSlugs } from "@/lib/services";
 import { caseLandingSlugs } from "@/lib/cases";
+import { blogSlugs } from "@/lib/blog";
 import { site } from "@/lib/site";
 import { locales, localizedPath, type Locale } from "@/lib/i18n";
 
@@ -30,10 +31,21 @@ const caseSitemapEntries: SitemapPage[] = caseLandingSlugs.map((slug) => ({
   changeFrequency: "monthly" as const,
 }));
 
+// Guides are written in one language and stubbed in the others (see
+// `src/lib/blog.ts`), but every locale's URL is live and self-canonical, so
+// each one belongs in the sitemap — same reasoning as the case landings above.
+const blogSitemapEntries: SitemapPage[] = blogSlugs.map((slug) => ({
+  path: `/blog/${slug}`,
+  priority: 0.9,
+  changeFrequency: "monthly" as const,
+}));
+
 const pages: SitemapPage[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
   { path: "/cases", priority: 0.7, changeFrequency: "monthly" },
   ...caseSitemapEntries,
+  { path: "/blog", priority: 0.6, changeFrequency: "weekly" },
+  ...blogSitemapEntries,
   { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
   ...servicesSlugs.map((slug) => ({

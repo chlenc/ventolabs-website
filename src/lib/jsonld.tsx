@@ -1,5 +1,7 @@
 import { site } from "./site";
-import { getDictionary, localizedPath, type Locale } from "./i18n";
+import { getDictionary, localizedPath, htmlLangCodes, type Locale } from "./i18n";
+import { blogIndex, blogIndexCopy, type BlogEntry } from "./blog";
+import { breadcrumbHomeLabels } from "./utils";
 
 /**
  * JSON-LD builders for page-level structured data. The sitewide
@@ -121,6 +123,97 @@ export function servicePageJsonLd({
   ];
   if (svc.faq?.length) data.push(faqPageJsonLd(svc.faq));
   return data;
+}
+
+const AUTHOR = {
+  "@type": "Person",
+  "@id": `${site.url}/#alexey-nagorny`,
+  name: "Alexey Nagorny",
+  jobTitle: "Founder & Lead Engineer",
+  worksFor: { "@id": ORG_ID },
+  sameAs: [site.linkedin],
+};
+
+/**
+ * BlogPosting for a guide, plus its breadcrumb trail and (if the guide ships
+ * a FAQ that is actually rendered) a FAQPage.
+ *
+ * `entry.articleLocale` is the language of the body: the stub locales get the
+ * same BlogPosting shape but with `inLanguage` set to the stub's language and
+ * no FAQ, since the stub renders neither the FAQ nor the article text.
+ */
+export function blogPostingJsonLd({
+  entry,
+  locale,
+  faq,
+}: {
+  entry: BlogEntry;
+  locale: Locale;
+  faq?: QA[];
+}): object[] {
+  const path = `/blog/${entry.slug}`;
+  const url = `${site.url}${localizedPath(path, locale)}`;
+  const seo = entry.seo[locale];
+  const isFull = locale === entry.articleLocale;
+
+  const posting = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: seo.title,
+    description: seo.description,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    inLanguage: htmlLangCodes[locale],
+    datePublished: entry.datePublished,
+    dateModified: entry.dateModified,
+    author: AUTHOR,
+    publisher: { "@id": ORG_ID },
+    image: `${url}opengraph-image`,
+    keywords: entry.keywords.join(", "),
+    // Stubs summarise the original rather than translate it — say so, so the
+    // three short pages are never mistaken for duplicates of the guide.
+    ...(isFull
+      ? { articleSection: "Engineering", timeRequired: `PT${entry.readingMinutes}M` }
+      : { isBasedOn: `${site.url}${localizedPath(path, entry.articleLocale)}` }),
+  };
+
+  const data: object[] = [
+    posting,
+    breadcrumbJsonLd(
+      [
+        { name: breadcrumbHomeLabels[locale], path: "/" },
+        { name: blogIndexCopy[locale].eyebrow, path: "/blog" },
+        { name: entry.card[locale].title, path },
+      ],
+      locale,
+    ),
+  ];
+  if (isFull && faq?.length) data.push(faqPageJsonLd(faq));
+  return data;
+}
+
+/** Blog hub: a Blog node listing every guide, newest first. */
+export function blogIndexJsonLd(locale: Locale): object {
+  const url = `${site.url}${localizedPath("/blog", locale)}`;
+  const copy = blogIndexCopy[locale];
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${url}#blog`,
+    name: `${copy.heading} — ${site.name}`,
+    description: copy.metaDescription,
+    url,
+    inLanguage: htmlLangCodes[locale],
+    publisher: { "@id": ORG_ID },
+    blogPost: blogIndex.map((entry) => ({
+      "@type": "BlogPosting",
+      "@id": `${site.url}${localizedPath(`/blog/${entry.slug}`, locale)}#article`,
+      headline: entry.seo[locale].title,
+      datePublished: entry.datePublished,
+      author: AUTHOR,
+    })),
+  };
 }
 
 /** Render one or more JSON-LD objects as script tags (server-safe). */
