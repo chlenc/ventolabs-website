@@ -1,5 +1,7 @@
-const BOT_TOKEN = "8796675484:AAFmoa8ouMNPMpvnzV10tLiXsp9Xuq9nv6o";
-const CHAT_ID = "-1003805212766";
+// Prefer function env (supabase secrets set TG_BOT_TOKEN=… TG_CHAT_ID=…);
+// hardcoded values remain as fallback so a redeploy without env keeps working.
+const BOT_TOKEN = Deno.env.get("TG_BOT_TOKEN") || "8796675484:AAFmoa8ouMNPMpvnzV10tLiXsp9Xuq9nv6o";
+const CHAT_ID = Deno.env.get("TG_CHAT_ID") || "-1003805212766";
 const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
 const corsHeaders = {
@@ -69,6 +71,198 @@ function getClientIp(req: Request): string {
   );
 }
 
+// ── Lead enrichment (email domain → company info) ────
+// Free/personal mailbox providers — no company behind the domain.
+const FREE_MAIL = new Set([
+  "gmail.com", "googlemail.com", "yahoo.com", "yahoo.es", "yahoo.com.mx",
+  "yahoo.com.ar", "yahoo.com.br", "hotmail.com", "hotmail.es", "outlook.com",
+  "outlook.es", "live.com", "msn.com", "icloud.com", "me.com", "mac.com",
+  "proton.me", "protonmail.com", "pm.me", "aol.com", "gmx.com", "gmx.de",
+  "gmx.net", "web.de", "zoho.com", "tutanota.com", "tuta.io", "mail.com",
+  "mail.ru", "bk.ru", "list.ru", "inbox.ru", "internet.ru", "yandex.ru",
+  "yandex.com", "ya.ru", "rambler.ru", "ukr.net",
+]);
+
+function emailDomain(email: string): string | null {
+  const m = String(email || "").toLowerCase().trim().match(/@([a-z0-9][a-z0-9.-]*\.[a-z]{2,})$/);
+  if (!m) return null;
+  return FREE_MAIL.has(m[1]) ? null : m[1];
+}
+
+async function fetchWithTimeout(url: string, ms: number): Promise<Response | null> {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  try {
+    return await fetch(url, {
+      signal: ctrl.signal,
+      redirect: "follow",
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; VentoLabsNotify/1.0)" },
+    });
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/** Decode the handful of HTML entities that show up in titles/descriptions. */
+function decodeEntities(s: string): string {
+  return s
+    .replace(/&#x27;|&#39;|&apos;/gi, "'")
+    .replace(/&quot;|&#34;/gi, '"')
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&mdash;|&#8212;/gi, "—")
+    .replace(/&ndash;|&#8211;/gi, "–")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&amp;/gi, "&");
+}
+
+/** Pull title/description/visible text out of an HTML page. */
+function parsePage(html: string): { title: string; description: string; text: string } {
+  const pick = (re: RegExp) => decodeEntities((html.match(re)?.[1] || "").replace(/\s+/g, " ").trim());
+  const title = pick(/<title[^>]*>([^<]*)<\/title>/i);
+  const description =
+    pick(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i) ||
+    pick(/<meta[^>]+content=["']([^"']*)["'][^>]+name=["']description["']/i) ||
+    pick(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']*)["']/i);
+  const text = decodeEntities(
+    html
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " "),
+  )
+    .replace(/&[a-z#0-9]+;/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 3500);
+  return { title, description, text };
+}
+
+/** Optional: 2-3 sentence Russian company summary via Claude, if key is set. */
+async function llmCompanySummary(domain: string, pageText: string): Promise<string | null> {
+  const key = Deno.env.get("ANTHROPIC_API_KEY");
+  if (!key || pageText.length < 100) return null;
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 12000);
+    try {
+      const r = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        signal: ctrl.signal,
+        headers: {
+          "x-api-key": key,
+          "anthropic-version": "2023-06-01",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "claude-haiku-4-5",
+          max_tokens: 300,
+          messages: [{
+            role: "user",
+            content:
+              `Текст главной страницы сайта компании ${domain}:\n\n${pageText}\n\n` +
+              "Опиши в 2-3 коротких предложениях на русском: что это за компания, чем занимается, " +
+              "из какой страны (если видно), кто её клиенты. Только факты со страницы, без домыслов.",
+          }],
+        }),
+      });
+      if (!r.ok) return null;
+      const data = await r.json();
+      const out = data?.content?.[0]?.text;
+      return typeof out === "string" ? out.trim() : null;
+    } finally {
+      clearTimeout(timer);
+    }
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Enrich a lead by work-email domain: fetch the company homepage, return
+ * ready-to-post HTML lines for the Telegram message. Never throws.
+ */
+async function enrichByEmail(email: string): Promise<string[]> {
+  try {
+    const domain = emailDomain(email);
+    if (!domain) {
+      return email ? [`🏢 Личная почта (${esc(email.split("@")[1] || "")}) — компанию по домену не определить`] : [];
+    }
+    const lines: string[] = [];
+    const res = await fetchWithTimeout(`https://${domain}`, 8000);
+    if (res && res.ok) {
+      const { title, description, text } = parsePage(await res.text());
+      const summary = await llmCompanySummary(domain, text);
+      lines.push(`🏢 <b>${esc(domain)}</b>${title ? ` — ${esc(title)}` : ""}`);
+      if (summary) lines.push(`📎 ${esc(summary)}`);
+      else if (description) lines.push(`📎 ${esc(description.slice(0, 300))}`);
+    } else {
+      lines.push(`🏢 <b>${esc(domain)}</b> — сайт не открылся, смотри ссылки ниже`);
+    }
+    lines.push(
+      `🔎 <a href="https://www.google.com/search?q=${encodeURIComponent(domain)}">Google</a>` +
+      ` · <a href="https://www.linkedin.com/search/results/companies/?keywords=${encodeURIComponent(domain)}">LinkedIn</a>`,
+    );
+    return lines;
+  } catch {
+    return [];
+  }
+}
+
+// ── Attendee timezone → country ──────────────────────
+const TZ_COUNTRY: Record<string, string> = {
+  "Europe/Moscow": "Россия 🇷🇺", "Europe/Kaliningrad": "Россия 🇷🇺", "Europe/Samara": "Россия 🇷🇺",
+  "Europe/Volgograd": "Россия 🇷🇺", "Europe/Saratov": "Россия 🇷🇺", "Europe/Kirov": "Россия 🇷🇺",
+  "Europe/Astrakhan": "Россия 🇷🇺", "Europe/Ulyanovsk": "Россия 🇷🇺", "Asia/Yekaterinburg": "Россия 🇷🇺",
+  "Asia/Omsk": "Россия 🇷🇺", "Asia/Novosibirsk": "Россия 🇷🇺", "Asia/Krasnoyarsk": "Россия 🇷🇺",
+  "Asia/Irkutsk": "Россия 🇷🇺", "Asia/Yakutsk": "Россия 🇷🇺", "Asia/Vladivostok": "Россия 🇷🇺",
+  "Europe/Madrid": "Испания 🇪🇸", "Atlantic/Canary": "Испания 🇪🇸",
+  "America/Mexico_City": "Мексика 🇲🇽", "America/Monterrey": "Мексика 🇲🇽", "America/Tijuana": "Мексика 🇲🇽",
+  "America/Bogota": "Колумбия 🇨🇴", "America/Lima": "Перу 🇵🇪", "America/Santiago": "Чили 🇨🇱",
+  "America/Argentina/Buenos_Aires": "Аргентина 🇦🇷", "America/Argentina/Cordoba": "Аргентина 🇦🇷",
+  "America/Sao_Paulo": "Бразилия 🇧🇷", "America/Caracas": "Венесуэла 🇻🇪", "America/Guayaquil": "Эквадор 🇪🇨",
+  "America/La_Paz": "Боливия 🇧🇴", "America/Asuncion": "Парагвай 🇵🇾", "America/Montevideo": "Уругвай 🇺🇾",
+  "America/Guatemala": "Гватемала 🇬🇹", "America/El_Salvador": "Сальвадор 🇸🇻", "America/Managua": "Никарагуа 🇳🇮",
+  "America/Tegucigalpa": "Гондурас 🇭🇳", "America/Costa_Rica": "Коста-Рика 🇨🇷", "America/Panama": "Панама 🇵🇦",
+  "America/Santo_Domingo": "Доминикана 🇩🇴", "America/Havana": "Куба 🇨🇺", "America/Puerto_Rico": "Пуэрто-Рико 🇵🇷",
+  "Europe/Berlin": "Германия 🇩🇪", "Europe/Lisbon": "Португалия 🇵🇹", "Europe/London": "Великобритания 🇬🇧",
+  "Europe/Paris": "Франция 🇫🇷", "Europe/Rome": "Италия 🇮🇹", "Europe/Amsterdam": "Нидерланды 🇳🇱",
+  "Europe/Warsaw": "Польша 🇵🇱", "Europe/Kiev": "Украина 🇺🇦", "Europe/Kyiv": "Украина 🇺🇦",
+  "Europe/Minsk": "Беларусь 🇧🇾", "Europe/Istanbul": "Турция 🇹🇷", "Asia/Almaty": "Казахстан 🇰🇿",
+  "Asia/Aqtobe": "Казахстан 🇰🇿", "Asia/Tashkent": "Узбекистан 🇺🇿", "Asia/Tbilisi": "Грузия 🇬🇪",
+  "Asia/Yerevan": "Армения 🇦🇲", "Asia/Baku": "Азербайджан 🇦🇿", "Asia/Dubai": "ОАЭ 🇦🇪",
+  "Asia/Jerusalem": "Израиль 🇮🇱", "America/New_York": "США 🇺🇸", "America/Chicago": "США 🇺🇸",
+  "America/Denver": "США 🇺🇸", "America/Los_Angeles": "США 🇺🇸", "America/Phoenix": "США 🇺🇸",
+  "America/Toronto": "Канада 🇨🇦", "America/Vancouver": "Канада 🇨🇦",
+};
+
+function countryFromTz(tz: string | undefined): string | null {
+  if (!tz) return null;
+  return TZ_COUNTRY[tz] || null;
+}
+
+// ── Optional email copy via Resend ───────────────────
+// Set RESEND_API_KEY (+ optionally NOTIFY_EMAIL_TO / NOTIFY_EMAIL_FROM) in the
+// function env to also receive booking/lead notifications by email. Silent
+// no-op when the key is absent.
+async function sendEmailCopy(subject: string, tgHtmlMessage: string): Promise<void> {
+  const key = Deno.env.get("RESEND_API_KEY");
+  if (!key) return;
+  const to = (Deno.env.get("NOTIFY_EMAIL_TO") || "alexey@ventolabs.com").split(",").map((s) => s.trim());
+  const from = Deno.env.get("NOTIFY_EMAIL_FROM") || "Vento Labs Notify <notify@ventolabs.com>";
+  try {
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from, to, subject,
+        html: `<pre style="font-family:inherit;white-space:pre-wrap">${tgHtmlMessage}</pre>`,
+      }),
+    });
+  } catch { /* never break the main notification */ }
+}
+
 function utmLine(utm: Record<string, string> | null | undefined): string {
   if (!utm) return "";
   return Object.entries(utm).filter(([, v]) => v).map(([k, v]) => `${k}=${v}`).join(", ");
@@ -101,6 +295,8 @@ Deno.serve(async (req) => {
     const visitorTag = `${visitor.emoji} <b>${visitor.name}</b> <code>#${visitor.hash}</code>`;
 
     let message = "";
+    // Subject for the optional email copy — set only for lead/booking events.
+    let emailSubject = "";
 
     if (type === "visit") {
       const { page, referrer, ts } = body;
@@ -132,11 +328,13 @@ Deno.serve(async (req) => {
     } else if (type === "lead") {
       // Lead-form submission from the site (name + work email + free text).
       const { name, email, message: ask, page, ts } = body;
+      const enrichment = email ? await enrichByEmail(email) : [];
       message = [
         `📨 <b>NEW LEAD (form)</b> — ${visitorTag}`,
         "",
         `👤 <b>${esc(name) || "Unknown"}</b>`,
         email ? `✉️ <code>${esc(email)}</code>` : "",
+        ...enrichment,
         ask ? `📝 ${esc(String(ask).slice(0, 800))}` : "",
         `📄 Page: <code>${esc(page) || "/"}</code>`,
         `📍 ${geo}`,
@@ -146,6 +344,7 @@ Deno.serve(async (req) => {
         "",
         "👤 @defi_defiler @vlacomor",
       ].filter(Boolean).join("\n");
+      emailSubject = `Новый лид с сайта: ${String(name || email || "без имени").slice(0, 80)}`;
 
     } else if (type === "session") {
       const { activeTime, pages, clicks, maxScroll, ts } = body;
@@ -200,9 +399,12 @@ Deno.serve(async (req) => {
       const who = [attendeeName, attendeeEmail].filter(Boolean).join(" — ");
 
       const title = payload.title || payload.eventTitle || "Meeting";
-      const startTime = payload.startTime
-        ? new Date(payload.startTime).toLocaleString("en-US", { timeZone: "Europe/Lisbon" })
-        : "?";
+      const fmt = (tz: string) =>
+        payload.startTime
+          ? new Date(payload.startTime).toLocaleString("ru-RU", {
+              timeZone: tz, day: "numeric", month: "short", hour: "2-digit", minute: "2-digit",
+            })
+          : "?";
 
       const notes =
         respValue(responses["what-would-you-like-to-improve-or-automate-with-ai"]) ||
@@ -211,22 +413,35 @@ Deno.serve(async (req) => {
         respValue(responses.rescheduleReason) ||
         "";
 
+      // Where the booker is: cal.com webhook has no client IP, but the
+      // attendee's own timezone is a solid location signal.
+      const attendeeTz: string | undefined = attendee.timeZone;
+      const country = countryFromTz(attendeeTz);
+      const enrichment = attendeeEmail ? await enrichByEmail(attendeeEmail) : [];
+
       message = [
         "🎉 <b>NEW BOOKING via Cal.com!</b>",
         "",
-        `👤 <b>${who || "Unknown"}</b>`,
-        `📅 ${title}`,
-        `🕐 ${startTime}`,
-        notes ? `📝 ${notes.slice(0, 300)}` : "",
+        `👤 <b>${esc(who) || "Unknown"}</b>`,
+        country
+          ? `🌍 ${country} <i>(таймзона ${esc(attendeeTz)})</i>`
+          : attendeeTz ? `🌍 Таймзона: ${esc(attendeeTz)}` : "",
+        ...enrichment,
+        `📅 ${esc(title)}`,
+        `🕐 ${fmt("Europe/Moscow")} МСК · ${fmt("Europe/Lisbon")} Лиссабон`,
+        notes ? `📝 ${esc(notes.slice(0, 300))}` : "",
         "",
         "👤 @defi_defiler @vlacomor",
       ].filter(Boolean).join("\n");
+      emailSubject = `Новая бронь звонка: ${String(attendeeName || attendeeEmail || "без имени").slice(0, 80)}${country ? ` (${country})` : ""}`;
 
     } else {
       return new Response(JSON.stringify({ ok: true, note: "unhandled event" }), {
         status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
+
+    if (Deno.env.get("NOTIFY_DEBUG")) console.log(message);
 
     const tgRes = await fetch(TG_API, {
       method: "POST",
@@ -239,6 +454,8 @@ Deno.serve(async (req) => {
       }),
     });
     const tgData = await tgRes.json();
+
+    if (emailSubject) await sendEmailCopy(emailSubject, message);
 
     return new Response(JSON.stringify({ ok: tgData.ok }), {
       status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
