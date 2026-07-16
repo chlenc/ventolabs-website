@@ -1,6 +1,11 @@
 import { getUtmParams, type UtmParams } from "./utm";
 
-const ENDPOINT = process.env.NEXT_PUBLIC_NOTIFY_URL || "https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1/notify";
+// Default: Cloudflare Pages worker (project `ventolabs-notify`, source in
+// cloudflare/notify-worker/). The previous Supabase project
+// (wlwmmyawxzspgwrijyvm) died — its domain no longer resolves, so every
+// notification was silently lost. notify.ventolabs.com is a CNAME we control:
+// re-platforming later is a DNS change, not a site redeploy.
+const ENDPOINT = process.env.NEXT_PUBLIC_NOTIFY_URL || "https://notify.ventolabs.com/";
 
 type VisitPayload = {
   type: "visit";
