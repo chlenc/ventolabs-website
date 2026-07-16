@@ -242,6 +242,34 @@ function countryFromTz(tz: string | undefined): string | null {
   return TZ_COUNTRY[tz] || null;
 }
 
+// ── Auto-invite the team to new bookings ─────────────
+// Set CAL_API_KEY (cal_… key from cal.com Settings → Developer → API keys)
+// and CAL_AUTO_GUESTS="vlad@…,sasha@…" in the function env: every new
+// Cal.com booking gets those people added as guests — they receive the
+// calendar invite automatically. Silent no-op when unset; never throws.
+async function addTeamGuests(payload: Record<string, unknown>): Promise<void> {
+  const key = Deno.env.get("CAL_API_KEY");
+  const guestsEnv = Deno.env.get("CAL_AUTO_GUESTS");
+  const uid = typeof payload.uid === "string" ? payload.uid : "";
+  if (!key || !guestsEnv || !uid) return;
+  const guests = guestsEnv.split(",").map((s) => s.trim()).filter(Boolean).map((email) => ({ email }));
+  if (guests.length === 0) return;
+  try {
+    const res = await fetch(`https://api.cal.com/v2/bookings/${uid}/guests`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+        "cal-api-version": "2024-08-13",
+      },
+      body: JSON.stringify({ guests }),
+    });
+    if (Deno.env.get("NOTIFY_DEBUG")) {
+      console.log(`addTeamGuests ${uid}: ${res.status} ${await res.text()}`);
+    }
+  } catch { /* never break the notification */ }
+}
+
 // ── Optional email copy via Resend ───────────────────
 // Set RESEND_API_KEY (+ optionally NOTIFY_EMAIL_TO / NOTIFY_EMAIL_FROM) in the
 // function env to also receive booking/lead notifications by email. Silent
@@ -412,6 +440,12 @@ Deno.serve(async (req) => {
         respValue(responses.notes) ||
         respValue(responses.rescheduleReason) ||
         "";
+
+      // Invite the team as guests on brand-new bookings (not reschedules —
+      // guests already persist across a reschedule).
+      if (body.triggerEvent === "BOOKING_CREATED") {
+        await addTeamGuests(payload);
+      }
 
       // Where the booker is: cal.com webhook has no client IP, but the
       // attendee's own timezone is a solid location signal.
