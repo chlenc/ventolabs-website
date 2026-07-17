@@ -7,7 +7,7 @@ import { localizedPath } from "@/lib/i18n";
 import { href, breadcrumbHomeLabels } from "@/lib/utils";
 import { site } from "@/lib/site";
 import { getBlogEntry, blogIndexCopy, type BlogSlug } from "@/lib/blog";
-import { articles } from "./registry";
+import { getArticleBody } from "./registry";
 import type { Block, Section } from "./types";
 
 /**
@@ -135,15 +135,16 @@ function SectionView({ section, index }: { section: Section; index: number }) {
 }
 
 /**
- * Locales other than the article's own get a summary + a link to the original.
+ * Locales that don't ship a body get a summary + a link to the original.
  * Serving a Russian body under /blog, /de/blog or /es/blog would be a
  * title/body language mismatch — the same reason /cases/erp-agent stubs out.
  */
 function ArticleStub({ slug }: { slug: BlogSlug }) {
   const locale = useLocale();
-  const article = articles[slug];
   const entry = getBlogEntry(slug);
-  const stub = article.stubs[locale];
+  // Stub copy hangs off the original-language body, which is the one that
+  // always exists.
+  const stub = getArticleBody(slug, entry.articleLocale)?.stubs[locale];
   if (!stub) return null;
 
   const originalUrl = `${site.url}${localizedPath(`/blog/${slug}`, entry.articleLocale)}`;
@@ -156,7 +157,7 @@ function ArticleStub({ slug }: { slug: BlogSlug }) {
           <span className="breadcrumbs__sep">/</span>
           <a href={href("/blog", locale)}>{blogIndexCopy[locale].eyebrow}</a>
           <span className="breadcrumbs__sep">/</span>
-          <span className="breadcrumbs__current">1C · AI tooling</span>
+          <span className="breadcrumbs__current">{entry.card[locale].eyebrow}</span>
         </div>
         <p className="eyebrow" style={{ marginTop: "1.5rem" }}>
           {stub.eyebrow}
@@ -183,9 +184,9 @@ function ArticleStub({ slug }: { slug: BlogSlug }) {
 export function BlogArticlePage({ slug }: { slug: BlogSlug }) {
   const locale = useLocale();
   const entry = getBlogEntry(slug);
-  const article = articles[slug];
+  const article = getArticleBody(slug, locale);
 
-  if (locale !== entry.articleLocale) return <ArticleStub slug={slug} />;
+  if (!article) return <ArticleStub slug={slug} />;
 
   return (
     <article className="post">
