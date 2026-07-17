@@ -1,6 +1,6 @@
 import { site } from "./site";
 import { getDictionary, localizedPath, htmlLangCodes, type Locale } from "./i18n";
-import { blogIndex, blogIndexCopy, type BlogEntry } from "./blog";
+import { blogIndex, blogIndexCopy, hasFullBody, type BlogEntry } from "./blog";
 import { breadcrumbHomeLabels } from "./utils";
 
 /**
@@ -138,7 +138,7 @@ const AUTHOR = {
  * BlogPosting for a guide, plus its breadcrumb trail and (if the guide ships
  * a FAQ that is actually rendered) a FAQPage.
  *
- * `entry.articleLocale` is the language of the body: the stub locales get the
+ * `entry.bodyLocales` says which locales ship a body: the stub locales get the
  * same BlogPosting shape but with `inLanguage` set to the stub's language and
  * no FAQ, since the stub renders neither the FAQ nor the article text.
  */
@@ -154,7 +154,7 @@ export function blogPostingJsonLd({
   const path = `/blog/${entry.slug}`;
   const url = `${site.url}${localizedPath(path, locale)}`;
   const seo = entry.seo[locale];
-  const isFull = locale === entry.articleLocale;
+  const isFull = hasFullBody(entry, locale);
 
   const posting = {
     "@context": "https://schema.org",

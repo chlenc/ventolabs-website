@@ -20,6 +20,7 @@ export const blogSlugs = [
   "ai-agent-dlya-marketpleysov-wb-ozon",
   "ii-dlya-arbitrazhnogo-upravlyayushchego",
   "custom-ai-agent-cost",
+  "autonomous-ai-accountability",
 ] as const;
 
 export type BlogSlug = (typeof blogSlugs)[number];
@@ -35,8 +36,18 @@ type Card = { eyebrow: string; title: string; summary: string; readLabel: string
 
 export type BlogEntry = {
   slug: BlogSlug;
-  /** Locale the full article is written in. Others get the stub. */
+  /**
+   * Locale the article was originally written in. Stubs point back here, and
+   * a translation declares it as its `isBasedOn` source.
+   */
   articleLocale: Locale;
+  /**
+   * Locales that ship a full body. Defaults to `[articleLocale]` — most guides
+   * are single-language with stubs elsewhere (see the module comment). A guide
+   * whose subject isn't market-specific can be translated outright: list every
+   * locale here and give `registry.ts` a body for each.
+   */
+  bodyLocales?: readonly Locale[];
   /** ISO dates — feed schema.org datePublished/dateModified. */
   datePublished: string;
   dateModified: string;
@@ -398,16 +409,98 @@ const aiAgentCost: BlogEntry = {
   },
 };
 
+/**
+ * The one guide that is translated outright rather than stubbed: AI governance
+ * is not a market-specific subject the way 1C or WB/Ozon are, so every locale
+ * gets the full body. `bodyLocales` lists all four, and `registry.ts` supplies
+ * a body for each.
+ */
+const accountability: BlogEntry = {
+  slug: "autonomous-ai-accountability",
+  articleLocale: "en",
+  bodyLocales: ["en", "ru", "de", "es"],
+  datePublished: "2026-07-17",
+  dateModified: "2026-07-17",
+  readingMinutes: 6,
+  keywords: [
+    "AI governance",
+    "AI accountability",
+    "autonomous AI agents",
+    "human in the loop",
+    "AI audit trail",
+    "agent permissions",
+    "enterprise AI",
+  ],
+  seo: {
+    en: {
+      title: "Autonomous AI without delegating accountability",
+      description:
+        "You can delegate tasks and decision-making authority to an AI agent — not accountability. The five things every agent needs: scope, limits, approval points, an audit trail and a named owner. Why \"human in the loop\" is not a control, and how controlled autonomy scales faster than unlimited autonomy.",
+    },
+    ru: {
+      title: "Автономный AI без делегирования ответственности",
+      description:
+        "Агенту можно делегировать задачи и право решать — ответственность нельзя. Пять вещей, которые нужны каждому AI-агенту: полномочия, лимиты, точки одобрения, аудит-лог и конкретный владелец. Почему «человек в контуре» — не контроль и как управляемая автономия ускоряет внедрение.",
+    },
+    de: {
+      title: "Autonome KI, ohne Verantwortung zu delegieren",
+      description:
+        "Aufgaben und Entscheidungsbefugnis lassen sich an einen KI-Agenten delegieren — Verantwortung nicht. Die fünf Dinge, die jeder Agent braucht: Kompetenzrahmen, Limits, Freigabepunkte, Audit-Log und ein benannter Eigentümer. Warum „Mensch im Loop\" keine Kontrolle ist.",
+    },
+    es: {
+      title: "IA autónoma sin delegar la responsabilidad",
+      description:
+        "A un agente de IA se le pueden delegar tareas y capacidad de decisión, pero no la responsabilidad. Las cinco cosas que necesita todo agente: ámbito, límites, puntos de aprobación, audit log y un responsable con nombre. Por qué «un humano en el bucle» no es un control.",
+    },
+  },
+  card: {
+    en: {
+      eyebrow: "Guide · AI governance",
+      title: "Autonomous AI without delegating accountability",
+      summary:
+        "Agents now talk to customers, edit records and move money — but most companies cannot say who answers when one gets it wrong. The five requirements every agent needs, why \"human in the loop\" usually isn't one, and why the boundary makes you faster rather than slower.",
+      readLabel: "Read the guide",
+    },
+    ru: {
+      eyebrow: "Гайд · Управление AI",
+      title: "Автономный AI без делегирования ответственности",
+      summary:
+        "Агенты уже общаются с клиентами, правят записи и двигают деньги — но большинство компаний не может ответить, кто отвечает за ошибку. Пять требований к каждому агенту, почему «человек в контуре» обычно им не является и почему граница ускоряет, а не тормозит.",
+      readLabel: "Читать гайд",
+    },
+    de: {
+      eyebrow: "Guide · KI-Governance",
+      title: "Autonome KI, ohne Verantwortung zu delegieren",
+      summary:
+        "Agenten sprechen mit Kunden, ändern Datensätze und bewegen Geld — doch die meisten Unternehmen können nicht sagen, wer haftet, wenn einer sich irrt. Die fünf Anforderungen an jeden Agenten und warum die Grenze schneller statt langsamer macht.",
+      readLabel: "Guide lesen",
+    },
+    es: {
+      eyebrow: "Guía · Gobernanza de IA",
+      title: "IA autónoma sin delegar la responsabilidad",
+      summary:
+        "Los agentes ya hablan con clientes, modifican registros y mueven dinero, pero la mayoría de las empresas no sabe quién responde cuando uno se equivoca. Los cinco requisitos de todo agente y por qué la frontera acelera en lugar de frenar.",
+      readLabel: "Leer la guía",
+    },
+  },
+};
+
 const entries: Record<BlogSlug, BlogEntry> = {
   "instrumenty-1c-claude-code-codex": oneCTools,
   "ai-agent-dlya-1c-vnedrenie": oneCAgent,
   "ai-agent-dlya-marketpleysov-wb-ozon": marketplaceAgent,
   "ii-dlya-arbitrazhnogo-upravlyayushchego": bankruptcyAi,
   "custom-ai-agent-cost": aiAgentCost,
+  "autonomous-ai-accountability": accountability,
 };
 
 export function getBlogEntry(slug: BlogSlug): BlogEntry {
   return entries[slug];
+}
+
+/** Does this locale get the real article, or a stub pointing at the original? */
+export function hasFullBody(entry: BlogEntry, locale: Locale): boolean {
+  return (entry.bodyLocales ?? [entry.articleLocale]).includes(locale);
 }
 
 /** Newest first — the order /blog renders cards in. */
