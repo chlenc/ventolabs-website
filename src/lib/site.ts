@@ -6,11 +6,11 @@ export const site = {
   name: "Vento Labs",
   url: "https://ventolabs.com",
   email: "alexey@ventolabs.com",
-  phone: "+351932111777",
-  phoneDisplay: "+351 932 111 777",
+  phone: "+529998023600",
+  phoneDisplay: "+52 999 802 3600",
   telegram: "https://t.me/defi_defiler",
   telegramHandle: "@defi_defiler",
-  whatsapp: "https://wa.me/351932111777",
+  whatsapp: "https://wa.me/529998023600",
   linkedin: "https://www.linkedin.com/company/vento-labs/",
 };
 
