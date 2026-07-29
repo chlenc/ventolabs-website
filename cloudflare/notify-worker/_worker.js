@@ -1,6 +1,8 @@
-// Vento Labs notify — Cloudflare Pages Functions port of
-// supabase/functions/notify/index.ts (the Supabase copy is canonical; keep
-// the two in sync when editing). Deployed as a Pages project
+// Vento Labs notify — the LIVE endpoint (notify.ventolabs.com). The Supabase
+// copy at supabase/functions/notify/index.ts is a dead project (its domain
+// no longer resolves) kept only as a reference/fallback in case Supabase is
+// ever revived — this Cloudflare Pages Functions file is canonical now; keep
+// the two in sync when editing. Deployed as a Pages project
 // `ventolabs-notify`; accepts POST on any path.
 //
 // Env vars (Pages project → Settings → Variables, all optional):
@@ -15,6 +17,33 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "*",
 };
+
+// ── Bot/spam filtering ────────────────────────────────
+// Mirrors src/lib/bot.ts's client-side check — this is the server-side
+// backstop, since anyone can bypass client JS by POSTing directly to this
+// public endpoint. Broad substring match on purpose: real browser UAs never
+// contain these tokens, but crawler/scraper/automation UAs almost always do.
+const BOT_UA_RE =
+  /bot|crawl|spider|slurp|headless|puppeteer|playwright|selenium|phantomjs|python-requests|python-urllib|go-http-client|scrapy|curl\/|wget\/|facebookexternalhit/i;
+
+// Short-TTL per-IP+type suppression so a bot/monitor re-hitting the site
+// every few minutes doesn't spam a fresh Telegram message every time it
+// returns. Cache API is edge-local (not globally consistent across every
+// Cloudflare colo), which is fine here — this only needs to cut *repeat*
+// noise, not guarantee exactly-once delivery.
+async function isDuplicate(ip, type) {
+  if (!ip) return false;
+  try {
+    const cache = caches.default;
+    const key = new Request(`https://dedup.ventolabs.internal/${type}/${encodeURIComponent(ip)}`);
+    const hit = await cache.match(key);
+    if (hit) return true;
+    await cache.put(key, new Response("1", { headers: { "Cache-Control": "max-age=1200" } }));
+    return false;
+  } catch {
+    return false; // never let a dedup failure block a real notification
+  }
+}
 
 // ── Funny visitor names & avatars ────────────────────
 const ANIMALS = [
@@ -306,6 +335,33 @@ export default {
       const { type } = body;
 
       const ip = getClientIp(req);
+
+      // Filtering applies only to client-originated events (visit/session/
+      // lead/booking-signal). The Cal.com webhook branch below
+      // (body.triggerEvent) is a server-to-server call with no comparable
+      // browser UA, so it's exempt — never gate real booking confirmations
+      // on a UA heuristic.
+      if (type === "visit" || type === "session" || type === "lead" || type === "booking") {
+        const headerUa = req.headers.get("user-agent") || "";
+        const bodyUa = typeof body.ua === "string" ? body.ua : "";
+        if (BOT_UA_RE.test(headerUa) || BOT_UA_RE.test(bodyUa)) {
+          return new Response(JSON.stringify({ ok: true, note: "filtered" }), {
+            status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+          });
+        }
+        if (type === "lead" && body.website) {
+          // Honeypot field a real visitor never fills — silently drop.
+          return new Response(JSON.stringify({ ok: true, note: "filtered" }), {
+            status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+          });
+        }
+        if ((type === "visit" || type === "session") && (await isDuplicate(ip, type))) {
+          return new Response(JSON.stringify({ ok: true, note: "deduped" }), {
+            status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+          });
+        }
+      }
+
       const geo = await geoLookup(ip);
       const utm = utmLine(body.utm);
       const visitor = visitorId(ip);
@@ -328,17 +384,21 @@ export default {
         ].filter(Boolean).join("\n");
 
       } else if (type === "booking") {
+        // Client-side signal only (Cal.com embed postMessage) — can be
+        // triggered by opening/closing the widget, or forged by a direct
+        // POST to this endpoint since it carries no name/email. The
+        // authoritative confirmation is the "via Cal.com!" message below,
+        // sent from Cal.com's own server-to-server webhook. Label this one
+        // clearly so it isn't mistaken for a confirmed booking.
         const { page, ts } = body;
         message = [
-          `🎉 <b>NEW BOOKING!</b> — ${visitorTag}`,
+          `🔔 <b>Booking widget signal</b> <i>(unverified — no Cal.com confirmation yet)</i> — ${visitorTag}`,
           "",
           `📄 Page: <code>${page || "/"}</code>`,
           `📍 ${geo}`,
           ip ? `🌐 IP: <code>${ip}</code>` : "",
           utm ? `🏷 UTM: <code>${utm}</code>` : "",
           `🕐 ${ts || new Date().toISOString()}`,
-          "",
-          "👤 @defi_defiler @vlacomor",
         ].join("\n");
 
       } else if (type === "lead") {

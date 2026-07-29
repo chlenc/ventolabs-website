@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { servicesSlugs } from "@/lib/services";
 import { caseLandingSlugs } from "@/lib/cases";
-import { blogSlugs } from "@/lib/blog";
+import { blogSlugs, getBlogEntry } from "@/lib/blog";
 import { site } from "@/lib/site";
 import { locales, localizedPath, type Locale } from "@/lib/i18n";
 
@@ -20,6 +20,10 @@ type SitemapPage = {
    * like /cases/bankruptcy-agent which targets RU trustees only.
    */
   locales?: readonly Locale[];
+  /** ISO date string — feeds the sitemap's <lastmod>. Omitted where we don't
+   * actually track a per-page edit date (fabricating one would be a false
+   * freshness signal). */
+  lastModified?: string;
 };
 
 // Note: /cases/bankruptcy-agent targets RU trustees, but its EN/DE/ES copies
@@ -38,6 +42,7 @@ const blogSitemapEntries: SitemapPage[] = blogSlugs.map((slug) => ({
   path: `/blog/${slug}`,
   priority: 0.9,
   changeFrequency: "monthly" as const,
+  lastModified: getBlogEntry(slug).dateModified,
 }));
 
 const pages: SitemapPage[] = [
@@ -56,7 +61,7 @@ const pages: SitemapPage[] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return pages.flatMap(({ path, priority, changeFrequency, locales: pageLocales }) => {
+  return pages.flatMap(({ path, priority, changeFrequency, locales: pageLocales, lastModified }) => {
     const targetLocales = pageLocales ?? locales;
     return targetLocales.map((locale) => {
       const url = `${site.url}${localizedPath(path, locale)}`.replace(/\/?$/, "/");
@@ -64,6 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url,
         changeFrequency,
         priority,
+        ...(lastModified ? { lastModified } : {}),
         alternates: {
           languages: {
             ...Object.fromEntries(

@@ -1,4 +1,5 @@
 import { getUtmParams, type UtmParams } from "./utm";
+import { isLikelyBot } from "./bot";
 
 // Default: Cloudflare Pages worker (project `ventolabs-notify`, source in
 // cloudflare/notify-worker/). The previous Supabase project
@@ -31,11 +32,15 @@ type LeadPayload = {
   page: string;
   utm: UtmParams;
   ts: string;
+  // Honeypot value — see notifyLead below. Only ever non-empty when a bot
+  // filled every field it could find.
+  website?: string;
 };
 
 /** Send a visit notification (once per session) */
 export function notifyVisit() {
   if (typeof window === "undefined" || !ENDPOINT) return;
+  if (isLikelyBot()) return;
   const key = "vl_visit_sent";
   if (sessionStorage.getItem(key)) return;
   sessionStorage.setItem(key, "1");
@@ -57,8 +62,20 @@ export function notifyVisit() {
 }
 
 /** Send a lead-form submission. Resolves true on success. */
-export async function notifyLead(data: { name: string; email: string; message: string }): Promise<boolean> {
+export async function notifyLead(
+  data: { name: string; email: string; message: string; website?: string }
+): Promise<boolean> {
   if (typeof window === "undefined" || !ENDPOINT) return false;
+  if (isLikelyBot()) return false;
+  // Honeypot: a hidden field real visitors never see or fill. A non-empty
+  // value usually means a bot filled the whole form -- but on the rare
+  // chance a password manager or form-filler extension blindly fills every
+  // input regardless of visibility, we still SEND the request (so there's
+  // at least a server-side trace to investigate) rather than dropping it
+  // before any network call ever happens. We just always report success
+  // to the caller for this case: a bot shouldn't learn it was caught, and
+  // a genuine human who tripped it by accident shouldn't hit a dead end.
+  const honeypotTripped = Boolean(data.website);
 
   const payload: LeadPayload = {
     type: "lead",
@@ -68,6 +85,7 @@ export async function notifyLead(data: { name: string; email: string; message: s
     page: window.location.pathname,
     utm: getUtmParams(),
     ts: new Date().toISOString(),
+    website: data.website,
   };
 
   // Fail fast (6s) so a paused/unreachable backend never leaves the form
@@ -81,6 +99,7 @@ export async function notifyLead(data: { name: string; email: string; message: s
       body: JSON.stringify(payload),
       signal: ctrl.signal,
     });
+    if (honeypotTripped) return true;
     if (!res.ok) return false;
     // The function answers 200 {ok:true, note:"unhandled event"} for payload
     // types it doesn't know. Treat that as failure so the form falls back to
@@ -88,7 +107,7 @@ export async function notifyLead(data: { name: string; email: string; message: s
     const body = await res.json().catch(() => null);
     return body?.ok === true && !body?.note;
   } catch {
-    return false;
+    return honeypotTripped;
   } finally {
     clearTimeout(timer);
   }
@@ -97,6 +116,7 @@ export async function notifyLead(data: { name: string; email: string; message: s
 /** Send a booking notification */
 export function notifyBooking() {
   if (typeof window === "undefined" || !ENDPOINT) return;
+  if (isLikelyBot()) return;
 
   const payload: BookingPayload = {
     type: "booking",

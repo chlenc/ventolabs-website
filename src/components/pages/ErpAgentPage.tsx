@@ -7,6 +7,7 @@ import { getDictionary, localizedPath, type Locale } from "@/lib/i18n";
 import { asset, href } from "@/lib/utils";
 import { site } from "@/lib/site";
 import { ErpLeadMagnetModal } from "./ErpLeadMagnetModal";
+import { relatedGuidesFor } from "@/lib/blog";
 import {
   erpHero,
   erpDiptych,
@@ -377,7 +378,7 @@ export function ErpAgentPage() {
               <div className="erp-diptych__img">
                 <span className="erp-diptych__tag">{erpDiptych.imageTag}</span>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={asset("/images/case-erp-agent.png")} alt="1C Agent — рабочий интерфейс" loading="eager" />
+                <img src={asset("/images/case-erp-agent.webp")} alt="1C Agent — рабочий интерфейс" loading="eager" fetchPriority="high" />
                 <div className="erp-diptych__brand">
                   <i>{erpDiptych.brandSmall}</i>
                   {erpDiptych.brandBig}
@@ -742,9 +743,49 @@ export function ErpAgentPage() {
       {/* 14. FAQ */}
       <ErpFaqAccordion />
 
+      {/* 15. Related guides — inferred from which blog articles link here
+          (see relatedGuidesFor in src/lib/blog.ts). This case has the most
+          inbound guide links on the site. */}
+      <ErpRelatedGuides />
+
       {/* Exit-intent + idle lead-magnet modal (page-scoped) */}
       <ErpLeadMagnetModal />
     </>
+  );
+}
+
+function ErpRelatedGuides() {
+  const locale = useLocale();
+  const guides = relatedGuidesFor("erp-agent");
+  if (!guides.length) return null;
+  return (
+    <section className="section section--paper">
+      <div className="container">
+        <FadeUp>
+          <div className="section-header">
+            <div className="section-header__left">
+              <h2>Читайте также</h2>
+            </div>
+          </div>
+        </FadeUp>
+        <FadeUp delay={80}>
+          <div className="post-cards">
+            {guides.map((entry) => {
+              const card = entry.card[locale];
+              return (
+                <a key={entry.slug} className="post-card" href={href(`/blog/${entry.slug}`, locale)}>
+                  <h3 className="post-card__title">{card.title}</h3>
+                  <p className="post-card__summary">{card.summary}</p>
+                  <span className="post-card__cta">
+                    {card.readLabel} <ArrowIcon />
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
   );
 }
 
@@ -774,7 +815,7 @@ function ErpFaqAccordion() {
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
                   aria-expanded={openIndex === i}
                 >
-                  <span>{item.q}</span>
+                  <h3>{item.q}</h3>
                   <span className="faq-icon"><PlusIcon /></span>
                 </button>
                 <div className="faq-answer">

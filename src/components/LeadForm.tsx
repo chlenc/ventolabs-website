@@ -39,13 +39,14 @@ export function LeadForm({ location = "lead_form" }: { location?: string }) {
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const message = String(data.get("message") ?? "").trim();
+    const website = String(data.get("company_site") ?? "").trim();
     if (!name || !email || !message) return;
 
     const lead: Lead = { name, email, message };
     setLast(lead);
     setStatus("sending");
     trackCtaClick({ label: t.submit, location });
-    const ok = await notifyLead(lead);
+    const ok = await notifyLead({ ...lead, website });
     setStatus(ok ? "success" : "error");
     if (ok) {
       form.reset();
@@ -63,6 +64,16 @@ export function LeadForm({ location = "lead_form" }: { location?: string }) {
 
   return (
     <form className="lead-form" onSubmit={onSubmit}>
+      {/* Honeypot — hidden from real visitors (CSS + tabIndex -1 + no
+          autofill), bots that fill every field they find trip it. */}
+      <input
+        type="text"
+        name="company_site"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
       <p className="lead-form__heading">{t.heading}</p>
       <p className="lead-form__sub">{t.subheading}</p>
       <div className="lead-form__row">

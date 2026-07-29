@@ -25,9 +25,9 @@ const serviceImages: Record<string, string> = {
 };
 
 const caseCardKeys = [
-  { key: "content-factory", img: "/images/case-content-factory.png", metricKey: "contentFactory" as const },
-  { key: "supplier-agent", img: "/images/case-supplier-agent.png", metricKey: "supplierAgent" as const },
-  { key: "erp-agent", img: "/images/case-erp-agent.png", metricKey: "erpAgent" as const },
+  { key: "content-factory", img: "/images/case-content-factory.webp", metricKey: "contentFactory" as const },
+  { key: "supplier-agent", img: "/images/case-supplier-agent.webp", metricKey: "supplierAgent" as const },
+  { key: "erp-agent", img: "/images/case-erp-agent.webp", metricKey: "erpAgent" as const },
 ];
 
 // Company names are proper nouns — locale-agnostic, so they live here rather
@@ -393,7 +393,7 @@ export function HomeContent() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 className="founder__photo"
-                src={asset("/images/founder-alex.jpg")}
+                src={asset("/images/founder-alex.webp")}
                 alt={dict.founder.name}
                 width={96}
                 height={96}

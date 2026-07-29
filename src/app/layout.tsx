@@ -15,6 +15,7 @@ import { WebMCP } from "@/components/WebMCP";
 import { site } from "@/lib/site";
 import { asset } from "@/lib/utils";
 import { defaultLocale, getDictionary, htmlLangCodes, locales, localizedPath, openGraphLocales } from "@/lib/i18n";
+import { jsonLdString, webSiteJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -49,10 +50,12 @@ export const metadata: Metadata = {
   description: dict.seo.homeDescription,
   keywords: dict.seo.keywords,
   alternates: {
-    canonical: site.url,
+    // Trailing slash to match sitemap.ts's own homepage entry and the
+    // trailingSlash:true convention every other page's canonical follows.
+    canonical: `${site.url}/`,
     languages: {
       ...Object.fromEntries(locales.map((l) => [l, `${site.url}${localizedPath("/", l)}`])),
-      "x-default": site.url,
+      "x-default": `${site.url}/`,
     },
   },
   openGraph: {
@@ -62,7 +65,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: dict.seo.homeTitle,
     description: dict.seo.homeDescription,
-    url: site.url,
+    url: `${site.url}/`,
   },
   twitter: { card: "summary_large_image", title: dict.seo.homeTitle, description: dict.seo.homeDescription },
   robots: {
@@ -98,8 +101,12 @@ export default function RootLayout({
         <link rel="author" href={site.linkedin} />
         <script
           type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdString(webSiteJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
+            __html: jsonLdString({
               "@context": "https://schema.org",
               "@type": "ProfessionalService",
               "@id": `${site.url}/#organization`,

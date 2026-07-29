@@ -1,8 +1,18 @@
+// NOTE: this Supabase project's domain no longer resolves — the live
+// endpoint is cloudflare/notify-worker/_worker.js (notify.ventolabs.com).
+// Kept in sync here only in case Supabase is ever revived; not currently
+// deployed/reachable.
+//
 // Prefer function env (supabase secrets set TG_BOT_TOKEN=… TG_CHAT_ID=…);
 // hardcoded values remain as fallback so a redeploy without env keeps working.
 const BOT_TOKEN = Deno.env.get("TG_BOT_TOKEN") || "8796675484:AAFmoa8ouMNPMpvnzV10tLiXsp9Xuq9nv6o";
 const CHAT_ID = Deno.env.get("TG_CHAT_ID") || "-1003805212766";
 const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+// ── Bot/spam filtering ────────────────────────────────
+// Mirrors the Cloudflare worker's check (kept in sync per the note above).
+const BOT_UA_RE =
+  /bot|crawl|spider|slurp|headless|puppeteer|playwright|selenium|phantomjs|python-requests|python-urllib|go-http-client|scrapy|curl\/|wget\/|facebookexternalhit/i;
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -317,6 +327,26 @@ Deno.serve(async (req) => {
     const { type } = body;
 
     const ip = getClientIp(req);
+
+    // Filtering applies only to client-originated events; the Cal.com
+    // webhook branch below (body.triggerEvent) is server-to-server and
+    // exempt. No dedup here (unlike the Cloudflare worker) — this function
+    // isn't live, so a Cache API port isn't worth maintaining unverified.
+    if (type === "visit" || type === "session" || type === "lead" || type === "booking") {
+      const headerUa = req.headers.get("user-agent") || "";
+      const bodyUa = typeof body.ua === "string" ? body.ua : "";
+      if (BOT_UA_RE.test(headerUa) || BOT_UA_RE.test(bodyUa)) {
+        return new Response(JSON.stringify({ ok: true, note: "filtered" }), {
+          status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      if (type === "lead" && body.website) {
+        return new Response(JSON.stringify({ ok: true, note: "filtered" }), {
+          status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
     const geo = await geoLookup(ip);
     const utm = utmLine(body.utm);
     const visitor = visitorId(ip);
@@ -340,17 +370,17 @@ Deno.serve(async (req) => {
       ].filter(Boolean).join("\n");
 
     } else if (type === "booking") {
+      // Unverified client-side signal — see the matching comment in
+      // cloudflare/notify-worker/_worker.js.
       const { page, ts } = body;
       message = [
-        `🎉 <b>NEW BOOKING!</b> — ${visitorTag}`,
+        `🔔 <b>Booking widget signal</b> <i>(unverified — no Cal.com confirmation yet)</i> — ${visitorTag}`,
         "",
         `📄 Page: <code>${page || "/"}</code>`,
         `📍 ${geo}`,
         ip ? `🌐 IP: <code>${ip}</code>` : "",
         utm ? `🏷 UTM: <code>${utm}</code>` : "",
         `🕐 ${ts || new Date().toISOString()}`,
-        "",
-        "👤 @defi_defiler @vlacomor",
       ].join("\n");
 
     } else if (type === "lead") {

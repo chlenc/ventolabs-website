@@ -4,9 +4,17 @@ import { FaqSection } from "./FaqSection";
 import { LeadForm } from "./LeadForm";
 import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon, PhoneIcon, MailIcon, TelegramIcon } from "./Primitives";
 import { useLocale } from "./LocaleProvider";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, type Locale } from "@/lib/i18n";
 import type { ServiceDict } from "@/lib/i18n/types";
 import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
+import { relatedGuidesFor } from "@/lib/blog";
+
+const RELATED_GUIDES_LABEL: Record<Locale, string> = {
+  en: "Related guides",
+  ru: "Читайте также",
+  de: "Weiterführende Guides",
+  es: "Guías relacionadas",
+};
 
 export function ServicePage({
   slug,
@@ -24,6 +32,7 @@ export function ServicePage({
   const dict = getDictionary(locale);
   const c = dict.servicesCommon;
   const parent = breadcrumb ?? { parentLabel: "Services", parentHref: "/#services" };
+  const relatedGuides = relatedGuidesFor(slug);
 
   function ctaIcon(kind?: "phone" | "mail" | "telegram" | "arrow") {
     if (kind === "phone") return <PhoneIcon size={16} />;
@@ -465,6 +474,43 @@ export function ServicePage({
         items={service.faq}
         heading={`${service.title} — ${c.faqSuffix}`}
       />
+
+      {/* 11. Related guides — inferred from which blog articles link to this
+          page (see relatedGuidesFor in src/lib/blog.ts). Closes the loop the
+          other way: those guides already link here, this links back. */}
+      {relatedGuides.length > 0 && (
+        <section className="section section--paper">
+          <div className="container">
+            <FadeUp>
+              <div className="section-header">
+                <div className="section-header__left">
+                  <h2>{RELATED_GUIDES_LABEL[locale]}</h2>
+                </div>
+              </div>
+            </FadeUp>
+            <FadeUp delay={80}>
+              <div className="post-cards">
+                {relatedGuides.map((entry) => {
+                  const card = entry.card[locale];
+                  return (
+                    <a
+                      key={entry.slug}
+                      className="post-card"
+                      href={href(`/blog/${entry.slug}`, locale)}
+                    >
+                      <h3 className="post-card__title">{card.title}</h3>
+                      <p className="post-card__summary">{card.summary}</p>
+                      <span className="post-card__cta">
+                        {card.readLabel} <ArrowIcon />
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </FadeUp>
+          </div>
+        </section>
+      )}
 
       {/* Slug-specific decoration: forces a `slug` reference so the prop is
           consumed even when ServicePage is invoked without specialization. */}

@@ -498,6 +498,37 @@ export function getBlogEntry(slug: BlogSlug): BlogEntry {
   return entries[slug];
 }
 
+/**
+ * Reverse of the links guides already make TO service/case pages (the
+ * markdown `[text](/cases/erp-agent/)` / `(/services/ai-assistant/)` links
+ * inside each `*-content.ts` body). Hand-maintained, but checked against
+ * each article's actual body at the time this was written -- keep it in
+ * sync manually if an article's outbound links ever change. Used by
+ * ServicePage.tsx to show "related guides" on the service/case pages these
+ * articles reference, closing the loop the other way.
+ */
+const RELATED_GUIDES: Record<string, BlogSlug[]> = {
+  "erp-agent": [
+    "ai-agent-dlya-1c-vnedrenie",
+    "ai-agent-dlya-marketpleysov-wb-ozon",
+    "autonomous-ai-accountability",
+    "custom-ai-agent-cost",
+    "ii-dlya-arbitrazhnogo-upravlyayushchego",
+  ],
+  "bankruptcy-agent": ["ii-dlya-arbitrazhnogo-upravlyayushchego"],
+  "ai-assistant": ["custom-ai-agent-cost"],
+  "ai-automation": ["ai-agent-dlya-marketpleysov-wb-ozon"],
+};
+
+/** Guides that link to this service/case slug, newest first. Empty if none. */
+export function relatedGuidesFor(slug: string): BlogEntry[] {
+  const slugs = RELATED_GUIDES[slug];
+  if (!slugs?.length) return [];
+  return slugs
+    .map((s) => entries[s])
+    .sort((a, b) => b.datePublished.localeCompare(a.datePublished));
+}
+
 /** Does this locale get the real article, or a stub pointing at the original? */
 export function hasFullBody(entry: BlogEntry, locale: Locale): boolean {
   return (entry.bodyLocales ?? [entry.articleLocale]).includes(locale);

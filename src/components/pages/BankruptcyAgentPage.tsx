@@ -12,9 +12,11 @@ import {
   PlusIcon,
 } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
-import { getDictionary, localizedPath, type Locale } from "@/lib/i18n";
+import { getDictionary, localizedPath, htmlLangCodes, type Locale } from "@/lib/i18n";
 import { asset, href } from "@/lib/utils";
 import { site } from "@/lib/site";
+import { ORG_ID, breadcrumbJsonLd, jsonLdString } from "@/lib/jsonld";
+import { relatedGuidesFor } from "@/lib/blog";
 import { BankruptcyLeadMagnetModal } from "./BankruptcyLeadMagnetModal";
 import {
   bankHero,
@@ -239,12 +241,7 @@ function BankruptcyJsonLd() {
     "@type": "Service",
     name: "Bankruptcy AI — ИИ-платформа для арбитражных управляющих",
     serviceType: "AI platform for arbitration trustees",
-    provider: {
-      "@type": "Organization",
-      name: site.name,
-      url: site.url,
-      email: site.email,
-    },
+    provider: { "@id": ORG_ID },
     areaServed: { "@type": "Country", name: "Russia" },
     description:
       "Готовит отчёты собранию и в АС, формирует процессуальные документы со ссылками на свежую практику ВС, контролирует сроки 127-ФЗ и АПК, собирает данные по должнику.",
@@ -273,15 +270,66 @@ function BankruptcyJsonLd() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(breadcrumb) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(service) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdString(faq) }}
+      />
+    </>
+  );
+}
+
+/**
+ * Non-RU locales render the stub above instead of the full page, so they
+ * previously shipped zero structured data for this route. A lightweight
+ * BreadcrumbList + Service (pointing back at the RU canonical via
+ * isBasedOn, same pattern as the blog's translation stubs) gives crawlers
+ * something to index instead of nothing.
+ */
+function BankruptcyStubJsonLd({ locale }: { locale: Exclude<Locale, "ru"> }) {
+  const s = STUB_STRINGS[locale];
+  const url = `${site.url}${localizedPath(PAGE_PATH, locale)}`;
+
+  const breadcrumb = breadcrumbJsonLd(
+    [
+      { name: s.breadcrumbHome, path: "/" },
+      { name: s.breadcrumbCases, path: "/cases" },
+      { name: "Bankruptcy AI", path: PAGE_PATH },
+    ],
+    locale,
+  );
+
+  const service = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Bankruptcy AI",
+    serviceType: "AI platform for arbitration trustees",
+    provider: { "@id": ORG_ID },
+    areaServed: { "@type": "Country", name: "Russia" },
+    // s.lede is written to be followed by an inline link on the page
+    // itself ("...The full landing page is at <a>...</a>.") -- append the
+    // URL as plain text here too, so the JSON-LD description reads as a
+    // complete sentence rather than trailing off mid-clause.
+    description: `${s.lede} ${RU_URL}`,
+    url,
+    inLanguage: htmlLangCodes[locale],
+    isBasedOn: RU_URL,
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString(breadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString(service) }}
       />
     </>
   );
@@ -336,7 +384,9 @@ function RussianOnlyStub() {
   const locale = useLocale();
   const s = locale !== "ru" ? STUB_STRINGS[locale] : STUB_STRINGS.en;
   return (
-    <section className="page-hero">
+    <>
+      {locale !== "ru" && <BankruptcyStubJsonLd locale={locale} />}
+      <section className="page-hero">
       <div className="container" style={{ paddingBlock: "clamp(3rem, 6vw, 5rem)" }}>
         <div className="breadcrumbs">
           <a href={href("/", locale)}>{s.breadcrumbHome}</a>
@@ -361,7 +411,8 @@ function RussianOnlyStub() {
           </MagneticButton>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -823,9 +874,47 @@ export function BankruptcyAgentPage() {
       {/* 14. FAQ */}
       <BankFaqAccordion />
 
+      {/* 15. Related guides — inferred from which blog articles link here
+          (see relatedGuidesFor in src/lib/blog.ts). */}
+      <BankRelatedGuides />
+
       {/* Exit-intent + idle lead-magnet modal */}
       <BankruptcyLeadMagnetModal />
     </>
+  );
+}
+
+function BankRelatedGuides() {
+  const guides = relatedGuidesFor("bankruptcy-agent");
+  if (!guides.length) return null;
+  return (
+    <section className="section section--paper">
+      <div className="container">
+        <FadeUp>
+          <div className="section-header">
+            <div className="section-header__left">
+              <h2>Читайте также</h2>
+            </div>
+          </div>
+        </FadeUp>
+        <FadeUp delay={80}>
+          <div className="post-cards">
+            {guides.map((entry) => {
+              const card = entry.card.ru;
+              return (
+                <a key={entry.slug} className="post-card" href={href(`/blog/${entry.slug}`, "ru")}>
+                  <h3 className="post-card__title">{card.title}</h3>
+                  <p className="post-card__summary">{card.summary}</p>
+                  <span className="post-card__cta">
+                    {card.readLabel} <ArrowIcon />
+                  </span>
+                </a>
+              );
+            })}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
   );
 }
 
@@ -855,7 +944,7 @@ function BankFaqAccordion() {
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
                   aria-expanded={openIndex === i}
                 >
-                  <span>{item.q}</span>
+                  <h3>{item.q}</h3>
                   <span className="faq-icon"><PlusIcon /></span>
                 </button>
                 <div className="faq-answer">

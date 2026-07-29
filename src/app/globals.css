@@ -671,6 +671,17 @@ em, .italic {
 .section-header__left .eyebrow { margin-bottom: 1.25rem; }
 .section-header__left h2 { max-width: 14ch; }
 .section-header__right p { max-width: 52ch; color: var(--muted); font-size: 1.05rem; }
+/* section-header is a 2-column grid (1fr 1.4fr) built for eyebrow+h2 next
+   to a description. Several headings (FAQ, Related guides, a few others)
+   render __left alone — without this, a lone grid item still only fills
+   the first (narrower) track, leaving dead space and a needlessly
+   14-character-capped heading. Let a lone __left span the full row. */
+.section-header:has(> .section-header__left:only-child) {
+  grid-template-columns: 1fr;
+}
+.section-header:has(> .section-header__left:only-child) h2 {
+  max-width: none;
+}
 .section--forest .section-header__right p,
 .section--ink .section-header__right p { color: rgba(243, 234, 216, 0.75); }
 
@@ -1334,6 +1345,15 @@ em, .italic {
   transition: color 0.3s;
 }
 .faq-question:hover { color: var(--forest); }
+/* The question is an h3 (was a bare span) for proper heading semantics —
+   reset the UA h3 defaults so it still just inherits the button's type. */
+.faq-question h3 {
+  margin: 0;
+  font: inherit;
+  text-align: inherit;
+  letter-spacing: inherit;
+  font-variation-settings: inherit;
+}
 .faq-icon {
   width: 24px; height: 24px;
   flex-shrink: 0;
@@ -2475,6 +2495,7 @@ em, .italic {
 .case-hero-image__img {
   width: 100%;
   height: auto;
+  aspect-ratio: 3 / 2;
   display: block;
   border-radius: 20px;
   border: 1px solid var(--line);

@@ -4,9 +4,12 @@
  */
 
 const STORAGE_KEY = "vl_session";
-const ENDPOINT =
-  process.env.NEXT_PUBLIC_NOTIFY_URL ||
-  "https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1/notify";
+// Same live endpoint as notify.ts (notify.ventolabs.com, Cloudflare Pages).
+// This used to default to the old Supabase project, which died — so every
+// "session" summary was being sent into the void with no error surfaced
+// (sendBeacon doesn't report delivery failures). Keep this in sync with
+// src/lib/notify.ts's ENDPOINT.
+const ENDPOINT = process.env.NEXT_PUBLIC_NOTIFY_URL || "https://notify.ventolabs.com/";
 
 type ClickEvent = { label: string; section: string; time: number };
 type SessionData = {
@@ -20,6 +23,7 @@ type SessionData = {
 let session: SessionData | null = null;
 let lastActive = 0;
 let isActive = true;
+let interacted = false;
 let tickInterval: ReturnType<typeof setInterval> | null = null;
 let sentSummary = false;
 
@@ -115,8 +119,12 @@ function sendSummary() {
   if (sentSummary || typeof navigator === "undefined") return;
   const s = getSession();
 
-  // Don't send if session is too short (< 3 seconds) or no pages tracked
-  if (s.activeMs < 3000 || s.pages.length === 0) return;
+  // Require both a meaningful visible-time floor AND at least one real
+  // interaction signal (click/scroll/keydown/mousemove). A flat "tab was
+  // open" timer alone is trivially cleared by any headless bot that just
+  // waits a few seconds without touching the page — that was letting bots
+  // generate full "Session ended" reports with an empty click list.
+  if (s.activeMs < 15000 || s.pages.length === 0 || !interacted) return;
 
   sentSummary = true;
 
@@ -164,6 +172,7 @@ export function initSessionTracker() {
     }
   };
   const markIdle = () => { isActive = false; };
+  const markInteracted = () => { interacted = true; };
 
   // Visibility change — pause timer when tab hidden, send summary on hide
   document.addEventListener("visibilitychange", () => {
@@ -193,11 +202,13 @@ export function initSessionTracker() {
       });
     }
     markActive();
+    markInteracted();
   }, { passive: true });
 
   // Track clicks on meaningful elements
   document.addEventListener("click", (e) => {
     markActive();
+    markInteracted();
 
     const target = e.target as HTMLElement;
 
@@ -226,8 +237,8 @@ export function initSessionTracker() {
   });
 
   // Mouse movement = active
-  window.addEventListener("mousemove", markActive, { passive: true });
-  window.addEventListener("keydown", markActive, { passive: true });
+  window.addEventListener("mousemove", () => { markActive(); markInteracted(); }, { passive: true });
+  window.addEventListener("keydown", () => { markActive(); markInteracted(); }, { passive: true });
 }
 
 /** Call on SPA navigation to record new page */

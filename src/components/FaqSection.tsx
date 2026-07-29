@@ -10,9 +10,14 @@ type FaqItem = { q: string; a: string };
 export function FaqSection({
   items,
   heading,
+  lede,
 }: {
   items: FaqItem[];
   heading?: string;
+  /** Optional blurb next to the heading. Omitted by default — it used to
+   * always show the final-CTA booking pitch regardless of what page this
+   * FAQ was actually on. */
+  lede?: string;
 }) {
   const locale = useLocale();
   const dict = getDictionary(locale);
@@ -29,9 +34,11 @@ export function FaqSection({
               <p className="eyebrow">{dict.faq.eyebrow}</p>
               <h2>{finalHeading}</h2>
             </div>
-            <div className="section-header__right">
-              <p>{dict.finalCta.description}</p>
-            </div>
+            {lede && (
+              <div className="section-header__right">
+                <p>{lede}</p>
+              </div>
+            )}
           </div>
         </FadeUp>
         <div className="faq-list">
@@ -46,7 +53,7 @@ export function FaqSection({
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 aria-expanded={openIndex === i}
               >
-                <span>{item.q}</span>
+                <h3>{item.q}</h3>
                 <span className="faq-icon">
                   <PlusIcon />
                 </span>

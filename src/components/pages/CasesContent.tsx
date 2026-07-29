@@ -12,9 +12,9 @@ import {
 import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 
 const landingImage: Record<CaseLandingSlug, string> = {
-  "content-factory": "/images/case-content-factory.png",
-  "supplier-agent": "/images/case-supplier-agent.png",
-  "erp-agent": "/images/case-erp-agent.png",
+  "content-factory": "/images/case-content-factory.webp",
+  "supplier-agent": "/images/case-supplier-agent.webp",
+  "erp-agent": "/images/case-erp-agent.webp",
   "bankruptcy-agent": "/images/case-bankruptcy-agent.svg",
 };
 
