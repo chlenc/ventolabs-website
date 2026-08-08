@@ -510,10 +510,15 @@ export function getBlogEntry(slug: BlogSlug): BlogEntry {
 const RELATED_GUIDES: Record<string, BlogSlug[]> = {
   "erp-agent": [
     "ai-agent-dlya-1c-vnedrenie",
+    // Its CTA points at /cases/erp-agent and it is the other 1C guide on the
+    // site, so the link belonged in both directions and only ran one way.
+    "instrumenty-1c-claude-code-codex",
     "ai-agent-dlya-marketpleysov-wb-ozon",
     "autonomous-ai-accountability",
     "custom-ai-agent-cost",
-    "ii-dlya-arbitrazhnogo-upravlyayushchego",
+    // Dropped ii-dlya-arbitrazhnogo-upravlyayushchego: it is the bankruptcy
+    // guide, it never links back here, and a trustee explainer under a 1C
+    // landing is off-topic for both readers and crawlers.
   ],
   "bankruptcy-agent": ["ii-dlya-arbitrazhnogo-upravlyayushchego"],
   "ai-assistant": ["custom-ai-agent-cost"],

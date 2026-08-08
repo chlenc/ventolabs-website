@@ -90,7 +90,9 @@ export function breadcrumbJsonLd(
  * - erp-agent renders bespoke (Russian) page copy, so the dictionary FAQ
  *   text is not visible on the page — a FAQPage schema over invisible
  *   content violates Google's structured-data guidelines. It still gets a
- *   real Service + BreadcrumbList, just no FAQPage.
+ *   real Service + BreadcrumbList, just no FAQPage from here: the RU page
+ *   emits its own FAQPage over the accordion it does render (see
+ *   ErpFaqJsonLd in ErpAgentPage.tsx).
  */
 const BESPOKE_CASE_JSONLD: Record<string, "skip" | "no-faq"> = {
   "bankruptcy-agent": "skip",
@@ -122,12 +124,12 @@ export function servicePageJsonLd({
   const trail =
     kind === "case"
       ? [
-          { name: "Home", path: "/" },
+          { name: breadcrumbHomeLabels[locale], path: "/" },
           { name: dict.casesIntro.eyebrow, path: "/cases" },
           { name: svc.title, path: `${basePath}/${slug}` },
         ]
       : [
-          { name: "Home", path: "/" },
+          { name: breadcrumbHomeLabels[locale], path: "/" },
           { name: svc.title, path: `${basePath}/${slug}` },
         ];
   const breadcrumb = breadcrumbJsonLd(trail, locale);
@@ -165,7 +167,7 @@ export function dataCentersJsonLd(locale: Locale): object[] {
     }),
     breadcrumbJsonLd(
       [
-        { name: "Home", path: "/" },
+        { name: breadcrumbHomeLabels[locale], path: "/" },
         { name: dc.breadcrumb, path: "/data-centers" },
       ],
       locale,

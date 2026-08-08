@@ -187,10 +187,56 @@ export const bankCapabilities = {
   ] satisfies Capability[],
 };
 
+// ---------- 3b. Deadlines — the document/deadline workflow, as a timeline ----------
+
+/**
+ * Built as real HTML/CSS rather than a generated graphic: these are statutory
+ * windows, and garbled lettering on a page aimed at arbitration trustees would
+ * be worse than no picture at all.
+ *
+ * Every window below is one this page already states in `bankProblem` and
+ * `bankCapabilities` — the block restates them in one view, it does not add
+ * new legal assertions. `note` keeps it from reading as legal advice.
+ */
+export const bankDeadlines = {
+  eyebrow: "03 · Сроки",
+  heading: "Четыре срока, вокруг которых крутится процедура.",
+  lede:
+    "Это не весь 127-ФЗ — это те сроки, пропуск которых чаще всего заканчивается жалобой в СРО. Платформа ведёт их календарём от событий вашего дела, шлёт уведомления заранее и пишет каждый перенос в журнал с обоснованием.",
+  items: [
+    {
+      window: "3 рабочих дня",
+      title: "Публикация в ЕФРСБ",
+      desc: "Сообщение о событии процедуры — от даты, когда событие наступило.",
+      source: "127-ФЗ",
+    },
+    {
+      window: "2 месяца",
+      title: "Закрытие реестра требований",
+      desc: "От публикации сведений о признании должника банкротом.",
+      source: "127-ФЗ",
+    },
+    {
+      window: "3 или 6 месяцев",
+      title: "Отчёт собранию кредиторов",
+      desc: "Периодичность зависит от процедуры и решения собрания кредиторов.",
+      source: "127-ФЗ",
+    },
+    {
+      window: "к дате заседания",
+      title: "Отчёт в арбитражный суд",
+      desc: "По итогам процедуры — к заседанию, назначенному определением суда.",
+      source: "АПК",
+    },
+  ],
+  note:
+    "Сроки приведены как ориентир по 127-ФЗ и АПК РФ. Конкретные даты в вашем деле зависят от процедуры и определений суда — платформа считает их от событий процедуры, а не по общему шаблону, и показывает основание рядом с каждой датой.",
+};
+
 // ---------- 4. Demo — interactive scenarios (kept verbatim, eyebrow renumbered) ----------
 
 export const bankDemo = {
-  eyebrow: "03 · Как это работает",
+  eyebrow: "04 · Как это работает",
   headingLead: "Не «помощник вообще», а ассистент по ",
   headingEm: "вашему делу",
   headingTail: ".",
@@ -343,7 +389,7 @@ export const bankDemo = {
 // ---------- 5. Process — 3-step launch ----------
 
 export const bankProcess = {
-  eyebrow: "04 · Запуск",
+  eyebrow: "05 · Запуск",
   heading: "От первого звонка до первой подписи — неделя.",
   lede:
     "Не SaaS-абонемент в чужом облаке, а развёртывание в вашем контуре под одну реальную процедуру. Дальше расширяем на остальные кейсы и помощников.",
@@ -369,7 +415,7 @@ export const bankProcess = {
 // ---------- 6. Architecture — 3-column diagram ----------
 
 export const bankArch = {
-  eyebrow: "05 · Архитектура",
+  eyebrow: "06 · Архитектура",
   headingLead: "Платформа в ",
   headingEm: "вашем контуре",
   headingTail: ", не очередной SaaS.",
@@ -404,10 +450,29 @@ export const bankArch = {
   ] as const,
 };
 
+// ---------- 6b. Conceptual figures ----------
+
+/**
+ * Abstract on purpose. Nothing here may resemble a court filing, an official
+ * form or a case file: on a page read by arbitration trustees, a plausible-
+ * looking fake document is not a decoration, it is a forgery. Paths live in
+ * the component (`FIGURE_SRC` in BankruptcyAgentPage.tsx).
+ */
+export const bankFigures = {
+  security: {
+    id: "perimeter",
+    alt: "Множество тонких стальных стержней сходятся к одному закрытому зелёному сосуду, обведённому тонким кольцом-границей",
+    caption:
+      "Источники сходятся внутрь — наружу не уходит ничего. Материалы процедур остаются в вашем контуре, и граница периметра здесь часть архитектуры, а не строчка в договоре.",
+  },
+} as const;
+
+export type BankFigureId = (typeof bankFigures)[keyof typeof bankFigures]["id"];
+
 // ---------- 7. Security — NEW. Critical for trustees ----------
 
 export const bankSecurity = {
-  eyebrow: "06 · Безопасность",
+  eyebrow: "07 · Безопасность",
   heading: "Данные процедур не покидают ваш контур.",
   lede:
     "Для арбитражного управляющего конфиденциальность процедуры — не маркетинговая фишка, а профессиональная обязанность. Платформа спроектирована вокруг этого требования.",
@@ -434,7 +499,7 @@ export const bankSecurity = {
 // ---------- 8. Included — deliverables checklist ----------
 
 export const bankIncluded = {
-  eyebrow: "07 · Что входит",
+  eyebrow: "08 · Что входит",
   heading: "Конкретные deliverables под практику АУ.",
   lede:
     "Каждый пункт ниже — часть стартового запуска. Без скрытых апсейлов и «через полгода допилим». Что в списке — то и работает на первой процедуре.",
@@ -455,7 +520,7 @@ export const bankIncluded = {
 // ---------- 9. Proof — 3 metrics + 1 quote ----------
 
 export const bankProof = {
-  eyebrow: "08 · Результаты",
+  eyebrow: "09 · Результаты",
   heading: "Скорость по процедурам. Контроль по срокам.",
   metrics: [
     { value: "−68 ч", unit: "/мес", label: "освобождает у одного управляющего" },
@@ -499,6 +564,26 @@ export const bankLeadMagnet = {
   hints: ["NDA на старте", "Self-hosted", "Без обязательств"],
 };
 
+// ---------- 11b. Related services — outbound links into /services ----------
+
+/**
+ * The bespoke layout had no path into /services at all. Titles come from the
+ * dictionary at render time; only the "why this one" line lives here.
+ */
+export const bankRelatedServices = {
+  heading: "Услуги по теме",
+  items: [
+    {
+      slug: "ai-assistant",
+      desc: "Как мы собираем агентов под конкретную практику: self-hosted, в вашем контуре.",
+    },
+    {
+      slug: "ai-automation",
+      desc: "Рутина вокруг процедуры: обмены, уведомления, выгрузки и отчётность по расписанию.",
+    },
+  ],
+} as const;
+
 // ---------- 12. Final CTA — last-chance pitch ----------
 
 export const bankFinalCta = {
@@ -512,7 +597,7 @@ export const bankFinalCta = {
 // ---------- 13. FAQ — extended to 8 items for FAQPage JSON-LD coverage ----------
 
 export const bankFaq = {
-  eyebrow: "09 · Вопросы",
+  eyebrow: "10 · Вопросы",
   heading: "Bankruptcy AI — частые вопросы.",
   lede:
     "Если на вашу ситуацию ответа не нашлось — напишите, какие у вас процедуры в работе и где сейчас уходит больше всего часов. Соберём индивидуальный план демо.",

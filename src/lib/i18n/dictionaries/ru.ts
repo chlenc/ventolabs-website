@@ -739,8 +739,10 @@ export const ru: Dictionary = {
         { q: "Как происходит согласование действий с учётной политикой компании?", a: "На этапе описания ролей мы вместе с вами фиксируем разрешённые сценарии и запреты. Все последующие запросы к агенту проверяются на соответствие этим правилам. Дополнительно вы можете включить ручное согласование любых действий выше заданного порога — по сумме, типу операции или другим критериям." },
       ],
       seo: {
-        title: "1C Agent — управляемый AI-слой над 1С на базе Claude",
-        description: "Permission-based AI-агент на Claude ускоряет работу с 1С: разработчики готовят расширения через ревью, менеджеры действуют строго в рамках ролей. Бесплатный пилот за 30 минут.",
+        // Front-loads the RU head term «AI-агент для 1С»; the brand name
+        // "1C Agent" is already carried by the H1, breadcrumb and OG image.
+        title: "AI-агент для 1С — цифровой 1С-разработчик",
+        description: "AI-агент для 1С на базе Claude: задача на языке бизнеса → план → подтверждение. Правки только в расширениях, ядро 1С не меняется. Запуск за 2–4 недели.",
       },
       ctaPrimary: { label: "Позвонить и обсудить", href: "tel:+79032333525", meta: "+7 903 233 35 25", kind: "phone" },
       ctaSecondary: { label: "Написать на почту", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
@@ -822,8 +824,12 @@ export const ru: Dictionary = {
         { q: "Сколько стоит после демо?", a: "Фиксированная абонентская плата от 2 500 USD/мес: до 5 пользователей (управляющий + помощники), безлимит запросов, обновления и техподдержка. Расходы на API Claude включены. Для бюро с большим штатом — индивидуальное предложение." },
       ],
       seo: {
-        title: "ИИ-платформа для арбитражных управляющих | Bankruptcy AI",
-        description: "AI-платформа для арбитражных управляющих: документы со ссылками на практику ВС, контроль сроков по 127-ФЗ, анализ сделок должника. Self-hosted, бесплатное демо.",
+        // «ИИ для арбитражного управляющего» is the singular head term people
+        // actually type; the plural platform phrasing stays in the H1 and the
+        // description. The extra "| Vento Labs" from the title template makes
+        // the previous two-part title run past the SERP cut-off.
+        title: "ИИ для арбитражного управляющего — Bankruptcy AI",
+        description: "ИИ-платформа для арбитражных управляющих: отчёты по ПП РФ № 22, документы со ссылками на практику ВС, контроль сроков 127-ФЗ, анализ сделок. Self-hosted.",
       },
       ctaPrimary: { label: "Получить бесплатное демо", href: "#book", meta: "30 минут на вашем деле · NDA", kind: "telegram" },
       ctaSecondary: { label: "Позвонить и обсудить", href: "tel:+79943182188", meta: "+7 994 318 21 88", kind: "phone" },

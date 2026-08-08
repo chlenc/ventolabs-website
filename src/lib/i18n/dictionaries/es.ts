@@ -740,7 +740,7 @@ export const es: Dictionary = {
       ],
       seo: {
         title: "1C Agent — capa de IA sobre 1C ERP (caso en ruso)",
-        description: "Capa de IA con permisos sobre 1C en Claude: acciones seguras para managers, tickets 4,2× más rápidos, auditoría completa. Caso completo en ruso.",
+        description: "Agente de IA para el ERP 1C en Claude: peticiones en lenguaje llano, plan de cambios revisado y ediciones solo en extensiones; el núcleo de 1C no se toca. Caso en ruso.",
       },
       ctaPrimary: { label: "Reservar llamada gratis", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },

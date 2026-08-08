@@ -740,7 +740,7 @@ export const de: Dictionary = {
       ],
       seo: {
         title: "1C Agent — KI-Schicht über 1C ERP (Case auf Russisch)",
-        description: "Berechtigungsbasierte KI-Schicht über 1C auf Claude: sichere Manager-Aktionen, 4,2× schnellere Dev-Tickets, Audit-Trail. Vollständige Case Study auf Russisch.",
+        description: "KI-Agent für das 1C-ERP auf Claude: Anfragen in Alltagssprache, geprüfter Änderungsplan, Eingriffe nur in Erweiterungen — der 1C-Kern bleibt intakt. Case auf Russisch.",
       },
       ctaPrimary: { label: "Kostenlosen Termin buchen", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Per E-Mail schreiben", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },
