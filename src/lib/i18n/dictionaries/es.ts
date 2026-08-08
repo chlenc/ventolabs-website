@@ -13,9 +13,9 @@ export const es: Dictionary = {
     homeDescription:
       "Agentes de IA a medida que reducen costes operativos, automatizan flujos de trabajo y escalan tu negocio sin añadir personal. Configuración gratuita con cada proyecto.",
     titleTemplate: "%s | Vento Labs",
-    casesTitle: "Casos de IA — resultados reales con agentes de IA",
+    casesTitle: "Casos de agentes de IA — contenido, proveedores y 1C",
     casesDescription:
-      "Resultados medibles de clientes en salud, e-commerce, cloud y legaltech — más cuatro soluciones de IA productizadas, incluido nuestro producto ArbitrAI.",
+      "Lo que construimos: fábrica de contenido para e-commerce, agente de proveedores, capa de IA con permisos sobre 1C y ArbitrAI, nuestro producto legaltech.",
     privacyTitle: "Política de privacidad",
     privacyDescription: "Política de privacidad de Vento Labs — cómo tratamos tus datos.",
     termsTitle: "Condiciones de uso",
@@ -164,13 +164,6 @@ export const es: Dictionary = {
     cta: "Reservar llamada gratis",
   },
 
-  clientProof: {
-    eyebrow: "Resultados de clientes",
-    heading: "Clientes reales. Resultados medidos.",
-    lead: "Tres proyectos, tres resultados medibles — admisión de pacientes, operaciones de marketplace, adopción de IA en toda la empresa.",
-    cta: "Leer los casos de éxito",
-  },
-
   founder: {
     eyebrow: "Con quién hablarás",
     heading: "Sin equipo comercial. Hablas con la persona que construye tu agente.",
@@ -205,8 +198,8 @@ export const es: Dictionary = {
   casesIntro: {
     eyebrow: "Casos de éxito",
     heading: "Sistemas de IA que construimos — y los resultados que producen",
-    lead: "Soluciones que puedes lanzar y despliegues en clientes con resultados medidos.",
-    description: "Cuatro soluciones productizadas — una fábrica de contenido, un agente de operaciones con proveedores, una capa de IA con permisos sobre 1C y una plataforma legaltech de insolvencias — junto a proyectos entregados a clientes con resultados medibles en salud, e-commerce, infraestructura cloud y legaltech, incluido ArbitrAI, nuestro propio producto.",
+    lead: "Soluciones que puedes lanzar y el producto que construimos y operamos nosotros mismos.",
+    description: "Cuatro soluciones productizadas — una fábrica de contenido, un agente de operaciones con proveedores, una capa de IA con permisos sobre 1C y una plataforma legaltech de insolvencias — más ArbitrAI, el producto legaltech que construimos, lanzamos y operamos nosotros mismos. Cada cifra de esta página indica su fuente.",
     homeHeadingLead: "Tres sistemas de IA",
     homeHeadingEm: "que construimos",
     homeHeadingTail: "para operaciones.",
@@ -263,57 +256,23 @@ export const es: Dictionary = {
           { value: "127-FZ + APC", label: "plazos automáticos" },
         ],
       },
-      zigmund: {
-        industry: "Plataforma de terapia online",
-        title: "Un agente de IA redujo un 80% el tiempo de admisión de pacientes y gestiona 200+ conversaciones al día",
-        challenge: "El equipo de soporte de Zigmund Online estaba saturado — 200+ consultas diarias sobre disponibilidad de terapeutas, reserva de sesiones y seguros. Los pacientes esperaban 3–4 horas por respuesta y el 30% se iba antes de reservar.",
-        solution: "Desplegamos un agente de IA autoalojado en Telegram y WhatsApp que gestiona la admisión, responde a preguntas sobre seguros desde la base de conocimiento, empareja pacientes con terapeutas disponibles y reserva sesiones automáticamente.",
-        result: "El tiempo de respuesta bajó de 4 horas a menos de 2 minutos. La conversión de reservas subió un 40%. El equipo de soporte se enfoca ahora en casos complejos en vez de la admisión repetitiva.",
-        metrics: [
-          { value: "2 min", label: "tiempo de respuesta (antes 4 h)" },
-          { value: "+40%", label: "conversión de reservas" },
-          { value: "200+", label: "conversaciones gestionadas al día" },
-        ],
-      },
-      noconcept: {
-        industry: "E-commerce",
-        title: "La gestión automatizada de productos ahorra 25 horas por semana al equipo",
-        challenge: "NoConcept gestiona 3.000+ SKUs en varios marketplaces. Las actualizaciones de precios, sincronización de stock y consultas consumían 5+ horas al día. La cualificación de leads desde web y redes era totalmente manual.",
-        solution: "Construimos un pipeline de automatización con n8n: los leads entrantes son cualificados por IA, los datos de producto se sincronizan en tiempo real, las preguntas de clientes se responden desde la base de datos y los informes semanales se generan automáticamente.",
-        result: "El tiempo de respuesta a leads bajó de 6 horas a 8 minutos. Errores de sincronización eliminados. El equipo recuperó 25+ horas a la semana para crecer en vez de hacer entrada de datos.",
-        metrics: [
-          { value: "8 min", label: "respuesta a leads (antes 6 h)" },
-          { value: "25 h", label: "ahorradas por semana" },
-          { value: "3.000+", label: "SKUs gestionados automáticamente" },
-        ],
-      },
-      asgcompute: {
-        industry: "Infraestructura cloud",
-        title: "Espacio de trabajo de IA empresarial desplegado para 45 empleados en 5 departamentos en 4 semanas",
-        challenge: "ASG Compute no tenía gobernanza de IA. Los ingenieros usaban cuentas personales de ChatGPT, ventas no tenía herramientas de IA y datos sensibles de infraestructura se movían por canales no controlados. Sin visibilidad sobre gasto o uso de IA.",
-        solution: "Desplegamos un sistema operativo de IA completo: Claude Team Plan para los 45 empleados, 13 agentes de IA a medida en ventas, ingeniería, DevOps, marketing y soporte. Knowledge Vault con toda la documentación interna. Acceso basado en roles y políticas de cumplimiento.",
-        result: "Adopción total de IA en todos los departamentos en menos de 4 semanas. Gasto de IA consolidado y reducido un 35%. Los nuevos agentes de IA se despliegan ahora en 2–3 días en vez de semanas. El conocimiento de la empresa se preserva y está disponible para todos.",
-        metrics: [
-          { value: "13", label: "agentes de IA desplegados" },
-          { value: "4 semanas", label: "de cero a adopción total" },
-          { value: "–35%", label: "coste de infraestructura de IA" },
-        ],
-      },
       arbitrai: {
         industry: "LegalTech · Concursal",
         title: "ArbitrAI — nuestra plataforma de IA para administradores concursales: control de plazos, documentos con IA, analítica legal",
         challenge: "Un administrador concursal lleva 20–300 casos a la vez. El monitoreo diario de plazos consume 2–3 horas, una publicación obligatoria fuera de plazo puede costar la inhabilitación, y los escritos rutinarios devoran horas de trabajo caro.",
         solution: "Un producto que Vento Labs construyó y lanzó junto a un administrador en ejercicio: cálculo automático de plazos según la ley concursal rusa con alertas por Telegram, borradores de publicaciones y notificaciones generados con IA, y análisis de transacciones para acciones de reintegración. Integrado con los sistemas judiciales y registrales; datos alojados en el país por cumplimiento. Cada salida de la IA es un borrador para revisión humana — nunca se presenta automáticamente.",
         result: "El monitoreo de plazos bajó de 2–3 horas a menos de 20 minutos al día, las publicaciones a tiempo llegaron al 99,9 % y los documentos se preparan 6 veces más rápido. Vivo y creciendo en arbitrai.tech.",
+        imageAlt: "Una caja de archivo abierta con una hilera de separadores en blanco, alineados con precisión y una pestaña en verde oscuro.",
         metrics: [
           { value: "2–3 h → 20 min", label: "monitoreo diario de plazos" },
           { value: "99,9 %", label: "publicaciones a tiempo" },
           { value: "6×", label: "documentos más rápido" },
         ],
+        metricsSource: "Fuente: mediciones propias de Vento Labs sobre ArbitrAI (arbitrai.tech). Nuestro producto, nuestras cifras — no es una auditoría independiente.",
       },
     },
     sectionLabels: { challenge: "Reto", solution: "Solución", result: "Resultado" },
-    readyHeading: "¿Listo para unirte?",
+    readyHeading: "¿Quieres algo así en tu operación?",
     readyDesc: "Reserva una llamada — configuraremos tu agente de IA gratis.",
     readyCta: "Reservar llamada gratis",
   },
@@ -383,7 +342,6 @@ export const es: Dictionary = {
         "Control total sobre tus datos — autoalojado, sin dependencia de proveedores",
       ],
       stakes: "Cada día sin un agente de IA es un día haciendo trabajo que debería hacer una máquina. Tus competidores ya están automatizando — la distancia crece cada mes.",
-      socialProof: { company: "Zigmund Online", result: "El tiempo de respuesta pasó de 4 horas a menos de 2 minutos" },
       faq: [
         { q: "¿Qué frameworks usáis?", a: "Construimos sobre Claude Agent SDK, LangGraph, CrewAI y otros frameworks open-source líderes. Elegimos la mejor herramienta para tu caso — no hay una talla única." },
         { q: "¿Puede controlar mi ordenador de verdad?", a: "Sí. Con capacidades de computer-use, el agente puede navegar webs, rellenar formularios, extraer datos, gestionar archivos e interactuar con cualquier aplicación — igual que un asistente humano." },
@@ -438,7 +396,6 @@ export const es: Dictionary = {
         "Cero pérdida de datos entre sistemas — todo sincronizado en tiempo real",
       ],
       stakes: "Cada proceso manual es un cuello de botella esperando romperse. Mientras copias y pegas entre pestañas, tus competidores cierran tratos más rápido porque sus sistemas hablan entre sí.",
-      socialProof: { company: "NoConcept", result: "El tiempo de respuesta a leads pasó de 6 horas a 8 minutos" },
       faq: [
         { q: "¿Con qué herramientas os integráis?", a: "Google Workspace, HubSpot, Salesforce, Notion, Airtable, Slack, Telegram, WhatsApp, Shopify, WooCommerce, Stripe y cualquier herramienta con API. Si existe, la conectamos." },
         { q: "¿Qué pasa si una automatización se rompe?", a: "Montamos monitorización y alertas para detectar problemas antes que tú. Nuestro paquete de soporte incluye arreglar y adaptar automatizaciones cuando cambien tus herramientas o procesos." },
@@ -491,7 +448,6 @@ export const es: Dictionary = {
         "Tienes datos medibles sobre adopción de IA y ganancias de productividad",
       ],
       stakes: "Las empresas que adopten IA ahora serán 10 veces más productivas en 2 años. Las que esperen gastarán 10 veces más para ponerse al día. La ventana se cierra.",
-      socialProof: { company: "ASG Compute", result: "Adopción total de IA en 5 departamentos en menos de 4 semanas" },
       faq: [
         { q: "¿Y si nuestro equipo nunca ha usado IA?", a: "Es habitual y está perfecto. Diseñamos la formación desde cero, empezando por los fundamentos y avanzando hacia flujos avanzados al ritmo de tu equipo." },
         { q: "¿Es un taller único o algo continuo?", a: "Ambas opciones disponibles. Empezamos con una serie intensiva de talleres y luego ofrecemos seguimientos mensuales para sostener la adopción. Medimos a 30 y 60 días y ajustamos." },
@@ -544,7 +500,6 @@ export const es: Dictionary = {
         "Los nuevos agentes de IA se despliegan en días — el sistema crece con tu negocio",
       ],
       stakes: "Sin sistema, la adopción de IA crea más caos del que resuelve. Herramientas dispersas, conocimiento fragmentado, resultados inconsistentes — eso no es innovación, es potencial desperdiciado.",
-      socialProof: { company: "ASG Compute", result: "13 agentes de IA desplegados en 5 departamentos en 4 semanas" },
       faq: [
         { q: "¿Cuántos agentes de IA podéis desplegar?", a: "Normalmente empezamos con 3–5 agentes y escalamos desde ahí. Nuestro mayor despliegue corre 20+ agentes en varios departamentos. La arquitectura soporta expansión ilimitada." },
         { q: "¿Y la seguridad de los datos?", a: "Tus datos se quedan en tu infraestructura — bases de datos autoalojadas, acceso por rol, logs de auditoría. Sin dependencia de proveedor — usamos protocolos abiertos estándar." },
@@ -568,6 +523,7 @@ export const es: Dictionary = {
       heroTitle: "Convierte tu catálogo en un flujo de contenido que vende cada día",
       heroDescription: "Tomamos tus fotos de producto, feed, guía de marca y referencias — y producimos visuales lifestyle, carruseles, vídeos cortos, presentadores de IA y versiones para fichas de producto, pensados para tu web, redes y marketplaces.",
       cardSummary: "Convierte los SKUs en un flujo de contenido de descubrimiento para redes, fichas de producto y marketplaces.",
+      imageAlt: "Un único frasco ámbar rodeado por una retícula de copias pequeñas, cada una del mismo frasco desde otro ángulo y con otra luz.",
       problems: [
         "Tu producto solo vive dentro de la ficha, mientras que el comprador ya ha decidido — en el feed, en un tablero, en un vídeo corto, en un carrusel útil.",
         "La producción manual no sigue el ritmo del e-commerce: demasiado lenta, demasiado cara, con muy pocos ángulos por SKU.",
@@ -609,6 +565,38 @@ export const es: Dictionary = {
         { q: "¿Y las reglas de plataforma y la honestidad del contenido de IA?", a: "No presentamos output de IA como reseñas reales de clientes ni usamos testimoniales sintéticos. Las demos con guion y los presentadores de IA se muestran como tales. Cumplimos las reglas de la FTC y la UE sobre consumer reviews." },
         { q: "¿Cómo de rápido podemos lanzar un piloto?", a: "Patrón típico: 10–30 SKUs, 1–2 semanas hasta el primer pack publicable. Después se pasa a un ritmo semanal estable." },
       ],
+      pipeline: {
+        eyebrow: "Cómo funciona",
+        heading: "Un catálogo entra. Salen todos los canales.",
+        lede: "Nada de esto es una caja negra: tú entregas el material de partida, la pipeline convierte cada SKU en un sistema de ángulos y una persona aprueba antes de publicar.",
+        columns: [
+          {
+            head: "Lo que entregas",
+            nodes: [
+              { name: "Fotos de producto y feed", meta: "Tu catálogo, tal y como ya existe" },
+              { name: "Guía de marca y referencias", meta: "El look que el resultado debe mantener" },
+              { name: "Canales y reglas", meta: "Dónde se publica y con qué formato" },
+            ],
+          },
+          {
+            head: "La pipeline de contenido",
+            nodes: [
+              { name: "Matriz de contenido", meta: "Qué ángulos venden, construyen marca y rinden" },
+              { name: "Generación ajustada a la marca", meta: "Referencias y fotos reales, no un modelo genérico" },
+              { name: "Revisión humana", meta: "Lo que no está bien, no se publica" },
+            ],
+          },
+          {
+            head: "Lo que vuelve",
+            nodes: [
+              { name: "Visuales lifestyle y carruseles", meta: "Recetas, how-tos, sets, comparativas" },
+              { name: "Vídeo corto y presentadores IA", meta: "TikTok, Shorts, Reels, demos guionizadas" },
+              { name: "Versiones para ficha y rich content", meta: "Fichas de producto y specs de marketplace" },
+              { name: "Variantes de anuncio por plataforma", meta: "Meta, Google, Wildberries, Ozon" },
+            ],
+          },
+        ],
+      },
       seo: {
         title: "Content Factory para e-commerce — Piloto sobre tus SKUs",
         description: "Convierte tu catálogo en un flujo de contenido para fichas, redes y marketplaces. Visuales lifestyle, carruseles, vídeos cortos, presentadores de IA. Piloto sobre tus SKUs.",
@@ -621,6 +609,7 @@ export const es: Dictionary = {
       heroTitle: "Los proveedores escriben en caos. Tu catálogo debe responder con estructura.",
       heroDescription: "El agente lee emails, mensajes, listas de precios, hojas y archivos entrantes de proveedores, extrae SKUs, stock, precios y plazos, lo guarda todo en tu base o CRM y dispara actualizaciones de catálogo según tus reglas.",
       cardSummary: "Convierte emails, chats y listas de precios de proveedores en stock, precios y actualizaciones de catálogo en tiempo real.",
+      imageAlt: "Vista cenital: a la izquierda cajas y tubos de cartón amontonados en desorden; a la derecha los mismos objetos en una retícula exacta.",
       problems: [
         "Los datos de producto y stock viven en email, chats, PDFs y hojas — tu catálogo siempre va por detrás.",
         "Los responsables queman horas copiando a mano listas de precios y sincronizando stock y precios.",
@@ -662,6 +651,39 @@ export const es: Dictionary = {
         { q: "¿Qué pasa con la seguridad de los datos del proveedor?", a: "Se procesan dentro de tu perímetro o mediante acceso API con acuerdos de tratamiento. Los modelos corren en tier business — tus datos no se usan para entrenamiento. Con requisitos estrictos podemos desplegar self-hosted." },
         { q: "¿Cuánto tarda el arranque?", a: "MVP sobre 1–3 proveedores clave — 2–3 semanas. Cobertura total — 1–2 meses según número de fuentes y complejidad de reglas." },
       ],
+      pipeline: {
+        eyebrow: "Cómo funciona",
+        heading: "Entra el caos. Sale estructura.",
+        lede: "El agente se sitúa entre el proveedor y tu tienda. Lee lo que llega, extrae los campos que importan y actualiza según tus reglas — o pasa la excepción a una persona.",
+        columns: [
+          {
+            head: "Entrada, tal y como llega",
+            nodes: [
+              { name: "Email y adjuntos", meta: "Hilos, reenvíos, respuestas a respuestas" },
+              { name: "Chats", meta: "Telegram, WhatsApp, actualizaciones por mensajería" },
+              { name: "Tarifas y ficheros", meta: "Excel, PDF, Google Sheets, fotos de una tarifa" },
+            ],
+          },
+          {
+            head: "La capa del agente",
+            nodes: [
+              { name: "Extracción", meta: "SKU, precio, stock, plazo, MOQ, condiciones" },
+              { name: "Normalización y matching", meta: "Contra tu catálogo, plantillas por proveedor" },
+              { name: "Reglas", meta: "Publica lo fiable, envía el resto a revisión" },
+              { name: "Registro de cambios", meta: "Histórico por proveedor, con el mensaje de origen" },
+            ],
+          },
+          {
+            head: "Sistemas que quedan correctos",
+            nodes: [
+              { name: "Tienda", meta: "Shopify, WooCommerce" },
+              { name: "CRM y ERP", meta: "1C, Bitrix, MyWarehouse, sistemas propios" },
+              { name: "Base de datos y hojas", meta: "API, Google Sheets, Airtable, Notion" },
+              { name: "Alertas", meta: "Fallos, valores atípicos, datos sospechosos" },
+            ],
+          },
+        ],
+      },
       seo: {
         title: "Supplier Agent — IA para emails de proveedores y catálogo",
         description: "El agente convierte emails, chats y listas de precios de proveedores en stock, precios y actualizaciones de web — por reglas, con aprobaciones y registro completo.",
@@ -1486,14 +1508,6 @@ export const es: Dictionary = {
       { title: "En producción en semanas, no meses", description: "Los primeros agentes funcionan en 4 semanas. Los nuevos se despliegan en días. Iteramos sobre datos reales, no suposiciones." },
     ],
     stakesEyebrow: "El coste de esperar",
-    resultsEyebrow: "Resultados",
-    resultsHeading: "Empresas a las que hemos ayudado",
-    resultsEntries: [
-      { company: "NoConcept", industry: "E-commerce", result: "La respuesta a leads bajó de 6 horas a 8 minutos. 25 horas/semana ahorradas al equipo." },
-      { company: "Zigmund Online", industry: "Salud", result: "Tiempo de respuesta a pacientes de 4 horas a 2 minutos. Conversión de reservas +40%." },
-      { company: "ASG Compute", industry: "Cloud / SaaS", result: "13 agentes de IA desplegados en 5 departamentos en 4 semanas. Coste de IA reducido 35%." },
-    ],
-    resultsCta: "Ver todos los casos",
     ctaHeading: "¿Listo para potenciar tu equipo con IA?",
     ctaDesc: "Reserva una llamada de descubrimiento. Mapearemos tus procesos y te mostraremos qué agentes te ahorrarán más tiempo.",
     ctaPrimary: "Reservar llamada de descubrimiento",

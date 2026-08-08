@@ -13,9 +13,9 @@ export const de: Dictionary = {
     homeDescription:
       "Maßgeschneiderte KI-Agenten, die Betriebskosten senken, Workflows automatisieren und Ihr Unternehmen skalieren — ohne zusätzliche Mitarbeiter. Kostenlose KI-Agent-Einrichtung in jedem Projekt.",
     titleTemplate: "%s | Vento Labs",
-    casesTitle: "KI-Case-Studies — echte Ergebnisse mit KI-Agenten",
+    casesTitle: "KI-Agenten-Cases — Content, Lieferanten & 1C",
     casesDescription:
-      "Messbare Kundenergebnisse in Healthcare, E-Commerce, Cloud und Legaltech — plus vier produktisierte KI-Lösungen, inkl. unserem eigenen Produkt ArbitrAI.",
+      "Was wir bauen: eine Content-Fabrik für E-Commerce, ein Lieferanten-Agent, eine permissionierte KI-Schicht über 1C und ArbitrAI — unser eigenes Legaltech-Produkt.",
     privacyTitle: "Datenschutzerklärung",
     privacyDescription: "Datenschutzerklärung von Vento Labs — wie wir mit Ihren Daten umgehen.",
     termsTitle: "Nutzungsbedingungen",
@@ -164,13 +164,6 @@ export const de: Dictionary = {
     cta: "Kostenlosen Termin buchen",
   },
 
-  clientProof: {
-    eyebrow: "Kundenergebnisse",
-    heading: "Echte Kunden. Messbare Ergebnisse.",
-    lead: "Drei Projekte, drei messbare Ergebnisse — Patientenaufnahme, Marktplatz-Operations, unternehmensweite KI-Adoption.",
-    cta: "Case Studies lesen",
-  },
-
   founder: {
     eyebrow: "Mit wem Sie sprechen",
     heading: "Kein Sales-Team. Sie sprechen mit der Person, die Ihren Agenten baut.",
@@ -205,8 +198,8 @@ export const de: Dictionary = {
   casesIntro: {
     eyebrow: "Case Studies",
     heading: "KI-Systeme, die wir bauen — und die Ergebnisse, die sie liefern",
-    lead: "Lösungen, die Sie starten können, und Kundenprojekte mit gemessenen Resultaten.",
-    description: "Vier produktisierte Lösungen — eine Content-Fabrik, ein Agent für Lieferanten-Operations, eine permissionierte KI-Schicht über 1C und eine Legaltech-Plattform für Insolvenzverfahren — plus ausgelieferte Kundenprojekte mit messbaren Ergebnissen in Healthcare, E-Commerce, Cloud-Infrastruktur und Legaltech, darunter ArbitrAI, unser eigenes Produkt.",
+    lead: "Lösungen, die Sie starten können, und das Produkt, das wir selbst gebaut haben und betreiben.",
+    description: "Vier produktisierte Lösungen — eine Content-Fabrik, ein Agent für Lieferanten-Operations, eine permissionierte KI-Schicht über 1C und eine Legaltech-Plattform für Insolvenzverfahren — plus ArbitrAI, das Legaltech-Produkt, das wir selbst gebaut, ausgeliefert und betrieben haben. Jede Zahl auf dieser Seite nennt ihre Quelle.",
     homeHeadingLead: "Drei KI-Systeme,",
     homeHeadingEm: "die wir bauen",
     homeHeadingTail: "— für Ihre Operations.",
@@ -263,57 +256,23 @@ export const de: Dictionary = {
           { value: "127-FZ + APK", label: "Fristen automatisch" },
         ],
       },
-      zigmund: {
-        industry: "Online-Therapie-Plattform",
-        title: "KI-Agent reduzierte die Patientenaufnahme um 80 % und bearbeitet 200+ Gespräche täglich",
-        challenge: "Das Support-Team von Zigmund Online war überlastet — 200+ tägliche Anfragen zu Therapeuten-Verfügbarkeit, Terminbuchung und Versicherung. Patienten warteten 3–4 Stunden auf Antwort, 30 % sprangen vor der Buchung ab.",
-        solution: "Ein self-hosted KI-Agent in Telegram und WhatsApp übernimmt die Patientenaufnahme, beantwortet Versicherungsfragen aus der Wissensbasis, matcht Patienten mit verfügbaren Therapeuten und bucht Termine automatisch.",
-        result: "Reaktionszeit sank von 4 Stunden auf unter 2 Minuten. Buchungskonversion stieg um 40 %. Das Support-Team kümmert sich jetzt um komplexe Fälle statt um Routineaufnahme.",
-        metrics: [
-          { value: "2 Min.", label: "Reaktionszeit (vorher 4 Std.)" },
-          { value: "+40 %", label: "Buchungskonversion" },
-          { value: "200+", label: "Gespräche täglich bearbeitet" },
-        ],
-      },
-      noconcept: {
-        industry: "E-Commerce",
-        title: "Automatisiertes Produktmanagement spart dem Team 25 Stunden pro Woche",
-        challenge: "NoConcept verwaltet 3.000+ SKUs auf mehreren Marktplätzen. Preis-Updates, Bestandssynchronisation und Kundenanfragen verschlangen 5+ Stunden täglich. Lead-Qualifizierung aus Website und Social war komplett manuell.",
-        solution: "Automatisierungspipeline mit n8n: eingehende Leads werden von KI qualifiziert, Produktdaten werden plattformübergreifend in Echtzeit synchronisiert, Kundenfragen aus der Produktdatenbank beantwortet, wöchentliche Analytics-Reports entstehen automatisch.",
-        result: "Lead-Reaktionszeit sank von 6 Stunden auf 8 Minuten. Sync-Fehler eliminiert. Das Team gewann 25+ Stunden pro Woche für Wachstumsaktivitäten statt Dateneingabe.",
-        metrics: [
-          { value: "8 Min.", label: "Lead-Reaktion (vorher 6 Std.)" },
-          { value: "25 Std.", label: "pro Woche gespart" },
-          { value: "3.000+", label: "SKUs automatisch verwaltet" },
-        ],
-      },
-      asgcompute: {
-        industry: "Cloud-Infrastruktur",
-        title: "Enterprise-KI-Workspace für 45 Mitarbeitende in 5 Abteilungen in 4 Wochen ausgerollt",
-        challenge: "ASG Compute hatte keine KI-Governance. Ingenieure nutzten private ChatGPT-Accounts, Sales hatte keine KI-Tools, sensible Infrastrukturdaten liefen über unkontrollierte Kanäle. Keine Sicht auf KI-Ausgaben oder -Nutzung.",
-        solution: "Vollständiges KI-Betriebssystem ausgerollt: Claude Team Plan für alle 45 Mitarbeitenden, 13 maßgeschneiderte KI-Agenten in Sales, Engineering, DevOps, Marketing und Support. Knowledge Vault mit der gesamten internen Dokumentation. Rollenbasierter Zugriff und Compliance-Richtlinien.",
-        result: "Vollständige KI-Adoption über alle Abteilungen in unter 4 Wochen. KI-Ausgaben konsolidiert und um 35 % gesenkt. Neue KI-Agenten gehen jetzt in 2–3 Tagen live statt Wochen. Firmenwissen ist gesichert und für jeden zugänglich.",
-        metrics: [
-          { value: "13", label: "KI-Agenten ausgerollt" },
-          { value: "4 Wochen", label: "von null zur Vollnutzung" },
-          { value: "–35 %", label: "KI-Infrastrukturkosten" },
-        ],
-      },
       arbitrai: {
         industry: "LegalTech · Insolvenz",
         title: "ArbitrAI — unsere eigene KI-Plattform für Insolvenzverwalter: Fristenkontrolle, KI-Dokumente, Rechtsanalytik",
         challenge: "Ein Insolvenzverwalter betreut 20–300 Verfahren gleichzeitig. Das tägliche Fristenmonitoring kostet 2–3 Stunden, eine verpasste Pflichtveröffentlichung riskiert die Disqualifikation, und Routineschriftsätze verschlingen Stunden teurer Arbeitszeit.",
         solution: "Ein Produkt, das Vento Labs gemeinsam mit einem praktizierenden Verwalter gebaut und gelauncht hat: automatische Fristenberechnung nach russischem Insolvenzrecht mit Telegram-Alerts, KI-Entwürfe für Veröffentlichungen und Bescheide, Transaktionsanalyse für Anfechtungsklagen. Integriert mit den Gerichts- und Registersystemen; Daten werden compliance-konform im Land gehostet. Jede KI-Ausgabe ist ein Entwurf zur menschlichen Prüfung — nie eine automatische Einreichung.",
         result: "Das Fristenmonitoring sank von 2–3 Stunden auf unter 20 Minuten pro Tag, pünktliche Veröffentlichungen erreichten 99,9 %, und Dokumente entstehen 6× schneller. Live und wachsend auf arbitrai.tech.",
+        imageAlt: "Eine geöffnete Archivbox mit einer Reihe blanker Trennblätter, exakt ausgerichtet, ein Reiter in Dunkelgrün.",
         metrics: [
           { value: "2–3 h → 20 min", label: "tägliches Fristenmonitoring" },
           { value: "99,9 %", label: "pünktliche Veröffentlichungen" },
           { value: "6×", label: "schnellere Dokumentenerstellung" },
         ],
+        metricsSource: "Quelle: eigene Messungen von Vento Labs an ArbitrAI (arbitrai.tech). Unser Produkt, unsere Zahlen — kein unabhängiges Audit.",
       },
     },
     sectionLabels: { challenge: "Herausforderung", solution: "Lösung", result: "Ergebnis" },
-    readyHeading: "Bereit dazuzugehören?",
+    readyHeading: "So etwas für Ihren Betrieb?",
     readyDesc: "Termin buchen — wir richten Ihren KI-Agenten kostenlos ein.",
     readyCta: "Kostenlosen Termin buchen",
   },
@@ -383,7 +342,6 @@ export const de: Dictionary = {
         "Volle Datenkontrolle — self-hosted, kein Vendor-Lock-in",
       ],
       stakes: "Jeder Tag ohne KI-Agent ist ein Tag, an dem Sie Arbeit erledigen, die eine Maschine übernehmen sollte. Ihre Mitbewerber automatisieren bereits — der Abstand wächst jeden Monat.",
-      socialProof: { company: "Zigmund Online", result: "Reaktionszeit sank von 4 Stunden auf unter 2 Minuten" },
       faq: [
         { q: "Welche Frameworks nutzen Sie?", a: "Wir bauen auf Claude Agent SDK, LangGraph, CrewAI und anderen führenden Open-Source-Frameworks. Wir wählen das beste Werkzeug für Ihren Fall — es gibt keine One-Size-Fits-All-Lösung." },
         { q: "Kann er wirklich meinen Rechner steuern?", a: "Ja. Mit Computer-Use-Fähigkeiten kann der Agent Websites navigieren, Formulare ausfüllen, Daten extrahieren, Dateien verwalten und mit jeder Anwendung interagieren — genau wie ein menschlicher Assistent." },
@@ -438,7 +396,6 @@ export const de: Dictionary = {
         "Null Datenverlust zwischen Systemen — alles in Echtzeit synchronisiert",
       ],
       stakes: "Jeder manuelle Prozess ist ein Engpass, der nur darauf wartet zu brechen. Während Sie zwischen Tabs kopieren, schließen Ihre Mitbewerber Deals schneller ab — ihre Systeme sprechen miteinander.",
-      socialProof: { company: "NoConcept", result: "Lead-Reaktionszeit sank von 6 Stunden auf 8 Minuten" },
       faq: [
         { q: "Mit welchen Tools integrieren Sie?", a: "Google Workspace, HubSpot, Salesforce, Notion, Airtable, Slack, Telegram, WhatsApp, Shopify, WooCommerce, Stripe und jedes Tool mit API. Existiert es — verbinden wir es." },
         { q: "Was passiert, wenn eine Automatisierung bricht?", a: "Wir richten Monitoring und Alerts ein, damit wir Probleme vor Ihnen bemerken. Unser Support-Paket umfasst das Beheben und Anpassen von Automationen bei Tool- oder Prozessänderungen." },
@@ -491,7 +448,6 @@ export const de: Dictionary = {
         "Sie haben messbare Daten zu KI-Adoption und Produktivitätsgewinnen",
       ],
       stakes: "Unternehmen, die KI jetzt einführen, werden in 2 Jahren 10× produktiver sein. Wer wartet, wird 10× mehr ausgeben, um aufzuholen. Das Zeitfenster schließt sich.",
-      socialProof: { company: "ASG Compute", result: "Vollständige KI-Adoption in 5 Abteilungen in unter 4 Wochen" },
       faq: [
         { q: "Was, wenn unser Team noch nie KI genutzt hat?", a: "Das ist häufig und absolut in Ordnung. Wir konzipieren das Training von Grund auf, starten mit den Grundlagen und arbeiten uns im Tempo Ihres Teams zu fortgeschrittenen Workflows vor." },
         { q: "Ist das ein einmaliger Workshop oder fortlaufend?", a: "Beides möglich. Wir starten mit einer intensiven Workshop-Reihe und bieten dann monatliche Check-ins zur Verankerung. Wir messen nach 30 und 60 Tagen und justieren." },
@@ -544,7 +500,6 @@ export const de: Dictionary = {
         "Neue KI-Agenten gehen in Tagen live — das System wächst mit Ihrem Geschäft",
       ],
       stakes: "Ohne System schafft KI-Adoption mehr Chaos als sie löst. Verteilte Tools, fragmentiertes Wissen, inkonsistente Ergebnisse — das ist keine Innovation, das ist verschenktes Potenzial.",
-      socialProof: { company: "ASG Compute", result: "13 KI-Agenten in 5 Abteilungen in 4 Wochen ausgerollt" },
       faq: [
         { q: "Wie viele KI-Agenten können Sie ausrollen?", a: "Wir starten typischerweise mit 3–5 Agenten und skalieren. Unser größter Rollout läuft mit 20+ Agenten über mehrere Abteilungen. Die Architektur unterstützt unbegrenzte Erweiterung." },
         { q: "Was ist mit der Datensicherheit?", a: "Ihre Daten bleiben auf Ihrer Infrastruktur — self-hosted Datenbanken, rollenbasierter Zugriff, Audit-Logs. Kein Vendor-Lock-in — wir nutzen offene Standardprotokolle." },
@@ -568,6 +523,7 @@ export const de: Dictionary = {
       heroTitle: "Verwandeln Sie Ihren Katalog in einen Content-Stream, der jeden Tag verkauft",
       heroDescription: "Wir nehmen Produktfotos, Feed, Brand Guide und Referenzen — und liefern Lifestyle-Visuals, Karussells, Kurzvideos, KI-Presenter und Produktkarten-Versionen für Site, Social und Marktplätze.",
       cardSummary: "Verwandelt SKUs in einen Stream von Discovery-Content für Social, Produktkarten und Marktplätze.",
+      imageAlt: "Eine einzelne Braunglasflasche, umgeben von einem Raster kleiner Abzüge, die dieselbe Flasche aus je anderem Winkel und in anderem Licht zeigen.",
       problems: [
         "Ihr Produkt lebt nur in der Karte, während die Käuferin längst entschieden hat — im Feed, im Board, in einem Kurzvideo, in einem nützlichen Karussell.",
         "Manuelle Content-Produktion hält mit dem E-Commerce-Rhythmus nicht Schritt: zu langsam, zu teuer, zu wenige Angles pro SKU.",
@@ -609,6 +565,38 @@ export const de: Dictionary = {
         { q: "Wie steht es um Plattformregeln und Ehrlichkeit bei KI-Content?", a: "Wir geben KI-Output nicht als echte Kundenbewertungen aus und nutzen keine synthetischen Testimonials. Skriptbasierte Demos und KI-Presenter werden als das gezeigt, was sie sind. FTC- und EU-Regeln zu Consumer Reviews werden eingehalten." },
         { q: "Wie schnell starten wir einen Piloten?", a: "Typisch: 10–30 SKUs, 1–2 Wochen bis zum ersten publikationsfähigen Pack. Danach geht es in einen wöchentlichen Rhythmus." },
       ],
+      pipeline: {
+        eyebrow: "So läuft es",
+        heading: "Ein Katalog rein. Jeder Kanal raus.",
+        lede: "Nichts davon ist eine Blackbox: Sie liefern das Ausgangsmaterial, die Pipeline macht aus jeder SKU ein System von Blickwinkeln, und ein Mensch gibt frei, bevor irgendetwas veröffentlicht wird.",
+        columns: [
+          {
+            head: "Was Sie liefern",
+            nodes: [
+              { name: "Produktfotos und Feed", meta: "Ihr Katalog, so wie er existiert" },
+              { name: "Brand Guide und Referenzen", meta: "Der Look, den der Output halten muss" },
+              { name: "Kanäle und Regeln", meta: "Wohin es geht — und in welcher Form" },
+            ],
+          },
+          {
+            head: "Die Content-Pipeline",
+            nodes: [
+              { name: "Content-Matrix", meta: "Welche Blickwinkel verkaufen, Marke bauen, performen" },
+              { name: "Generierung pro Marke justiert", meta: "Referenzen und Produktfotos statt Modell von der Stange" },
+              { name: "Menschliche Freigabe", meta: "Schlechte Visuals gehen nicht raus" },
+            ],
+          },
+          {
+            head: "Was zurückkommt",
+            nodes: [
+              { name: "Lifestyle-Visuals und Carousels", meta: "Rezepte, How-tos, Sets, Vergleiche" },
+              { name: "Kurzvideo und KI-Presenter", meta: "TikTok, Shorts, Reels, Skript-Demos" },
+              { name: "Card- und Rich-Content-Versionen", meta: "Produktkarten und Marktplatz-Specs" },
+              { name: "Ad-Varianten je Plattform", meta: "Meta, Google, Wildberries, Ozon" },
+            ],
+          },
+        ],
+      },
       seo: {
         title: "Content-Fabrik für E-Commerce — Pilot auf Ihren SKUs",
         description: "Verwandeln Sie Ihren Katalog in einen Content-Stream für Produktkarten, Social und Marktplätze. Lifestyle-Visuals, Karussells, Kurzvideos, KI-Presenter. Pilot auf Ihren SKUs.",
@@ -621,6 +609,7 @@ export const de: Dictionary = {
       heroTitle: "Lieferanten schreiben im Chaos. Ihr Katalog soll mit Struktur antworten.",
       heroDescription: "Der Agent liest eingehende E-Mails, Nachrichten, Preislisten, Tabellen und Dateien von Lieferanten, extrahiert SKUs, Bestände, Preise und Lieferzeiten, speichert alles in Ihrer Datenbank oder Ihrem CRM und stößt Katalog-Updates nach Ihren Regeln an.",
       cardSummary: "Verwandelt E-Mails, Chats und Preislisten von Lieferanten in Live-Bestände, Preise und Katalog-Updates.",
+      imageAlt: "Draufsicht: links ein ungeordneter Haufen schlichter Kartons und Hülsen, rechts dieselben Objekte in exaktem Raster angeordnet.",
       problems: [
         "Produkt- und Bestandsdaten leben in E-Mail, Chats, PDFs und Tabellen — Ihr Katalog hinkt immer hinterher.",
         "Mitarbeitende verbrennen Stunden beim manuellen Übertragen von Preislisten und Synchronisieren von Beständen und Preisen.",
@@ -662,6 +651,39 @@ export const de: Dictionary = {
         { q: "Wie steht es um die Sicherheit der Lieferantendaten?", a: "Daten werden in Ihrem Perimeter oder via API-Zugriff mit Auftragsverarbeitungsvertrag verarbeitet. Modelle laufen im Business-Tier — Ihre Daten werden nicht für Training genutzt. Bei strengen Anforderungen ist Self-Hosted möglich." },
         { q: "Wie lange dauert der Start?", a: "MVP auf 1–3 Schlüsselkonten — 2–3 Wochen. Volle Abdeckung — 1–2 Monate, je nach Anzahl der Quellen und Komplexität der Regeln." },
       ],
+      pipeline: {
+        eyebrow: "So läuft es",
+        heading: "Chaos rein. Struktur raus.",
+        lede: "Der Agent sitzt zwischen Lieferant und Storefront. Er liest, was ankommt, extrahiert die relevanten Felder und aktualisiert nach Ihren Regeln — oder gibt die Ausnahme an einen Menschen.",
+        columns: [
+          {
+            head: "Eingang, so wie Lieferanten senden",
+            nodes: [
+              { name: "E-Mail und Anhänge", meta: "Threads, Weiterleitungen, Antworten auf Antworten" },
+              { name: "Chats", meta: "Telegram, WhatsApp, Messenger-Updates" },
+              { name: "Preislisten und Dateien", meta: "Excel, PDF, Google Sheets, Fotos einer Preisliste" },
+            ],
+          },
+          {
+            head: "Die Agenten-Schicht",
+            nodes: [
+              { name: "Extraktion", meta: "SKU, Preis, Bestand, Lieferzeit, MOQ, Konditionen" },
+              { name: "Normalisierung und Matching", meta: "Gegen Ihren Katalog, Templates je Lieferant" },
+              { name: "Regeln", meta: "Vertrautes automatisch, den Rest in die Freigabe" },
+              { name: "Änderungsjournal", meta: "Historie je Lieferant, mit Ursprungsnachricht" },
+            ],
+          },
+          {
+            head: "Systeme, die am Ende stimmen",
+            nodes: [
+              { name: "Storefront", meta: "Shopify, WooCommerce" },
+              { name: "CRM und ERP", meta: "1C, Bitrix, MyWarehouse, eigene Systeme" },
+              { name: "Datenbank und Sheets", meta: "API, Google Sheets, Airtable, Notion" },
+              { name: "Alerts", meta: "Fehler, Ausreißer, auffällige Daten" },
+            ],
+          },
+        ],
+      },
       seo: {
         title: "Supplier Agent — KI für Lieferanten-Mails und Katalog",
         description: "Der KI-Agent verwandelt Lieferanten-Mails, Chats und Preislisten in Live-Bestände, Preise und Storefront-Updates — nach Regeln, mit Freigaben und Journal.",
@@ -1486,14 +1508,6 @@ export const de: Dictionary = {
       { title: "Live in Wochen, nicht Monaten", description: "Erste Agenten laufen in 4 Wochen. Neue in Tagen. Wir iterieren an echten Daten, nicht an Annahmen." },
     ],
     stakesEyebrow: "Der Preis des Wartens",
-    resultsEyebrow: "Ergebnisse",
-    resultsHeading: "Unternehmen, denen wir geholfen haben",
-    resultsEntries: [
-      { company: "NoConcept", industry: "E-Commerce", result: "Lead-Reaktion sank von 6 Stunden auf 8 Minuten. 25 Std./Woche gespart im Team." },
-      { company: "Zigmund Online", industry: "Gesundheit", result: "Patienten-Reaktionszeit von 4 Stunden auf 2 Minuten. Buchungskonversion +40 %." },
-      { company: "ASG Compute", industry: "Cloud / SaaS", result: "13 KI-Agenten in 5 Abteilungen in 4 Wochen. KI-Kosten um 35 % reduziert." },
-    ],
-    resultsCta: "Alle Case Studies ansehen",
     ctaHeading: "Bereit, Ihr Team mit KI zu verstärken?",
     ctaDesc: "Buchen Sie ein Entdeckungsgespräch. Wir kartieren Ihre Prozesse und zeigen, welche Agenten am meisten Zeit sparen.",
     ctaPrimary: "Entdeckungsgespräch buchen",

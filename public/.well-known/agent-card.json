@@ -22,116 +22,225 @@
     "stateTransitionHistory": false,
     "extendedAgentCard": false
   },
-  "defaultInputModes": ["text/plain", "application/json"],
-  "defaultOutputModes": ["text/plain", "application/json"],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
   "skills": [
     {
       "id": "ai-assistant",
       "name": "Custom AI Agent Development",
       "description": "Custom AI agents built on Claude Agent SDK, LangGraph, and CrewAI — self-hosted on your infrastructure. Agents integrate with Telegram, WhatsApp, LinkedIn, email, and your internal tools, and can use any LLM (including local models).",
-      "tags": ["ai-agents", "claude-agent-sdk", "langgraph", "crewai", "self-hosted", "automation"],
+      "tags": [
+        "ai-agents",
+        "claude-agent-sdk",
+        "langgraph",
+        "crewai",
+        "self-hosted",
+        "automation"
+      ],
       "examples": [
         "Build a self-hosted AI agent that handles inbound LinkedIn messages and qualifies leads.",
         "Deploy a multi-agent system that monitors Telegram channels and produces a daily signal summary."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "ai-automation",
       "name": "Operational AI Automation",
       "description": "End-to-end automation of business operations — from lead capture to invoicing — replacing manual handoffs between chats, spreadsheets, and email threads.",
-      "tags": ["workflow-automation", "rpa", "back-office", "operations"],
+      "tags": [
+        "workflow-automation",
+        "rpa",
+        "back-office",
+        "operations"
+      ],
       "examples": [
         "Automate lead intake from website forms into the CRM with AI-driven enrichment and qualification.",
         "Replace manual order processing with an agent that reads supplier emails and updates inventory."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "ai-training",
       "name": "AI Strategy & Team Training",
       "description": "Consulting and hands-on team training to make AI adoption stick — process audits, workshops, and a prioritized roadmap for embedding AI in daily work.",
-      "tags": ["consulting", "training", "strategy", "audit"],
+      "tags": [
+        "consulting",
+        "training",
+        "strategy",
+        "audit"
+      ],
       "examples": [
         "Audit a finance team's workflows and produce a prioritized AI automation roadmap.",
         "Run a hands-on workshop teaching a sales team to use Claude for prospect research and outreach."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "ai-workspace",
       "name": "Enterprise AI Workspace",
       "description": "A permissioned AI layer for enterprises — role-based access, audit trails, and a unified interface so dozens of employees can safely use AI across departments.",
-      "tags": ["enterprise", "workspace", "rbac", "compliance"],
+      "tags": [
+        "enterprise",
+        "workspace",
+        "rbac",
+        "compliance"
+      ],
       "examples": [
-        "Deploy an AI workspace for 45 employees across 5 departments with department-scoped permissions.",
+        "Deploy a permissioned AI workspace across several departments with department-scoped access and audit logs.",
         "Stand up an enterprise Claude/GPT gateway with audit logs and per-team usage caps."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "data-centers",
       "name": "AI Data Center Development",
       "description": "End-to-end development of AI data centers for investors and owners — configuration and TCO sizing, site search screened on deliverable grid capacity, securing land and power, transmission interconnection, modular construction, commissioning, and operation. Typical projects 10–100+ MW, phased; modular deployment in 3–6 months against 24–36 for conventional construction.",
-      "tags": ["data-centers", "ai-infrastructure", "energy", "grid-interconnection", "modular-construction", "hpc"],
+      "tags": [
+        "data-centers",
+        "ai-infrastructure",
+        "energy",
+        "grid-interconnection",
+        "modular-construction",
+        "hpc"
+      ],
       "examples": [
         "Assess whether a 20 MW AI data center makes sense for a given budget and target geography.",
         "Screen a candidate parcel against deliverable transmission capacity, water, fiber, and permitting before purchase."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "content-factory",
       "name": "AI Content Factory for E-commerce",
       "description": "Turns a product catalog into a daily stream of discovery content — product cards, social posts, comparison articles — automatically generated from SKU data.",
-      "tags": ["e-commerce", "content-generation", "marketing", "seo"],
+      "tags": [
+        "e-commerce",
+        "content-generation",
+        "marketing",
+        "seo"
+      ],
       "examples": [
         "Generate daily TikTok scripts for 500 SKUs based on inventory and trending hooks.",
         "Auto-publish product comparison articles when new SKUs are added to the catalog."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "supplier-agent",
       "name": "Supplier Communication Agent",
       "description": "Reads unstructured supplier messages across email, WhatsApp, and Telegram and updates the catalog with prices, stock levels, lead times, and new SKUs.",
-      "tags": ["e-commerce", "suppliers", "catalog-management", "messaging"],
+      "tags": [
+        "e-commerce",
+        "suppliers",
+        "catalog-management",
+        "messaging"
+      ],
       "examples": [
         "Parse supplier WhatsApp price-list updates and sync the live catalog with an audit trail.",
         "Auto-create draft purchase orders when suppliers announce a restock in chat."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "erp-agent",
       "name": "ERP Agent for 1C",
       "description": "A safe AI layer over 1C and similar ERP systems — speak business language, get permissioned reads and writes, with guardrails that prevent the AI from breaking core data.",
-      "tags": ["erp", "1c", "enterprise-systems", "guardrails"],
+      "tags": [
+        "erp",
+        "1c",
+        "enterprise-systems",
+        "guardrails"
+      ],
       "examples": [
         "Ask the ERP for last quarter's overdue invoices in plain language.",
         "Approve a pre-validated stock adjustment via chat without opening the 1C UI."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "bankruptcy-agent",
       "name": "Bankruptcy AI for Arbitration Trustees",
       "description": "An AI platform purpose-built for Russian-market arbitration trustees — automates case-file analysis, document drafting, and procedural steps under bankruptcy law.",
-      "tags": ["legal", "bankruptcy", "ru-market", "document-automation"],
+      "tags": [
+        "legal",
+        "bankruptcy",
+        "ru-market",
+        "document-automation"
+      ],
       "examples": [
         "Analyze a debtor's case file and surface actionable findings for the trustee.",
         "Draft procedural filings from case context with citation-aware templates."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     }
   ]
 }

@@ -2620,6 +2620,109 @@ em, .italic {
 .case-card__cta svg { transition: transform 0.3s var(--ease-out); }
 .case-card:hover .case-card__cta svg { transform: translate(3px, -3px); }
 
+/* Provenance line under a card's metric chips. Deliberately quiet but not
+   hidden: a number on a case card without a source is the thing this page
+   most needs to avoid. */
+.case-card__source {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: -0.2rem 0 0;
+}
+
+/* ═══ Case landing architecture diagram — in-page HTML, not an image, so the
+   labels stay translatable and legible at any size. Same visual language as
+   the bespoke .erp-arch block, kept as its own scope so neither can break the
+   other. ═══ */
+.case-arch {
+  background: var(--forest);
+  color: var(--cream);
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  overflow: hidden;
+  position: relative;
+}
+.case-arch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(243, 234, 216, 0.5) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.case-arch > * { position: relative; }
+.case-arch__head { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 60ch; }
+.case-arch__head .eyebrow { color: rgba(243, 234, 216, 0.6); }
+.case-arch__head h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin-top: 1rem;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+}
+.case-arch__lede {
+  color: rgba(243, 234, 216, 0.78);
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  max-width: 60ch;
+}
+.case-arch__diagram {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (max-width: 900px) { .case-arch__diagram { grid-template-columns: 1fr; } }
+.case-arch__col { display: flex; flex-direction: column; gap: 0.75rem; position: relative; }
+/* Flow arrow between columns — decorative, hidden from the a11y tree and
+   dropped entirely once the columns stack. */
+.case-arch__col + .case-arch__col::before {
+  content: "";
+  position: absolute;
+  left: -0.95rem;
+  top: 2.6rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-top: 1px solid rgba(243, 234, 216, 0.35);
+  border-right: 1px solid rgba(243, 234, 216, 0.35);
+  transform: rotate(45deg);
+}
+@media (max-width: 900px) {
+  .case-arch__col + .case-arch__col::before { display: none; }
+}
+.case-arch__col-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(243, 234, 216, 0.55);
+  margin-bottom: 0.5rem;
+}
+.case-arch__node {
+  background: rgba(243, 234, 216, 0.06);
+  border: 1px solid rgba(243, 234, 216, 0.12);
+  border-radius: 8px;
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.case-arch__node:hover {
+  background: rgba(243, 234, 216, 0.1);
+  transform: translateY(-2px);
+}
+.case-arch__node-name { font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.15; }
+.case-arch__node-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: rgba(243, 234, 216, 0.6);
+}
+
 .cases-group-title {
   font-family: var(--font-mono);
   font-size: 0.72rem;

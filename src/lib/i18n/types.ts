@@ -5,6 +5,9 @@ export type ServiceDict = {
   heroTitle: string;
   heroDescription: string;
   cardSummary: string;
+  /** Describes the page's lead image. Falls back to `title` where unset — a
+   * title is a poor alt, so any page with a meaningful image should set it. */
+  imageAlt?: string;
   problems: string[];
   guide: { empathy: string; authority: string };
   plan: { title: string; description: string }[];
@@ -21,6 +24,18 @@ export type ServiceDict = {
     columns: { metric: string; before: string; after: string; change: string };
     rows: { metric: string; before: string; after: string; change: string }[];
     source: string;
+  };
+  /**
+   * Optional architecture diagram: what goes in, what the system does, what
+   * comes out. Built as in-page HTML rather than a generated picture so the
+   * labels stay translatable, legible and accurate — an image of a diagram
+   * would ship garbled lettering and freeze the copy in one language.
+   */
+  pipeline?: {
+    eyebrow: string;
+    heading: string;
+    lede: string;
+    columns: { head: string; nodes: { name: string; meta: string }[] }[];
   };
   /** Optional security/guarantee section — block 7 of long-form case landings. */
   guarantees?: {
@@ -61,6 +76,14 @@ export type CaseStudyDict = {
   solution: string;
   result: string;
   metrics: { value: string; label: string }[];
+  /** Describes the study's card image; falls back to the company name. */
+  imageAlt?: string;
+  /**
+   * Where the numbers in `metrics` come from, rendered under the chips. Any
+   * study carrying hard figures must set this — an unattributed metric on a
+   * case page is a liability, not a conversion.
+   */
+  metricsSource?: string;
 };
 
 export type AgentCategoryDict = {
@@ -348,14 +371,6 @@ export type Dictionary = {
     cta: string;
   };
 
-  /** Named client outcomes strip on the homepage (real engagements). */
-  clientProof: {
-    eyebrow: string;
-    heading: string;
-    lead: string;
-    cta: string;
-  };
-
   /** "Who you'll talk to" — founder block on the homepage. */
   founder: {
     eyebrow: string;
@@ -500,10 +515,6 @@ export type Dictionary = {
     whyHeading: string;
     differentiators: { title: string; description: string }[];
     stakesEyebrow: string;
-    resultsEyebrow: string;
-    resultsHeading: string;
-    resultsEntries: { company: string; industry: string; result: string }[];
-    resultsCta: string;
     ctaHeading: string;
     ctaDesc: string;
     ctaPrimary: string;

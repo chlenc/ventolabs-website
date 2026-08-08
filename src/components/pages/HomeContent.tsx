@@ -30,14 +30,6 @@ const caseCardKeys = [
   { key: "erp-agent", img: "/images/case-erp-agent.webp", metricKey: "erpAgent" as const },
 ];
 
-// Company names are proper nouns — locale-agnostic, so they live here rather
-// than in the dictionaries.
-const clientProofKeys = [
-  { key: "zigmund", company: "Zigmund Online" },
-  { key: "noconcept", company: "NoConcept" },
-  { key: "asgcompute", company: "ASG Compute" },
-];
-
 function useCountUp(target: number, duration = 1800, start = false) {
   // Initialize at the target so the prerendered HTML (and no-JS visitors)
   // show the real number; the count-up runs only once the section is in view.
@@ -242,52 +234,6 @@ export function HomeContent() {
               }}
             >
               {dict.roi.disclaimer}
-            </p>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* Client proof — named engagements with measured outcomes */}
-      <section className="section section--paper">
-        <div className="container">
-          <FadeUp>
-            <div className="section-header">
-              <div className="section-header__left">
-                <p className="eyebrow">{dict.clientProof.eyebrow}</p>
-                <h2>{dict.clientProof.heading}</h2>
-              </div>
-              <div className="section-header__right">
-                <p>{dict.clientProof.lead}</p>
-              </div>
-            </div>
-          </FadeUp>
-          <div className="stats-grid">
-            {clientProofKeys.map((c, i) => {
-              const rec = dict.cases.records[c.key];
-              if (!rec) return null;
-              const metric = rec.metrics[0];
-              return (
-                <FadeUp key={c.key} delay={i * 120}>
-                  <a href={href("/cases", locale)} className="stat">
-                    <div className="stat__source">
-                      <span>{c.company} · {rec.industry}</span>
-                      <ArrowIcon size={14} />
-                    </div>
-                    <div className="stat__num">
-                      <span>{metric.value}</span>
-                      <sup>{metric.label}</sup>
-                    </div>
-                    <p className="stat__desc">{rec.title}</p>
-                  </a>
-                </FadeUp>
-              );
-            })}
-          </div>
-          <FadeUp>
-            <p className="text-center" style={{ marginTop: "2rem" }}>
-              <a className="text-link" href={href("/cases", locale)}>
-                {dict.clientProof.cta} →
-              </a>
             </p>
           </FadeUp>
         </div>
