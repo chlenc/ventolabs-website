@@ -1,6 +1,7 @@
 import { site } from "./site";
 import { getDictionary, localizedPath, htmlLangCodes, type Locale } from "./i18n";
 import { blogIndex, blogIndexCopy, hasFullBody, type BlogEntry } from "./blog";
+import { blogCoverPath } from "@/components/pages/blog/covers";
 import { breadcrumbHomeLabels } from "./utils";
 import { caseLandingSlugs, caseStudySlugs } from "./cases";
 
@@ -263,10 +264,17 @@ export function blogPostingJsonLd({
   entry,
   locale,
   faq,
+  headline,
 }: {
   entry: BlogEntry;
   locale: Locale;
   faq?: QA[];
+  /**
+   * The `<h1>` the page actually renders. Passed in by the route (which
+   * already loads the body for the FAQ) rather than imported here, so this
+   * module stays free of article text. Falls back to the SEO title.
+   */
+  headline?: string;
 }): object[] {
   const path = `/blog/${entry.slug}`;
   const url = `${site.url}${localizedPath(path, locale)}`;
@@ -277,7 +285,7 @@ export function blogPostingJsonLd({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "@id": `${url}#article`,
-    headline: seo.title,
+    headline: headline ?? seo.title,
     description: seo.description,
     url,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -286,7 +294,9 @@ export function blogPostingJsonLd({
     dateModified: entry.dateModified,
     author: AUTHOR,
     publisher: { "@id": ORG_ID },
-    image: `${url}opengraph-image`,
+    // The guide's own cover first — a real, article-specific 16:9 photo — with
+    // the generated OG card as the fallback crop.
+    image: [`${site.url}${blogCoverPath(entry.slug)}`, `${url}opengraph-image`],
     keywords: entry.keywords.join(", "),
     // Stubs summarise the original rather than translate it — say so, so the
     // three short pages are never mistaken for duplicates of the guide.
@@ -310,11 +320,20 @@ export function blogPostingJsonLd({
   return data;
 }
 
-/** Blog hub: a Blog node listing every guide, newest first. */
-export function blogIndexJsonLd(locale: Locale): object {
+/**
+ * Blog hub: the Blog node, an ItemList expressing the six guides as the
+ * ordered collection the page actually renders, and the breadcrumb trail the
+ * page shows but previously never declared.
+ *
+ * Blog/`blogPost` says "these posts belong to this blog"; ItemList says "this
+ * page is a list, in this order" — the shape /cases already uses, and the one
+ * answer engines read when deciding what a hub page enumerates.
+ */
+export function blogIndexJsonLd(locale: Locale): object[] {
   const url = `${site.url}${localizedPath("/blog", locale)}`;
   const copy = blogIndexCopy[locale];
-  return {
+
+  const blog = {
     "@context": "https://schema.org",
     "@type": "Blog",
     "@id": `${url}#blog`,
@@ -331,6 +350,43 @@ export function blogIndexJsonLd(locale: Locale): object {
       author: AUTHOR,
     })),
   };
+
+  // Card titles, not SEO titles: the ItemList describes what the page shows.
+  const itemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${url}#guides`,
+    name: `${copy.heading} — ${site.name}`,
+    url,
+    numberOfItems: blogIndex.length,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    itemListElement: blogIndex.map((entry, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "BlogPosting",
+        "@id": `${site.url}${localizedPath(`/blog/${entry.slug}`, locale)}#article`,
+        name: entry.card[locale].title,
+        description: entry.card[locale].summary,
+        url: `${site.url}${localizedPath(`/blog/${entry.slug}`, locale)}`,
+        image: `${site.url}${blogCoverPath(entry.slug)}`,
+        datePublished: entry.datePublished,
+        dateModified: entry.dateModified,
+        inLanguage: htmlLangCodes[entry.articleLocale],
+        author: AUTHOR,
+      },
+    })),
+  };
+
+  const breadcrumb = breadcrumbJsonLd(
+    [
+      { name: breadcrumbHomeLabels[locale], path: "/" },
+      { name: copy.eyebrow, path: "/blog" },
+    ],
+    locale,
+  );
+
+  return [blog, itemList, breadcrumb];
 }
 
 /** Minimal WebSite node — anchors the site as an entity distinct from the

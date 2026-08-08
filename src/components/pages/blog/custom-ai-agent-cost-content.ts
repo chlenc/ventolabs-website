@@ -17,7 +17,7 @@ export const aiAgentCostArticle: Article = {
     author: "Alexey Nagorny",
     authorRole: "Founder, Vento Labs. Builds AI agents on top of business systems",
     dateLabel: "Updated",
-    dateValue: "July 16, 2026",
+    dateValue: "August 8, 2026",
     readingLabel: "Reading time",
     readingValue: "14 minutes",
   },
@@ -145,6 +145,13 @@ export const aiAgentCostArticle: Article = {
         {
           kind: "p",
           text: "**Build cost gets all the attention; run cost decides whether the agent survives.** Budget four line items from day one.",
+        },
+        {
+          kind: "figure",
+          id: "cost-stack",
+          alt: "A column of five machined blocks of decreasing size, with the second block from the top in deep green and pushed out of line with the rest",
+          caption:
+            "Four recurring line items sit on top of the one-off build. The retainer — the layer buyers cut first — is the one that keeps the rest standing.",
         },
         {
           kind: "table",
