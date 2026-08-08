@@ -339,6 +339,9 @@ export const de: Dictionary = {
     bookFreeSubtitle: "30-minütiges Entdeckungsgespräch. Kein Pitch, kein Druck.",
     bookFreeCta: "Meinen kostenlosen KI-Agenten holen",
     faqSuffix: "FAQ",
+    nextEyebrow: "Weiter",
+    nextHeading: "Wohin als Nächstes",
+    nextCta: "Öffnen",
   },
 
   services_pages: {
@@ -393,8 +396,21 @@ export const de: Dictionary = {
         { q: "Was kostet ein individueller KI-Agent?", a: "Der erste Pilot-Agent ist kostenlos — wir bauen ihn nach einem 30-minütigen Erstgespräch. Produktions-Agenten kalkulieren wir danach zum Festpreis, je nach Integrationen und Umfang; typische Bauzeit sind 3–7 Tage. Laufende Kosten sind nur die KI-Modellnutzung, meist 20–200 $/Monat direkt an die Anbieter, ohne Aufschlag." },
       ],
       seo: {
-        title: "Maßgeschneiderte KI-Agenten — Self-hosted, sicher, 24/7",
-        description: "Wir bauen self-hosted KI-Agenten auf Claude Agent SDK, LangGraph, CrewAI. Steuern den Rechner, integrieren mit Telegram, LinkedIn, WhatsApp. Kostenlose Einrichtung inklusive.",
+        title: "KI-Agenten nach Maß — self-hosted",
+        description:
+          "Wir bauen Ihnen einen eigenen KI-Agenten: self-hosted, auf Claude Agent SDK, LangGraph oder CrewAI, verbunden mit Telegram, E-Mail und Ihren Tools. Gratis.",
+        serviceType: "KI-Agenten-Entwicklung",
+      },
+      media: {
+        heroAlt: "Ein kompakter, selbst gehosteter Server auf einem Schreibtisch in einem ruhigen Büro — der Agent läuft auf Ihrer eigenen Hardware.",
+        stepAlts: [
+          "Leere Karten, ausgelegt und zu einer verzweigten Karte der täglichen Aufgaben verbunden.",
+          "Ein Stahlgehäuse mit abgenommener Seitenwand, Platinen und Verkabelung sichtbar.",
+          "Dasselbe Gerät mit drei Erweiterungsmodulen, die in einer Reihe daneben eingeklinkt sind.",
+        ],
+        kitAlt: "Explosionsdarstellung des Agenten-Geräts: Gehäuse, Mainboard, Speichermodul, Anschlussplatte und Netzteil.",
+        kitCaption:
+          "Ein System, komplett übergeben: die Agenten-Laufzeit, ihre Integrationen, die Wissensbasis und die Schlüssel — alles auf Hardware, die Sie kontrollieren.",
       },
     },
     "ai-automation": {
@@ -446,8 +462,21 @@ export const de: Dictionary = {
         { q: "Wie unterscheidet sich das von Zapier?", a: "Wir nutzen n8n (self-hosted, keine Pro-Task-Preise) und Make.com für komplexe Workflows. Wichtiger: Wir fügen KI-Intelligenz und laufende Wartung hinzu — nicht nur Point-and-Click-Verbindungen." },
       ],
       seo: {
-        title: "KI-Prozessautomatisierung mit n8n und Make.com",
-        description: "Automatisieren Sie Lead-Qualifizierung, Datensynchronisation, Reports und Workflows mit KI-gestützten n8n- und Make.com-Automatisierungen. Null manuelle Dateneingabe.",
+        title: "KI-Workflow-Automatisierung: n8n, Make",
+        description:
+          "Wir verbinden CRM, Postfach, Formulare und Datenbanken zu KI-Workflows auf n8n und Make.com: Leads in Minuten qualifiziert, Daten synchron, Reports automatisch.",
+        serviceType: "Geschäftsprozessautomatisierung",
+      },
+      media: {
+        heroAlt: "Ein Patchfeld, in dem jede Leitung von Hand gekämmt und verlegt wurde — so sieht gepflegte Automatisierung aus.",
+        stepAlts: [
+          "Links ein Gewirr loser Kabel, rechts dieselben Kabel zu einem sauberen Strang gebündelt.",
+          "Ein gefräster Verteilerblock mit einem Dutzend Anschlüssen und grünen Ventilen, Stahlleitungen laufen zusammen.",
+          "Eine Reihe Kontrollleuchten in einer Stahlleiste — die meisten grün, eine gelb.",
+        ],
+        kitAlt: "Der Automatisierungs-Baukasten flach ausgelegt: Verteilerblock, sortierte Verschraubungen, Schlauch, Ventile, Anzeigeleiste und Halterungen.",
+        kitCaption:
+          "Workflows, die Verbindungen zwischen Ihren Tools und das Monitoring, das meldet, wenn sich eines davon ändert — als ein Satz gebaut, nicht als einzelne Zaps.",
       },
     },
     "ai-training": {
@@ -499,8 +528,21 @@ export const de: Dictionary = {
         { q: "Welche Tools lehren Sie?", a: "Claude Code, Cursor, MCP-Server, Prompt-Engineering, n8n/Make für Automatisierung und alles, was zum Team passt. Wir drängen nicht auf ein Tool — wir finden das, was funktioniert." },
       ],
       seo: {
-        title: "KI-Beratung & Team-Schulung — Claude Code, Cursor, MCP",
-        description: "Wir installieren Claude Code, Cursor und MCP-Server, schulen Ihr Team an echten Workflows und messen die Adoption nach 30 und 60 Tagen. KI-Beratung für Projekte jeder Größe.",
+        title: "KI-Schulung für Teams — Claude Code, MCP",
+        description:
+          "Wir installieren Claude Code, Cursor und MCP-Server, schulen an echten Aufgaben Ihres Teams und messen die Nutzung nach 30 und 60 Tagen. KI-Beratung inklusive.",
+        serviceType: "KI-Schulung und -Beratung",
+      },
+      media: {
+        heroAlt: "Ein Team in einer praktischen KI-Session an einem langen Tisch, aufgenommen vom hinteren Ende des Raums.",
+        stepAlts: [
+          "Messschieber und Bleistift auf einem leeren Blatt Millimeterpapier.",
+          "Ein Arbeitsplatz-Set im Raster ausgelegt: Laptop, Ständer, Tastatur, Kabel und ein Innensechskant.",
+          "Ein Stapel identischer gebundener Playbooks, das oberste an leeren Seiten aufgeschlagen.",
+        ],
+        kitAlt: "Das Schulungs-Set flach ausgelegt: Laptop und Ständer, drei gebundene Playbooks, Bleistift, Messschieber, Kabel und zwei gefräste Blöcke.",
+        kitCaption:
+          "Tools auf jedem Rechner installiert, Workshops an Ihren echten Aufgaben und ein Playbook, das dem Team bleibt, wenn wir weg sind.",
       },
     },
     "ai-workspace": {
@@ -554,8 +596,21 @@ export const de: Dictionary = {
         { q: "Was kostet das?", a: "Pilot ab 3.000 $ Setup + 500 $/Monat. Scale ab 8.000 $ Setup + 2.000 $/Monat. Enterprise individuell. KI-Modellkosten (20–200 $/Monat je nach Nutzung) rechnen die Anbieter direkt ab — ohne Aufschläge von uns." },
       ],
       seo: {
-        title: "Enterprise-KI-Plattform — KI-Betriebssystem für Unternehmen",
-        description: "Vollständiges KI-Betriebssystem: dedizierte Agenten je Abteilung, Knowledge Vault, MCP Gateway, Enterprise-Sicherheit. Go-Live in 4 Wochen. Preise von Pilot bis Enterprise.",
+        title: "KI-Plattform fürs ganze Unternehmen",
+        description:
+          "Ein KI-Agent pro Abteilung, ein Knowledge Vault über Ihren Dokumenten, Rollenrechte und ROI-Reporting. In 4 Wochen live auf Ihrer eigenen Infrastruktur.",
+        serviceType: "Enterprise-KI-Plattform",
+      },
+      media: {
+        heroAlt: "Ein Großraumbüro am Nachmittag, von hinten aufgenommen — das ganze Unternehmen, nicht ein einzelner Power-User.",
+        stepAlts: [
+          "Ein Stahl-Hub, in den acht Kabel aus allen Richtungen laufen.",
+          "Vier identische Modul-Einheiten nebeneinander, die zweite steht offen.",
+          "Zwölf identische Module im Raster, eines wird gerade an seinen Platz gesetzt.",
+        ],
+        kitAlt: "Explosionsdarstellung der Plattform: Gehäuse, vier Agenten-Module, ein Gateway-Hub, ein verschlossener Wissenstresor und der Kabelbaum.",
+        kitCaption:
+          "Agenten pro Team, das Gateway, über das sie alle sprechen, der Tresor für Ihr Wissen und die Verkabelung zu Ihren Systemen — eine Plattform statt elf Abos.",
       },
     },
   },
@@ -860,6 +915,8 @@ export const de: Dictionary = {
   dataCenters: {
     navLabel: "Rechenzentren",
     breadcrumb: "Rechenzentren",
+    cardSummary:
+      "Entwicklung von KI-Rechenzentren von A bis Z — Standort, Strom, Netzanschluss, modularer Bau und Betrieb. 10 bis 100+ MW.",
     seo: {
       title: "KI-Rechenzentren entwickeln — Standort, Strom, Bau & Betrieb",
       description:
@@ -1402,6 +1459,7 @@ export const de: Dictionary = {
       { t: "Knowledge Vault", d: "Alles Unternehmenswissen für KI indiziert und verfügbar — für immer" },
       { t: "Mit Ihren Tools verbunden", d: "KI spricht mit CRM, E-Mail, Chat, Shopify, Datenbanken — in Echtzeit" },
     ],
+    solutionImageAlt: "Eine zusammengebaute modulare Plattform: vier Agenten-Module in einem Gehäuse, oben ein Gateway-Block, seitlich die Verkabelung.",
     howItWorksEyebrow: "So funktioniert's",
     howItWorksHeading: "Von null zu KI-betrieben in 4 Wochen",
     capabilitiesEyebrow: "Fähigkeiten",
@@ -1425,6 +1483,8 @@ export const de: Dictionary = {
           { name: "Client Reporter", does: "Generiert automatisch gebrandete Wochen- und Monatsreports für jeden Kunden" },
           { name: "Follow-up Agent", does: "Sendet personalisierte Follow-ups nach Calls, Demos und Käufen — lässt keinen Lead kalt werden" },
         ],
+        imageId: "service",
+        imageAlt: "Ein Serviceplatz, das Headset liegt neben der Tastatur.",
       },
       {
         name: "Sales & Lead-Management",
@@ -1433,6 +1493,8 @@ export const de: Dictionary = {
           { name: "Proposal Builder", does: "Generiert individuelle Angebote aus Vorlagen, CRM-Daten und vergangenen Deals" },
           { name: "Outreach Agent", does: "Formuliert und sendet personalisierte Outreach-Sequenzen in E-Mail und LinkedIn" },
         ],
+        imageId: "sales",
+        imageAlt: "Zwei Kolleginnen und Kollegen gehen am Fenstertisch einen Deal durch.",
       },
       {
         name: "Marketing & Content",
@@ -1441,6 +1503,8 @@ export const de: Dictionary = {
           { name: "Campaign Optimizer", does: "Analysiert Anzeigen-Performance über Plattformen hinweg und schlägt Verbesserungen vor" },
           { name: "SEO Monitor", does: "Verfolgt Rankings, findet Keyword-Chancen, formuliert optimierten Content" },
         ],
+        imageId: "marketing",
+        imageAlt: "Andrucke, eine Kamera und Farbfächer auf einem Studiotisch.",
       },
       {
         name: "Operations & Wissen",
@@ -1450,6 +1514,8 @@ export const de: Dictionary = {
           { name: "Report Generator", does: "Erstellt Wochen- und Monatsreports aus Live-Daten all Ihrer Tools" },
           { name: "Onboarding Guide", does: "Führt neue Mitarbeitende durch Prozesse, beantwortet Fragen, verkürzt Einarbeitungszeit" },
         ],
+        imageId: "operations",
+        imageAlt: "Ein Archivgang mit identischen Ordnern, einer wird herausgezogen.",
       },
     ],
     integrationsEyebrow: "Integrationen",

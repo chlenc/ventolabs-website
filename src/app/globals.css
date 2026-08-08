@@ -4906,3 +4906,119 @@ em, .italic {
   .dc-build { grid-template-columns: 1fr; }
   .dc-hero-media img { height: clamp(200px, 56vw, 300px); }
 }
+
+/* ─── /services/* imagery: hero band, illustrated plan steps, kit figure ───
+   Deliberately parallel to the .dc-* rules above: the service pages and
+   /data-centers should read as one system. */
+.svc-hero-media {
+  display: block;
+  width: 100%;
+  background: var(--paper);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.svc-hero-media img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 34vw, 460px);
+  object-fit: cover;
+}
+
+/* Studio frame at the head of a "how it works" card, bleeding to the card
+   edge. The card's ::before counter is a flex item too, so the media is
+   pulled above it with order rather than by reordering the markup. */
+.step--illustrated {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+  /* Grid rows stretch, so match the tallest card in the row — otherwise the
+     images line up at the top but the card borders end at three heights. */
+  height: 100%;
+}
+.step--illustrated .step__media {
+  order: -1;
+  margin: 0 -1.5rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  background: #f4f1ea;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  overflow: hidden;
+}
+.step--illustrated .step__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.step--illustrated::before { margin-top: 1.25rem; }
+
+/* Wide "what you get" figure under the deliverables checklist */
+.svc-kit { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.svc-kit img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #f4f1ea;
+}
+.svc-kit figcaption {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 74ch;
+}
+
+/* "Where to go next" cross-link cards */
+.svc-next {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.svc-next__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.svc-next__card:hover {
+  border-color: var(--forest);
+  transform: translateY(-2px);
+}
+.svc-next__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  transition: color 0.3s var(--ease);
+}
+.svc-next__card:hover .svc-next__title { color: var(--forest); }
+.svc-next__summary {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: none;
+}
+.svc-next__cta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+.svc-next__card:hover .svc-next__cta svg { transform: translateX(3px); }
+.svc-next__cta svg { transition: transform 0.3s var(--ease); }
+
+@media (max-width: 600px) {
+  .svc-hero-media img { height: clamp(180px, 52vw, 280px); }
+}
