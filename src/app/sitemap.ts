@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { servicesSlugs } from "@/lib/services";
 import { caseLandingSlugs } from "@/lib/cases";
-import { blogSlugs, getBlogEntry } from "@/lib/blog";
+import { blogLastModified, blogSlugs, getBlogEntry } from "@/lib/blog";
 import { site } from "@/lib/site";
 import { locales, localizedPath, type Locale } from "@/lib/i18n";
 
@@ -38,9 +38,13 @@ const caseSitemapEntries: SitemapPage[] = caseLandingSlugs.map((slug) => ({
 // Guides are written in one language and stubbed in the others (see
 // `src/lib/blog.ts`), but every locale's URL is live and self-canonical, so
 // each one belongs in the sitemap — same reasoning as the case landings above.
+//
+// Priority sits below the service and case landings deliberately: those are
+// the pages the guides exist to feed. At 0.9 a guide outranked every page it
+// links to, which inverts the site's own hierarchy.
 const blogSitemapEntries: SitemapPage[] = blogSlugs.map((slug) => ({
   path: `/blog/${slug}`,
-  priority: 0.9,
+  priority: 0.7,
   changeFrequency: "monthly" as const,
   lastModified: getBlogEntry(slug).dateModified,
 }));
@@ -50,7 +54,9 @@ const pages: SitemapPage[] = [
   { path: "/data-centers", priority: 0.9, changeFrequency: "monthly" },
   { path: "/cases", priority: 0.7, changeFrequency: "monthly" },
   ...caseSitemapEntries,
-  { path: "/blog", priority: 0.6, changeFrequency: "weekly" },
+  // The hub's real edit date is the newest guide's — derived, never typed by
+  // hand, so it can't become a fabricated freshness signal.
+  { path: "/blog", priority: 0.7, changeFrequency: "weekly", lastModified: blogLastModified },
   ...blogSitemapEntries,
   { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
