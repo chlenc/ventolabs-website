@@ -86,6 +86,14 @@ export type DataCenterSystemId = "power" | "cooling" | "compute" | "structure";
 /** Frames of the build sequence, in order. */
 export type DataCenterBuildStepId = "site" | "foundations" | "craning" | "live";
 
+/** The three phases of the home page's process section. Each maps to a photo
+ * in the component, so translators only ever supply copy and alt text. */
+export type HomeStepId = "audit" | "build" | "scale";
+
+/** Home-page body links out to the business lines that aren't service cards.
+ * Paths are mapped per-id in the component. */
+export type HomeCrossLinkId = "data-centers" | "blog";
+
 export type DataCentersDict = {
   navLabel: string;
   breadcrumb: string;
@@ -280,6 +288,9 @@ export type Dictionary = {
     ctaPrimary: string;
     ctaSecondary: string;
     scroll: string;
+    /** Alt text and caption for the full-bleed band under the hero copy. */
+    imageAlt: string;
+    imageCaption: string;
   };
 
   problem: {
@@ -292,13 +303,22 @@ export type Dictionary = {
     eyebrow: string;
     heading: string;
     lead: string;
-    steps: { title: string; description: string }[];
+    steps: { id: HomeStepId; title: string; description: string; imageAlt: string }[];
   };
 
   services: {
     eyebrow: string;
     heading: string;
     lead: string;
+    /** Body-copy links to the business lines that have no service card —
+     * without these, /data-centers and /blog are reachable from the nav only. */
+    crossEyebrow: string;
+    crossLinks: {
+      id: HomeCrossLinkId;
+      title: string;
+      description: string;
+      cta: string;
+    }[];
   };
 
   leadMagnet: {

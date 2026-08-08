@@ -8,6 +8,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { FaqSection } from "@/components/FaqSection";
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
+import type { HomeCrossLinkId, HomeStepId } from "@/lib/i18n/types";
 import { servicesSlugs } from "@/lib/services";
 import { asset, href } from "@/lib/utils";
 
@@ -22,6 +23,22 @@ const serviceImages: Record<string, string> = {
   "ai-automation": "/images/service-card-ai-automation.svg",
   "ai-training": "/images/service-card-ai-training.svg",
   "ai-workspace": "/images/service-card-ai-workspace.svg",
+};
+
+/* One documentary frame per process phase. Paths live here rather than in the
+ * dictionaries so translators only ever supply copy and alt text — same split
+ * as `buildImage` on /data-centers. */
+const stepImage: Record<HomeStepId, string> = {
+  audit: "/images/home/step-audit.jpg",
+  build: "/images/home/step-build.jpg",
+  scale: "/images/home/step-scale.jpg",
+};
+
+/* The two business lines with no service card of their own. Without these the
+ * only in-page route to either is the header nav. */
+const crossLinkPath: Record<HomeCrossLinkId, string> = {
+  "data-centers": "/data-centers",
+  blog: "/blog",
 };
 
 const caseCardKeys = [
@@ -107,6 +124,19 @@ export function HomeContent() {
   return (
     <>
       <HeroSection />
+
+      {/* Full-bleed band under the hero — the manual back-office work the
+          agents take over, so the offer above it has something concrete to
+          point at. Captioned, because an uncaptioned office photo would just
+          be decoration. */}
+      <FadeUp className="home-band">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={asset("/images/home/operations-band.jpg")} alt={dict.hero.imageAlt} />
+        <div className="container">
+          <p className="home-band__caption">{dict.hero.imageCaption}</p>
+        </div>
+      </FadeUp>
+
       <TrustBar />
 
       {/* Services — three editorial cards */}
@@ -153,6 +183,24 @@ export function HomeContent() {
               );
             })}
           </div>
+
+          {/* Cross-links to the two business lines that have no service card. */}
+          <FadeUp>
+            <p className="eyebrow cross-links__eyebrow">{dict.services.crossEyebrow}</p>
+          </FadeUp>
+          <div className="cross-links">
+            {dict.services.crossLinks.map((c, i) => (
+              <FadeUp key={c.id} delay={i * 100}>
+                <a href={href(crossLinkPath[c.id], locale)} className="cross-link">
+                  <h3>{c.title}</h3>
+                  <p>{c.description}</p>
+                  <span className="cross-link__cta">
+                    {c.cta} <ArrowIcon size={14} />
+                  </span>
+                </a>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -180,6 +228,10 @@ export function HomeContent() {
                   {i === 1 ? <em className="italic">{s.title}</em> : s.title}
                 </h3>
                 <p className="process-row__desc">{s.description}</p>
+                <div className="process-row__media">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={asset(stepImage[s.id])} alt={s.imageAlt} loading="lazy" />
+                </div>
               </FadeUp>
             ))}
           </ul>

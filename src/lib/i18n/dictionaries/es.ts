@@ -9,9 +9,9 @@ export const es: Dictionary = {
   },
 
   seo: {
-    homeTitle: "Vento Labs | Agentes de IA y automatización para negocios",
+    homeTitle: "Agentes de IA y automatización para negocios | Vento Labs",
     homeDescription:
-      "Agentes de IA a medida que reducen costes operativos, automatizan flujos de trabajo y escalan tu negocio sin añadir personal. Configuración gratuita con cada proyecto.",
+      "Agentes de IA a medida que reducen costes, automatizan flujos de trabajo y escalan tu negocio sin contratar. Primer agente gratis en cada proyecto.",
     titleTemplate: "%s | Vento Labs",
     casesTitle: "Casos de IA — resultados reales con agentes de IA",
     casesDescription:
@@ -67,6 +67,10 @@ export const es: Dictionary = {
     ctaPrimary: "Reservar llamada gratis",
     ctaSecondary: "Nuestros servicios",
     scroll: "Desplazar",
+    imageAlt:
+      "El back office de una empresa: mesas con formularios de pedido impresos, cajas de archivo y hojas de cálculo en pantalla — el trabajo manual que asume un agente de IA.",
+    imageCaption:
+      "Esto es lo que automatizamos: formularios de pedido, correos de proveedores, actualizar hojas de cálculo y responder a mano las mismas preguntas cada día.",
   },
 
   problem: {
@@ -85,9 +89,9 @@ export const es: Dictionary = {
     heading: "De la auditoría a los resultados en semanas, no meses",
     lead: "Tres fases, sin rodeos. Empezamos pequeño, probamos el valor y luego escalamos — para que nunca pagues por algo que no funciona.",
     steps: [
-      { title: "Auditamos", description: "Analizamos tus procesos clave en una llamada de 30 minutos. Sin rodeos — identificamos dónde la IA puede ahorrarte más tiempo y dinero ahora mismo." },
-      { title: "Construimos", description: "Configuramos tu primer agente de IA — conectado a tus herramientas, base de conocimiento y flujos de trabajo. Ves una solución funcionando en días, no meses." },
-      { title: "Escalamos", description: "Expandimos la automatización por prioridad. Cada iteración tiene KPIs claros y te acompañamos a medida que tus necesidades evolucionan." },
+      { id: "audit", title: "Auditamos", description: "Analizamos tus procesos clave en una llamada de 30 minutos. Sin rodeos — identificamos dónde la IA puede ahorrarte más tiempo y dinero ahora mismo.", imageAlt: "Un mapa de proceso dibujado a mano en papel durante la llamada inicial, con tres pasos rodeados como candidatos a automatizar." },
+      { id: "build", title: "Construimos", description: "Configuramos tu primer agente de IA — conectado a tus herramientas, base de conocimiento y flujos de trabajo. Ves una solución funcionando en días, no meses.", imageAlt: "Un puesto de desarrollo: el código del agente en una pantalla y el canal de chat donde responde en la otra." },
+      { id: "scale", title: "Escalamos", description: "Expandimos la automatización por prioridad. Cada iteración tiene KPIs claros y te acompañamos a medida que tus necesidades evolucionan.", imageAlt: "Un panel de operaciones en tres pantallas que sigue cada agente en marcha frente a sus KPIs." },
     ],
   },
 
@@ -95,6 +99,23 @@ export const es: Dictionary = {
     eyebrow: "Qué hacemos",
     heading: "Cuatro formas de ayudar a tu negocio a trabajar de forma más inteligente",
     lead: "Cubrimos el ciclo completo — desde la idea hasta el release a producción. Cada proyecto empieza con un agente de IA gratuito, para que veas el valor antes de comprometerte.",
+    crossEyebrow: "También de Vento Labs",
+    crossLinks: [
+      {
+        id: "data-centers",
+        title: "Centros de datos para IA",
+        description:
+          "Una práctica aparte para inversores y propietarios: desarrollamos centros de datos para IA de principio a fin — configuración, terreno junto a capacidad de transmisión, interconexión a la red, construcción modular y puesta en marcha. De 10 a 100+ MW.",
+        cta: "Ver la práctica de centros de datos",
+      },
+      {
+        id: "blog",
+        title: "Guías técnicas",
+        description:
+          "Cómo se construye esto de verdad — cuánto cuesta un agente a medida, cuánto tardan las integraciones, conectar agentes a 1C y marketplaces, y dónde la autonomía sigue necesitando a una persona.",
+        cta: "Leer las guías",
+      },
+    ],
   },
 
   leadMagnet: {

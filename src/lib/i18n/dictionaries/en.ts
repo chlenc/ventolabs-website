@@ -9,9 +9,9 @@ export const en: Dictionary = {
   },
 
   seo: {
-    homeTitle: "Vento Labs | AI Agents & Automation for Business",
+    homeTitle: "AI Agents & Automation for Business | Vento Labs",
     homeDescription:
-      "Custom AI agents that cut operating costs, automate workflows, and scale your business without adding headcount. Free AI agent setup with every engagement.",
+      "Custom AI agents that cut operating costs, automate workflows, and scale your business without new headcount. Free AI agent build with every engagement.",
     titleTemplate: "%s | Vento Labs",
     casesTitle: "AI Case Studies — Real Results from AI Agents & Automation",
     casesDescription:
@@ -67,6 +67,10 @@ export const en: Dictionary = {
     ctaPrimary: "Book a free call",
     ctaSecondary: "Our services",
     scroll: "Scroll",
+    imageAlt:
+      "A company back office: desks of printed order forms, archive boxes and spreadsheets on screen — the manual work an AI agent takes over.",
+    imageCaption:
+      "This is what we automate: order forms, supplier emails, spreadsheet updates and the same questions answered by hand every day.",
   },
 
   problem: {
@@ -85,9 +89,9 @@ export const en: Dictionary = {
     heading: "From audit to results in weeks, not months",
     lead: "Three phases, zero fluff. We start small, prove value, then scale — so you're never stuck paying for something that doesn't work.",
     steps: [
-      { title: "Audit", description: "We analyze your key processes in a 30-minute call. No fluff — we identify where AI can save the most time and money right now." },
-      { title: "Build", description: "We set up your first AI agent — connected to your tools, knowledge base, and workflows. You see a working solution in days, not months." },
-      { title: "Scale", description: "We expand automation across your operations by priority. Each iteration has clear KPIs, and we support you as your needs evolve." },
+      { id: "audit", title: "Audit", description: "We analyze your key processes in a 30-minute call. No fluff — we identify where AI can save the most time and money right now.", imageAlt: "A process map drawn by hand on paper during a discovery call, with three steps circled as automation candidates." },
+      { id: "build", title: "Build", description: "We set up your first AI agent — connected to your tools, knowledge base, and workflows. You see a working solution in days, not months.", imageAlt: "A build desk: the agent's code on one screen, the chat channel it answers in on the other." },
+      { id: "scale", title: "Scale", description: "We expand automation across your operations by priority. Each iteration has clear KPIs, and we support you as your needs evolve.", imageAlt: "An operations dashboard across three screens, tracking every running agent against its KPIs." },
     ],
   },
 
@@ -95,6 +99,23 @@ export const en: Dictionary = {
     eyebrow: "What We Do",
     heading: "Four ways we help your business work smarter",
     lead: "We cover the full cycle — from idea to production release. Every engagement starts with a free AI agent, so you see value before you commit.",
+    crossEyebrow: "Also from Vento Labs",
+    crossLinks: [
+      {
+        id: "data-centers",
+        title: "AI data centers",
+        description:
+          "A separate practice for investors and owners: we develop AI data centers end to end — configuration, land next to transmission capacity, grid interconnection, modular construction and commissioning. From 10 to 100+ MW.",
+        cta: "See the data center practice",
+      },
+      {
+        id: "blog",
+        title: "Engineering guides",
+        description:
+          "How this actually gets built — what a custom agent costs, how long integrations take, connecting agents to 1C and marketplaces, and where autonomy still needs a human in the loop.",
+        cta: "Read the guides",
+      },
+    ],
   },
 
   leadMagnet: {

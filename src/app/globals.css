@@ -897,7 +897,7 @@ em, .italic {
 }
 .process-row {
   display: grid;
-  grid-template-columns: 4rem 1fr 1.6fr;
+  grid-template-columns: 4rem 1fr 1.5fr 19rem;
   gap: 2.5rem;
   padding: clamp(1.75rem, 3vw, 2.5rem) 0;
   border-bottom: 1px solid rgba(243, 234, 216, 0.15);
@@ -935,8 +935,30 @@ em, .italic {
   max-width: 56ch;
   line-height: 1.55;
 }
+/* Documentary frame per phase. `align-self: start` because the row is
+   baseline-aligned for its type — the image must not ride the baseline. */
+.process-row__media {
+  align-self: start;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(243, 234, 216, 0.06);
+}
+.process-row__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.process-row:hover .process-row__media img { transform: scale(1.03); }
+@media (max-width: 1000px) {
+  .process-row { grid-template-columns: 4rem 1fr 1.6fr; }
+  /* Full-width frame under the copy rather than a squeezed fourth column. */
+  .process-row__media { grid-column: 2 / -1; margin-top: 0.5rem; max-width: 30rem; }
+}
 @media (max-width: 800px) {
   .process-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .process-row__media { grid-column: 1; max-width: none; }
 }
 
 /* ═══ Stats / ROI ═══ */
@@ -4905,4 +4927,81 @@ em, .italic {
 @media (max-width: 600px) {
   .dc-build { grid-template-columns: 1fr; }
   .dc-hero-media img { height: clamp(200px, 56vw, 300px); }
+}
+
+/* ─── Home imagery: below-hero band, process frames (see .process-row__media) ─── */
+.home-band {
+  width: 100%;
+  background: var(--paper);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.home-band img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 34vw, 460px);
+  object-fit: cover;
+}
+.home-band__caption {
+  margin-top: 1.1rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--line-strong);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+/* ─── Home cross-links — /data-centers and /blog, which have no service card ─── */
+.cross-links__eyebrow { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.cross-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin-top: 1.5rem;
+}
+.cross-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--fg);
+  transition: border-color 0.4s var(--ease), transform 0.5s var(--ease);
+}
+.cross-link:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+}
+.cross-link h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+  letter-spacing: -0.01em;
+}
+.cross-link p {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.cross-link__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+.cross-link:hover .cross-link__cta svg { transform: translateX(3px); }
+.cross-link__cta svg { transition: transform 0.4s var(--ease); }
+
+@media (max-width: 800px) {
+  .cross-links { grid-template-columns: 1fr; }
+  .home-band img { height: clamp(190px, 50vw, 280px); }
 }
