@@ -1219,11 +1219,6 @@ export const de: Dictionary = {
           caption: "138-kV-Anschluss und privates Umspannwerk am Standort in Osttexas",
         },
         {
-          id: "transmission",
-          alt: "Hochspannungsmast, der ein privates Umspannwerk speist",
-          caption: "Netzeinspeisung — die Randbedingung, um die herum jedes Projekt in Wahrheit gebaut wird",
-        },
-        {
           id: "switchgear",
           alt: "Innenaufnahme eines Schaltanlagen- und Stromverteilungsraums",
           caption: "Schaltanlagen- und Verteilungsraum in einer Anlage im Betrieb",

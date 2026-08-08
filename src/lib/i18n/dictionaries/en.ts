@@ -1219,11 +1219,6 @@ export const en: Dictionary = {
           caption: "138 kV interconnect and private substation at the East Texas site",
         },
         {
-          id: "transmission",
-          alt: "High-voltage transmission tower feeding a private substation",
-          caption: "Transmission feed — the constraint every project is really built around",
-        },
-        {
           id: "switchgear",
           alt: "Interior switchgear and electrical distribution room",
           caption: "Switchgear and distribution room at an operating facility",
