@@ -8,8 +8,8 @@ import { BankruptcyAgentPage } from "@/components/pages/BankruptcyAgentPage";
 import { isLandingSlug, type CaseLandingSlug } from "@/lib/cases";
 
 const landingHeroImage: Record<CaseLandingSlug, string> = {
-  "content-factory": "/images/case-content-factory.webp",
-  "supplier-agent": "/images/case-supplier-agent.webp",
+  "content-factory": "/images/case-content-factory.jpg",
+  "supplier-agent": "/images/case-supplier-agent.jpg",
   "erp-agent": "/images/case-erp-agent.webp",
   "bankruptcy-agent": "/images/case-bankruptcy-agent.svg",
 };

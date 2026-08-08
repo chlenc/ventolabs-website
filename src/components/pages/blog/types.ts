@@ -9,6 +9,29 @@
 
 import type { Locale } from "@/lib/i18n";
 
+/**
+ * In-article photography. The id resolves to a path in `BlogArticlePage.tsx`
+ * — article files carry the id and the copy, never a file path, the same rule
+ * `/data-centers` follows.
+ */
+export type FigureId =
+  | "bankruptcy-statements"
+  | "cost-stack";
+
+/**
+ * One stage of a `flow` block. Diagrams that need labels are built in
+ * HTML/CSS rather than generated as images: generated lettering is garbled,
+ * and a translated guide would need the picture redrawn per locale.
+ */
+export type FlowStage = {
+  /** Short heading — one to three words. */
+  label: string;
+  /** One sentence. Supports the same inline markdown as `p`. */
+  text: string;
+  /** Marks a stage as a hard stop (approval gate, boundary). */
+  gate?: boolean;
+};
+
 export type Block =
   | { kind: "p"; text: string }
   | { kind: "h3"; text: string; id?: string }
@@ -17,7 +40,10 @@ export type Block =
   /** `head` labels the columns; every row must have the same arity. */
   | { kind: "table"; head: string[]; rows: string[][]; note?: string }
   | { kind: "code"; caption?: string; code: string }
-  | { kind: "note"; title?: string; text: string };
+  | { kind: "note"; title?: string; text: string }
+  | { kind: "figure"; id: FigureId; alt: string; caption?: string }
+  /** Labeled stage diagram, rendered as real HTML — see `FlowStage`. */
+  | { kind: "flow"; title?: string; stages: FlowStage[]; note?: string };
 
 /** A top-level `<h2>` section. `id` is its anchor and its table-of-contents key. */
 export type Section = {

@@ -32,3 +32,18 @@ export const articles: Record<BlogSlug, Partial<Record<Locale, Article>>> = {
 export function getArticleBody(slug: BlogSlug, locale: Locale): Article | undefined {
   return articles[slug][locale];
 }
+
+/**
+ * The `<h1>` this locale actually renders — the article's own heading, or the
+ * stub's. Feeds schema.org `headline`, which is supposed to match the visible
+ * headline; the SEO title is a different string written for the SERP.
+ */
+export function getArticleHeadline(
+  slug: BlogSlug,
+  locale: Locale,
+  articleLocale: Locale,
+): string | undefined {
+  const body = articles[slug][locale];
+  if (body) return body.h1;
+  return articles[slug][articleLocale]?.stubs[locale]?.h1;
+}

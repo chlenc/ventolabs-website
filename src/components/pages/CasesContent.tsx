@@ -12,17 +12,14 @@ import {
 import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 
 const landingImage: Record<CaseLandingSlug, string> = {
-  "content-factory": "/images/case-content-factory.webp",
-  "supplier-agent": "/images/case-supplier-agent.webp",
+  "content-factory": "/images/case-content-factory.jpg",
+  "supplier-agent": "/images/case-supplier-agent.jpg",
   "erp-agent": "/images/case-erp-agent.webp",
   "bankruptcy-agent": "/images/case-bankruptcy-agent.svg",
 };
 
 const studyMeta: Record<CaseStudySlug, { image: string; company: string; url?: string }> = {
-  zigmund: { image: "/images/case-zigmund.jpg", company: "Zigmund Online" },
-  noconcept: { image: "/images/case-noconcept.jpg", company: "NoConcept" },
-  asgcompute: { image: "/images/case-asgcompute.jpg", company: "ASG Compute" },
-  arbitrai: { image: "/images/case-arbitrai.svg", company: "ArbitrAI", url: "https://arbitrai.tech/" },
+  arbitrai: { image: "/images/case-arbitrai.jpg", company: "ArbitrAI", url: "https://arbitrai.tech/" },
 };
 
 const ctaLabels = {
@@ -32,11 +29,14 @@ const ctaLabels = {
   de: "Case ansehen",
 } as const;
 
+// `study` reads "Our product", not "Case study": the only inline study left is
+// ArbitrAI, which Vento Labs built and operates itself. Labelling first-party
+// work as a client case would be the exact claim this page must not make.
 const kindLabels = {
-  en: { landing: "Solution", study: "Case study" },
-  ru: { landing: "Решение", study: "Кейс" },
-  es: { landing: "Solución", study: "Caso" },
-  de: { landing: "Lösung", study: "Case" },
+  en: { landing: "Solution", study: "Our product" },
+  ru: { landing: "Решение", study: "Наш продукт" },
+  es: { landing: "Solución", study: "Nuestro producto" },
+  de: { landing: "Lösung", study: "Unser Produkt" },
 } as const;
 
 export function CasesContent() {
@@ -87,7 +87,7 @@ export function CasesContent() {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={asset(landingImage[slug])}
-                          alt={landing.title}
+                          alt={landing.imageAlt ?? landing.title}
                           className="case-card__img"
                           loading="lazy"
                         />
@@ -126,7 +126,7 @@ export function CasesContent() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={asset(meta.image)}
-                      alt={meta.company}
+                      alt={cs.imageAlt ?? meta.company}
                       className="case-card__img"
                       loading="lazy"
                     />
@@ -145,6 +145,9 @@ export function CasesContent() {
                         </span>
                       ))}
                     </div>
+                    {cs.metricsSource && (
+                      <p className="case-card__source">{cs.metricsSource}</p>
+                    )}
                     {meta.url && (
                       <span className="case-card__cta">
                         {new URL(meta.url).hostname} <ArrowIcon />

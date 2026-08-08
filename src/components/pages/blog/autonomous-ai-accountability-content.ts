@@ -163,7 +163,7 @@ const en: Article = {
       blocks: [
         {
           kind: "p",
-          text: "This is not theory for us. The pattern below is what we ship — for example in [1C Agent](/cases/erp-agent), an AI layer over a company's ERP where managers ask for things in plain business language and the agent acts inside the accounting system.",
+          text: "This is not theory for us. The pattern below is what we ship — for example in [1C Agent](/cases/erp-agent), an AI layer over a company's ERP where managers ask for things in plain business language and the agent acts inside the accounting system. The same five controls are what an [enterprise AI workspace](/services/ai-workspace/) has to enforce once dozens of people share the agents.",
         },
         {
           kind: "p",
@@ -425,7 +425,7 @@ const ru: Article = {
       blocks: [
         {
           kind: "p",
-          text: "Для нас это не теория. Схема ниже — то, что мы собираем: например, в кейсе [1C Agent](/cases/erp-agent) — AI-слой над учётной системой компании, где менеджеры формулируют задачу обычным языком, а агент действует внутри 1С.",
+          text: "Для нас это не теория. Схема ниже — то, что мы собираем: например, в кейсе [1C Agent](/cases/erp-agent) — AI-слой над учётной системой компании, где менеджеры формулируют задачу обычным языком, а агент действует внутри 1С. Те же пять требований приходится закладывать в [корпоративную AI-платформу](/services/ai-workspace/), когда агентами пользуются десятки сотрудников.",
         },
         {
           kind: "p",
@@ -687,7 +687,7 @@ const de: Article = {
       blocks: [
         {
           kind: "p",
-          text: "Für uns ist das keine Theorie. Das Muster unten ist das, was wir ausliefern — etwa in [1C Agent](/cases/erp-agent), einer KI-Schicht über dem ERP eines Unternehmens, in der Fachbereiche in normaler Geschäftssprache formulieren und der Agent im Buchhaltungssystem handelt.",
+          text: "Für uns ist das keine Theorie. Das Muster unten ist das, was wir ausliefern — etwa in [1C Agent](/cases/erp-agent), einer KI-Schicht über dem ERP eines Unternehmens, in der Fachbereiche in normaler Geschäftssprache formulieren und der Agent im Buchhaltungssystem handelt. Dieselben fünf Anforderungen muss eine [KI-Plattform fürs Unternehmen](/services/ai-workspace/) durchsetzen, sobald Dutzende Menschen dieselben Agenten nutzen.",
         },
         {
           kind: "p",
@@ -949,7 +949,7 @@ const es: Article = {
       blocks: [
         {
           kind: "p",
-          text: "Para nosotros esto no es teoría. El patrón de abajo es lo que entregamos — por ejemplo en [1C Agent](/cases/erp-agent), una capa de IA sobre el ERP de una empresa donde los responsables piden cosas en lenguaje de negocio y el agente actúa dentro del sistema contable.",
+          text: "Para nosotros esto no es teoría. El patrón de abajo es lo que entregamos — por ejemplo en [1C Agent](/cases/erp-agent), una capa de IA sobre el ERP de una empresa donde los responsables piden cosas en lenguaje de negocio y el agente actúa dentro del sistema contable. Los mismos cinco requisitos son los que debe imponer una [plataforma de IA corporativa](/services/ai-workspace/) cuando decenas de personas comparten los agentes.",
         },
         {
           kind: "p",
