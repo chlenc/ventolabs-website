@@ -42,6 +42,7 @@ export const de: Dictionary = {
       { label: "Automatisierung", href: "/services/ai-automation" },
       { label: "Beratung", href: "/services/ai-training" },
       { label: "KI-Plattform", href: "/services/ai-workspace" },
+      { label: "Rechenzentren", href: "/data-centers" },
       { label: "Cases", href: "/cases" },
       { label: "Guides", href: "/blog" },
     ],
@@ -856,6 +857,466 @@ export const de: Dictionary = {
     },
   },
 
+  dataCenters: {
+    navLabel: "Rechenzentren",
+    breadcrumb: "Rechenzentren",
+    seo: {
+      title: "KI-Rechenzentren entwickeln — Standort, Strom, Bau & Betrieb",
+      description:
+        "Wir entwickeln KI-Rechenzentren end to end: die richtige Konfiguration festlegen, Grundstücke neben freier Übertragungskapazität sichern, Netzanschluss, modularer Bau und Inbetriebnahme. Von 10 bis 100+ MW.",
+    },
+
+    hero: {
+      eyebrow: "KI-Infrastruktur",
+      title: "KI-Rechenzentren, vom leeren Grundstück zu laufenden Megawatt",
+      lede:
+        "Wenn Sie Kapital haben und Rechenzentren als Asset betrachten: Das Schwierige sind nie die Server — es sind Strom, Grundstück und Zeit. Wir helfen Ihnen zu entscheiden, was gebaut wird, finden und sichern den Standort, bringen ihn ans Übertragungsnetz, bauen modular und übergeben ihn laufend.",
+      ctaPrimary: "Termin buchen",
+      ctaSecondary: "Ablauf ansehen",
+    },
+
+    stats: [
+      { value: "10–100 MW", label: "Typische Projektgröße, in Phasen" },
+      { value: "3–6 Mon.", label: "Modularer Rollout statt 24–36 Monaten traditionell" },
+      { value: "<1,3", label: "Ziel-PUE mit Hybridkühlung" },
+      { value: "100 kW", label: "Pro Rack, flüssigkeitsgekühlte GPU-Dichte" },
+    ],
+
+    leadMagnet: {
+      badge: "Kostenlos · 30 Minuten",
+      heading: "Termin zu Ihrem Rechenzentrum buchen",
+      description:
+        "Nennen Sie uns Budget, Region und Zeithorizont. Wir kommen mit einer klaren Antwort zurück: was dieses Kapital tatsächlich an Megawatt bringt, wie lange es dauern würde und wohin das Geld fließt.",
+      bullets: [
+        "Eine realistische Kapazität und Konfiguration für Ihr Budget — wie viele MW, welche Dichte, welche Kühlung",
+        "Die zwei oder drei Regionen, die einen Blick wert sind — und warum die übrigen nicht",
+        "Was nötig wäre, um sich in Ihrem Zielmarkt eine Netzanschlussposition zu sichern, und wie lange das wirklich dauert",
+        "Eine ehrliche Einschätzung, ob sich das Projekt überhaupt lohnt",
+      ],
+      ctaLabel: "Termin buchen",
+      ctaHref: "#book",
+      footnote: "Kein Deck, kein Pitch. Wenn die Zahlen nicht aufgehen, sagen wir das im Gespräch.",
+    },
+
+    investor: {
+      eyebrow: "Für Investoren und Eigentümer",
+      heading: "Sie haben das Kapital. Alles zwischen ihm und einer laufenden Anlage übernehmen wir.",
+      lead:
+        "Die meisten, die Compute-Infrastruktur besitzen wollen, bleiben an derselben Stelle stecken: welche Konfiguration sich wirklich rechnet, wohin damit, und wer die Verantwortung trägt, wenn die Netzstudie mit 30 Monaten zurückkommt. Wir übernehmen diese ganze Kette. Unten stehen die drei Strukturen, in denen wir üblicherweise arbeiten — welche die richtige ist, hängt davon ab, wie viel des Assets Sie besitzen und wie viel Betriebsrisiko Sie tragen wollen.",
+      models: [
+        {
+          title: "Sie besitzen es — schlüsselfertiger Bau",
+          description:
+            "Wir planen und bauen die Anlage nach Ihrer Spezifikation und übergeben die Schlüssel. Grundstück, Asset und Abschreibung liegen bei Ihnen.",
+          points: [
+            "Ein einziger Verantwortlicher, von der Standortsuche bis zur Inbetriebnahme",
+            "CAPEX-Deal — das Asset steht in Ihrer Bilanz",
+            "Spezifikation auf Ihren Workload geschrieben, kein Katalogprodukt",
+            "In den USA können integrierte Solar- und Speicheranlagen für einen Investment Tax Credit von 30 % qualifizieren",
+          ],
+        },
+        {
+          title: "Build-to-suit für einen Mieter",
+          description:
+            "Wir bauen gegen einen unterzeichneten Abnahmevertrag — ein KI-Unternehmen, einen Cloud-Betreiber oder einen Konzern — sodass die Anlage vertraglich gebunden ist, bevor sie ans Netz geht.",
+          points: [
+            "Umsatz gesichert, bevor der Bau abgeschlossen ist",
+            "Langfristiger Vertrag, planbarer Cashflow",
+            "Die Bonität des Mieters stärkt die Projektfinanzierung",
+            "Sie bleiben Eigentümer, wir können als Betreiber an Bord bleiben",
+          ],
+        },
+        {
+          title: "Joint Venture",
+          description:
+            "Sie bringen Grundstück, Netzposition oder Kapital ein, wir bringen Engineering, Lieferkette und Umsetzung. Wir bauen und betreiben gemeinsam.",
+          points: [
+            "Passt gut, wenn Sie bereits einen Standort oder eine Netzposition kontrollieren",
+            "Geteilte CAPEX, geteiltes Upside",
+            "Skaliert über mehrere Anlagen auf einer Plattform",
+            "Option, Rechenkapazität zu verkaufen statt nur Fläche zu vermieten",
+          ],
+        },
+      ],
+    },
+
+    process: {
+      eyebrow: "So läuft es",
+      heading: "Sieben Schritte vom Gespräch zur laufenden Anlage",
+      lead:
+        "Nichts davon ist exotisch. Es ist eine lange Kette unglamouröser Arbeit, in der die teuren Fehler früh passieren — ein Grundstück kaufen, dessen Anschlusswarteschlange sechs Jahre tief ist, oder die Kühlung auf eine Dichte auslegen, die die Racks in achtzehn Monaten überschreiten.",
+      steps: [
+        {
+          title: "Entscheiden, was gebaut wird",
+          description:
+            "Bevor ein Grundstück gekauft wird, dimensionieren wir die Sache: Kapazität, Workload-Profil, Dichte pro Rack, Redundanzstufe und wie die Gesamtkosten über zehn Jahre aussehen.",
+          detail:
+            "Trainingscluster, Inferenz-Flotten und Enterprise-HPC brauchen unterschiedliche Gebäude. Das falsch zu entscheiden ist der teuerste Fehler, der zur Verfügung steht.",
+        },
+        {
+          title: "Standort finden",
+          description:
+            "Wir prüfen Grundstücke gegen die Kriterien, die ein Rechenzentrum tatsächlich blockieren — zuerst verfügbare Übertragungskapazität, dann Wasser, Glasfaser, Bauleitplanung, Klima und Steuerregime.",
+          detail:
+            "Die meisten Parzellen, die auf der Karte perfekt aussehen, sterben an der Netzanschlussstudie. Das prüfen wir, bevor Sie ein Angebot abgeben.",
+        },
+        {
+          title: "Grundstück und Strom sichern",
+          description:
+            "Kauf oder langfristiger Erbbauvertrag, dazu die Papiere, die die Megawatt real machen: Netzanschlussverträge, Facility-Extension-Vereinbarungen, Umspannwerkskapazität.",
+          detail:
+            "Ein Standort ohne unterzeichnete Netzposition ist Ackerland mit einer guten Geschichte.",
+        },
+        {
+          title: "Ans Übertragungsnetz anschließen",
+          description:
+            "Umspannwerk, Hochspannungsanschluss, Transformatoren und Schaltanlagen — geplant, beschafft und mit dem Netzbetreiber abgestimmt, in Phasen, wenn die Last hochläuft.",
+          detail:
+            "Das ist meist der längste Pfad im ganzen Projekt, weshalb wir ihn parallel zur Planung starten und nicht danach.",
+        },
+        {
+          title: "Engineering und Fertigung",
+          description:
+            "Detailplanung von Strom, Kühlung und Netzwerk, dann Produktion der Module im Werk, während Baustellenarbeiten und Fundamente parallel laufen.",
+          detail:
+            "Die Box bauen und gleichzeitig den Boden vorbereiten — daher kommt der größte Teil der Zeitersparnis.",
+        },
+        {
+          title: "Installieren und in Betrieb nehmen",
+          description:
+            "Lieferung, Montage, Integration, Test und Übergabe — Strom an, Kühlung austariert, Netzwerk live, Last nachgewiesen.",
+          detail:
+            "Vorkonfigurierte Module kommen getestet an, deshalb ist die Inbetriebnahme Verifikation statt Entdeckung.",
+        },
+        {
+          title: "Betreiben und monetarisieren",
+          description:
+            "Selbst betreiben oder betreiben lassen: Colocation, Hosting, GPU-as-a-Service, reservierte Cluster oder Großhandelskapazität an einen einzelnen großen Betreiber.",
+          detail:
+            "Ein Megawatt, das als Strom verkauft wird, hat einen Wert. Dasselbe Megawatt, als KI-Rechenleistung verkauft, hat einen erheblich höheren.",
+        },
+      ],
+    },
+
+    anatomy: {
+      eyebrow: "Aufbau",
+      heading: "Woraus ein Rechenzentrum tatsächlich besteht",
+      lead:
+        "Zieht man das Marketing ab, ist ein KI-Rechenzentrum vier Systeme, die zusammen dimensioniert werden müssen: etwas, das Strom hereinbringt, etwas, das Wärme herausbringt, etwas, das Daten bewegt, und eine Struktur, die das alles hält. Eines davon falsch, und die anderen sind verschwendet.",
+      groups: [
+        {
+          title: "Strom",
+          description:
+            "Die begrenzende Größe in jedem Projekt. Alles vor dem Rack, von der Übertragungsleitung bis zur Stromschiene.",
+          items: [
+            { name: "Netzanschluss", note: "Hochspannungsanbindung ans Übertragungsnetz, typischerweise ab 138 kV" },
+            { name: "Umspannwerk und Schaltanlage", note: "Transformation, Schutz und Verteilung in die Hallen" },
+            { name: "Transformatoren", note: "Mittel- und Niederspannungsverteilung innerhalb des Moduls" },
+            { name: "BESS", note: "Batteriespeicher für Überbrückung, Lastausgleich und Peak Shaving" },
+            { name: "Eigenerzeugung", note: "Solar, Gas oder Wasserkraft je nach Standort — senkt Netzabhängigkeit und OPEX" },
+          ],
+        },
+        {
+          title: "Kühlung",
+          description:
+            "KI-Racks laufen bei Dichten, die Luft allein nicht mehr bewältigt. Das Kühlkonzept folgt dem Chip, nicht der Tradition.",
+          items: [
+            { name: "Flüssigkeitsgekühlte Racks", note: "Direct-to-Chip-Kreisläufe für hochdichte GPU- und HPC-Lasten" },
+            { name: "Cooling Distribution Unit", note: "Trennt den Gebäudekreislauf vom Rack-Kreislauf und regelt die Temperatur" },
+            { name: "Rückkühler", note: "Freie Kühlung überall, wo das Klima es zulässt — die günstigste Kühlung ist die, die nicht läuft" },
+            { name: "Kaltluftaufbereitung", note: "Für die gemischten und weniger dichten Teile der Last" },
+            { name: "Wärmerückgewinnung", note: "Ein Organic Rankine Cycle macht Abwärme wieder zu Strom oder speist ein Fernwärmenetz" },
+          ],
+        },
+        {
+          title: "Netzwerk und Compute",
+          description: "Der Teil, den sich alle vorstellen — und der Teil, der sich am leichtesten nachträglich ändern lässt.",
+          items: [
+            { name: "Netzwerkmodul", note: "Vorkonfektionierte Glasfaser und Kupfer, ausgelegt auf Scale-out-Topologien" },
+            { name: "Optische Verbindungen", note: "Photonik bewegt über Distanz mehr Daten pro Watt als Kupfer" },
+            { name: "Carrier-Anbindung", note: "Redundante Trassen und genug Kapazität für Datenbewegung in Trainingsgröße" },
+            { name: "Rechenhallen", note: "Racks, PDUs, strukturierte Verkabelung — auf den Workload konfiguriert" },
+          ],
+        },
+        {
+          title: "Standort und Struktur",
+          description: "Die unglamouröse Hälfte der CAPEX — und die Hälfte, die den Zeitplan bestimmt.",
+          items: [
+            { name: "Grundstück", note: "Genug davon, richtig ausgewiesen, nahe am Übertragungsnetz — die drei treffen selten zusammen" },
+            { name: "Fundamente und Tiefbau", note: "Bodenplatten, Zufahrten, Entwässerung, Sicherheitsperimeter" },
+            { name: "Modulare Gebäudehüllen", note: "Werksgefertigte Strukturen, die getestet ankommen statt vor Ort zusammengebaut zu werden" },
+            { name: "Wasser", note: "Brunnen oder kommunale Versorgung für Verdunstungs- und Hybridkühlkonzepte" },
+            { name: "Sicherheit und Brandschutz", note: "Physische Zutrittskontrolle, Detektion und Löschung" },
+          ],
+        },
+      ],
+    },
+
+    modular: {
+      eyebrow: "Warum modular",
+      heading: "Dieselben Megawatt, rund anderthalb Jahre früher",
+      lead:
+        "Der traditionelle Rechenzentrumsbau war für einen Markt gedacht, in dem die Nachfrage planbar war und man drei Jahre voraus disponieren konnte. KI-Nachfrage verhält sich nicht so. Modularer Bau verlagert den Großteil der Errichtung ins Werk und lässt ihn parallel zur Standortvorbereitung laufen.",
+      columns: { criterion: "", traditional: "Traditioneller Bau", modular: "Modularer Bau" },
+      rows: [
+        { criterion: "Zeit bis zum ersten Megawatt", traditional: "24–36 Monate", modular: "3–6 Monate" },
+        { criterion: "CAPEX", traditional: "Steigt um 30–50 % bei Material und Arbeit", modular: "20–30 % niedriger durch Werksfertigung" },
+        { criterion: "Flächenbedarf", traditional: "700+ Acres pro Gigawatt", modular: "Dichte vertikale und gestapelte Layouts" },
+        { criterion: "Skalierung", traditional: "Bei Planung fixiert, teuer zu erweitern", modular: "Phasenweise von 10 bis 100+ MW" },
+        { criterion: "KI-Tauglichkeit", traditional: "Nachrüstung für GPU-Dichte nötig", modular: "Flüssigkühlung von Anfang an eingeplant" },
+        { criterion: "Erneuerbare", traditional: "Angeflanscht, wenn überhaupt", modular: "Solar, Speicher und Wärmerückgewinnung integriert" },
+        { criterion: "Lieferkette", traditional: "Lokale Auftragnehmer, lokale Preise", modular: "Etablierte internationale Beschaffung" },
+      ],
+      note:
+        "Modular ist nicht automatisch die richtige Antwort. Für sehr große Single-Tenant-Campus auf günstigem Land kann konventioneller Bau weiterhin gewinnen. Wir sagen Ihnen, welcher Fall vorliegt, bevor Sie Kapital binden.",
+    },
+
+    projects: {
+      eyebrow: "Standorte und Projekte",
+      heading: "Woran wir arbeiten",
+      lead:
+        "Eine repräsentative Auswahl der Standorte in unserer Pipeline — einer in fortgeschrittener Due Diligence, drei in Prüfung. Sie zeigen, wie ein tragfähiger Rechenzentrumsstandort in der Praxis aussieht: Netzposition zuerst, alles andere danach.",
+      disclaimer:
+        "Namen der Gegenparteien, genaue Adressen und kommerzielle Konditionen bleiben ungenannt — diese Unterlagen unterliegen Vertraulichkeitsvereinbarungen. Der Status beschreibt, wo der jeweilige Standort heute steht, und ist keine Aussage über Eigentum.",
+      specsLabel: "Kennwerte",
+      items: [
+        {
+          id: "east-texas",
+          status: "In Due Diligence",
+          title: "187 Acres, 70 MW gesichert",
+          location: "Osttexas, USA",
+          description:
+            "Ein großes Grundstück mit bestehendem privatem Umspannwerk und Hochspannungs-Netzanschluss auf dem Gelände. Der regionale Übertragungsnetzbetreiber hat eine Facility Extension über 70 MW genehmigt, geliefert in zwei Phasen mit dem Ausbau des Umspannwerks. Erdgas liegt wenige Meilen entfernt, auf dem Grundstück gibt es fünf Wasserbrunnen, und Glasfaser wird gerade verlegt.",
+          alt: "Luftaufnahme eines 187 Acres großen Entwicklungsstandorts für Strom und Rechenzentrum",
+          tags: ["Strom gesichert", "Gas in der Nähe", "Wasser vor Ort", "Glasfaser im Bau"],
+          specs: [
+            { k: "Grundstücksfläche", v: "~187 Acres" },
+            { k: "Strom", v: "70 MW Facility Extension genehmigt, phasenweise" },
+            { k: "Netzanschluss", v: "138 kV, Umspannwerk vor Ort" },
+            { k: "Wasser", v: "5 Brunnen, ≥46.000 gal/Tag" },
+            { k: "Konnektivität", v: "400 Gbps im Bau, 1 Tbps bestätigt" },
+          ],
+        },
+        {
+          id: "west-texas",
+          status: "In Prüfung",
+          title: "105 MW anschlussbereiter Standort",
+          location: "Energiekorridor Westtexas, USA",
+          description:
+            "Ein entwicklungsreifer Standort mit direktem Netzanschluss; Umspannwerk, Schaltanlage und Transformatoren sind bereits installiert. Ausgelegt auf Spannungsabsenkung und containerisierte Umsetzung, das heißt: Megawatt lassen sich schrittweise ans Netz bringen statt alle auf einmal.",
+          alt: "Hochspannungstransformator und Umspannwerkstechnik an einem Standort in Westtexas",
+          tags: ["Am Netz", "Umspannwerk vor Ort", "Containerisiert"],
+          specs: [
+            { k: "Indikative Kapazität", v: "~105 MW" },
+            { k: "Infrastruktur", v: "Umspannwerk, Schaltanlage, Transformatoren installiert" },
+            { k: "Struktur", v: "Langfristiger Erbbauvertrag in Verhandlung" },
+          ],
+        },
+        {
+          id: "midwest",
+          status: "In Prüfung",
+          title: "41 MW im Betrieb, +20 MW genehmigt",
+          location: "Mittlerer Westen der USA, MISO-Netz",
+          description:
+            "Ein vollständig am Netz laufendes Multi-Site-Portfolio — drei benachbarte Anlagen im Umkreis einer Fahrstunde — mit bereits vorhandenem Betriebsteam und einer Historie von über 99 % Verfügbarkeit. Umspannwerkskapazität für weitere 20 MW ist bereits genehmigt, was den Standort zum Kandidaten für eine Umwidmung auf KI- und HPC-Lasten macht.",
+          alt: "Reihen modularer Rechenzentrums-Container an einem Standort im Betrieb",
+          tags: ["Live am Netz", "Multi-Site", "Erweiterung genehmigt"],
+          specs: [
+            { k: "Kapazität im Betrieb", v: "41 MW" },
+            { k: "Erweiterung", v: "+20 MW, Umspannwerk genehmigt" },
+            { k: "Verfügbarkeit", v: ">99 %" },
+            { k: "Betrieb", v: "Team vorhanden" },
+          ],
+        },
+        {
+          id: "stockholm",
+          status: "In Prüfung",
+          title: "10 MW Umbau auf Hochdichte",
+          location: "Stockholm, Schweden",
+          description:
+            "Umbau eines bestehenden Industriegebäudes in Stahlrahmenbauweise zu einer vertikalen Hochdichte-Rechenanlage, ausgelegt auf Inferenz- und Fine-Tuning-Workloads in einem innerstädtischen Strommarkt mit knappem Angebot. Industrielle Ausweisung und Baugenehmigungen liegen bereits vor, was den langsamsten Teil eines europäischen Bauprojekts erledigt.",
+          alt: "Industriegebäude, vorgesehen für den Umbau zu einer Hochdichte-Rechenanlage",
+          tags: ["Gebäudeumbau", "Innerstädtische Stromposition", "Genehmigungen vorhanden"],
+          specs: [
+            { k: "Kritische IT-Last", v: "10 MW, phasenweise ab 2 MW" },
+            { k: "Stromposition am Standort", v: "15 MW" },
+            { k: "Genehmigungen", v: "Ausweisung und Baugenehmigungen gesichert" },
+          ],
+        },
+      ],
+    },
+
+    gallery: {
+      eyebrow: "Vor Ort",
+      heading: "Die Infrastruktur hinter den Megawatt",
+      lead:
+        "Fotos aus der Standort-Due-Diligence und aus laufenden Deployments. So sieht der größte Teil der Arbeit tatsächlich aus — Umspannwerke, Schaltanlagenräume und Stahlboxen auf Schotter, lange bevor irgendetwas an einen Serverraum erinnert.",
+      items: [
+        {
+          id: "substation",
+          alt: "138-kV-Umspannwerk mit Hochspannungsmast an einem Rechenzentrumsstandort",
+          caption: "138-kV-Anschluss und privates Umspannwerk am Standort in Osttexas",
+        },
+        {
+          id: "transmission",
+          alt: "Hochspannungsmast, der ein privates Umspannwerk speist",
+          caption: "Netzeinspeisung — die Randbedingung, um die herum jedes Projekt in Wahrheit gebaut wird",
+        },
+        {
+          id: "switchgear",
+          alt: "Innenaufnahme eines Schaltanlagen- und Stromverteilungsraums",
+          caption: "Schaltanlagen- und Verteilungsraum in einer Anlage im Betrieb",
+        },
+        {
+          id: "modular",
+          alt: "Modulare Rechenzentrums-Container auf einem vorbereiteten Standort",
+          caption: "Modulare Einheiten auf einer vorbereiteten Bodenplatte, Mittlerer Westen der USA",
+        },
+        {
+          id: "parcel",
+          alt: "Vermessungsplan einer Parzelle neben Übertragungsnetz-Infrastruktur",
+          caption: "Parzellenvermessung — Grundstücke gegen ihre Netzposition prüfen",
+        },
+      ],
+    },
+
+    siteSelection: {
+      eyebrow: "Standortwahl",
+      heading: "Was ein Grundstück kaufenswert macht",
+      lead:
+        "Wir prüfen Standorte in dieser Reihenfolge. Ein Standort, der am ersten Test scheitert, ist kein Rechenzentrumsstandort — egal wie gut der Preis ist.",
+      items: [
+        {
+          title: "Verfügbare Übertragungskapazität",
+          description:
+            "Nicht die Nähe zu einer Leitung — tatsächlich lieferbare Megawatt, mit einem Netzbetreiber, der sich terminlich darauf festlegt. Allein dieser Punkt scheidet die meisten Kandidaten aus.",
+        },
+        {
+          title: "Zeitplan des Netzanschlusses",
+          description:
+            "Eine Warteschlangenposition, die in Jahren gemessen wird, macht aus einem guten Standort ein schlechtes Investment. Wir prüfen den Stand der Studie, bevor irgendjemand irgendetwas unterschreibt.",
+        },
+        {
+          title: "Wasser und Klima",
+          description:
+            "Kühles Klima senkt die Kühl-OPEX über die gesamte Lebensdauer des Assets. Wasserrechte zählen überall dort, wo Verdunstungs- oder Hybridkühlung infrage kommt.",
+        },
+        {
+          title: "Glasfaser und Carrier",
+          description:
+            "Redundante Trassen und echte Kapazität. Trainings-Workloads bewegen Datenmengen, bei denen ein einzelner Anbieter ein Single Point of Failure ist.",
+        },
+        {
+          title: "Grundstück, Ausweisung und Genehmigungen",
+          description:
+            "Korrekte Ausweisung, bebaubarer Boden, Raum zum Erweitern und eine Genehmigungsbehörde, die so etwas schon einmal gemacht hat.",
+        },
+        {
+          title: "Steuern und Anreize",
+          description:
+            "Investment Tax Credits, Umsatzsteuerbefreiungen auf Ausrüstung und lokale Erlasse bewegen die Rendite oft stärker als ein besserer Grundstückspreis.",
+        },
+      ],
+    },
+
+    team: {
+      eyebrow: "Wer die Arbeit macht",
+      heading: "Ein Team, das so etwas schon gebaut hat",
+      lead:
+        "Rechenzentrumsentwicklung ist keine einzelne Disziplin. Es sind Engineering, Beschaffung, Energie, Bau, Projektfinanzierung und Recht — und sie scheitert an den Nahtstellen dazwischen. Wir stellen die gesamte Kette unter einer Verantwortung zusammen.",
+      items: [
+        {
+          title: "Rechenzentrums-Engineering",
+          description:
+            "Spezialisten mit Umsetzungserfahrung in US-Rechenzentrumsprojekten, darunter Anlagen in Texas — Elektrotechnik, Maschinenbau, Kühlung und modulare Integration.",
+        },
+        {
+          title: "Lieferkette",
+          description:
+            "Etablierte internationale Beschaffung für die Langläufer, an denen Projekte hängen bleiben: Transformatoren, Schaltanlagen, Kälteanlagen, Batterien und Netzwerktechnik.",
+        },
+        {
+          title: "Energie und Netz",
+          description:
+            "Anschlussstrategie, Verhandlung mit Netzbetreibern, Eigenerzeugung und Speicher sowie die Tarifstrukturen, die darüber entscheiden, ob die Wirtschaftlichkeit aufgeht.",
+        },
+        {
+          title: "Projektfinanzierung",
+          description:
+            "Strukturierung von Holding- und Projektgesellschaften, Modellierung der Renditen und Einwerbung institutionellen Kapitals neben Ihrem.",
+        },
+        {
+          title: "Recht und Regulierung",
+          description:
+            "Internationale Konzernstrukturierung, Grundstücks- und Stromverträge, Abnahmevereinbarungen und das Genehmigungsverfahren in der jeweiligen Jurisdiktion.",
+        },
+        {
+          title: "Software und KI",
+          description:
+            "Unsere eigene Disziplin — die Betriebs-, Monitoring- und KI-Systeme, die auf der Anlage laufen, sobald sie live ist. Wie das aussieht, zeigt unsere Arbeit im KI-Engineering.",
+        },
+      ],
+    },
+
+    geo: {
+      eyebrow: "Wo wir arbeiten",
+      heading: "Standorte auf vier Kontinenten",
+      lead:
+        "Strom ist lokal. Die richtige Jurisdiktion hängt davon ab, worauf Sie optimieren — günstiger Strom, Time-to-Market, Steuerbehandlung oder Nähe zu Ihren Kunden.",
+      items: [
+        { region: "USA", note: "Texas und MISO — tiefe Übertragungskapazität, 30 % Investment Tax Credit auf integrierte Solar- und Speicheranlagen" },
+        { region: "Nordeuropa", note: "Kühles Klima, saubere Netze und innerstädtische Stromposition für latenzsensible Inferenz" },
+        { region: "Süd- und Südostasien", note: "Wasserkraft-Ökonomie und staatliche KI-Programme, mit Indien als Logistik- und Ausrüstungsdrehscheibe" },
+        { region: "Afrika und Lateinamerika", note: "Staatlich getragene Rechenzentrums-Initiativen, die wirklich neue Märkte öffnen" },
+      ],
+    },
+
+    faq: {
+      eyebrow: "Fragen",
+      heading: "Was vor dem ersten Gespräch gefragt wird",
+      items: [
+        {
+          q: "Was kostet ein 10-MW-Rechenzentrum?",
+          a: "Es gibt keine ehrliche Einzelzahl, und wer Ihnen auf einer Website eine nennt, rät. Die Kosten hängen am Grundstückspreis, daran wie viel Netzarbeit der Standort braucht, an der Rack-Dichte und damit an der Kühlarchitektur, daran ob Erzeugung und Speicher integriert werden, an Lieferzeiten für Ausrüstung und an den lokalen Lohnkosten. Wir kalkulieren sauber, sobald wir den Standort kennen — ein schlechter Standort kann in Netzarbeiten mehr kosten als die gesamte IT-Last.",
+        },
+        {
+          q: "Wie lange dauert es?",
+          a: "Modulare Umsetzung läuft in 3–6 Monaten ab einem vorbereiteten Standort, gegenüber 24–36 Monaten bei konventionellem Bau. Die ehrliche Einschränkung: Grundstück und eine feste Netzposition zu sichern dauert meist länger, als die Anlage zu bauen — deshalb beginnen wir mit dem Netzgespräch.",
+        },
+        {
+          q: "Was brauchen Sie von mir für den Start?",
+          a: "Ein Gespräch. Konkret: ungefähr wie viel Sie investieren wollen, ob Sie das Asset besitzen oder vergeben wollen, ob Sie eine Zielregion oder einen bestehenden Standort haben und wie Ihr Zeithorizont aussieht. Danach können wir Ihnen ziemlich schnell sagen, ob das Projekt Sinn ergibt.",
+        },
+        {
+          q: "Brauche ich einen Mieter, bevor gebaut wird?",
+          a: "Nein, aber es verändert das Risikoprofil erheblich. Build-to-suit gegen einen unterzeichneten Abnahmevertrag lässt sich weit leichter finanzieren als spekulative Kapazität. Wenn Sie das Vermietungsrisiko lieber nicht tragen wollen, strukturieren wir es von Anfang an so.",
+        },
+        {
+          q: "Wem gehört die Anlage?",
+          a: "Dem, was die Struktur festlegt. Bei einem schlüsselfertigen Bau gehören Grundstück und Asset vollständig Ihnen. In einem Joint Venture teilt sich das Eigentum danach auf, was jede Seite einbringt — Grundstück, Netzposition, Kapital oder Umsetzung. Wir halten das fest, bevor Geld fließt.",
+        },
+        {
+          q: "Liefern Sie auch die GPUs?",
+          a: "Wir bauen und liefern die Anlage und arbeiten mit der Lieferkette für die Rechenhardware. Ob die GPUs im selben Vertrag stehen, hängt von Ihrem Modell ab — manche Eigentümer vermieten nur Hülle und Strom, andere wollen den ganzen Stack inklusive der Compute-Erlöse.",
+        },
+        {
+          q: "Betreiben Sie die Anlage nach der Übergabe?",
+          a: "Optional. Manche Kunden nehmen die Schlüssel und betreiben selbst, andere wollen uns in einem langfristigen Betriebsvertrag. Da wir auch die KI- und Automatisierungssoftware bauen, können wir die Monitoring- und Betriebsebene mit übernehmen.",
+        },
+      ],
+    },
+
+    finalCta: {
+      badge: "Unverbindlich",
+      heading: "Sie denken über ein Rechenzentrum nach? Reden wir, bevor Sie Land kaufen.",
+      subtitle:
+        "Ein 30-minütiges Gespräch. Nennen Sie uns Budget, Region und Zeithorizont, und wir sagen Ihnen ehrlich, ob sich der Bau lohnt, was er erfordert und wohin das Geld tatsächlich fließt.",
+      primary: "Termin buchen",
+      secondary: "Schreiben Sie uns",
+      note: "Wir sagen es Ihnen, wenn wir glauben, dass Ihr Kapital anderswo besser aufgehoben ist.",
+    },
+  },
+
   enterprise: {
     heroCta: "Entdeckungsgespräch buchen",
     heroSecondary: "Preise ansehen",
@@ -992,6 +1453,7 @@ export const de: Dictionary = {
       { label: "Automatisierung", href: "/services/ai-automation" },
       { label: "Beratung", href: "/services/ai-training" },
       { label: "KI-Plattform", href: "/services/ai-workspace" },
+      { label: "Rechenzentren", href: "/data-centers" },
     ],
     companyLinks: [
       { label: "Case Studies", href: "/cases" },

@@ -4,7 +4,16 @@ import { site } from "./site";
 import type { ServiceSlug } from "./services";
 import { blogIndexCopy, getBlogEntry, isBlogSlug } from "./blog";
 
-type PageKind = "home" | "cases" | "privacy" | "terms" | "service" | "case" | "blog" | "article";
+type PageKind =
+  | "home"
+  | "cases"
+  | "privacy"
+  | "terms"
+  | "service"
+  | "case"
+  | "blog"
+  | "article"
+  | "datacenters";
 
 type Args = {
   locale: Locale;
@@ -46,6 +55,9 @@ export function buildPageMetadata({
   } else if (kind === "terms") {
     title = dict.seo.termsTitle;
     description = dict.seo.termsDescription;
+  } else if (kind === "datacenters") {
+    title = dict.dataCenters.seo.title;
+    description = dict.dataCenters.seo.description;
   } else if (kind === "service" && serviceSlug) {
     const svc = dict.services_pages[serviceSlug as ServiceSlug];
     if (svc) {

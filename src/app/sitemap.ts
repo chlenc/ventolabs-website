@@ -47,6 +47,7 @@ const blogSitemapEntries: SitemapPage[] = blogSlugs.map((slug) => ({
 
 const pages: SitemapPage[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
+  { path: "/data-centers", priority: 0.9, changeFrequency: "monthly" },
   { path: "/cases", priority: 0.7, changeFrequency: "monthly" },
   ...caseSitemapEntries,
   { path: "/blog", priority: 0.6, changeFrequency: "weekly" },

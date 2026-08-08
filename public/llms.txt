@@ -18,6 +18,10 @@ Key facts:
 - [AI Consulting & Training](https://ventolabs.com/services/ai-training/): Team enablement — Claude Code, Cursor, MCP servers setup; hands-on workshops; adoption measured at 30 and 60 days.
 - [AI Platform](https://ventolabs.com/services/ai-workspace/): Company-wide AI operating system — dedicated agents per team, Knowledge Vault, role-based access, usage/ROI reporting.
 
+## AI infrastructure
+
+- [AI Data Centers](https://ventolabs.com/data-centers/): End-to-end development of AI data centers for investors and owners — deciding what to build, site search, securing land and grid capacity, transmission interconnection, modular construction, commissioning, and operation. Typical projects 10–100+ MW, phased. Modular deployment in 3–6 months against 24–36 for conventional construction; target PUE below 1.3; liquid-cooled racks up to 100 kW. Engagement structures: turnkey build you own, build-to-suit against a signed offtake, or joint venture. Sites currently in diligence or under evaluation in Texas, the US Midwest (MISO), and Sweden. Counterparty names, exact addresses, and commercial terms are not published — the underlying materials are under confidentiality agreements.
+
 ## Client results
 
 - [Case studies](https://ventolabs.com/cases/): Zigmund Online (online therapy): patient response time cut from 4 hours to under 2 minutes, booking conversion +40%, 200+ conversations handled daily. NoConcept (e-commerce, 3,000+ SKUs): lead response 6 hours → 8 minutes, 25+ hours/week saved. ASG Compute (cloud infrastructure): 13 AI agents deployed across 5 departments in 4 weeks, AI spend −35%.

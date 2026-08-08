@@ -74,6 +74,18 @@
       "outputModes": ["text/plain", "application/json"]
     },
     {
+      "id": "data-centers",
+      "name": "AI Data Center Development",
+      "description": "End-to-end development of AI data centers for investors and owners — configuration and TCO sizing, site search screened on deliverable grid capacity, securing land and power, transmission interconnection, modular construction, commissioning, and operation. Typical projects 10–100+ MW, phased; modular deployment in 3–6 months against 24–36 for conventional construction.",
+      "tags": ["data-centers", "ai-infrastructure", "energy", "grid-interconnection", "modular-construction", "hpc"],
+      "examples": [
+        "Assess whether a 20 MW AI data center makes sense for a given budget and target geography.",
+        "Screen a candidate parcel against deliverable transmission capacity, water, fiber, and permitting before purchase."
+      ],
+      "inputModes": ["text/plain", "application/json"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
       "id": "content-factory",
       "name": "AI Content Factory for E-commerce",
       "description": "Turns a product catalog into a daily stream of discovery content — product cards, social posts, comparison articles — automatically generated from SKU data.",

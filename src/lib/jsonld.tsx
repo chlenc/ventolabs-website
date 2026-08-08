@@ -147,6 +147,35 @@ export function servicePageJsonLd({
 }
 
 /**
+ * /data-centers: Service + FAQPage + BreadcrumbList. Its own builder rather
+ * than a `services_pages` entry because the page has a bespoke content shape
+ * (projects, gallery, comparison table) that doesn't fit ServiceDict.
+ */
+export function dataCentersJsonLd(locale: Locale): object[] {
+  const dict = getDictionary(locale);
+  const dc = dict.dataCenters;
+
+  const data: object[] = [
+    serviceJsonLd({
+      name: dc.hero.title,
+      description: dc.seo.description,
+      path: "/data-centers",
+      locale,
+      serviceType: dc.hero.eyebrow,
+    }),
+    breadcrumbJsonLd(
+      [
+        { name: "Home", path: "/" },
+        { name: dc.breadcrumb, path: "/data-centers" },
+      ],
+      locale,
+    ),
+  ];
+  if (dc.faq.items.length) data.push(faqPageJsonLd(dc.faq.items));
+  return data;
+}
+
+/**
  * /cases hub: BreadcrumbList + an ItemList covering all 8 cases — the 4
  * landing pages (as Service references to their own URL) and the 4
  * inline-only client studies (zigmund, noconcept, asgcompute, arbitrai),

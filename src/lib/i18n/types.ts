@@ -68,6 +68,149 @@ export type AgentCategoryDict = {
   agents: { name: string; does: string }[];
 };
 
+/** Project/site ids on /data-centers. Photos are mapped per-id in the
+ * component, so translators never touch image paths. */
+export type DataCenterProjectId = "east-texas" | "west-texas" | "midwest" | "stockholm";
+
+/** Gallery photo ids on /data-centers — same reasoning as the project ids. */
+export type DataCenterShotId =
+  | "substation"
+  | "transmission"
+  | "switchgear"
+  | "modular"
+  | "parcel";
+
+export type DataCentersDict = {
+  navLabel: string;
+  breadcrumb: string;
+  seo: { title: string; description: string };
+
+  hero: {
+    eyebrow: string;
+    title: string;
+    lede: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+  };
+
+  /** Big-numbers band under the hero. */
+  stats: { value: string; label: string }[];
+
+  /** Lead magnet — books a discovery call. `ctaHref` is "#book", which the
+   * global CalendlyWidget click handler turns into the Cal.com modal. */
+  leadMagnet: {
+    badge: string;
+    heading: string;
+    description: string;
+    bullets: string[];
+    ctaLabel: string;
+    ctaHref: string;
+    footnote: string;
+  };
+
+  /** "You have capital and you're looking at a data center" — the main ask. */
+  investor: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    models: { title: string; description: string; points: string[] }[];
+  };
+
+  /** End-to-end delivery process: strategy → land → grid → build → operate. */
+  process: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    steps: { title: string; description: string; detail: string }[];
+  };
+
+  /** What a data center is actually made of. */
+  anatomy: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    groups: { title: string; description: string; items: { name: string; note: string }[] }[];
+  };
+
+  /** Traditional build vs modular — comparison table. */
+  modular: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    columns: { criterion: string; traditional: string; modular: string };
+    rows: { criterion: string; traditional: string; modular: string }[];
+    note: string;
+  };
+
+  /** Sites and projects. Counterparty names, exact addresses and commercial
+   * terms are deliberately withheld — the source materials are NDA-bound. */
+  projects: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    disclaimer: string;
+    specsLabel: string;
+    items: {
+      id: DataCenterProjectId;
+      status: string;
+      title: string;
+      location: string;
+      description: string;
+      alt: string;
+      tags: string[];
+      specs: { k: string; v: string }[];
+    }[];
+  };
+
+  /** Photo strip — infrastructure shots from live diligence and deployments. */
+  gallery: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    items: { id: DataCenterShotId; alt: string; caption: string }[];
+  };
+
+  /** What we look for when picking a site. */
+  siteSelection: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    items: { title: string; description: string }[];
+  };
+
+  /** Who does the work — experience is framed through the team, not through
+   * ownership claims we can't evidence. */
+  team: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    items: { title: string; description: string }[];
+  };
+
+  /** Where we work. */
+  geo: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    items: { region: string; note: string }[];
+  };
+
+  faq: {
+    eyebrow: string;
+    heading: string;
+    items: { q: string; a: string }[];
+  };
+
+  finalCta: {
+    badge: string;
+    heading: string;
+    subtitle: string;
+    primary: string;
+    secondary: string;
+    note: string;
+  };
+};
+
 export type Dictionary = {
   meta: {
     htmlLang: string;
@@ -272,6 +415,8 @@ export type Dictionary = {
   services_pages: Record<string, ServiceDict>;
 
   case_pages: Record<string, ServiceDict>;
+
+  dataCenters: DataCentersDict;
 
   enterprise: {
     heroCta: string;
