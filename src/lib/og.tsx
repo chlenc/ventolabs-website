@@ -6,7 +6,16 @@ import { blogIndexCopy, getBlogEntry, isBlogSlug } from "./blog";
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 
-type OgKind = "home" | "cases" | "privacy" | "terms" | "service" | "case" | "blog" | "article";
+type OgKind =
+  | "home"
+  | "cases"
+  | "privacy"
+  | "terms"
+  | "service"
+  | "case"
+  | "blog"
+  | "article"
+  | "datacenters";
 
 /**
  * Render a branded OG card for a given (locale, page). Kept intentionally
@@ -44,6 +53,9 @@ export function renderOgImage({
   } else if (kind === "terms") {
     title = dict.legal.terms.title;
     eyebrow = dict.footer.terms;
+  } else if (kind === "datacenters") {
+    title = dict.dataCenters.hero.title;
+    eyebrow = dict.dataCenters.hero.eyebrow;
   } else if (kind === "service" && slug) {
     const svc = dict.services_pages[slug as ServiceSlug];
     if (svc) {

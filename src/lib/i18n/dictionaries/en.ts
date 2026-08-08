@@ -42,6 +42,7 @@ export const en: Dictionary = {
       { label: "Automation", href: "/services/ai-automation" },
       { label: "Consulting", href: "/services/ai-training" },
       { label: "AI Platform", href: "/services/ai-workspace" },
+      { label: "Data centers", href: "/data-centers" },
       { label: "Cases", href: "/cases" },
       { label: "Guides", href: "/blog" },
     ],
@@ -856,6 +857,466 @@ export const en: Dictionary = {
     },
   },
 
+  dataCenters: {
+    navLabel: "Data centers",
+    breadcrumb: "Data centers",
+    seo: {
+      title: "AI Data Center Development — Site, Power, Build & Operate",
+      description:
+        "We develop AI data centers end to end: choosing the right configuration, securing land next to transmission capacity, grid interconnection, modular construction and commissioning. From 10 to 100+ MW.",
+    },
+
+    hero: {
+      eyebrow: "AI Infrastructure",
+      title: "AI data centers, from empty land to live megawatts",
+      lede:
+        "If you have capital and you're looking at data centers as an asset, the hard part is never the servers — it's power, land and time. We help you decide what to build, find and secure the site, get it connected to transmission, build it modularly and hand it over running.",
+      ctaPrimary: "Book a call",
+      ctaSecondary: "See the process",
+    },
+
+    stats: [
+      { value: "10–100 MW", label: "Typical project size, phased" },
+      { value: "3–6 mo", label: "Modular deployment vs 24–36 traditional" },
+      { value: "<1.3", label: "Target PUE with hybrid cooling" },
+      { value: "100 kW", label: "Per rack, liquid-cooled GPU density" },
+    ],
+
+    leadMagnet: {
+      badge: "Free · 30 minutes",
+      heading: "Book a call about your data center",
+      description:
+        "Tell us the budget, the geography and the time horizon. We come back with a straight answer on what that capital actually buys in megawatts, how long it would take, and where the money goes.",
+      bullets: [
+        "A realistic capacity and configuration for your budget — how many MW, what density, what cooling",
+        "The two or three geographies worth looking at, and why the others aren't",
+        "What securing a grid position would take in your target market, and how long it really runs",
+        "An honest read on whether the project is worth doing at all",
+      ],
+      ctaLabel: "Book a call",
+      ctaHref: "#book",
+      footnote: "No deck, no pitch. If the numbers don't work, we say so on the call.",
+    },
+
+    investor: {
+      eyebrow: "For investors and owners",
+      heading: "You have the capital. We handle everything between it and a working facility.",
+      lead:
+        "Most people who want to own compute infrastructure stall at the same place: which configuration actually pays back, where to put it, and who is accountable when the grid study comes back at 30 months. We take that whole chain. Below are the three structures we usually work in — the right one depends on how much of the asset you want to own and how much operating risk you want to carry.",
+      models: [
+        {
+          title: "You own it — turnkey build",
+          description:
+            "We design and build the facility to your spec and hand over the keys. You hold the land, the asset and the depreciation.",
+          points: [
+            "Single point of accountability from site search to commissioning",
+            "CAPEX deal — the asset sits on your balance sheet",
+            "Specification written around your workload, not a catalogue product",
+            "In the US, integrated solar and storage can qualify for a 30% investment tax credit",
+          ],
+        },
+        {
+          title: "Build-to-suit for a tenant",
+          description:
+            "We build against a signed offtake — an AI company, a cloud operator or an enterprise — so the facility is contracted before it's energized.",
+          points: [
+            "Revenue secured before construction completes",
+            "Long-term contract, predictable cash flow",
+            "Tenant covenant strengthens the project financing",
+            "You stay the owner, we can stay on as operator",
+          ],
+        },
+        {
+          title: "Joint venture",
+          description:
+            "You bring land, power position or capital; we bring engineering, supply chain and delivery. We build and operate together.",
+          points: [
+            "Works well when you already control a site or a grid position",
+            "Shared CAPEX, shared upside",
+            "Scales across several facilities on one platform",
+            "Option to sell compute capacity rather than only lease space",
+          ],
+        },
+      ],
+    },
+
+    process: {
+      eyebrow: "How it works",
+      heading: "Seven steps from a conversation to a running facility",
+      lead:
+        "Nothing here is exotic. It's a long chain of unglamorous work where the expensive mistakes happen early — buying land whose interconnection queue is six years deep, or sizing cooling for a density the racks will exceed in eighteen months.",
+      steps: [
+        {
+          title: "Decide what to build",
+          description:
+            "Before any land is bought, we size the thing: capacity, workload profile, density per rack, redundancy level, and what the total cost of ownership looks like over ten years.",
+          detail:
+            "Training clusters, inference fleets and enterprise HPC want different buildings. Getting this wrong is the most expensive error available.",
+        },
+        {
+          title: "Find the site",
+          description:
+            "We screen land against the criteria that actually gate a data center — available transmission capacity first, then water, fiber, zoning, climate and tax regime.",
+          detail:
+            "Most parcels that look perfect on a map die on the interconnection study. We check that before you make an offer.",
+        },
+        {
+          title: "Secure land and power",
+          description:
+            "Purchase or long-term ground lease, plus the paperwork that makes the megawatts real: interconnection agreements, facility extension agreements, substation capacity.",
+          detail:
+            "A site without a signed power position is farmland with a good story.",
+        },
+        {
+          title: "Connect to transmission",
+          description:
+            "Substation, high-voltage interconnect, transformers and switchgear — engineered, procured and coordinated with the utility, in phases if the load ramps.",
+          detail:
+            "This is usually the longest pole in the tent, which is why we start it in parallel with design rather than after it.",
+        },
+        {
+          title: "Engineer and manufacture",
+          description:
+            "Detailed design of power, cooling and network, then factory production of the modules while site works and foundations proceed in parallel.",
+          detail:
+            "Building the box and preparing the ground at the same time is where most of the schedule saving comes from.",
+        },
+        {
+          title: "Install and commission",
+          description:
+            "Delivery, assembly, integration, testing and handover — power on, cooling balanced, network live, load proven.",
+          detail:
+            "Pre-configured modules arrive tested, so commissioning is verification rather than discovery.",
+        },
+        {
+          title: "Operate and monetize",
+          description:
+            "Run it, or have it run: colocation, hosting, GPU-as-a-service, reserved clusters, or wholesale capacity to a single large operator.",
+          detail:
+            "A megawatt sold as electricity has one value. The same megawatt sold as AI compute has a considerably higher one.",
+        },
+      ],
+    },
+
+    anatomy: {
+      eyebrow: "Anatomy",
+      heading: "What a data center is actually made of",
+      lead:
+        "Strip away the marketing and an AI data center is four systems that all have to be sized together: something to bring power in, something to take heat out, something to move data, and a structure to hold it. Get one wrong and the others are wasted.",
+      groups: [
+        {
+          title: "Power",
+          description:
+            "The gating constraint on every project. Everything upstream of the rack, from the transmission line to the busbar.",
+          items: [
+            { name: "Grid interconnect", note: "High-voltage connection to transmission, typically 138 kV and up" },
+            { name: "Substation and switchgear", note: "Step-down, protection and distribution to the halls" },
+            { name: "Transformers", note: "Medium and low voltage distribution inside the module" },
+            { name: "BESS", note: "Battery storage for ride-through, load balancing and peak shaving" },
+            { name: "On-site generation", note: "Solar, gas or hydro depending on the site — reduces grid dependence and OPEX" },
+          ],
+        },
+        {
+          title: "Cooling",
+          description:
+            "AI racks run at densities that air alone can no longer handle. Cooling design follows the chip, not tradition.",
+          items: [
+            { name: "Liquid-cooled racks", note: "Direct-to-chip loops for high-density GPU and HPC loads" },
+            { name: "Cooling distribution unit", note: "Isolates the facility loop from the rack loop and controls temperature" },
+            { name: "Dry coolers", note: "Free cooling wherever the climate allows it — the cheapest cooling is the kind you don't run" },
+            { name: "Chilled air handling", note: "For the mixed and lower-density parts of the load" },
+            { name: "Heat recovery", note: "Organic Rankine Cycle turns waste heat back into electricity, or feeds a district loop" },
+          ],
+        },
+        {
+          title: "Network and compute",
+          description: "The part everyone pictures — and the part that is easiest to change later.",
+          items: [
+            { name: "Network module", note: "Pre-cabled fiber and copper, built for scale-out topologies" },
+            { name: "Optical interconnect", note: "Photonics moves more data per watt than copper at distance" },
+            { name: "Carrier connectivity", note: "Diverse routes and enough capacity for training-scale data movement" },
+            { name: "Compute halls", note: "Racks, PDUs, structured cabling — configured to the workload" },
+          ],
+        },
+        {
+          title: "Site and structure",
+          description: "The unglamorous half of the CAPEX, and the half that determines the schedule.",
+          items: [
+            { name: "Land", note: "Enough of it, zoned correctly, near transmission — the three rarely coincide" },
+            { name: "Foundations and civils", note: "Pads, access roads, drainage, security perimeter" },
+            { name: "Modular enclosures", note: "Factory-built structures that arrive tested rather than assembled on site" },
+            { name: "Water", note: "Wells or municipal supply for evaporative and hybrid cooling schemes" },
+            { name: "Security and fire", note: "Physical access control, detection and suppression" },
+          ],
+        },
+      ],
+    },
+
+    modular: {
+      eyebrow: "Why modular",
+      heading: "The same megawatts, roughly a year and a half sooner",
+      lead:
+        "Traditional data center construction was designed for a market where demand was predictable and you could plan three years out. AI demand does not behave that way. Modular construction moves most of the build into a factory and runs it in parallel with site preparation.",
+      columns: { criterion: "", traditional: "Traditional build", modular: "Modular build" },
+      rows: [
+        { criterion: "Time to first megawatt", traditional: "24–36 months", modular: "3–6 months" },
+        { criterion: "CAPEX", traditional: "Rising 30–50% on materials and labor", modular: "20–30% lower via factory production" },
+        { criterion: "Land footprint", traditional: "700+ acres per gigawatt", modular: "Dense vertical and stacked layouts" },
+        { criterion: "Scaling", traditional: "Fixed at design, expensive to extend", modular: "Phased from 10 to 100+ MW" },
+        { criterion: "AI readiness", traditional: "Retrofit needed for GPU density", modular: "Liquid cooling designed in from the start" },
+        { criterion: "Renewables", traditional: "Bolted on, if at all", modular: "Solar, storage and heat recovery integrated" },
+        { criterion: "Supply chain", traditional: "Local contractors, local prices", modular: "Established international sourcing" },
+      ],
+      note:
+        "Modular is not automatically the right answer. For very large single-tenant campuses on cheap land, conventional construction can still win. We tell you which case you're in before you commit capital.",
+    },
+
+    projects: {
+      eyebrow: "Sites and projects",
+      heading: "What we're working on",
+      lead:
+        "A representative selection of the sites in our pipeline — one in advanced diligence, three under evaluation. They give a sense of what a viable data center site looks like in practice: power position first, everything else second.",
+      disclaimer:
+        "Counterparty names, exact addresses and commercial terms are withheld — these materials are covered by confidentiality agreements. Status reflects where each site stands today, not a claim of ownership.",
+      specsLabel: "Key parameters",
+      items: [
+        {
+          id: "east-texas",
+          status: "In diligence",
+          title: "187-acre site, 70 MW secured",
+          location: "East Texas, United States",
+          description:
+            "A large parcel with an existing private substation and an on-site high-voltage grid interconnect. The regional transmission utility has approved a facility extension for 70 MW, delivered in two phases as the substation expands. Natural gas runs a few miles out, there are five water wells on the property, and fiber is being installed now.",
+          alt: "Aerial view of a 187-acre power and data center development site",
+          tags: ["Power secured", "Gas adjacent", "On-site water", "Fiber in progress"],
+          specs: [
+            { k: "Site area", v: "~187 acres" },
+            { k: "Power", v: "70 MW facility extension approved, phased" },
+            { k: "Interconnect", v: "138 kV, substation on site" },
+            { k: "Water", v: "5 wells, ≥46,000 gal/day" },
+            { k: "Connectivity", v: "400 Gbps installing, 1 Tbps confirmed" },
+          ],
+        },
+        {
+          id: "west-texas",
+          status: "Under evaluation",
+          title: "105 MW power-ready site",
+          location: "West Texas energy corridor, United States",
+          description:
+            "A development-ready site with a direct grid connection and substation, switchgear and transformer infrastructure already installed. Structured for step-down and containerized deployment, which means megawatts can be brought online in increments rather than all at once.",
+          alt: "High-voltage transformer and substation equipment at a West Texas site",
+          tags: ["Grid-connected", "Substation on site", "Containerized"],
+          specs: [
+            { k: "Indicative capacity", v: "~105 MW" },
+            { k: "Infrastructure", v: "Substation, switchgear, transformers installed" },
+            { k: "Structure", v: "Long-term ground lease under discussion" },
+          ],
+        },
+        {
+          id: "midwest",
+          status: "Under evaluation",
+          title: "41 MW operating portfolio, +20 MW approved",
+          location: "Midwest United States, MISO grid",
+          description:
+            "A fully energized multi-site portfolio — three co-located facilities within an hour of each other — with an operations team already in place and a track record above 99% uptime. Substation capacity for a further 20 MW is already approved, which makes it a candidate for redeployment to AI and HPC loads.",
+          alt: "Rows of modular data center containers at an operating site",
+          tags: ["Live and energized", "Multi-site", "Expansion approved"],
+          specs: [
+            { k: "Live capacity", v: "41 MW" },
+            { k: "Expansion", v: "+20 MW, substation-approved" },
+            { k: "Uptime record", v: ">99%" },
+            { k: "Operations", v: "Team in place" },
+          ],
+        },
+        {
+          id: "stockholm",
+          status: "Under evaluation",
+          title: "10 MW high-density conversion",
+          location: "Stockholm, Sweden",
+          description:
+            "Conversion of an existing steel-frame industrial building into a vertical high-density compute facility, aimed at inference and fine-tuning workloads in a supply-constrained in-city power market. Industrial zoning and building permits are already in place, which removes the slowest part of a European build.",
+          alt: "Industrial building earmarked for conversion into a high-density compute facility",
+          tags: ["Building conversion", "In-city power", "Permits in place"],
+          specs: [
+            { k: "Critical IT load", v: "10 MW, phased from 2 MW" },
+            { k: "Site power position", v: "15 MW" },
+            { k: "Permitting", v: "Zoning and building permits secured" },
+          ],
+        },
+      ],
+    },
+
+    gallery: {
+      eyebrow: "On the ground",
+      heading: "The infrastructure behind the megawatts",
+      lead:
+        "Photographs from site diligence and live deployments. This is what most of the work actually looks like — substations, switchgear rooms and steel boxes on gravel, long before anything resembles a server room.",
+      items: [
+        {
+          id: "substation",
+          alt: "138 kV substation with transmission tower at a data center site",
+          caption: "138 kV interconnect and private substation at the East Texas site",
+        },
+        {
+          id: "transmission",
+          alt: "High-voltage transmission tower feeding a private substation",
+          caption: "Transmission feed — the constraint every project is really built around",
+        },
+        {
+          id: "switchgear",
+          alt: "Interior switchgear and electrical distribution room",
+          caption: "Switchgear and distribution room at an operating facility",
+        },
+        {
+          id: "modular",
+          alt: "Modular data center containers deployed on a prepared site",
+          caption: "Modular units deployed on a prepared pad, Midwest United States",
+        },
+        {
+          id: "parcel",
+          alt: "Survey plan of a parcel adjacent to transmission infrastructure",
+          caption: "Parcel survey — screening land against its power position",
+        },
+      ],
+    },
+
+    siteSelection: {
+      eyebrow: "Site selection",
+      heading: "What makes a parcel worth buying",
+      lead:
+        "We screen sites in this order. A site that fails the first test is not a data center site, no matter how good the price is.",
+      items: [
+        {
+          title: "Available transmission capacity",
+          description:
+            "Not proximity to a power line — actual deliverable megawatts, with a utility willing to commit to them on a timeline. This single factor eliminates most candidate sites.",
+        },
+        {
+          title: "Interconnection timeline",
+          description:
+            "A queue position measured in years turns a good site into a bad investment. We check the study status before anyone signs anything.",
+        },
+        {
+          title: "Water and climate",
+          description:
+            "Cool climates cut cooling OPEX for the life of the asset. Water rights matter wherever evaporative or hybrid cooling is on the table.",
+        },
+        {
+          title: "Fiber and carriers",
+          description:
+            "Diverse routes and real capacity. Training workloads move data volumes that make a single provider a single point of failure.",
+        },
+        {
+          title: "Land, zoning and permits",
+          description:
+            "Correct zoning, buildable ground, room to expand, and a permitting authority that has done this before.",
+        },
+        {
+          title: "Tax and incentives",
+          description:
+            "Investment tax credits, sales tax exemptions on equipment and local abatements can move the returns more than a better price on the land.",
+        },
+      ],
+    },
+
+    team: {
+      eyebrow: "Who does the work",
+      heading: "A team that has built this before",
+      lead:
+        "Data center development is not one discipline. It's engineering, procurement, energy, construction, project finance and law, and it fails at the seams between them. We assemble the whole chain under one point of accountability.",
+      items: [
+        {
+          title: "Data center engineering",
+          description:
+            "Specialists with delivery experience on US data center projects, including facilities in Texas — electrical, mechanical, cooling and modular integration.",
+        },
+        {
+          title: "Supply chain",
+          description:
+            "Established international sourcing for the long-lead items that stall projects: transformers, switchgear, cooling plant, batteries and network hardware.",
+        },
+        {
+          title: "Energy and grid",
+          description:
+            "Interconnection strategy, utility negotiation, on-site generation and storage, and the tariff structures that determine whether the economics work.",
+        },
+        {
+          title: "Project finance",
+          description:
+            "Structuring the holding and project companies, modelling the returns and bringing in institutional capital alongside yours.",
+        },
+        {
+          title: "Legal and regulatory",
+          description:
+            "International corporate structuring, land and power contracts, offtake agreements and the regulatory process in the host jurisdiction.",
+        },
+        {
+          title: "Software and AI",
+          description:
+            "Our own discipline — the operations, monitoring and AI systems that run on top of the facility once it's live. See our AI engineering work for what that looks like.",
+        },
+      ],
+    },
+
+    geo: {
+      eyebrow: "Where we work",
+      heading: "Sites on four continents",
+      lead:
+        "Power is local. The right jurisdiction depends on what you're optimizing for — cheap electricity, speed to market, tax treatment or proximity to your customers.",
+      items: [
+        { region: "United States", note: "Texas and MISO — deep transmission capacity, 30% investment tax credit on integrated solar and storage" },
+        { region: "Northern Europe", note: "Cool climate, clean grids and in-city power positions for latency-sensitive inference" },
+        { region: "South and Southeast Asia", note: "Hydropower economics and sovereign AI programmes, with India as the logistics and equipment hub" },
+        { region: "Africa and Latin America", note: "Government-backed sovereign data center initiatives opening genuinely new markets" },
+      ],
+    },
+
+    faq: {
+      eyebrow: "Questions",
+      heading: "What people ask before the first call",
+      items: [
+        {
+          q: "What does a 10 MW data center cost?",
+          a: "There is no honest single number, and anyone who gives you one on a website is guessing. The cost is driven by land price, how much grid work the site needs, rack density and therefore cooling architecture, whether you integrate generation and storage, equipment lead times and local labour. We price it properly once we know the site — a bad site can cost more in grid works than the entire IT load.",
+        },
+        {
+          q: "How long does it take?",
+          a: "Modular deployment runs 3–6 months from a prepared site, against 24–36 months for conventional construction. The honest caveat is that securing land and a firm power position usually takes longer than building the facility, which is why we start the grid conversation first.",
+        },
+        {
+          q: "What do you need from me to start?",
+          a: "A conversation. Concretely: roughly what you want to invest, whether you want to own the asset or contract it out, whether you have a target geography or an existing site, and what your time horizon is. From there we can tell you fairly quickly whether the project makes sense.",
+        },
+        {
+          q: "Do I need a tenant before building?",
+          a: "No, but it changes the risk profile substantially. Build-to-suit against a signed offtake finances far more easily than speculative capacity. If you'd rather not carry the leasing risk, we structure it that way from the start.",
+        },
+        {
+          q: "Who owns the facility?",
+          a: "Whoever the structure says. In a turnkey build you own the land and the asset outright. In a joint venture, ownership splits according to what each side contributes — land, power position, capital or delivery. We set this out before any money moves.",
+        },
+        {
+          q: "Can you also supply the GPUs?",
+          a: "We build and deliver the facility, and we work with the supply chain for the compute hardware. Whether GPUs sit in the same contract depends on your model — some owners lease shell and power, others want the whole stack including the compute revenue.",
+        },
+        {
+          q: "Do you operate it after handover?",
+          a: "Optional. Some clients take the keys and run it themselves, others want us on a long-term operations contract. Since we also build the AI and automation software, we can take on the monitoring and operations layer as well.",
+        },
+      ],
+    },
+
+    finalCta: {
+      badge: "No obligation",
+      heading: "Thinking about a data center? Let's talk before you buy land.",
+      subtitle:
+        "A 30-minute call. Tell us the budget, the geography and the time horizon, and we'll tell you honestly whether it's worth building, what it would take, and where the money actually goes.",
+      primary: "Book a call",
+      secondary: "Write to us",
+      note: "We'll say so if we think your capital is better deployed elsewhere.",
+    },
+  },
+
   enterprise: {
     heroCta: "Book a discovery call",
     heroSecondary: "See pricing",
@@ -992,6 +1453,7 @@ export const en: Dictionary = {
       { label: "Automation", href: "/services/ai-automation" },
       { label: "Consulting", href: "/services/ai-training" },
       { label: "AI Platform", href: "/services/ai-workspace" },
+      { label: "Data Centers", href: "/data-centers" },
     ],
     companyLinks: [
       { label: "Case Studies", href: "/cases" },

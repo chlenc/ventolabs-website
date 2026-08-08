@@ -42,6 +42,7 @@ export const es: Dictionary = {
       { label: "Automatización", href: "/services/ai-automation" },
       { label: "Consultoría", href: "/services/ai-training" },
       { label: "Plataforma IA", href: "/services/ai-workspace" },
+      { label: "Centros de datos", href: "/data-centers" },
       { label: "Casos", href: "/cases" },
       { label: "Guías", href: "/blog" },
     ],
@@ -856,6 +857,466 @@ export const es: Dictionary = {
     },
   },
 
+  dataCenters: {
+    navLabel: "Centros de datos",
+    breadcrumb: "Centros de datos",
+    seo: {
+      title: "Desarrollo de centros de datos para IA — terreno, energía, construcción y operación",
+      description:
+        "Desarrollamos centros de datos para IA de principio a fin: elegir la configuración adecuada, asegurar terreno junto a capacidad de transmisión, la interconexión a la red, la construcción modular y la puesta en marcha. De 10 a 100+ MW.",
+    },
+
+    hero: {
+      eyebrow: "Infraestructura de IA",
+      title: "Centros de datos para IA, del terreno vacío a los megavatios en operación",
+      lede:
+        "Si tienes capital y estás mirando los centros de datos como activo, lo difícil nunca son los servidores: son la energía, el terreno y el tiempo. Te ayudamos a decidir qué construir, a encontrar y asegurar el sitio, a conectarlo a la red de transmisión, a construirlo por módulos y a entregártelo funcionando.",
+      ctaPrimary: "Reservar llamada",
+      ctaSecondary: "Ver el proceso",
+    },
+
+    stats: [
+      { value: "10–100 MW", label: "Tamaño típico de proyecto, por fases" },
+      { value: "3–6 meses", label: "Despliegue modular frente a 24–36 tradicionales" },
+      { value: "<1,3", label: "PUE objetivo con refrigeración híbrida" },
+      { value: "100 kW", label: "Por rack, densidad GPU con refrigeración líquida" },
+    ],
+
+    leadMagnet: {
+      badge: "Gratis · 30 minutos",
+      heading: "Reserva una llamada sobre tu centro de datos",
+      description:
+        "Cuéntanos el presupuesto, la geografía y el horizonte temporal. Te respondemos sin rodeos: qué compra de verdad ese capital en megavatios, cuánto tiempo llevaría y a dónde se va el dinero.",
+      bullets: [
+        "Una capacidad y una configuración realistas para tu presupuesto: cuántos MW, qué densidad, qué refrigeración",
+        "Las dos o tres geografías que vale la pena mirar, y por qué las demás no",
+        "Qué haría falta para asegurar una posición en la red en tu mercado objetivo, y cuánto tarda en realidad",
+        "Una lectura honesta de si el proyecto merece la pena siquiera",
+      ],
+      ctaLabel: "Reservar llamada",
+      ctaHref: "#book",
+      footnote: "Sin presentación ni discurso comercial. Si los números no cuadran, te lo decimos en la llamada.",
+    },
+
+    investor: {
+      eyebrow: "Para inversores y propietarios",
+      heading: "Tú pones el capital. Nosotros nos ocupamos de todo lo que hay entre ese capital y una instalación funcionando.",
+      lead:
+        "Casi todo el que quiere ser dueño de infraestructura de cómputo se atasca en el mismo punto: qué configuración se paga de verdad, dónde ponerla y quién responde cuando el estudio de red vuelve con 30 meses. Nosotros asumimos esa cadena entera. Abajo están las tres estructuras en las que solemos trabajar; la correcta depende de cuánto del activo quieras poseer y cuánto riesgo operativo quieras cargar.",
+      models: [
+        {
+          title: "Lo posees tú — construcción llave en mano",
+          description:
+            "Diseñamos y construimos la instalación según tu especificación y te entregamos las llaves. El terreno, el activo y la amortización son tuyos.",
+          points: [
+            "Un único responsable, desde la búsqueda del sitio hasta la puesta en marcha",
+            "Operación de CAPEX: el activo queda en tu balance",
+            "Especificación escrita alrededor de tu carga de trabajo, no un producto de catálogo",
+            "En EE. UU., integrar solar y almacenamiento puede dar derecho a un crédito fiscal a la inversión del 30%",
+          ],
+        },
+        {
+          title: "Build-to-suit para un inquilino",
+          description:
+            "Construimos contra un contrato de compra en firme —una empresa de IA, un operador cloud o una corporación—, de modo que la instalación ya está contratada antes de energizarse.",
+          points: [
+            "Ingresos asegurados antes de terminar la construcción",
+            "Contrato a largo plazo, flujo de caja previsible",
+            "La solvencia del inquilino refuerza la financiación del proyecto",
+            "Tú sigues siendo el propietario; nosotros podemos quedarnos como operador",
+          ],
+        },
+        {
+          title: "Joint venture",
+          description:
+            "Tú aportas terreno, posición de energía o capital; nosotros ponemos ingeniería, cadena de suministro y ejecución. Construimos y operamos juntos.",
+          points: [
+            "Funciona bien cuando ya controlas un sitio o una posición en la red",
+            "CAPEX compartido, upside compartido",
+            "Escala a varias instalaciones sobre una misma plataforma",
+            "Opción de vender capacidad de cómputo en lugar de solo alquilar espacio",
+          ],
+        },
+      ],
+    },
+
+    process: {
+      eyebrow: "Cómo funciona",
+      heading: "Siete pasos de una conversación a una instalación en marcha",
+      lead:
+        "Aquí no hay nada exótico. Es una cadena larga de trabajo poco vistoso en la que los errores caros ocurren al principio: comprar un terreno cuya cola de interconexión tiene seis años, o dimensionar la refrigeración para una densidad que los racks superarán en dieciocho meses.",
+      steps: [
+        {
+          title: "Decidir qué construir",
+          description:
+            "Antes de comprar terreno, dimensionamos el conjunto: capacidad, perfil de carga, densidad por rack, nivel de redundancia y cómo queda el coste total de propiedad a diez años.",
+          detail:
+            "Los clústeres de entrenamiento, las flotas de inferencia y el HPC corporativo piden edificios distintos. Equivocarse aquí es el error más caro disponible.",
+        },
+        {
+          title: "Encontrar el sitio",
+          description:
+            "Filtramos terrenos según los criterios que de verdad condicionan un centro de datos: primero la capacidad de transmisión disponible, después agua, fibra, zonificación, clima y régimen fiscal.",
+          detail:
+            "La mayoría de las parcelas que se ven perfectas en el mapa mueren en el estudio de interconexión. Lo comprobamos antes de que hagas una oferta.",
+        },
+        {
+          title: "Asegurar terreno y energía",
+          description:
+            "Compra o arrendamiento del suelo a largo plazo, más el papeleo que convierte los megavatios en algo real: acuerdos de interconexión, acuerdos de ampliación de instalaciones y capacidad de subestación.",
+          detail:
+            "Un sitio sin una posición de energía firmada es terreno agrícola con una buena historia.",
+        },
+        {
+          title: "Conectar a la red de transmisión",
+          description:
+            "Subestación, interconexión de alta tensión, transformadores y aparamenta: ingeniería, compras y coordinación con la compañía eléctrica, por fases si la carga crece de forma escalonada.",
+          detail:
+            "Suele ser lo que manda en el calendario, y por eso lo arrancamos en paralelo al diseño y no después.",
+        },
+        {
+          title: "Ingeniería y fabricación",
+          description:
+            "Diseño de detalle de energía, refrigeración y red, y después producción en fábrica de los módulos mientras avanzan en paralelo la obra civil y las cimentaciones.",
+          detail:
+            "Construir la caja y preparar el terreno a la vez es de donde sale casi todo el ahorro de calendario.",
+        },
+        {
+          title: "Instalar y poner en marcha",
+          description:
+            "Entrega, montaje, integración, pruebas y traspaso: energía activada, refrigeración equilibrada, red operativa y carga demostrada.",
+          detail:
+            "Los módulos preconfigurados llegan probados, así que la puesta en marcha es verificación y no descubrimiento.",
+        },
+        {
+          title: "Operar y monetizar",
+          description:
+            "Operarlo tú o que te lo operen: colocation, hosting, GPU como servicio, clústeres reservados o capacidad mayorista para un único gran operador.",
+          detail:
+            "Un megavatio vendido como electricidad vale una cosa. El mismo megavatio vendido como cómputo de IA vale bastante más.",
+        },
+      ],
+    },
+
+    anatomy: {
+      eyebrow: "Anatomía",
+      heading: "De qué está hecho realmente un centro de datos",
+      lead:
+        "Quitando el marketing, un centro de datos de IA son cuatro sistemas que hay que dimensionar juntos: algo que meta energía, algo que saque el calor, algo que mueva datos y una estructura que lo sostenga. Falla uno y los demás se desperdician.",
+      groups: [
+        {
+          title: "Energía",
+          description:
+            "La restricción que condiciona todo el proyecto. Todo lo que hay aguas arriba del rack, desde la línea de transmisión hasta el embarrado.",
+          items: [
+            { name: "Interconexión a la red", note: "Conexión de alta tensión a transmisión, típicamente de 138 kV en adelante" },
+            { name: "Subestación y aparamenta", note: "Reducción de tensión, protección y distribución a las salas" },
+            { name: "Transformadores", note: "Distribución en media y baja tensión dentro del módulo" },
+            { name: "BESS", note: "Almacenamiento en baterías para respaldo, balanceo de carga y recorte de picos" },
+            { name: "Generación en sitio", note: "Solar, gas o hidro según el emplazamiento: reduce la dependencia de la red y el OPEX" },
+          ],
+        },
+        {
+          title: "Refrigeración",
+          description:
+            "Los racks de IA trabajan a densidades que el aire por sí solo ya no aguanta. El diseño de refrigeración sigue al chip, no a la tradición.",
+          items: [
+            { name: "Racks refrigerados por líquido", note: "Circuitos direct-to-chip para cargas GPU y HPC de alta densidad" },
+            { name: "Unidad de distribución de refrigerante", note: "Aísla el circuito de la instalación del circuito del rack y controla la temperatura" },
+            { name: "Dry coolers", note: "Free cooling siempre que el clima lo permita: la refrigeración más barata es la que no enciendes" },
+            { name: "Tratamiento de aire frío", note: "Para las partes mixtas y de menor densidad de la carga" },
+            { name: "Recuperación de calor", note: "El ciclo Rankine orgánico devuelve el calor residual a electricidad o alimenta una red de calor urbana" },
+          ],
+        },
+        {
+          title: "Red y cómputo",
+          description: "La parte que todo el mundo se imagina, y la más fácil de cambiar después.",
+          items: [
+            { name: "Módulo de red", note: "Fibra y cobre precableados, pensados para topologías scale-out" },
+            { name: "Interconexión óptica", note: "La fotónica mueve más datos por vatio que el cobre a distancia" },
+            { name: "Conectividad de operadores", note: "Rutas diversas y capacidad suficiente para mover datos a escala de entrenamiento" },
+            { name: "Salas de cómputo", note: "Racks, PDU y cableado estructurado, configurados según la carga de trabajo" },
+          ],
+        },
+        {
+          title: "Sitio y estructura",
+          description: "La mitad menos vistosa del CAPEX, y la que decide el calendario.",
+          items: [
+            { name: "Terreno", note: "Suficiente, con la zonificación correcta y cerca de transmisión: las tres cosas rara vez coinciden" },
+            { name: "Cimentaciones y obra civil", note: "Losas, accesos, drenaje y perímetro de seguridad" },
+            { name: "Envolventes modulares", note: "Estructuras fabricadas en planta que llegan probadas en vez de montarse en obra" },
+            { name: "Agua", note: "Pozos o suministro municipal para esquemas de refrigeración evaporativa e híbrida" },
+            { name: "Seguridad e incendios", note: "Control de acceso físico, detección y extinción" },
+          ],
+        },
+      ],
+    },
+
+    modular: {
+      eyebrow: "Por qué modular",
+      heading: "Los mismos megavatios, alrededor de año y medio antes",
+      lead:
+        "La construcción tradicional de centros de datos se diseñó para un mercado en el que la demanda era previsible y se podía planificar a tres años vista. La demanda de IA no se comporta así. La construcción modular lleva la mayor parte de la obra a fábrica y la ejecuta en paralelo con la preparación del terreno.",
+      columns: { criterion: "", traditional: "Construcción tradicional", modular: "Construcción modular" },
+      rows: [
+        { criterion: "Tiempo hasta el primer megavatio", traditional: "24–36 meses", modular: "3–6 meses" },
+        { criterion: "CAPEX", traditional: "Sube un 30–50% por materiales y mano de obra", modular: "20–30% más bajo gracias a la producción en fábrica" },
+        { criterion: "Huella de terreno", traditional: "700+ acres por gigavatio", modular: "Distribuciones densas, verticales y apiladas" },
+        { criterion: "Escalado", traditional: "Fijo desde el diseño, caro de ampliar", modular: "Por fases, de 10 a 100+ MW" },
+        { criterion: "Preparación para IA", traditional: "Requiere reforma para densidad GPU", modular: "Refrigeración líquida prevista desde el inicio" },
+        { criterion: "Renovables", traditional: "Añadidas después, si acaso", modular: "Solar, almacenamiento y recuperación de calor integrados" },
+        { criterion: "Cadena de suministro", traditional: "Contratistas locales, precios locales", modular: "Abastecimiento internacional consolidado" },
+      ],
+      note:
+        "Lo modular no es automáticamente la respuesta correcta. Para campus muy grandes de un solo inquilino sobre terreno barato, la construcción convencional todavía puede ganar. Te decimos en qué caso estás antes de que comprometas capital.",
+    },
+
+    projects: {
+      eyebrow: "Sitios y proyectos",
+      heading: "En qué estamos trabajando",
+      lead:
+        "Una selección representativa de los sitios de nuestro pipeline: uno en due diligence avanzada y tres en evaluación. Dan una idea de cómo es en la práctica un sitio viable para un centro de datos: primero la posición de energía, todo lo demás después.",
+      disclaimer:
+        "Los nombres de las contrapartes, las direcciones exactas y las condiciones comerciales se omiten: estos materiales están cubiertos por acuerdos de confidencialidad. El estado refleja dónde se encuentra hoy cada sitio, no una declaración de propiedad.",
+      specsLabel: "Parámetros clave",
+      items: [
+        {
+          id: "east-texas",
+          status: "En due diligence",
+          title: "Sitio de 187 acres, 70 MW asegurados",
+          location: "Este de Texas, Estados Unidos",
+          description:
+            "Una parcela grande con subestación privada existente e interconexión de alta tensión a la red en el propio sitio. La eléctrica regional de transmisión ha aprobado una ampliación de instalaciones de 70 MW, entregada en dos fases a medida que crece la subestación. El gas natural pasa a pocas millas, hay cinco pozos de agua en la propiedad y la fibra se está instalando ahora.",
+          alt: "Vista aérea de un sitio de 187 acres para desarrollo eléctrico y de centro de datos",
+          tags: ["Energía asegurada", "Gas cercano", "Agua en el sitio", "Fibra en curso"],
+          specs: [
+            { k: "Superficie", v: "~187 acres" },
+            { k: "Energía", v: "Ampliación de 70 MW aprobada, por fases" },
+            { k: "Interconexión", v: "138 kV, subestación en el sitio" },
+            { k: "Agua", v: "5 pozos, ≥46.000 gal/día" },
+            { k: "Conectividad", v: "400 Gbps en instalación, 1 Tbps confirmado" },
+          ],
+        },
+        {
+          id: "west-texas",
+          status: "En evaluación",
+          title: "Sitio de 105 MW con potencia disponible",
+          location: "Corredor energético del oeste de Texas, Estados Unidos",
+          description:
+            "Un sitio listo para desarrollo, con conexión directa a la red y con subestación, aparamenta e infraestructura de transformación ya instaladas. Está estructurado para reducción de tensión y despliegue en contenedores, lo que permite ir poniendo megavatios en marcha por incrementos en vez de todos a la vez.",
+          alt: "Transformador de alta tensión y equipos de subestación en un sitio del oeste de Texas",
+          tags: ["Conectado a la red", "Subestación en el sitio", "Contenerizado"],
+          specs: [
+            { k: "Capacidad indicativa", v: "~105 MW" },
+            { k: "Infraestructura", v: "Subestación, aparamenta y transformadores instalados" },
+            { k: "Estructura", v: "Arrendamiento de suelo a largo plazo en negociación" },
+          ],
+        },
+        {
+          id: "midwest",
+          status: "En evaluación",
+          title: "Portafolio de 41 MW en operación, +20 MW aprobados",
+          location: "Medio Oeste de Estados Unidos, red MISO",
+          description:
+            "Un portafolio multi-sitio plenamente energizado —tres instalaciones a menos de una hora entre sí— con un equipo de operaciones ya establecido y un historial por encima del 99% de disponibilidad. La capacidad de subestación para otros 20 MW ya está aprobada, lo que lo convierte en candidato a reconvertirse a cargas de IA y HPC.",
+          alt: "Filas de contenedores modulares de centro de datos en un sitio en operación",
+          tags: ["Operativo y energizado", "Multi-sitio", "Ampliación aprobada"],
+          specs: [
+            { k: "Capacidad en operación", v: "41 MW" },
+            { k: "Ampliación", v: "+20 MW, aprobados en subestación" },
+            { k: "Historial de disponibilidad", v: ">99%" },
+            { k: "Operaciones", v: "Equipo establecido" },
+          ],
+        },
+        {
+          id: "stockholm",
+          status: "En evaluación",
+          title: "Conversión de alta densidad de 10 MW",
+          location: "Estocolmo, Suecia",
+          description:
+            "Conversión de un edificio industrial existente con estructura de acero en una instalación de cómputo vertical de alta densidad, orientada a cargas de inferencia y fine-tuning en un mercado eléctrico urbano con la oferta restringida. La zonificación industrial y las licencias de obra ya están en regla, lo que elimina la parte más lenta de una construcción europea.",
+          alt: "Edificio industrial destinado a convertirse en una instalación de cómputo de alta densidad",
+          tags: ["Conversión de edificio", "Energía urbana", "Licencias en regla"],
+          specs: [
+            { k: "Carga TI crítica", v: "10 MW, por fases desde 2 MW" },
+            { k: "Posición de energía del sitio", v: "15 MW" },
+            { k: "Permisos", v: "Zonificación y licencias de obra aseguradas" },
+          ],
+        },
+      ],
+    },
+
+    gallery: {
+      eyebrow: "Sobre el terreno",
+      heading: "La infraestructura detrás de los megavatios",
+      lead:
+        "Fotografías de due diligence de sitios y de despliegues en operación. Así es como se ve realmente la mayor parte del trabajo: subestaciones, salas de aparamenta y cajas de acero sobre grava, mucho antes de que nada se parezca a una sala de servidores.",
+      items: [
+        {
+          id: "substation",
+          alt: "Subestación de 138 kV con torre de transmisión en un sitio de centro de datos",
+          caption: "Interconexión de 138 kV y subestación privada en el sitio del este de Texas",
+        },
+        {
+          id: "transmission",
+          alt: "Torre de transmisión de alta tensión alimentando una subestación privada",
+          caption: "Acometida de transmisión: la restricción alrededor de la que realmente se construye cada proyecto",
+        },
+        {
+          id: "switchgear",
+          alt: "Sala interior de aparamenta y distribución eléctrica",
+          caption: "Sala de aparamenta y distribución en una instalación en operación",
+        },
+        {
+          id: "modular",
+          alt: "Contenedores modulares de centro de datos desplegados en un sitio preparado",
+          caption: "Unidades modulares desplegadas sobre una losa preparada, Medio Oeste de Estados Unidos",
+        },
+        {
+          id: "parcel",
+          alt: "Plano topográfico de una parcela contigua a infraestructura de transmisión",
+          caption: "Levantamiento de la parcela: filtrar terreno por su posición de energía",
+        },
+      ],
+    },
+
+    siteSelection: {
+      eyebrow: "Selección de sitio",
+      heading: "Qué hace que una parcela merezca la pena",
+      lead:
+        "Filtramos los sitios en este orden. Un sitio que falla la primera prueba no es un sitio para centro de datos, por muy buen precio que tenga.",
+      items: [
+        {
+          title: "Capacidad de transmisión disponible",
+          description:
+            "No cercanía a una línea eléctrica: megavatios realmente entregables, con una compañía dispuesta a comprometerlos en un plazo concreto. Este único factor elimina la mayoría de los sitios candidatos.",
+        },
+        {
+          title: "Plazo de interconexión",
+          description:
+            "Una posición en cola medida en años convierte un buen sitio en una mala inversión. Comprobamos el estado del estudio antes de que nadie firme nada.",
+        },
+        {
+          title: "Agua y clima",
+          description:
+            "Los climas fríos reducen el OPEX de refrigeración durante toda la vida del activo. Los derechos de agua importan siempre que haya refrigeración evaporativa o híbrida sobre la mesa.",
+        },
+        {
+          title: "Fibra y operadores",
+          description:
+            "Rutas diversas y capacidad real. Las cargas de entrenamiento mueven volúmenes de datos que convierten a un único proveedor en un único punto de fallo.",
+        },
+        {
+          title: "Terreno, zonificación y permisos",
+          description:
+            "Zonificación correcta, suelo edificable, espacio para crecer y una autoridad de permisos que ya haya hecho esto antes.",
+        },
+        {
+          title: "Fiscalidad e incentivos",
+          description:
+            "Los créditos fiscales a la inversión, las exenciones de impuestos sobre equipos y las bonificaciones locales pueden mover el retorno más que un mejor precio del terreno.",
+        },
+      ],
+    },
+
+    team: {
+      eyebrow: "Quién hace el trabajo",
+      heading: "Un equipo que ya ha construido esto antes",
+      lead:
+        "Desarrollar un centro de datos no es una sola disciplina. Es ingeniería, compras, energía, construcción, project finance y derecho, y falla en las costuras entre ellas. Nosotros juntamos toda la cadena bajo un único responsable.",
+      items: [
+        {
+          title: "Ingeniería de centros de datos",
+          description:
+            "Especialistas con experiencia de ejecución en proyectos de centros de datos en EE. UU., incluidas instalaciones en Texas: eléctrica, mecánica, refrigeración e integración modular.",
+        },
+        {
+          title: "Cadena de suministro",
+          description:
+            "Abastecimiento internacional consolidado para los equipos de plazo largo que atascan los proyectos: transformadores, aparamenta, plantas de refrigeración, baterías y equipamiento de red.",
+        },
+        {
+          title: "Energía y red",
+          description:
+            "Estrategia de interconexión, negociación con la compañía eléctrica, generación y almacenamiento en sitio, y las estructuras tarifarias que deciden si los números salen.",
+        },
+        {
+          title: "Project finance",
+          description:
+            "Estructuración de la sociedad holding y las sociedades de proyecto, modelización de los retornos e incorporación de capital institucional junto al tuyo.",
+        },
+        {
+          title: "Legal y regulatorio",
+          description:
+            "Estructuración corporativa internacional, contratos de terreno y energía, acuerdos de offtake y el proceso regulatorio en la jurisdicción de destino.",
+        },
+        {
+          title: "Software e IA",
+          description:
+            "Nuestra propia disciplina: los sistemas de operación, monitorización e IA que corren sobre la instalación una vez está viva. Mira nuestro trabajo de ingeniería de IA para hacerte una idea.",
+        },
+      ],
+    },
+
+    geo: {
+      eyebrow: "Dónde trabajamos",
+      heading: "Sitios en cuatro continentes",
+      lead:
+        "La energía es local. La jurisdicción correcta depende de qué estés optimizando: electricidad barata, velocidad de salida al mercado, tratamiento fiscal o cercanía a tus clientes.",
+      items: [
+        { region: "Estados Unidos", note: "Texas y MISO: mucha capacidad de transmisión y un 30% de crédito fiscal a la inversión sobre solar y almacenamiento integrados" },
+        { region: "Norte de Europa", note: "Clima frío, redes limpias y posiciones de energía urbana para inferencia sensible a la latencia" },
+        { region: "Sur y Sudeste Asiático", note: "Economía hidroeléctrica y programas de IA soberana, con India como centro logístico y de equipamiento" },
+        { region: "África y América Latina", note: "Iniciativas de centros de datos soberanos con respaldo estatal que abren mercados genuinamente nuevos" },
+      ],
+    },
+
+    faq: {
+      eyebrow: "Preguntas",
+      heading: "Lo que la gente pregunta antes de la primera llamada",
+      items: [
+        {
+          q: "¿Cuánto cuesta un centro de datos de 10 MW?",
+          a: "No hay una sola cifra honesta, y quien te dé una en una web está adivinando. El coste depende del precio del terreno, de cuánta obra de red necesita el sitio, de la densidad por rack y por tanto de la arquitectura de refrigeración, de si integras generación y almacenamiento, de los plazos de entrega de los equipos y de la mano de obra local. Lo presupuestamos en serio cuando conocemos el sitio: un mal sitio puede costar más en obras de red que toda la carga TI.",
+        },
+        {
+          q: "¿Cuánto tiempo lleva?",
+          a: "Un despliegue modular tarda 3–6 meses desde un sitio preparado, frente a 24–36 meses de la construcción convencional. La advertencia honesta es que asegurar el terreno y una posición de energía firme suele llevar más que construir la instalación, y por eso empezamos por la conversación con la red.",
+        },
+        {
+          q: "¿Qué necesitáis de mí para empezar?",
+          a: "Una conversación. En concreto: cuánto quieres invertir aproximadamente, si quieres ser dueño del activo o contratarlo fuera, si tienes una geografía objetivo o un sitio ya identificado, y cuál es tu horizonte temporal. A partir de ahí podemos decirte bastante rápido si el proyecto tiene sentido.",
+        },
+        {
+          q: "¿Necesito un inquilino antes de construir?",
+          a: "No, pero cambia el perfil de riesgo de forma sustancial. Un build-to-suit contra un contrato de compra firmado se financia mucho más fácil que la capacidad especulativa. Si prefieres no cargar con el riesgo de comercialización, lo estructuramos así desde el principio.",
+        },
+        {
+          q: "¿De quién es la instalación?",
+          a: "De quien diga la estructura. En una construcción llave en mano, el terreno y el activo son tuyos por completo. En una joint venture, la propiedad se reparte según lo que aporta cada parte: terreno, posición de energía, capital o ejecución. Esto se deja por escrito antes de que se mueva ningún dinero.",
+        },
+        {
+          q: "¿Podéis suministrar también las GPU?",
+          a: "Nosotros construimos y entregamos la instalación, y trabajamos con la cadena de suministro del hardware de cómputo. Que las GPU entren en el mismo contrato depende de tu modelo: algunos propietarios alquilan solo el edificio y la energía, otros quieren toda la pila, ingresos por cómputo incluidos.",
+        },
+        {
+          q: "¿La operáis vosotros después de la entrega?",
+          a: "Opcional. Algunos clientes toman las llaves y la operan ellos mismos; otros nos quieren en un contrato de operación a largo plazo. Como también construimos el software de IA y automatización, podemos asumir además la capa de monitorización y operaciones.",
+        },
+      ],
+    },
+
+    finalCta: {
+      badge: "Sin compromiso",
+      heading: "¿Le estás dando vueltas a un centro de datos? Hablemos antes de que compres terreno.",
+      subtitle:
+        "Una llamada de 30 minutos. Cuéntanos el presupuesto, la geografía y el horizonte temporal, y te diremos con honestidad si merece la pena construir, qué haría falta y a dónde va realmente el dinero.",
+      primary: "Reservar llamada",
+      secondary: "Escríbenos",
+      note: "Si creemos que tu capital rinde más en otra parte, te lo diremos.",
+    },
+  },
+
   enterprise: {
     heroCta: "Reservar llamada de descubrimiento",
     heroSecondary: "Ver precios",
@@ -992,6 +1453,7 @@ export const es: Dictionary = {
       { label: "Automatización", href: "/services/ai-automation" },
       { label: "Consultoría", href: "/services/ai-training" },
       { label: "Plataforma IA", href: "/services/ai-workspace" },
+      { label: "Centros de datos", href: "/data-centers" },
     ],
     companyLinks: [
       { label: "Casos de éxito", href: "/cases" },

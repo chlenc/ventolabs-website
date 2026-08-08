@@ -25,8 +25,12 @@ export const breadcrumbHomeLabels: Record<Locale, string> = {
  * Pages that funnel to a single conversion goal (call or email) and must
  * suppress all competing CTAs, popups, and floating widgets. Match against
  * `usePathname()` output (already locale-prefixed).
+ *
+ * /data-centers is here for audience fit as much as funnel hygiene: the global
+ * offer popups pitch a free SMB automation pilot, which is off-message for
+ * investors evaluating $50M+ infrastructure. The page carries its own lead form.
  */
 export function isFocusFunnelPath(pathname: string | null | undefined): boolean {
   if (!pathname) return false;
-  return /\/cases\/(erp-agent|bankruptcy-agent)\/?$/.test(pathname);
+  return /\/(data-centers|cases\/(erp-agent|bankruptcy-agent))\/?$/.test(pathname);
 }
