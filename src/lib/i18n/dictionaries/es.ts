@@ -873,6 +873,8 @@ export const es: Dictionary = {
         "Si tienes capital y estás mirando los centros de datos como activo, lo difícil nunca son los servidores: son la energía, el terreno y el tiempo. Te ayudamos a decidir qué construir, a encontrar y asegurar el sitio, a conectarlo a la red de transmisión, a construirlo por módulos y a entregártelo funcionando.",
       ctaPrimary: "Reservar llamada",
       ctaSecondary: "Ver el proceso",
+      imageAlt:
+        "Filas de unidades modulares de centro de datos sobre un sitio preparado, con una subestación privada y una línea de transmisión de alta tensión detrás",
     },
 
     stats: [
@@ -1003,8 +1005,15 @@ export const es: Dictionary = {
       heading: "De qué está hecho realmente un centro de datos",
       lead:
         "Quitando el marketing, un centro de datos de IA son cuatro sistemas que hay que dimensionar juntos: algo que meta energía, algo que saque el calor, algo que mueva datos y una estructura que lo sostenga. Falla uno y los demás se desperdician.",
+      cutawayAlt:
+        "Corte despiezado de un centro de datos modular de tres niveles que muestra la planta eléctrica, la planta de racks y la planta de refrigeración encima",
+      cutawayCaption:
+        "Una instalación, desmontada por partes: distribución eléctrica abajo, cómputo en el medio y planta de refrigeración arriba. Cada nivel es un conjunto de módulos fabricados en planta, no una sala hormigonada en obra.",
       groups: [
         {
+          id: "power",
+          imageAlt:
+            "Módulo eléctrico sobre skid con un transformador, armarios de aparamenta y embarrados de cobre en un bastidor de acero galvanizado",
           title: "Energía",
           description:
             "La restricción que condiciona todo el proyecto. Todo lo que hay aguas arriba del rack, desde la línea de transmisión hasta el embarrado.",
@@ -1017,6 +1026,9 @@ export const es: Dictionary = {
           ],
         },
         {
+          id: "cooling",
+          imageAlt:
+            "Módulo de distribución de refrigeración con intercambiadores de calor de placas, bombas redundantes y tuberías de acero inoxidable aisladas",
           title: "Refrigeración",
           description:
             "Los racks de IA trabajan a densidades que el aire por sí solo ya no aguanta. El diseño de refrigeración sigue al chip, no a la tradición.",
@@ -1029,6 +1041,9 @@ export const es: Dictionary = {
           ],
         },
         {
+          id: "compute",
+          imageAlt:
+            "Módulo de cómputo refrigerado por líquido: racks de servidores GPU con colectores de refrigerante y mangueras de desconexión rápida",
           title: "Red y cómputo",
           description: "La parte que todo el mundo se imagina, y la más fácil de cambiar después.",
           items: [
@@ -1039,6 +1054,9 @@ export const es: Dictionary = {
           ],
         },
         {
+          id: "structure",
+          imageAlt:
+            "Envolvente prefabricada de centro de datos con una puerta abierta, que muestra el suelo técnico y las bandejas de cables aéreas del interior",
           title: "Sitio y estructura",
           description: "La mitad menos vistosa del CAPEX, y la que decide el calendario.",
           items: [
@@ -1069,6 +1087,49 @@ export const es: Dictionary = {
       ],
       note:
         "Lo modular no es automáticamente la respuesta correcta. Para campus muy grandes de un solo inquilino sobre terreno barato, la construcción convencional todavía puede ganar. Te decimos en qué caso estás antes de que comprometas capital.",
+    },
+
+    construction: {
+      eyebrow: "Cómo se construye",
+      heading: "Cuatro etapas del terreno desnudo a la carga en marcha",
+      lead:
+        "Así es como se ve de verdad el calendario en obra. El truco no es trabajar más rápido: es que los módulos se están fabricando en planta todo el tiempo que se prepara el terreno, así que dos de los trabajos más largos ocurren a la vez en lugar de uno después del otro.",
+      note:
+        "La duración de cada etapa depende del sitio: el desmonte y las cimentaciones avanzan rápido en terreno llano y seco, y despacio en cualquier otro. Los trabajos de red van en paralelo de principio a fin y suelen ser los que fijan la fecha de finalización.",
+      steps: [
+        {
+          id: "site",
+          label: "Etapa 1",
+          title: "Despejar y nivelar el terreno",
+          description:
+            "Accesos, drenaje, topografía, compactación. Poco vistoso y fácil de subestimar: aquí es donde una parcela barata empieza a costar dinero.",
+          alt: "Sitio de centro de datos nivelado y estaqueado, con una línea de transmisión de alta tensión cruzando por detrás",
+        },
+        {
+          id: "foundations",
+          label: "Etapa 2",
+          title: "Hormigonar cimentaciones y llevar los servicios",
+          description:
+            "Losas de hormigón según la retícula de módulos, conductos y puesta a tierra embebidos, agua y fibra traídas hasta el límite de la parcela. La fabricación de los módulos ya está en marcha en la planta.",
+          alt: "Losas de cimentación de hormigón recién vertidas en filas, con armadura y esperas de conducto eléctrico",
+        },
+        {
+          id: "craning",
+          label: "Etapa 3",
+          title: "Colocar los módulos",
+          description:
+            "Los módulos llegan probados y se izan con grúa sobre sus losas; después se acoplan: energía, circuitos de refrigeración, red. Una fila se monta en días y no en meses.",
+          alt: "Grúa móvil bajando un módulo prefabricado de centro de datos sobre su losa de hormigón",
+        },
+        {
+          id: "live",
+          label: "Etapa 4",
+          title: "Energizar y demostrar la carga",
+          description:
+            "Puesta en marcha, refrigeración equilibrada, redundancia probada, carga escalada. Como los módulos se probaron en planta, esta etapa es verificación y no descubrimiento.",
+          alt: "Filas de unidades modulares de centro de datos energizadas al atardecer, con la subestación iluminada al lado",
+        },
+      ],
     },
 
     projects: {

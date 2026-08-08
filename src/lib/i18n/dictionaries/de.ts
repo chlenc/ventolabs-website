@@ -873,6 +873,8 @@ export const de: Dictionary = {
         "Wenn Sie Kapital haben und Rechenzentren als Asset betrachten: Das Schwierige sind nie die Server — es sind Strom, Grundstück und Zeit. Wir helfen Ihnen zu entscheiden, was gebaut wird, finden und sichern den Standort, bringen ihn ans Übertragungsnetz, bauen modular und übergeben ihn laufend.",
       ctaPrimary: "Termin buchen",
       ctaSecondary: "Ablauf ansehen",
+      imageAlt:
+        "Reihen modularer Rechenzentrumsmodule auf einem vorbereiteten Gelände, dahinter ein privates Umspannwerk und eine Hochspannungsleitung",
     },
 
     stats: [
@@ -1003,8 +1005,15 @@ export const de: Dictionary = {
       heading: "Woraus ein Rechenzentrum tatsächlich besteht",
       lead:
         "Zieht man das Marketing ab, ist ein KI-Rechenzentrum vier Systeme, die zusammen dimensioniert werden müssen: etwas, das Strom hereinbringt, etwas, das Wärme herausbringt, etwas, das Daten bewegt, und eine Struktur, die das alles hält. Eines davon falsch, und die anderen sind verschwendet.",
+      cutawayAlt:
+        "Explosionsschnitt eines dreigeschossigen modularen Rechenzentrums mit der Stromebene, der Rack-Ebene und der Kühlanlage darüber",
+      cutawayCaption:
+        "Eine Anlage, auseinandergezogen: Stromverteilung unten, Compute in der Mitte, Kühlanlage obenauf. Jede Ebene besteht aus Modulen, die im Werk gebaut werden, nicht aus einem vor Ort gegossenen Raum.",
       groups: [
         {
+          id: "power",
+          imageAlt:
+            "Skid-montiertes Strommodul mit Transformator, Schaltschränken und Kupfer-Stromschienen in einem verzinkten Stahlrahmen",
           title: "Strom",
           description:
             "Die begrenzende Größe in jedem Projekt. Alles vor dem Rack, von der Übertragungsleitung bis zur Stromschiene.",
@@ -1017,6 +1026,9 @@ export const de: Dictionary = {
           ],
         },
         {
+          id: "cooling",
+          imageAlt:
+            "Kühlverteilmodul mit Plattenwärmetauschern, redundanten Pumpen und isolierten Edelstahlleitungen",
           title: "Kühlung",
           description:
             "KI-Racks laufen bei Dichten, die Luft allein nicht mehr bewältigt. Das Kühlkonzept folgt dem Chip, nicht der Tradition.",
@@ -1029,6 +1041,9 @@ export const de: Dictionary = {
           ],
         },
         {
+          id: "compute",
+          imageAlt:
+            "Flüssigkeitsgekühltes Compute-Modul: Racks mit GPU-Servern, Kühlmittelverteilern und Schnellkupplungsschläuchen",
           title: "Netzwerk und Compute",
           description: "Der Teil, den sich alle vorstellen — und der Teil, der sich am leichtesten nachträglich ändern lässt.",
           items: [
@@ -1039,6 +1054,9 @@ export const de: Dictionary = {
           ],
         },
         {
+          id: "structure",
+          imageAlt:
+            "Vorgefertigte Rechenzentrums-Gebäudehülle mit geöffneter Tür, im Inneren Doppelboden und Kabeltrassen unter der Decke",
           title: "Standort und Struktur",
           description: "Die unglamouröse Hälfte der CAPEX — und die Hälfte, die den Zeitplan bestimmt.",
           items: [
@@ -1069,6 +1087,49 @@ export const de: Dictionary = {
       ],
       note:
         "Modular ist nicht automatisch die richtige Antwort. Für sehr große Single-Tenant-Campus auf günstigem Land kann konventioneller Bau weiterhin gewinnen. Wir sagen Ihnen, welcher Fall vorliegt, bevor Sie Kapital binden.",
+    },
+
+    construction: {
+      eyebrow: "Wie gebaut wird",
+      heading: "Vier Phasen von der bloßen Fläche zur laufenden Last",
+      lead:
+        "So sieht der Zeitplan auf der Baustelle tatsächlich aus. Der Trick ist nicht, schneller zu arbeiten — sondern dass die Module die ganze Zeit im Werk entstehen, während der Boden vorbereitet wird. So laufen zwei der längsten Arbeiten gleichzeitig statt hintereinander.",
+      note:
+        "Die Dauer der Phasen hängt vom Standort ab: Planum und Fundamente gehen auf flachem, trockenem Boden schnell und auf allem anderen langsam. Die Netzanschlussarbeiten laufen durchgehend parallel und bestimmen meist den Fertigstellungstermin.",
+      steps: [
+        {
+          id: "site",
+          label: "Phase 1",
+          title: "Gelände räumen und planieren",
+          description:
+            "Zufahrten, Entwässerung, Vermessung, Verdichtung. Unglamourös und leicht unterschätzt — hier fängt eine günstige Parzelle an, Geld zu kosten.",
+          alt: "Planiertes und abgestecktes Rechenzentrumsgelände, dahinter eine querende Hochspannungsleitung",
+        },
+        {
+          id: "foundations",
+          label: "Phase 2",
+          title: "Fundamente gießen und Medien heranführen",
+          description:
+            "Betonplatten im Modulraster, Leerrohre und Erdung eingegossen, Wasser und Glasfaser bis an die Grundstücksgrenze gebracht. Die Modulfertigung läuft im Werk zu diesem Zeitpunkt bereits.",
+          alt: "Frisch gegossene Betonfundamentplatten in Reihen mit Bewehrung und Elektro-Leerrohrstutzen",
+        },
+        {
+          id: "craning",
+          label: "Phase 3",
+          title: "Module setzen",
+          description:
+            "Die Module kommen getestet an, werden auf ihre Bodenplatten gekrant und dann gekoppelt: Strom, Kühlkreisläufe, Netzwerk. Eine Reihe steht in Tagen statt in Monaten.",
+          alt: "Mobilkran, der ein vorgefertigtes Rechenzentrumsmodul auf seine Betonplatte absetzt",
+        },
+        {
+          id: "live",
+          label: "Phase 4",
+          title: "Unter Spannung setzen und Last nachweisen",
+          description:
+            "Inbetriebnahme, Kühlung austariert, Redundanz getestet, Last hochgefahren. Weil die Module im Werk getestet wurden, ist diese Phase Verifikation statt Entdeckung.",
+          alt: "Unter Spannung stehende Reihen modularer Rechenzentrumsmodule in der Abenddämmerung, daneben das beleuchtete Umspannwerk",
+        },
+      ],
     },
 
     projects: {

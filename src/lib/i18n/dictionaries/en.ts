@@ -873,6 +873,8 @@ export const en: Dictionary = {
         "If you have capital and you're looking at data centers as an asset, the hard part is never the servers — it's power, land and time. We help you decide what to build, find and secure the site, get it connected to transmission, build it modularly and hand it over running.",
       ctaPrimary: "Book a call",
       ctaSecondary: "See the process",
+      imageAlt:
+        "Rows of modular data center units on a prepared site, with a private substation and high-voltage transmission line behind",
     },
 
     stats: [
@@ -1003,8 +1005,15 @@ export const en: Dictionary = {
       heading: "What a data center is actually made of",
       lead:
         "Strip away the marketing and an AI data center is four systems that all have to be sized together: something to bring power in, something to take heat out, something to move data, and a structure to hold it. Get one wrong and the others are wasted.",
+      cutawayAlt:
+        "Exploded cutaway of a three-level modular data center showing the power floor, the rack floor and the cooling plant above it",
+      cutawayCaption:
+        "A facility, pulled apart: electrical distribution at the bottom, compute in the middle, cooling plant on top. Each level is a set of modules built in a factory, not a room poured on site.",
       groups: [
         {
+          id: "power",
+          imageAlt:
+            "Skid-mounted power module with a transformer, switchgear cabinets and copper busbars in a galvanized steel frame",
           title: "Power",
           description:
             "The gating constraint on every project. Everything upstream of the rack, from the transmission line to the busbar.",
@@ -1017,6 +1026,9 @@ export const en: Dictionary = {
           ],
         },
         {
+          id: "cooling",
+          imageAlt:
+            "Cooling distribution module with plate heat exchangers, redundant pumps and insulated stainless pipework",
           title: "Cooling",
           description:
             "AI racks run at densities that air alone can no longer handle. Cooling design follows the chip, not tradition.",
@@ -1029,6 +1041,9 @@ export const en: Dictionary = {
           ],
         },
         {
+          id: "compute",
+          imageAlt:
+            "Liquid-cooled compute module: racks of GPU servers with coolant manifolds and quick-disconnect hoses",
           title: "Network and compute",
           description: "The part everyone pictures — and the part that is easiest to change later.",
           items: [
@@ -1039,6 +1054,9 @@ export const en: Dictionary = {
           ],
         },
         {
+          id: "structure",
+          imageAlt:
+            "Prefabricated data center enclosure with one door open, showing the raised floor and overhead cable trays inside",
           title: "Site and structure",
           description: "The unglamorous half of the CAPEX, and the half that determines the schedule.",
           items: [
@@ -1069,6 +1087,49 @@ export const en: Dictionary = {
       ],
       note:
         "Modular is not automatically the right answer. For very large single-tenant campuses on cheap land, conventional construction can still win. We tell you which case you're in before you commit capital.",
+    },
+
+    construction: {
+      eyebrow: "How it gets built",
+      heading: "Four stages from bare ground to running load",
+      lead:
+        "This is what the schedule actually looks like on site. The trick isn't working faster — it's that the modules are being built in a factory the whole time the ground is being prepared, so two of the longest jobs happen at once instead of one after the other.",
+      note:
+        "Stage durations depend on the site: grading and foundations move fast on flat, dry ground and slowly on anything else. Grid works run in parallel throughout and are usually what sets the finish date.",
+      steps: [
+        {
+          id: "site",
+          label: "Stage 1",
+          title: "Clear and grade the site",
+          description:
+            "Access roads, drainage, survey, compaction. Unglamorous and easy to underestimate — this is where a cheap parcel starts costing money.",
+          alt: "Graded and staked data center site with a high-voltage transmission line crossing behind it",
+        },
+        {
+          id: "foundations",
+          label: "Stage 2",
+          title: "Pour foundations and pull services",
+          description:
+            "Concrete pads in the module grid, conduit and earthing cast in, water and fiber brought to the boundary. Module fabrication is already underway in the factory.",
+          alt: "Freshly poured concrete foundation pads in rows with rebar and electrical conduit stubs",
+        },
+        {
+          id: "craning",
+          label: "Stage 3",
+          title: "Set the modules",
+          description:
+            "Modules arrive tested and are craned onto their pads, then coupled: power, cooling loops, network. A row goes down in days rather than months.",
+          alt: "Mobile crane lowering a prefabricated data center module onto its concrete pad",
+        },
+        {
+          id: "live",
+          label: "Stage 4",
+          title: "Energize and prove the load",
+          description:
+            "Commissioning, cooling balanced, redundancy tested, load ramped. Because the modules were tested in the factory, this stage is verification rather than discovery.",
+          alt: "Energized rows of modular data center units at dusk with the substation lit alongside",
+        },
+      ],
     },
 
     projects: {
