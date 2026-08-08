@@ -5,7 +5,12 @@ import { FaqSection } from "@/components/FaqSection";
 import { LeadForm } from "@/components/LeadForm";
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
-import type { DataCenterProjectId, DataCenterShotId } from "@/lib/i18n/types";
+import type {
+  DataCenterBuildStepId,
+  DataCenterProjectId,
+  DataCenterShotId,
+  DataCenterSystemId,
+} from "@/lib/i18n/types";
 import { site } from "@/lib/site";
 import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 
@@ -24,6 +29,21 @@ const shotImage: Record<DataCenterShotId, string> = {
   switchgear: "/images/dc/switchgear-room.jpg",
   modular: "/images/dc/modular-deployment.jpg",
   parcel: "/images/dc/site-parcel-plan.jpg",
+};
+
+/* Module renders per anatomy system, and one frame per build stage. */
+const systemImage: Record<DataCenterSystemId, string> = {
+  power: "/images/dc/module-power.jpg",
+  cooling: "/images/dc/module-cooling.jpg",
+  compute: "/images/dc/module-racks.jpg",
+  structure: "/images/dc/module-enclosure.jpg",
+};
+
+const buildImage: Record<DataCenterBuildStepId, string> = {
+  site: "/images/dc/build-1-site.jpg",
+  foundations: "/images/dc/build-2-foundations.jpg",
+  craning: "/images/dc/build-3-craning.jpg",
+  live: "/images/dc/build-4-live.jpg",
 };
 
 export function DataCentersPage() {
@@ -66,6 +86,12 @@ export function DataCentersPage() {
           </FadeUp>
         </div>
       </section>
+
+      {/* 1b. Full-bleed campus image */}
+      <FadeUp className="dc-hero-media">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={asset("/images/dc/hero-campus.jpg")} alt={t.hero.imageAlt} />
+      </FadeUp>
 
       {/* 2. Stats band */}
       <section className="dc-stats">
@@ -193,10 +219,21 @@ export function DataCentersPage() {
               </div>
             </div>
           </FadeUp>
+          <FadeUp delay={80}>
+            <figure className="dc-cutaway">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={asset("/images/dc/cutaway.jpg")} alt={t.anatomy.cutawayAlt} loading="lazy" />
+              <figcaption>{t.anatomy.cutawayCaption}</figcaption>
+            </figure>
+          </FadeUp>
           <div className="dc-anatomy">
             {t.anatomy.groups.map((g, i) => (
-              <FadeUp key={g.title} delay={i * 80}>
+              <FadeUp key={g.id} delay={i * 80}>
                 <article className="dc-anatomy__group">
+                  <div className="dc-anatomy__media">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={asset(systemImage[g.id])} alt={g.imageAlt} loading="lazy" />
+                  </div>
                   <h3>{g.title}</h3>
                   <p className="dc-anatomy__desc">{g.description}</p>
                   <dl className="dc-anatomy__list">
@@ -254,6 +291,39 @@ export function DataCentersPage() {
           </FadeUp>
           <FadeUp delay={180}>
             <p className="dc-note">{t.modular.note}</p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* 6b. Build sequence */}
+      <section className="section section--ink">
+        <div className="container">
+          <FadeUp>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{t.construction.eyebrow}</p>
+                <h2>{t.construction.heading}</h2>
+              </div>
+              <div className="section-header__right">
+                <p>{t.construction.lead}</p>
+              </div>
+            </div>
+          </FadeUp>
+          <ol className="dc-build">
+            {t.construction.steps.map((s, i) => (
+              <FadeUp key={s.id} delay={i * 80} as="li" className="dc-build__step">
+                <div className="dc-build__media">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={asset(buildImage[s.id])} alt={s.alt} loading="lazy" />
+                  <span className="dc-build__label">{s.label}</span>
+                </div>
+                <h3>{s.title}</h3>
+                <p>{s.description}</p>
+              </FadeUp>
+            ))}
+          </ol>
+          <FadeUp delay={200}>
+            <p className="dc-build__note">{t.construction.note}</p>
           </FadeUp>
         </div>
       </section>

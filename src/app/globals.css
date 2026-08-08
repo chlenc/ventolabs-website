@@ -4808,3 +4808,101 @@ em, .italic {
   .dc-anatomy__item { grid-template-columns: 1fr; gap: 0.3rem; }
   .dc-specs__row { grid-template-columns: 1fr; gap: 0.25rem; }
 }
+
+/* ─── /data-centers imagery: hero band, cutaway, module renders, build sequence ─── */
+.dc-hero-media {
+  width: 100%;
+  background: var(--paper);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.dc-hero-media img {
+  width: 100%;
+  height: clamp(240px, 40vw, 540px);
+  object-fit: cover;
+}
+
+/* Wide exploded-cutaway figure leading the anatomy section */
+.dc-cutaway { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.dc-cutaway img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+.dc-cutaway figcaption {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 74ch;
+}
+/* The cutaway already supplies the section's top spacing. */
+.dc-cutaway + .dc-anatomy { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+
+/* Module render at the head of each anatomy card — bleeds to the card edge */
+.dc-anatomy__media {
+  margin: calc(-1 * clamp(1.5rem, 2.5vw, 2.25rem)) calc(-1 * clamp(1.5rem, 2.5vw, 2.25rem))
+    clamp(1.25rem, 2vw, 1.75rem);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
+  background: #f4f1ea;
+  border-bottom: 1px solid var(--line);
+}
+.dc-anatomy__media img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+
+/* Build sequence (on ink) */
+.dc-build {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.dc-build__step { display: flex; flex-direction: column; }
+.dc-build__media {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(246, 244, 238, 0.06);
+}
+.dc-build__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.dc-build__label {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(14, 14, 12, 0.72);
+  color: var(--paper);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+.dc-build__step h3 {
+  margin-top: 1.1rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  color: var(--paper);
+}
+.dc-build__step p {
+  margin-top: 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(246, 244, 238, 0.62);
+}
+.dc-build__note {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-left: 1.1rem;
+  border-left: 2px solid rgba(246, 244, 238, 0.2);
+  color: rgba(246, 244, 238, 0.5);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  max-width: 76ch;
+}
+
+@media (max-width: 900px) {
+  .dc-build { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .dc-build { grid-template-columns: 1fr; }
+  .dc-hero-media img { height: clamp(200px, 56vw, 300px); }
+}

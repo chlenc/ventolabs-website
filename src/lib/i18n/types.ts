@@ -80,6 +80,12 @@ export type DataCenterShotId =
   | "modular"
   | "parcel";
 
+/** The four systems in the anatomy section. Each maps to a module render. */
+export type DataCenterSystemId = "power" | "cooling" | "compute" | "structure";
+
+/** Frames of the build sequence, in order. */
+export type DataCenterBuildStepId = "site" | "foundations" | "craning" | "live";
+
 export type DataCentersDict = {
   navLabel: string;
   breadcrumb: string;
@@ -91,6 +97,8 @@ export type DataCentersDict = {
     lede: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    /** Alt text for the full-bleed campus image under the hero copy. */
+    imageAlt: string;
   };
 
   /** Big-numbers band under the hero. */
@@ -129,7 +137,25 @@ export type DataCentersDict = {
     eyebrow: string;
     heading: string;
     lead: string;
-    groups: { title: string; description: string; items: { name: string; note: string }[] }[];
+    /** Wide exploded-cutaway figure leading the section. */
+    cutawayAlt: string;
+    cutawayCaption: string;
+    groups: {
+      id: DataCenterSystemId;
+      title: string;
+      description: string;
+      imageAlt: string;
+      items: { name: string; note: string }[];
+    }[];
+  };
+
+  /** The build sequence — bare site to energized facility, four frames. */
+  construction: {
+    eyebrow: string;
+    heading: string;
+    lead: string;
+    note: string;
+    steps: { id: DataCenterBuildStepId; label: string; title: string; description: string; alt: string }[];
   };
 
   /** Traditional build vs modular — comparison table. */
