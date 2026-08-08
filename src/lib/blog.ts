@@ -516,6 +516,8 @@ const RELATED_GUIDES: Record<string, BlogSlug[]> = {
     "ii-dlya-arbitrazhnogo-upravlyayushchego",
   ],
   "bankruptcy-agent": ["ii-dlya-arbitrazhnogo-upravlyayushchego"],
+  "content-factory": ["ai-agent-dlya-marketpleysov-wb-ozon"],
+  "supplier-agent": ["ai-agent-dlya-marketpleysov-wb-ozon"],
   "ai-assistant": ["custom-ai-agent-cost"],
   "ai-automation": ["ai-agent-dlya-marketpleysov-wb-ozon"],
 };

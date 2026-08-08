@@ -176,11 +176,23 @@ export function dataCentersJsonLd(locale: Locale): object[] {
 }
 
 /**
- * /cases hub: BreadcrumbList + an ItemList covering all 8 cases — the 4
- * landing pages (as Service references to their own URL) and the 4
- * inline-only client studies (zigmund, noconcept, asgcompute, arbitrai),
- * which have no dedicated route and previously had zero structured-data
- * footprint anywhere on the site.
+ * External home of an inline study that is a real shipped product rather than
+ * a page on this site. Keeps the ItemList honest: every entry resolves to a
+ * URL that exists, instead of pointing several list items at the hub itself.
+ */
+const STUDY_URLS: Record<string, string> = {
+  arbitrai: "https://arbitrai.tech/",
+};
+
+/**
+ * /cases hub: BreadcrumbList + an ItemList covering everything the page
+ * actually renders — the landing pages (as Service references to their own
+ * URL) and the inline-only studies.
+ *
+ * The only inline study left is ArbitrAI, which Vento Labs builds and operates
+ * itself, so it is emitted as a SoftwareApplication published by the
+ * organization and pointed at its real product URL — not as a client
+ * CreativeWork, and not at a URL that would 404.
  */
 export function casesHubJsonLd(locale: Locale): object[] {
   const dict = getDictionary(locale);
@@ -216,16 +228,20 @@ export function casesHubJsonLd(locale: Locale): object[] {
   const studyItems = caseStudySlugs
     .map((slug, i) => {
       const cs = dict.cases.records[slug];
-      if (!cs) return null;
+      const url = STUDY_URLS[slug];
+      if (!cs || !url) return null;
       return {
         "@type": "ListItem",
         position: visibleLandingSlugs.length + i + 1,
         item: {
-          "@type": "CreativeWork",
+          "@type": "SoftwareApplication",
           name: cs.title,
+          applicationCategory: "BusinessApplication",
           about: cs.industry,
           description: cs.result,
-          url: hubUrl,
+          url,
+          publisher: { "@id": ORG_ID },
+          author: { "@id": ORG_ID },
         },
       };
     })

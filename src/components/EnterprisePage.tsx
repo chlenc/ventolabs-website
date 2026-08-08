@@ -701,41 +701,6 @@ export function EnterprisePage({ service }: { service: ServiceDict }) {
         </div>
       </section>
 
-      {/* Results */}
-      <section className="section section--paper">
-        <div className="container">
-          <FadeUp>
-            <div className="section-header centered">
-              <p className="eyebrow eyebrow--plain">{e.resultsEyebrow}</p>
-              <h2>{e.resultsHeading}</h2>
-            </div>
-          </FadeUp>
-          <FadeUp delay={120}>
-            <div className="features">
-              {e.resultsEntries.map((c) => (
-                <div key={c.company} className="feature">
-                  <div className="feature__idx">{c.industry}</div>
-                  <div>
-                    <div className="feature__title">{c.company}</div>
-                    <p className="feature__desc">{c.result}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </FadeUp>
-          <FadeUp>
-            <div
-              className="cta-row"
-              style={{ justifyContent: "center", marginTop: "2.5rem" }}
-            >
-              <MagneticButton href={href("/cases", locale)} variant="ghost">
-                {e.resultsCta} <ArrowIcon />
-              </MagneticButton>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
       {/* CTA (forest) */}
       <section className="section section--forest" id="book">
         <div className="container">
