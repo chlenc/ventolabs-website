@@ -73,12 +73,7 @@ export type AgentCategoryDict = {
 export type DataCenterProjectId = "east-texas" | "west-texas" | "midwest" | "stockholm";
 
 /** Gallery photo ids on /data-centers — same reasoning as the project ids. */
-export type DataCenterShotId =
-  | "substation"
-  | "transmission"
-  | "switchgear"
-  | "modular"
-  | "parcel";
+export type DataCenterShotId = "substation" | "switchgear" | "modular" | "parcel";
 
 /** The four systems in the anatomy section. Each maps to a module render. */
 export type DataCenterSystemId = "power" | "cooling" | "compute" | "structure";

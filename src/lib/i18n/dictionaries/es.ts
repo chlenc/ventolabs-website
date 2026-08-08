@@ -1219,11 +1219,6 @@ export const es: Dictionary = {
           caption: "Interconexión de 138 kV y subestación privada en el sitio del este de Texas",
         },
         {
-          id: "transmission",
-          alt: "Torre de transmisión de alta tensión alimentando una subestación privada",
-          caption: "Acometida de transmisión: la restricción alrededor de la que realmente se construye cada proyecto",
-        },
-        {
           id: "switchgear",
           alt: "Sala interior de aparamenta y distribución eléctrica",
           caption: "Sala de aparamenta y distribución en una instalación en operación",

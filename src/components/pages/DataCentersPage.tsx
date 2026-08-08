@@ -25,7 +25,6 @@ const projectImage: Record<DataCenterProjectId, string> = {
 
 const shotImage: Record<DataCenterShotId, string> = {
   substation: "/images/dc/substation-138kv.jpg",
-  transmission: "/images/dc/transmission-tower.jpg",
   switchgear: "/images/dc/switchgear-room.jpg",
   modular: "/images/dc/modular-deployment.jpg",
   parcel: "/images/dc/site-parcel-plan.jpg",
