@@ -9,9 +9,9 @@ export const de: Dictionary = {
   },
 
   seo: {
-    homeTitle: "Vento Labs | KI-Agenten & Automatisierung für Unternehmen",
+    homeTitle: "KI-Agenten & Automatisierung für Unternehmen | Vento Labs",
     homeDescription:
-      "Maßgeschneiderte KI-Agenten, die Betriebskosten senken, Workflows automatisieren und Ihr Unternehmen skalieren — ohne zusätzliche Mitarbeiter. Kostenlose KI-Agent-Einrichtung in jedem Projekt.",
+      "Maßgeschneiderte KI-Agenten senken Betriebskosten, automatisieren Workflows und skalieren Ihr Unternehmen — ohne neue Stellen. Erster Agent gratis.",
     titleTemplate: "%s | Vento Labs",
     casesTitle: "KI-Agenten-Cases — Content, Lieferanten & 1C",
     casesDescription:
@@ -55,7 +55,7 @@ export const de: Dictionary = {
   hero: {
     badge: "Kostenloser 2-Wochen-Pilot — wir bauen Ihren ersten KI-Agenten gratis",
     line1: "Wir entwerfen & bauen",
-    line2: "KI-Agenten",
+    line2: "KI-Agenten,",
     line3: "die Ihr Geschäft wachsen lassen",
     tags: [
       "Self-hosted — Ihre Daten bleiben in Ihrer Infrastruktur",
@@ -67,6 +67,10 @@ export const de: Dictionary = {
     ctaPrimary: "Kostenlosen Termin buchen",
     ctaSecondary: "Unsere Leistungen",
     scroll: "Scrollen",
+    imageAlt:
+      "Das Backoffice eines Unternehmens: Schreibtische voller ausgedruckter Auftragsformulare, Archivkartons und Tabellen am Bildschirm — die Handarbeit, die ein KI-Agent übernimmt.",
+    imageCaption:
+      "Genau das automatisieren wir: Auftragsformulare, Lieferanten-E-Mails, Tabellenpflege und jeden Tag dieselben Fragen, von Hand beantwortet.",
   },
 
   problem: {
@@ -85,9 +89,9 @@ export const de: Dictionary = {
     heading: "Von der Analyse zum Ergebnis in Wochen, nicht Monaten",
     lead: "Drei Phasen, kein Blabla. Wir starten klein, liefern echten Mehrwert und skalieren danach — damit Sie nie für etwas zahlen, das nicht funktioniert.",
     steps: [
-      { title: "Analyse", description: "Wir analysieren Ihre Schlüsselprozesse in einem 30-minütigen Gespräch. Kein Blabla — wir finden, wo KI jetzt am meisten Zeit und Geld spart." },
-      { title: "Aufbau", description: "Wir setzen Ihren ersten KI-Agenten auf — verbunden mit Ihren Tools, Wissensbasis und Workflows. Eine funktionierende Lösung in Tagen, nicht Monaten." },
-      { title: "Skalierung", description: "Wir weiten die Automatisierung nach Priorität aus. Jede Iteration hat klare KPIs, und wir begleiten Sie, wenn Ihre Anforderungen wachsen." },
+      { id: "audit", title: "Analyse", description: "Wir analysieren Ihre Schlüsselprozesse in einem 30-minütigen Gespräch. Kein Blabla — wir finden, wo KI jetzt am meisten Zeit und Geld spart.", imageAlt: "Eine im Erstgespräch von Hand auf Papier gezeichnete Prozesslandkarte, drei Schritte als Automatisierungskandidaten eingekreist." },
+      { id: "build", title: "Aufbau", description: "Wir setzen Ihren ersten KI-Agenten auf — verbunden mit Ihren Tools, Wissensbasis und Workflows. Eine funktionierende Lösung in Tagen, nicht Monaten.", imageAlt: "Ein Entwicklungsplatz: auf dem einen Bildschirm der Code des Agenten, auf dem anderen der Chat-Kanal, in dem er antwortet." },
+      { id: "scale", title: "Skalierung", description: "Wir weiten die Automatisierung nach Priorität aus. Jede Iteration hat klare KPIs, und wir begleiten Sie, wenn Ihre Anforderungen wachsen.", imageAlt: "Ein Betriebs-Dashboard über drei Bildschirme, das jeden laufenden Agenten gegen seine KPIs verfolgt." },
     ],
   },
 
@@ -95,6 +99,23 @@ export const de: Dictionary = {
     eyebrow: "Was wir tun",
     heading: "Vier Wege, Ihr Unternehmen intelligenter arbeiten zu lassen",
     lead: "Wir decken den gesamten Zyklus ab — von der Idee bis zum Produktions-Release. Jedes Projekt startet mit einem kostenlosen KI-Agenten, damit Sie den Wert sehen, bevor Sie sich binden.",
+    crossEyebrow: "Ebenfalls von Vento Labs",
+    crossLinks: [
+      {
+        id: "data-centers",
+        title: "KI-Rechenzentren",
+        description:
+          "Ein eigener Bereich für Investoren und Eigentümer: Wir entwickeln KI-Rechenzentren end to end — Konfiguration, Grundstück neben freier Übertragungskapazität, Netzanschluss, modularer Bau und Inbetriebnahme. Von 10 bis 100+ MW.",
+        cta: "Zum Bereich Rechenzentren",
+      },
+      {
+        id: "blog",
+        title: "Technische Guides",
+        description:
+          "Wie das konkret gebaut wird — was ein maßgeschneiderter Agent kostet, wie lange Integrationen dauern, Agenten an 1C und Marktplätze anbinden, und wo Autonomie weiterhin einen Menschen braucht.",
+        cta: "Guides lesen",
+      },
+    ],
   },
 
   leadMagnet: {
