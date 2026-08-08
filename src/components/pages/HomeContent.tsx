@@ -153,6 +153,21 @@ export function HomeContent() {
               );
             })}
           </div>
+
+          {/* AI infrastructure — a separate offer line from the four services
+              above, aimed at investors rather than SMBs. It is in the header
+              and footer nav, but until this line it had zero contextual
+              inbound links in any locale, which made a priority-0.9 landing
+              look like a dead end to crawlers. Copy is the page's own
+              localized SEO description — nothing new to translate. */}
+          <FadeUp delay={servicesSlugs.length * 100}>
+            <p className="services-aside">
+              {dict.dataCenters.seo.description}{" "}
+              <a className="text-link" href={href("/data-centers", locale)}>
+                {dict.dataCenters.navLabel} →
+              </a>
+            </p>
+          </FadeUp>
         </div>
       </section>
 

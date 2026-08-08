@@ -50,7 +50,10 @@ const pages: SitemapPage[] = [
   { path: "/data-centers", priority: 0.9, changeFrequency: "monthly" },
   { path: "/cases", priority: 0.7, changeFrequency: "monthly" },
   ...caseSitemapEntries,
-  { path: "/blog", priority: 0.6, changeFrequency: "weekly" },
+  // Same weight as /cases: both are hubs whose job is to route to the
+  // children. The children outrank their hub (0.9 vs 0.7) on purpose —
+  // guides are the acquisition surface, the hub is navigation.
+  { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
   ...blogSitemapEntries,
   { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },

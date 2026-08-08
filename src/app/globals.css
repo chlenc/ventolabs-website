@@ -712,6 +712,16 @@ em, .italic {
   .service-grid { grid-template-columns: 1fr; }
 }
 
+/* Trailing note under the services grid — the AI-infrastructure offer line. */
+.services-aside {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  max-width: 68ch;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+.services-aside .text-link { white-space: nowrap; margin-left: 0.35rem; }
+
 .service-card {
   position: relative;
   display: flex;

@@ -5,6 +5,8 @@ import { OfferDialog } from "@/components/OfferDialog";
 import { TelegramIcon } from "@/components/Primitives";
 import { trackPopupShown, trackCtaClick } from "@/lib/analytics";
 import { isGiftPopupOpen } from "@/components/GiftPopup";
+import { useLocale } from "@/components/LocaleProvider";
+import { href } from "@/lib/utils";
 import { erpLeadMagnet } from "./erp-agent-content";
 
 const DISMISS_KEY = "vl_erp_leadmagnet_dismissed";
@@ -19,6 +21,7 @@ const TG_HREF = erpLeadMagnet.ctaHref;
  * After dismissal it stays quiet for the session.
  */
 export function ErpLeadMagnetModal() {
+  const locale = useLocale();
   const [open, setOpen] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -123,7 +126,7 @@ export function ErpLeadMagnetModal() {
       titleEm="ИИ"
       titleTail=" в компанию — практика, не теория"
       desc={erpLeadMagnet.description}
-      termsHref="/privacy"
+      termsHref={href("/privacy", locale)}
       termsLinkLabel="Политика обработки данных"
       primaryLabel={
         <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>

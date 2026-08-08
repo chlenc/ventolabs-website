@@ -34,15 +34,29 @@ Key facts:
 - [1C Agent](https://ventolabs.com/cases/erp-agent/): Permission-based AI layer over 1C ERP on Claude — faster development, safe manager actions, full audit trail (full case study in Russian at /ru/cases/erp-agent/).
 - [Bankruptcy AI](https://ventolabs.com/cases/bankruptcy-agent/): AI platform for Russian arbitration trustees — procedural documents, deadline control, transaction analysis (page in Russian).
 
+## Guides
+
+Long-form engineering write-ups of work we actually ship — no gated PDFs, no lead-capture wall. Four are written in Russian because that is the market they address; every guide's URL is live in all four locales, with a localized summary stub where the full text isn't translated. Dates are publish dates.
+
+- [Autonomous AI without delegating accountability](https://ventolabs.com/blog/autonomous-ai-accountability/) (2026-07-17, full text in EN/DE/ES/RU): You can delegate tasks and decision-making authority to an AI agent — not accountability. The five things every agent needs: scope, limits, approval points, an audit trail, and a named owner. Why "human in the loop" is not a control, and why controlled autonomy scales faster than unlimited autonomy.
+- [Custom AI Agent Cost in 2026: An Honest Breakdown](https://ventolabs.com/blog/custom-ai-agent-cost/) (2026-07-16, EN): What a custom AI agent really costs — build and monthly run ranges from market data, no-code vs SaaS vs custom break-even math, and the hidden costs.
+- [AI agent for 1C: capabilities, limits, rollout](https://ventolabs.com/blog/ai-agent-dlya-1c-vnedrenie/) (2026-07-16, RU): What an AI agent does on top of 1C:Enterprise — safe access architecture, honest limits, step-by-step rollout.
+- [AI tooling for 1C: MCP servers, skills and plugins](https://ventolabs.com/blog/instrumenty-1c-claude-code-codex/) (2026-07-16, RU): A field guide to the AI tooling around 1C:Enterprise — MCP servers, Claude Code skills, the BSL Language Server plugin, and OpenAI Codex support.
+- [AI agent for Wildberries and Ozon](https://ventolabs.com/blog/ai-agent-dlya-marketpleysov-wb-ozon/) (2026-07-16, RU): How an agent takes over seller routine on the two big Russian marketplaces — marketplace APIs, ETL into your own database, Telegram reports, honest limits.
+- [AI for bankruptcy trustees](https://ventolabs.com/blog/ii-dlya-arbitrazhnogo-upravlyayushchego/) (2026-07-16, RU): What a bankruptcy AI agent already handles — deadlines, bank-statement screening, report drafts — and where the trustee's personal liability draws the line.
+- [All guides](https://ventolabs.com/blog/)
+
 ## Company
 
-- [Home](https://ventolabs.com/): Offer, process (Audit → Build → Scale), research-backed ROI data, FAQ.
+- [Home](https://ventolabs.com/): The main entry point. Covers the offer (a free first AI agent, built after a 30-minute discovery call), the three-phase process — Audit (30-minute call to find where AI saves the most), Build (first agent connected to your tools and knowledge base, working in days), Scale (expansion by priority, each iteration with explicit KPIs) — research-backed ROI figures with their sources, the four service lines, client results, the founder Alexey Nagorny is the person you actually talk to on every call, and an FAQ covering hallucination risk, what data reaches external AI models, monthly running cost, implementation time, whether you can stop after the first setup, and industry fit.
 - [Privacy Policy](https://ventolabs.com/privacy/)
 - [Terms of Use](https://ventolabs.com/terms/)
 - [LinkedIn](https://www.linkedin.com/company/vento-labs/)
 
 ## Machine-readable endpoints
 
-- [Agent card (A2A)](https://ventolabs.com/.well-known/agent-card.json)
-- [API catalog (RFC 9727)](https://ventolabs.com/.well-known/api-catalog)
+- [Agent card (A2A)](https://ventolabs.com/.well-known/agent-card.json): nine delivery skills — the four services, data centers, and the four productized solutions — for agent-to-agent routing.
+- [MCP server card](https://ventolabs.com/.well-known/mcp/server-card.json): the in-page WebMCP surface (`navigator.modelContext`). A visiting agent can book a consultation or fetch contact details without leaving the page.
+- [API catalog (RFC 9727)](https://ventolabs.com/.well-known/api-catalog): one entry, the public notify webhook, with its [OpenAPI 3.1 spec](https://ventolabs.com/.well-known/openapi/notify.json) and [human-readable docs](https://ventolabs.com/.well-known/api-docs/notify.html).
+- [Agent Skills discovery index](https://ventolabs.com/.well-known/agent-skills/index.json): intentionally an empty `skills` array. That index advertises downloadable `SKILL.md` procedure files for an agent to execute; Vento Labs publishes none. It is deliberately NOT a mirror of the nine A2A skills above — those describe work this company delivers, not instructions an agent can run. Do not treat the empty array as an oversight.
 - [Sitemap](https://ventolabs.com/sitemap.xml)

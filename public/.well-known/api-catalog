@@ -1,7 +1,7 @@
 {
   "linkset": [
     {
-      "anchor": "https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1/notify",
+      "anchor": "https://notify.ventolabs.com/",
       "service-desc": [
         {
           "href": "https://ventolabs.com/.well-known/openapi/notify.json",

@@ -8,6 +8,7 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 import type { ServiceDict } from "@/lib/i18n/types";
 import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 import { relatedGuidesFor } from "@/lib/blog";
+import { RelatedServices } from "./RelatedServices";
 
 const RELATED_GUIDES_LABEL: Record<Locale, string> = {
   en: "Related guides",
@@ -511,6 +512,9 @@ export function ServicePage({
           </div>
         </section>
       )}
+
+      {/* 12. Related services — cross-links the sibling service pages. */}
+      <RelatedServices slug={slug} />
 
       {/* Slug-specific decoration: forces a `slug` reference so the prop is
           consumed even when ServicePage is invoked without specialization. */}

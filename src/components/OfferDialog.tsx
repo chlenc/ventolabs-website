@@ -94,10 +94,14 @@ export function OfferDialog({
             </svg>
           </button>
           {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* The dialog markup ships on every page but is hidden until the
+              popup fires, so this must never compete with the real content
+              for bandwidth on first paint. */}
           <img
             src={asset(imageSrc)}
             alt={imageAlt}
             className="pilot__image"
+            loading="lazy"
           />
         </div>
 

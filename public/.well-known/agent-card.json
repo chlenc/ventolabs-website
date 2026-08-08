@@ -3,7 +3,7 @@
   "description": "Vento Labs designs and builds custom AI agents and automation systems for businesses — cutting operating costs, automating operations, and scaling without adding headcount. This Agent Card advertises Vento Labs' delivery skills so other AI agents can discover and route work to the team.",
   "version": "1.0.0",
   "url": "https://ventolabs.com",
-  "documentationUrl": "https://ventolabs.com",
+  "documentationUrl": "https://ventolabs.com/llms.txt",
   "iconUrl": "https://ventolabs.com/favicon.svg",
   "provider": {
     "organization": "Vento Labs",
@@ -19,7 +19,6 @@
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,
-    "stateTransitionHistory": false,
     "extendedAgentCard": false
   },
   "defaultInputModes": ["text/plain", "application/json"],
@@ -51,7 +50,7 @@
     },
     {
       "id": "ai-training",
-      "name": "AI Strategy & Team Training",
+      "name": "AI Consulting & Team Training",
       "description": "Consulting and hands-on team training to make AI adoption stick — process audits, workshops, and a prioritized roadmap for embedding AI in daily work.",
       "tags": ["consulting", "training", "strategy", "audit"],
       "examples": [
@@ -63,9 +62,9 @@
     },
     {
       "id": "ai-workspace",
-      "name": "Enterprise AI Workspace",
-      "description": "A permissioned AI layer for enterprises — role-based access, audit trails, and a unified interface so dozens of employees can safely use AI across departments.",
-      "tags": ["enterprise", "workspace", "rbac", "compliance"],
+      "name": "AI Platform (Company-Wide AI Workspace)",
+      "description": "A company-wide AI operating system — dedicated agents per team (sales, support, marketing, operations), a Knowledge Vault indexing internal documentation, role-based access, and usage/ROI reporting. Connected to the client's tools and secured on their infrastructure; live in about 4 weeks.",
+      "tags": ["enterprise", "workspace", "ai-platform", "rbac", "compliance"],
       "examples": [
         "Deploy an AI workspace for 45 employees across 5 departments with department-scoped permissions.",
         "Stand up an enterprise Claude/GPT gateway with audit logs and per-team usage caps."

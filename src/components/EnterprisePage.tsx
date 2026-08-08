@@ -2,6 +2,7 @@
 
 import { FaqSection } from "./FaqSection";
 import { LeadForm } from "./LeadForm";
+import { RelatedServices } from "./RelatedServices";
 import { FadeUp, MagneticButton, ArrowIcon, CheckIcon } from "./Primitives";
 import { useLocale } from "./LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
@@ -760,6 +761,12 @@ export function EnterprisePage({ service }: { service: ServiceDict }) {
 
       {/* FAQ */}
       <FaqSection items={service.faq} heading={e.faqHeading} />
+
+      {/* Related services — same block the generic ServicePage renders. This
+          page is a bespoke shell for /services/ai-workspace, so without an
+          explicit call it would take inbound cross-links from its siblings
+          while contributing none back. */}
+      <RelatedServices slug="ai-workspace" />
 
       {/* Touch CheckIcon to keep import (for future deliverables list) */}
       <span hidden>

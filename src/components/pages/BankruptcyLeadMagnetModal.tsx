@@ -5,6 +5,8 @@ import { OfferDialog } from "@/components/OfferDialog";
 import { TelegramIcon } from "@/components/Primitives";
 import { trackPopupShown, trackCtaClick } from "@/lib/analytics";
 import { isGiftPopupOpen } from "@/components/GiftPopup";
+import { useLocale } from "@/components/LocaleProvider";
+import { href } from "@/lib/utils";
 import { bankLeadMagnet, bankTelegram, bankPhone } from "./bankruptcy-agent-content";
 
 const DISMISS_KEY = "vl_bank_leadmagnet_dismissed";
@@ -19,6 +21,7 @@ const IDLE_MS = 60_000;
  * about to leave). Phone is offered in the description copy.
  */
 export function BankruptcyLeadMagnetModal() {
+  const locale = useLocale();
   const [open, setOpen] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -122,7 +125,7 @@ export function BankruptcyLeadMagnetModal() {
       titleEm="AI"
       titleTail=" на своей процедуре"
       desc={`${bankLeadMagnet.description} Или позвоните напрямую — ${bankPhone.display}.`}
-      termsHref="/privacy"
+      termsHref={href("/privacy", locale)}
       termsLinkLabel="Политика обработки данных"
       primaryLabel={
         <span style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>

@@ -1,7 +1,10 @@
 User-agent: *
 Allow: /
-# Next.js RSC payloads — not for indexing (llms.txt stays crawlable)
+# Next.js RSC payloads — not for indexing (llms.txt stays crawlable).
+# Two rules per filename: the bare form only matches the site root, so the
+# nested copies (one set per route, per locale) need the /*/ wildcard too.
 Disallow: /__next.
+Disallow: /*/__next.
 Disallow: /index.txt
 Disallow: /*/index.txt
 Content-Signal: search=yes, ai-input=yes, ai-train=no
