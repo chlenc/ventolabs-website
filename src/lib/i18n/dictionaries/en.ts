@@ -837,8 +837,8 @@ export const en: Dictionary = {
         { q: "How do you align actions with our accounting policy?", a: "During the role-mapping stage we jointly fix allowed scenarios and prohibitions. Every subsequent agent request is checked against these rules. You can also enable manual approval for any action above a defined threshold — by amount, operation type or other criteria." },
       ],
       seo: {
-        title: "1C Agent — AI Layer over 1C ERP (full case in Russian)",
-        description: "Permission-based AI layer over 1C ERP on Claude: safe manager self-service, 4.2× faster dev tickets, full audit trail. Full case study in Russian.",
+        title: "1C Agent — a digital 1C developer",
+        description: "AI agent for 1C ERP on Claude: plain-language requests, a reviewed change plan, edits confined to extensions so the 1C core stays intact. Full case in Russian.",
       },
       ctaPrimary: { label: "Book a free call", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Email us", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },

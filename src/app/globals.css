@@ -5219,6 +5219,291 @@ em, .italic {
   .dc-hero-media img { height: clamp(200px, 56vw, 300px); }
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   Bespoke case landings — shared additions
+   (/cases/erp-agent, /cases/bankruptcy-agent)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* --- Russian-only stubs (en/de/es): "how it works" list + related services --- */
+
+.stub-how {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  max-width: var(--container-narrow);
+}
+.stub-how__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stub-how__list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.65rem;
+  list-style: none;
+  padding: 0;
+}
+.stub-how__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(14, 14, 12, 0.78);
+}
+.stub-how__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  background: var(--forest);
+}
+.stub-related {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.stub-related a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --- Related services strip (RU landings) --- */
+
+.rel-services {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--line);
+  max-width: var(--container-narrow);
+}
+.rel-services__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rel-services__grid {
+  margin-top: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.rel-service {
+  display: block;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transition: border-color 0.3s, transform 0.4s var(--ease);
+}
+.rel-service:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
+.rel-service__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.rel-service__desc {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* --- erp-agent: before / after comparison --- */
+
+.erp-ba {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--line-strong);
+}
+.erp-ba__head,
+.erp-ba__row {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.7fr) 1fr 1fr;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
+}
+.erp-ba__head {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.erp-ba__col-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.erp-ba__col-head--before { color: var(--muted); }
+.erp-ba__col-head--after { color: var(--forest); }
+.erp-ba__row {
+  padding: clamp(1rem, 2vw, 1.4rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+.erp-ba__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 0.15rem;
+}
+.erp-ba__cell {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.erp-ba__cell--before {
+  color: rgba(14, 14, 12, 0.5);
+  text-decoration: line-through;
+  text-decoration-color: rgba(14, 14, 12, 0.2);
+  text-decoration-thickness: 1px;
+}
+.erp-ba__cell--after {
+  color: var(--ink);
+  padding-left: clamp(0.85rem, 1.5vw, 1.1rem);
+  border-left: 2px solid var(--forest);
+}
+/* Column labels repeat inside each cell on narrow screens only. */
+.erp-ba__tag { display: none; }
+
+@media (max-width: 780px) {
+  .erp-ba__head { display: none; }
+  .erp-ba__row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .erp-ba__cell--after {
+    padding-left: 0.85rem;
+  }
+  .erp-ba__tag {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+    text-decoration: none;
+  }
+  .erp-ba__cell--after .erp-ba__tag { color: var(--forest); }
+}
+
+/* --- bankruptcy-agent: statutory deadline timeline --- */
+
+.bank-timeline {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  list-style: none;
+  padding: 0;
+  counter-reset: bank-tl;
+}
+.bank-tl {
+  position: relative;
+  padding-top: 1.9rem;
+}
+/* The rail: a hairline across the row with a node per deadline. */
+.bank-tl::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: calc(-1 * clamp(1rem, 2vw, 1.75rem));
+  height: 1px;
+  background: var(--line-strong);
+}
+.bank-tl:last-child::before { right: 0; }
+.bank-tl__marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--forest);
+}
+.bank-tl__window {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+  background: rgba(30, 60, 20, 0.07);
+  padding: 0.22rem 0.5rem;
+}
+.bank-tl__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.bank-tl__desc {
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.bank-tl__source {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(14, 14, 12, 0.4);
+}
+.bank-timeline__note {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--line-strong);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 76ch;
+}
+
+/* --- Wide conceptual figure (both landings) --- */
+
+.case-figure {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+}
+.case-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+.case-figure figcaption {
+  margin-top: 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 76ch;
+}
+@media (max-width: 900px) {
+  .bank-timeline { grid-template-columns: repeat(2, 1fr); }
+  .bank-tl:nth-child(2)::before { right: 0; }
+}
+@media (max-width: 640px) {
+  .rel-services__grid { grid-template-columns: 1fr; }
+  .bank-timeline { grid-template-columns: 1fr; }
+  .bank-tl::before { right: 0; }
+}
+
 /* ─── /services/* imagery: hero band, illustrated plan steps, kit figure ───
    Deliberately parallel to the .dc-* rules above: the service pages and
    /data-centers should read as one system. */

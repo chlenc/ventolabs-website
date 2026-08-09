@@ -837,8 +837,8 @@ export const de: Dictionary = {
         { q: "Wie werden Aktionen mit unserer Rechnungslegungspolitik abgestimmt?", a: "In der Phase Rollendefinition fixieren wir gemeinsam erlaubte Szenarien und Verbote. Jede nachfolgende Anfrage an den Agenten wird gegen diese Regeln geprüft. Zusätzlich können Sie eine manuelle Freigabe für Aktionen oberhalb einer definierten Schwelle aktivieren — nach Betrag, Operationstyp oder anderen Kriterien." },
       ],
       seo: {
-        title: "1C Agent — KI-Schicht über 1C ERP (Case auf Russisch)",
-        description: "Berechtigungsbasierte KI-Schicht über 1C auf Claude: sichere Manager-Aktionen, 4,2× schnellere Dev-Tickets, Audit-Trail. Vollständige Case Study auf Russisch.",
+        title: "1C Agent — ein digitaler 1C-Entwickler",
+        description: "KI-Agent für das 1C-ERP auf Claude: Anfragen in Alltagssprache, geprüfter Änderungsplan, Eingriffe nur in Erweiterungen — der 1C-Kern bleibt intakt. Case auf Russisch.",
       },
       ctaPrimary: { label: "Kostenlosen Termin buchen", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Per E-Mail schreiben", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },

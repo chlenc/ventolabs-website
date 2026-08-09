@@ -177,16 +177,11 @@
     {
       "id": "erp-agent",
       "name": "ERP Agent for 1C",
-      "description": "A safe AI layer over 1C and similar ERP systems — speak business language, get permissioned reads and writes, with guardrails that prevent the AI from breaking core data.",
-      "tags": [
-        "erp",
-        "1c",
-        "enterprise-systems",
-        "guardrails"
-      ],
+      "description": "An AI developer for 1C, the dominant ERP platform in the Russian-speaking market. A task described in plain business language comes back as a reviewable change plan; nothing is written until that plan is approved, and changes land in configuration extensions so the standard 1C core stays intact. Every command, action and result is logged. Landing page and documentation are Russian-only.",
+      "tags": ["erp", "1c", "enterprise-systems", "guardrails", "ru-market"],
       "examples": [
-        "Ask the ERP for last quarter's overdue invoices in plain language.",
-        "Approve a pre-validated stock adjustment via chat without opening the 1C UI."
+        "Turn 'add a shipment-date column to the invoice print form' into a reviewable 1C extension plan.",
+        "Set up a scheduled nightly stock export to a website endpoint without touching the standard configuration."
       ],
       "inputModes": [
         "text/plain",
@@ -200,16 +195,11 @@
     {
       "id": "bankruptcy-agent",
       "name": "Bankruptcy AI for Arbitration Trustees",
-      "description": "An AI platform purpose-built for Russian-market arbitration trustees — automates case-file analysis, document drafting, and procedural steps under bankruptcy law.",
-      "tags": [
-        "legal",
-        "bankruptcy",
-        "ru-market",
-        "document-automation"
-      ],
+      "description": "An AI platform purpose-built for Russian-market arbitration trustees working under insolvency law 127-FZ — creditors'-meeting and court reports on the statutory forms, procedural filings cited to current Supreme Court practice, statutory deadline tracking, and debtor transaction analysis. It drafts and tracks; the trustee reviews, signs with a qualified electronic signature and files. Deployed inside the trustee's own perimeter. Landing page and documentation are Russian-only.",
+      "tags": ["legal", "bankruptcy", "ru-market", "document-automation", "self-hosted"],
       "examples": [
-        "Analyze a debtor's case file and surface actionable findings for the trustee.",
-        "Draft procedural filings from case context with citation-aware templates."
+        "Analyze a debtor's case file and surface potentially voidable transactions for the trustee to review.",
+        "Draft a creditors'-meeting report on the statutory form for the trustee to check and sign."
       ],
       "inputModes": [
         "text/plain",

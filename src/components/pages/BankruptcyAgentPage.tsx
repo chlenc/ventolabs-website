@@ -13,7 +13,7 @@ import {
 } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary, localizedPath, htmlLangCodes, type Locale } from "@/lib/i18n";
-import { asset, href } from "@/lib/utils";
+import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 import { site } from "@/lib/site";
 import { ORG_ID, breadcrumbJsonLd, jsonLdString } from "@/lib/jsonld";
 import { relatedGuidesFor } from "@/lib/blog";
@@ -23,27 +23,36 @@ import {
   bankDiptych,
   bankProblem,
   bankCapabilities,
+  bankDeadlines,
   bankDemo,
   bankProcess,
   bankArch,
+  bankFigures,
   bankSecurity,
   bankIncluded,
   bankProof,
   bankStakes,
   bankFinalCta,
   bankFaq,
+  bankRelatedServices,
   bankLeadMagnet,
   bankPhone,
   bankTelegram,
   type DemoScenario,
   type ChatMessage,
   type Permission,
+  type BankFigureId,
 } from "./bankruptcy-agent-content";
 
 const ROLE_BG: Record<DemoScenario["id"], { bg: string; fg: string }> = {
   report: { bg: "#3a4a3a", fg: "#cfe9c1" },
   filing: { bg: "#5a3f25", fg: "#f3d8b5" },
   audit: { bg: "#3d3a52", fg: "#d6d2f2" },
+};
+
+/** Figure id → asset path. Alt text and captions live in bankruptcy-agent-content.ts. */
+const FIGURE_SRC: Record<BankFigureId, string> = {
+  perimeter: "/images/cases/bankruptcy-agent-perimeter.jpg",
 };
 
 const PAGE_PATH = "/cases/bankruptcy-agent";
@@ -221,11 +230,13 @@ function ScenarioDemo() {
  * waiting for client hydration.
  */
 function BankruptcyJsonLd() {
+  // Names must match the breadcrumb the page actually renders — the trail
+  // above uses breadcrumbHomeLabels.ru, so this one does too.
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Vento Labs", item: site.url },
+      { "@type": "ListItem", position: 1, name: breadcrumbHomeLabels.ru, item: site.url },
       {
         "@type": "ListItem",
         position: 2,
@@ -245,14 +256,25 @@ function BankruptcyJsonLd() {
     areaServed: { "@type": "Country", name: "Russia" },
     description:
       "Готовит отчёты собранию и в АС, формирует процессуальные документы со ссылками на свежую практику ВС, контролирует сроки 127-ФЗ и АПК, собирает данные по должнику.",
+    // The subscription price the FAQ on this page states out loud. The
+    // previous node advertised price "0" for the free demo, which read as
+    // "the platform is free" — the demo is a sales step, not the offering.
     offers: {
       "@type": "Offer",
-      name: "Бесплатное демо на вашей процедуре",
-      price: "0",
-      priceCurrency: "RUB",
+      name: "Подписка Bankruptcy AI",
+      priceCurrency: "USD",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        priceCurrency: "USD",
+        minPrice: 2500,
+        unitCode: "MON",
+        referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
+      },
       availability: "https://schema.org/InStock",
       url: RU_URL,
     },
+    inLanguage: htmlLangCodes.ru,
+    image: `${RU_URL}opengraph-image`,
     url: RU_URL,
   };
 
@@ -311,11 +333,11 @@ function BankruptcyStubJsonLd({ locale }: { locale: Exclude<Locale, "ru"> }) {
     serviceType: "AI platform for arbitration trustees",
     provider: { "@id": ORG_ID },
     areaServed: { "@type": "Country", name: "Russia" },
-    // s.lede is written to be followed by an inline link on the page
-    // itself ("...The full landing page is at <a>...</a>.") -- append the
-    // URL as plain text here too, so the JSON-LD description reads as a
-    // complete sentence rather than trailing off mid-clause.
-    description: `${s.lede} ${RU_URL}`,
+    // `summary`, not `lede`: the lede is written to be followed by an inline
+    // link on the page ("...the full landing page is at <a>...</a>") and would
+    // trail off mid-clause here. The summary describes the product and stands
+    // on its own, which is what a Service description should do.
+    description: s.summary,
     url,
     inLanguage: htmlLangCodes[locale],
     isBasedOn: RU_URL,
@@ -338,6 +360,11 @@ function BankruptcyStubJsonLd({ locale }: { locale: Exclude<Locale, "ru"> }) {
 /**
  * Stub shown to non-RU visitors. The product targets Russian arbitration
  * trustees working under 127-ФЗ — translating doesn't add value.
+ *
+ * `lede` explains the language restriction and is followed by an inline link
+ * on the page. `summary` describes what the platform actually does, so the
+ * stub is a real (if short) page rather than a redirect notice, and so the
+ * JSON-LD description below is a self-contained sentence.
  */
 const STUB_STRINGS: Record<
   Exclude<Locale, "ru">,
@@ -345,6 +372,10 @@ const STUB_STRINGS: Record<
     eyebrow: string;
     title: string;
     lede: string;
+    summary: string;
+    howLabel: string;
+    how: string[];
+    relatedLabel: string;
     primaryCta: string;
     secondaryCta: string;
     breadcrumbHome: string;
@@ -355,6 +386,17 @@ const STUB_STRINGS: Record<
     eyebrow: "Bankruptcy AI · LegalTech",
     title: "AI platform for Russian arbitration trustees",
     lede: "This case targets Russian arbitration trustees («арбитражные управляющие») working under 127-ФЗ. The product, demo materials and documentation are Russian-only. The full landing page is at",
+    summary:
+      "Bankruptcy AI is an AI platform for arbitration trustees running insolvency procedures under Russian law: it assembles creditors'-meeting and court reports on the statutory forms, drafts procedural filings with citations to current Supreme Court practice, tracks the statutory deadlines, and pulls debtor data out of the public registries and bank statements. It drafts — the trustee reviews, signs with a qualified electronic signature and files.",
+    howLabel: "What it covers",
+    how: [
+      "Reports to the creditors' meeting and to the court, on the statutory forms",
+      "Procedural filings with citations to current Supreme Court practice",
+      "Deadline control under the insolvency law and the arbitration procedure code",
+      "Debtor due diligence across public registries, bank statements and scanned replies",
+      "Self-hosted deployment inside the trustee's own perimeter, NDA before any data touches it",
+    ],
+    relatedLabel: "Related services:",
     primaryCta: "View Russian version",
     secondaryCta: "Back to cases",
     breadcrumbHome: "Home",
@@ -364,6 +406,17 @@ const STUB_STRINGS: Record<
     eyebrow: "Bankruptcy AI · LegalTech",
     title: "KI-Plattform für russische Insolvenzverwalter",
     lede: "Dieser Case richtet sich an russische Insolvenzverwalter («арбитражные управляющие»), die nach dem Gesetz 127-FZ arbeiten. Produkt, Demo-Materialien und Dokumentation sind ausschließlich auf Russisch. Die vollständige Landingpage finden Sie unter",
+    summary:
+      "Bankruptcy AI ist eine KI-Plattform für Insolvenzverwalter nach russischem Recht: Sie erstellt Berichte an die Gläubigerversammlung und an das Gericht auf den gesetzlich vorgeschriebenen Formularen, entwirft Schriftsätze mit Belegstellen aus der aktuellen Rechtsprechung des Obersten Gerichts, überwacht die gesetzlichen Fristen und zieht Schuldnerdaten aus öffentlichen Registern und Kontoauszügen zusammen. Sie entwirft — prüfen, mit qualifizierter elektronischer Signatur unterzeichnen und einreichen bleibt beim Verwalter.",
+    howLabel: "Was abgedeckt ist",
+    how: [
+      "Berichte an Gläubigerversammlung und Gericht auf den gesetzlichen Formularen",
+      "Schriftsätze mit Belegstellen aus der aktuellen Rechtsprechung des Obersten Gerichts",
+      "Fristenkontrolle nach Insolvenzgesetz und Arbitrageverfahrensordnung",
+      "Schuldner-Due-Diligence über öffentliche Register, Kontoauszüge und gescannte Auskünfte",
+      "Self-hosted im eigenen Perimeter des Verwalters, NDA vor der ersten Datenanbindung",
+    ],
+    relatedLabel: "Passende Leistungen:",
     primaryCta: "Russische Version öffnen",
     secondaryCta: "Zurück zu den Cases",
     breadcrumbHome: "Startseite",
@@ -373,6 +426,17 @@ const STUB_STRINGS: Record<
     eyebrow: "Bankruptcy AI · LegalTech",
     title: "Plataforma de IA para administradores concursales rusos",
     lede: "Este caso está dirigido a administradores concursales rusos («арбитражные управляющие») que trabajan bajo la ley 127-FZ. El producto, los materiales de demo y la documentación están solo en ruso. La página completa está en",
+    summary:
+      "Bankruptcy AI es una plataforma de IA para administradores concursales bajo la ley rusa: monta los informes a la junta de acreedores y al tribunal en los formularios legales, redacta escritos procesales citando jurisprudencia vigente del Tribunal Supremo, controla los plazos legales y reúne los datos del deudor a partir de registros públicos y extractos bancarios. Redacta borradores — revisar, firmar con firma electrónica cualificada y presentar sigue siendo del administrador.",
+    howLabel: "Qué cubre",
+    how: [
+      "Informes a la junta de acreedores y al tribunal, en los formularios legales",
+      "Escritos procesales con citas de jurisprudencia vigente del Tribunal Supremo",
+      "Control de plazos según la ley concursal y el código procesal de arbitraje",
+      "Due diligence del deudor sobre registros públicos, extractos bancarios y respuestas escaneadas",
+      "Despliegue self-hosted en el propio perímetro del administrador, NDA antes de conectar datos",
+    ],
+    relatedLabel: "Servicios relacionados:",
     primaryCta: "Ver versión en ruso",
     secondaryCta: "Volver a los casos",
     breadcrumbHome: "Inicio",
@@ -382,6 +446,7 @@ const STUB_STRINGS: Record<
 
 function RussianOnlyStub() {
   const locale = useLocale();
+  const dict = getDictionary(locale);
   const s = locale !== "ru" ? STUB_STRINGS[locale] : STUB_STRINGS.en;
   return (
     <>
@@ -399,9 +464,18 @@ function RussianOnlyStub() {
           {s.eyebrow}
         </p>
         <h1 className="page-hero__title">{s.title}</h1>
+        <p className="page-hero__lede">{s.summary}</p>
         <p className="page-hero__lede">
           {s.lede} <a href={RU_URL}>ventolabs.com/ru/cases/bankruptcy-agent</a>.
         </p>
+        <div className="stub-how">
+          <p className="stub-how__label">{s.howLabel}</p>
+          <ul className="stub-how__list">
+            {s.how.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
         <div className="cta-row" style={{ marginTop: "2rem" }}>
           <MagneticButton href={RU_URL}>
             {s.primaryCta} <ArrowIcon />
@@ -410,6 +484,16 @@ function RussianOnlyStub() {
             {s.secondaryCta}
           </MagneticButton>
         </div>
+        <p className="stub-related">
+          {s.relatedLabel}{" "}
+          <a href={href("/services/ai-assistant", locale)}>
+            {dict.services_pages["ai-assistant"].title}
+          </a>
+          {" · "}
+          <a href={href("/services/ai-automation", locale)}>
+            {dict.services_pages["ai-automation"].title}
+          </a>
+        </p>
       </div>
       </section>
     </>
@@ -433,7 +517,7 @@ export function BankruptcyAgentPage() {
         <div className="container">
           <FadeUp>
             <div className="breadcrumbs">
-              <a href={href("/", locale)}>Home</a>
+              <a href={href("/", locale)}>{breadcrumbHomeLabels[locale]}</a>
               <span className="breadcrumbs__sep">/</span>
               <a href={href("/cases", locale)}>{dict.casesIntro.eyebrow}</a>
               <span className="breadcrumbs__sep">/</span>
@@ -609,6 +693,39 @@ export function BankruptcyAgentPage() {
         </div>
       </section>
 
+      {/* 4b. Deadline workflow — the statutory windows the platform tracks. */}
+      <section className="section section--surface">
+        <div className="container">
+          <FadeUp>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{bankDeadlines.eyebrow}</p>
+                <h2>{bankDeadlines.heading}</h2>
+              </div>
+              <div className="section-header__right">
+                <p>{bankDeadlines.lede}</p>
+              </div>
+            </div>
+          </FadeUp>
+          <FadeUp delay={120}>
+            <ol className="bank-timeline">
+              {bankDeadlines.items.map((item) => (
+                <li key={item.title} className="bank-tl">
+                  <span className="bank-tl__marker" aria-hidden />
+                  <span className="bank-tl__window">{item.window}</span>
+                  <h3 className="bank-tl__title">{item.title}</h3>
+                  <p className="bank-tl__desc">{item.desc}</p>
+                  <span className="bank-tl__source">{item.source}</span>
+                </li>
+              ))}
+            </ol>
+          </FadeUp>
+          <FadeUp delay={200}>
+            <p className="bank-timeline__note">{bankDeadlines.note}</p>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* 5. Demo (interactive scenarios) */}
       <ScenarioDemo />
 
@@ -690,6 +807,19 @@ export function BankruptcyAgentPage() {
                 <p>{bankSecurity.lede}</p>
               </div>
             </div>
+          </FadeUp>
+          <FadeUp delay={100}>
+            <figure className="case-figure">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset(FIGURE_SRC[bankFigures.security.id])}
+                alt={bankFigures.security.alt}
+                width={1376}
+                height={768}
+                loading="lazy"
+              />
+              <figcaption>{bankFigures.security.caption}</figcaption>
+            </figure>
           </FadeUp>
           <div className="erp-process">
             {bankSecurity.items.map((row, i) => (
@@ -885,8 +1015,8 @@ export function BankruptcyAgentPage() {
 }
 
 function BankRelatedGuides() {
+  const dict = getDictionary("ru");
   const guides = relatedGuidesFor("bankruptcy-agent");
-  if (!guides.length) return null;
   return (
     <section className="section section--paper">
       <div className="container">
@@ -897,20 +1027,37 @@ function BankRelatedGuides() {
             </div>
           </div>
         </FadeUp>
-        <FadeUp delay={80}>
-          <div className="post-cards">
-            {guides.map((entry) => {
-              const card = entry.card.ru;
-              return (
-                <a key={entry.slug} className="post-card" href={href(`/blog/${entry.slug}`, "ru")}>
-                  <h3 className="post-card__title">{card.title}</h3>
-                  <p className="post-card__summary">{card.summary}</p>
-                  <span className="post-card__cta">
-                    {card.readLabel} <ArrowIcon />
+        {guides.length > 0 && (
+          <FadeUp delay={80}>
+            <div className="post-cards">
+              {guides.map((entry) => {
+                const card = entry.card.ru;
+                return (
+                  <a key={entry.slug} className="post-card" href={href(`/blog/${entry.slug}`, "ru")}>
+                    <h3 className="post-card__title">{card.title}</h3>
+                    <p className="post-card__summary">{card.summary}</p>
+                    <span className="post-card__cta">
+                      {card.readLabel} <ArrowIcon />
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </FadeUp>
+        )}
+        <FadeUp delay={140}>
+          <div className="rel-services">
+            <p className="rel-services__label">{bankRelatedServices.heading}</p>
+            <div className="rel-services__grid">
+              {bankRelatedServices.items.map((s) => (
+                <a key={s.slug} className="rel-service" href={href(`/services/${s.slug}`, "ru")}>
+                  <span className="rel-service__title">
+                    {dict.services_pages[s.slug].title} <ArrowIcon />
                   </span>
+                  <span className="rel-service__desc">{s.desc}</span>
                 </a>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </FadeUp>
       </div>

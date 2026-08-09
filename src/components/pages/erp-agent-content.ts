@@ -228,8 +228,68 @@ export const erpDemo = {
   ] satisfies DemoScenario[],
 };
 
+/**
+ * Before/after of the process being replaced, built as a real two-column
+ * comparison rather than a picture of one. Every "сейчас" row restates the
+ * status quo already described in `erpProblem`; every "с агентом" row
+ * restates a mechanic shown in the demo or architecture sections — so the
+ * block is a visual summary of the page, not a new set of claims.
+ */
+export const erpBeforeAfter = {
+  eyebrow: "03 · До и после",
+  heading: "Что меняется в маршруте одной задачи.",
+  lede:
+    "Слева — как типовая доработка проходит сегодня. Справа — тот же путь через агента. Меняется не результат, а число передач между людьми и момент, в который вы можете вмешаться.",
+  beforeLabel: "Сейчас",
+  afterLabel: "С агентом",
+  rows: [
+    {
+      label: "Постановка",
+      before: "Просьба на словах или письмом, уточнения в переписке, потом ТЗ.",
+      after: "Запрос своими словами — напрямую агенту, без посредников.",
+    },
+    {
+      label: "Ожидание",
+      before: "Задача встаёт в очередь разработки за другими задачами.",
+      after: "План изменений — в той же сессии, когда задача поставлена.",
+    },
+    {
+      label: "Точка контроля",
+      before: "Проверка постфактум, когда правка уже в базе.",
+      after: "План и состав изменений — до применения, на ваше подтверждение.",
+    },
+    {
+      label: "Куда ложится правка",
+      before: "Как решит исполнитель — иногда прямо в типовую конфигурацию.",
+      after: "Только в расширение. Ядро 1С остаётся типовым и обновляемым.",
+    },
+    {
+      label: "След",
+      before: "Переписка в почте и мессенджерах, восстанавливается по памяти.",
+      after: "Журнал: команда → действие → результат, с автором и временем.",
+    },
+  ],
+};
+
+/**
+ * Conceptual figures. Deliberately abstract: a rendered "1C window" or an
+ * invented dashboard would be a fake screenshot on a product page, which
+ * costs more trust than it buys. Paths live in the component (see
+ * `FIGURE_SRC` in ErpAgentPage.tsx) — this file carries the RU alt/caption.
+ */
+export const erpFigures = {
+  process: {
+    id: "permission-layer",
+    alt: "Небольшой зелёный модуль соединён с большим закрытым серым блоком одним узким каналом, проходящим через стальную пластину-затвор",
+    caption:
+      "Агент не растворяется в вашей системе. Он подключается к ней одним каналом через затвор: всё, что он делает с 1С, проходит через одну точку, и эта точка — под вашим подтверждением.",
+  },
+} as const;
+
+export type ErpFigureId = (typeof erpFigures)[keyof typeof erpFigures]["id"];
+
 export const erpProcess = {
-  eyebrow: "03 · Процесс интеграции",
+  eyebrow: "04 · Процесс интеграции",
   heading:
     "Быстрое подключение под вашим полным контролем — от идеи до первых результатов за 2–4 недели.",
   lede:
@@ -254,7 +314,7 @@ export const erpProcess = {
 };
 
 export const erpModes = {
-  eyebrow: "04 · Функциональный режим",
+  eyebrow: "05 · Функциональный режим",
   heading: "Единственный интерфейс: прямое управление без посредников.",
   lede:
     "Никаких дополнительных ролей для рядовых сотрудников или разработчиков. Агент работает в режиме «запрос от руководителя → мгновенное исполнение в 1С → готовый результат и запись в журнал». Вы контролируете каждое действие единолично.",
@@ -289,7 +349,7 @@ export const erpModes = {
 };
 
 export const erpIncluded = {
-  eyebrow: "05 · Состав решения",
+  eyebrow: "06 · Состав решения",
   heading:
     "Вы получаете полноценную замену двух 1С-разработчиков среднего уровня с экономией 67% бюджета.",
   lede:
@@ -306,7 +366,7 @@ export const erpIncluded = {
 };
 
 export const erpOutcomes = {
-  eyebrow: "06 · Целевые эффекты",
+  eyebrow: "07 · Целевые эффекты",
   heading: "Финансовая экономия и тотальный контроль для руководства.",
   items: [
     "Снижение затрат на 1С-разработку на 67%: вы платите только за агента — без отпусков, больничных, налогов, ДМС и обучения",
@@ -317,7 +377,7 @@ export const erpOutcomes = {
 };
 
 export const erpArch = {
-  eyebrow: "07 · Архитектурное решение",
+  eyebrow: "08 · Архитектурное решение",
   headingLead: "Защищённый слой управления, доступный только ",
   headingEm: "первым лицам",
   headingTail: ".",
@@ -353,7 +413,7 @@ export const erpArch = {
 };
 
 export const erpStakes = {
-  eyebrow: "08 · Ключевое преимущество",
+  eyebrow: "09 · Ключевое преимущество",
   textLead: "Экономия ",
   em1: "от 1,5 млн рублей в год",
   textMid: " при повышении скорости и ",
@@ -379,7 +439,7 @@ export const erpFinalCta = {
 };
 
 export const erpFaq = {
-  eyebrow: "09 · Ответы на ключевые вопросы",
+  eyebrow: "10 · Ответы на ключевые вопросы",
   heading: "1C Agent: прямые ответы для руководителей.",
   lede:
     "Если на вашу ситуацию ответа не нашлось — напишите, что у вас за конфигурация и кто из руководителей будет отдавать команды агенту. Соберём индивидуальный план под пилот.",
@@ -406,6 +466,26 @@ export const erpFaq = {
     },
   ],
 };
+
+/**
+ * Outbound links to the service pages this case draws on. The bespoke layout
+ * had no path into /services at all, so the two highest-intent pages on the
+ * site were link sinks. Titles come from the dictionary at render time — only
+ * the "why this one" line lives here.
+ */
+export const erpRelatedServices = {
+  heading: "Услуги по теме",
+  items: [
+    {
+      slug: "ai-assistant",
+      desc: "Как мы вообще собираем агентов: self-hosted, на вашем контуре, под ваши инструменты.",
+    },
+    {
+      slug: "ai-workspace",
+      desc: "Если агент нужен не только в 1С: ролевой доступ, база знаний и аудит на всю компанию.",
+    },
+  ],
+} as const;
 
 export const erpLeadMagnet = {
   badge: "Бесплатный гайд",

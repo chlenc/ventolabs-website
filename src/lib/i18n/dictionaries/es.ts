@@ -837,8 +837,8 @@ export const es: Dictionary = {
         { q: "¿Cómo se alinean las acciones con la política contable de la empresa?", a: "En la fase de definición de roles fijamos contigo escenarios permitidos y prohibidos. Cada petición posterior al agente se valida contra estas reglas. Adicionalmente puedes activar aprobación manual para cualquier acción por encima de un umbral definido — por importe, tipo de operación u otros criterios." },
       ],
       seo: {
-        title: "1C Agent — capa de IA sobre 1C ERP (caso en ruso)",
-        description: "Capa de IA con permisos sobre 1C en Claude: acciones seguras para managers, tickets 4,2× más rápidos, auditoría completa. Caso completo en ruso.",
+        title: "1C Agent — un desarrollador digital de 1C",
+        description: "Agente de IA para el ERP 1C en Claude: peticiones en lenguaje llano, plan de cambios revisado y ediciones solo en extensiones; el núcleo de 1C no se toca. Caso en ruso.",
       },
       ctaPrimary: { label: "Reservar llamada gratis", href: "#book", kind: "arrow" },
       ctaSecondary: { label: "Escribir un email", href: "mailto:alexey@ventolabs.com", meta: "alexey@ventolabs.com", kind: "mail" },

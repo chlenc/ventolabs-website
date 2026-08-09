@@ -4,8 +4,9 @@ import { useState, useMemo } from "react";
 import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon, PhoneIcon, MailIcon, TelegramIcon, PlusIcon } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary, localizedPath, type Locale } from "@/lib/i18n";
-import { asset, href } from "@/lib/utils";
+import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 import { site } from "@/lib/site";
+import { faqPageJsonLd, jsonLdString } from "@/lib/jsonld";
 import { ErpLeadMagnetModal } from "./ErpLeadMagnetModal";
 import { relatedGuidesFor } from "@/lib/blog";
 import {
@@ -13,6 +14,8 @@ import {
   erpDiptych,
   erpProblem,
   erpDemo,
+  erpBeforeAfter,
+  erpFigures,
   erpProcess,
   erpModes,
   erpIncluded,
@@ -22,16 +25,23 @@ import {
   erpProof,
   erpFinalCta,
   erpFaq,
+  erpRelatedServices,
   erpLeadMagnet,
   type DemoScenario,
   type ChatMessage,
   type Permission,
+  type ErpFigureId,
 } from "./erp-agent-content";
 
 const ROLE_BG: Record<DemoScenario["id"], { bg: string; fg: string }> = {
   dev: { bg: "#3a4a3a", fg: "#cfe9c1" },
   ops: { bg: "#5a3f25", fg: "#f3d8b5" },
   finance: { bg: "#3d3a52", fg: "#d6d2f2" },
+};
+
+/** Figure id → asset path. Alt text and captions live in erp-agent-content.ts. */
+const FIGURE_SRC: Record<ErpFigureId, string> = {
+  "permission-layer": "/images/cases/erp-agent-permission-layer.jpg",
 };
 
 const PAGE_PATH = "/cases/erp-agent";
@@ -42,6 +52,10 @@ const RU_URL = `${site.url}${localizedPath(PAGE_PATH, "ru")}`;
  * Russian-only (1C is a Russian-market ERP) — serving it under en/de/es URLs
  * is a title/body language mismatch, so those locales get a short localized
  * summary with a link to the full Russian case instead.
+ *
+ * The summary describes the *mechanics* rather than quoting outcome numbers:
+ * the RU page's headline figure is a pricing comparison, not a measured
+ * result, and restating it in three more languages would read as a benchmark.
  */
 const ERP_STUB: Record<Exclude<Locale, "ru">, {
   breadcrumbHome: string;
@@ -50,6 +64,9 @@ const ERP_STUB: Record<Exclude<Locale, "ru">, {
   h1: string;
   p1: string;
   p2: string;
+  howLabel: string;
+  how: string[];
+  relatedLabel: string;
   ctaPrimary: string;
   ctaSecondary: string;
 }> = {
@@ -57,9 +74,18 @@ const ERP_STUB: Record<Exclude<Locale, "ru">, {
     breadcrumbHome: "Home",
     breadcrumbCases: "Cases",
     eyebrow: "1C Agent · AI-ops",
-    h1: "1C Agent — a permission-based AI layer over 1C ERP",
-    p1: "1C is the dominant ERP platform in the Russian-speaking market. 1C Agent lets managers work with it in plain business language: an AI layer on Claude with role-based permissions, plan-review flows and a full audit trail — managers get safe self-service actions, developers stop drowning in routine tickets, and the 1C core stays untouched.",
-    p2: "Results across three deployments: typical development tickets close 4.2× faster, managers get answers in minutes instead of days, and every AI action is logged and reversible. The product targets the Russian market, so the full case study is in Russian.",
+    h1: "1C Agent — an AI developer for the 1C ERP platform",
+    p1: "1C is the dominant ERP platform in the Russian-speaking market. 1C Agent is a digital 1C developer: the IT director or the head of department describes a task in plain business language, the agent turns it into a change plan, and only after that plan is approved does it write anything. Changes land in configuration extensions, so the standard 1C core stays untouched and vendor updates keep working.",
+    p2: "Access is deliberately narrow — only the two authorised people can issue commands — and every request, action and result goes into an audit log. The product is sold into the Russian market, so the full case study, including the interactive permission demo, is written in Russian.",
+    howLabel: "How it works",
+    how: [
+      "Requests in plain business language instead of internal dev tickets",
+      "Every change arrives as a reviewable plan before anything is applied",
+      "Writes only to configuration extensions — the 1C core stays standard",
+      "Full audit log: who asked, what ran, what changed",
+      "Pilot in 2–4 weeks, self-hosted ready",
+    ],
+    relatedLabel: "Related services:",
     ctaPrimary: "Read the full case in Russian",
     ctaSecondary: "Back to cases",
   },
@@ -67,9 +93,18 @@ const ERP_STUB: Record<Exclude<Locale, "ru">, {
     breadcrumbHome: "Start",
     breadcrumbCases: "Cases",
     eyebrow: "1C Agent · AI-Ops",
-    h1: "1C Agent — eine berechtigungsbasierte KI-Schicht über dem 1C-ERP",
-    p1: "1C ist die dominierende ERP-Plattform im russischsprachigen Markt. Mit 1C Agent arbeiten Manager in normaler Geschäftssprache damit: eine KI-Schicht auf Claude mit rollenbasierten Berechtigungen, Plan-Review-Abläufen und lückenlosem Audit-Trail — Manager erhalten sichere Self-Service-Aktionen, Entwickler ertrinken nicht mehr in Routine-Tickets, und der 1C-Kern bleibt unangetastet.",
-    p2: "Ergebnisse aus drei Einführungen: typische Entwicklungs-Tickets schließen 4,2× schneller, Manager bekommen Antworten in Minuten statt Tagen, und jede KI-Aktion ist protokolliert und umkehrbar. Das Produkt zielt auf den russischen Markt — die vollständige Case Study ist auf Russisch.",
+    h1: "1C Agent — ein KI-Entwickler für die ERP-Plattform 1C",
+    p1: "1C ist die dominierende ERP-Plattform im russischsprachigen Markt. 1C Agent ist ein digitaler 1C-Entwickler: Die IT-Leitung oder die Abteilungsleitung beschreibt eine Aufgabe in normaler Geschäftssprache, der Agent macht daraus einen Änderungsplan — und schreibt erst, wenn dieser Plan freigegeben ist. Änderungen landen in Configuration Extensions, der Standard-Kern von 1C bleibt unangetastet und Vendor-Updates funktionieren weiter.",
+    p2: "Der Zugang ist bewusst eng: Nur die beiden autorisierten Personen können Befehle erteilen, und jede Anfrage, Aktion und jedes Ergebnis landet im Audit-Log. Das Produkt wird im russischen Markt verkauft — die vollständige Case Study samt interaktiver Berechtigungs-Demo ist deshalb auf Russisch.",
+    howLabel: "So funktioniert es",
+    how: [
+      "Anfragen in normaler Geschäftssprache statt interner Dev-Tickets",
+      "Jede Änderung kommt zuerst als prüfbarer Plan, bevor etwas angewendet wird",
+      "Schreibt ausschließlich in Configuration Extensions — der 1C-Kern bleibt Standard",
+      "Lückenloses Audit-Log: wer gefragt hat, was lief, was sich geändert hat",
+      "Pilot in 2–4 Wochen, self-hosted-fähig",
+    ],
+    relatedLabel: "Passende Leistungen:",
     ctaPrimary: "Vollständige Case Study auf Russisch lesen",
     ctaSecondary: "Zurück zu den Cases",
   },
@@ -77,9 +112,18 @@ const ERP_STUB: Record<Exclude<Locale, "ru">, {
     breadcrumbHome: "Inicio",
     breadcrumbCases: "Casos",
     eyebrow: "1C Agent · AI-ops",
-    h1: "1C Agent — una capa de IA con permisos sobre el ERP 1C",
-    p1: "1C es la plataforma ERP dominante en el mercado rusohablante. Con 1C Agent, los managers trabajan con ella en lenguaje de negocio normal: una capa de IA sobre Claude con permisos por rol, flujos de plan-review y un registro de auditoría completo — los managers obtienen acciones seguras de autoservicio, los desarrolladores dejan de ahogarse en tickets rutinarios y el núcleo de 1C queda intacto.",
-    p2: "Resultados en tres implantaciones: los tickets de desarrollo típicos se cierran 4,2× más rápido, los managers reciben respuestas en minutos en lugar de días, y cada acción de la IA queda registrada y es reversible. El producto apunta al mercado ruso, por lo que el caso completo está en ruso.",
+    h1: "1C Agent — un desarrollador de IA para el ERP 1C",
+    p1: "1C es la plataforma ERP dominante en el mercado rusohablante. 1C Agent es un desarrollador 1C digital: el director de TI o el responsable del área describe una tarea en lenguaje de negocio normal, el agente la convierte en un plan de cambios y no escribe nada hasta que ese plan se aprueba. Los cambios van a extensiones de configuración, así que el núcleo estándar de 1C queda intacto y las actualizaciones del proveedor siguen funcionando.",
+    p2: "El acceso es deliberadamente estrecho — solo las dos personas autorizadas pueden dar órdenes — y cada petición, acción y resultado queda en un registro de auditoría. El producto se vende en el mercado ruso, así que el caso completo, incluida la demo interactiva de permisos, está en ruso.",
+    howLabel: "Cómo funciona",
+    how: [
+      "Peticiones en lenguaje de negocio en lugar de tickets internos de desarrollo",
+      "Cada cambio llega como un plan revisable antes de aplicarse",
+      "Escribe solo en extensiones de configuración; el núcleo de 1C sigue siendo estándar",
+      "Registro de auditoría completo: quién pidió qué, qué se ejecutó y qué cambió",
+      "Piloto en 2–4 semanas, listo para self-hosted",
+    ],
+    relatedLabel: "Servicios relacionados:",
     ctaPrimary: "Leer el caso completo en ruso",
     ctaSecondary: "Volver a los casos",
   },
@@ -88,6 +132,7 @@ const ERP_STUB: Record<Exclude<Locale, "ru">, {
 /** Short localized summary shown to non-RU visitors instead of the Russian landing. */
 function ErpRussianOnlyStub({ locale }: { locale: Exclude<Locale, "ru"> }) {
   const t = ERP_STUB[locale] ?? ERP_STUB.en;
+  const dict = getDictionary(locale);
   return (
     <section className="page-hero">
       <div className="container" style={{ paddingBlock: "clamp(3rem, 6vw, 5rem)" }}>
@@ -104,6 +149,14 @@ function ErpRussianOnlyStub({ locale }: { locale: Exclude<Locale, "ru"> }) {
         <h1 className="page-hero__title">{t.h1}</h1>
         <p className="page-hero__lede">{t.p1}</p>
         <p className="page-hero__lede">{t.p2}</p>
+        <div className="stub-how">
+          <p className="stub-how__label">{t.howLabel}</p>
+          <ul className="stub-how__list">
+            {t.how.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
         <div className="cta-row" style={{ marginTop: "2rem" }}>
           <MagneticButton href={RU_URL}>
             {t.ctaPrimary} <ArrowIcon />
@@ -112,6 +165,16 @@ function ErpRussianOnlyStub({ locale }: { locale: Exclude<Locale, "ru"> }) {
             {t.ctaSecondary}
           </MagneticButton>
         </div>
+        <p className="stub-related">
+          {t.relatedLabel}{" "}
+          <a href={href("/services/ai-assistant", locale)}>
+            {dict.services_pages["ai-assistant"].title}
+          </a>
+          {" · "}
+          <a href={href("/services/ai-workspace", locale)}>
+            {dict.services_pages["ai-workspace"].title}
+          </a>
+        </p>
       </div>
     </section>
   );
@@ -306,12 +369,15 @@ export function ErpAgentPage() {
 
   return (
     <>
+      {/* FAQPage over the RU accordion below — see ErpFaqJsonLd. */}
+      <ErpFaqJsonLd />
+
       {/* 1. Hero */}
       <section className="erp-hero">
         <div className="container">
           <FadeUp>
             <div className="breadcrumbs">
-              <a href={href("/", locale)}>Home</a>
+              <a href={href("/", locale)}>{breadcrumbHomeLabels[locale]}</a>
               <span className="breadcrumbs__sep">/</span>
               <a href={href("/cases", locale)}>{dict.casesIntro.eyebrow}</a>
               <span className="breadcrumbs__sep">/</span>
@@ -472,6 +538,50 @@ export function ErpAgentPage() {
       {/* 5. Permission Demo (interactive) */}
       <PermissionDemo />
 
+      {/* 5b. Before / after — the process being replaced, as a comparison
+          rather than a picture of one. */}
+      <section className="section section--surface">
+        <div className="container">
+          <FadeUp>
+            <div className="section-header">
+              <div className="section-header__left">
+                <p className="eyebrow">{erpBeforeAfter.eyebrow}</p>
+                <h2>{erpBeforeAfter.heading}</h2>
+              </div>
+              <div className="section-header__right">
+                <p>{erpBeforeAfter.lede}</p>
+              </div>
+            </div>
+          </FadeUp>
+          <FadeUp delay={120}>
+            <div className="erp-ba">
+              <div className="erp-ba__head" aria-hidden>
+                <span className="erp-ba__label" />
+                <span className="erp-ba__col-head erp-ba__col-head--before">
+                  {erpBeforeAfter.beforeLabel}
+                </span>
+                <span className="erp-ba__col-head erp-ba__col-head--after">
+                  {erpBeforeAfter.afterLabel}
+                </span>
+              </div>
+              {erpBeforeAfter.rows.map((row) => (
+                <div key={row.label} className="erp-ba__row">
+                  <span className="erp-ba__label">{row.label}</span>
+                  <span className="erp-ba__cell erp-ba__cell--before">
+                    <span className="erp-ba__tag">{erpBeforeAfter.beforeLabel}</span>
+                    {row.before}
+                  </span>
+                  <span className="erp-ba__cell erp-ba__cell--after">
+                    <span className="erp-ba__tag">{erpBeforeAfter.afterLabel}</span>
+                    {row.after}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* 6. Process rows */}
       <section className="section section--paper">
         <div className="container">
@@ -485,6 +595,19 @@ export function ErpAgentPage() {
                 <p>{erpProcess.lede}</p>
               </div>
             </div>
+          </FadeUp>
+          <FadeUp delay={100}>
+            <figure className="case-figure">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={asset(FIGURE_SRC[erpFigures.process.id])}
+                alt={erpFigures.process.alt}
+                width={1376}
+                height={768}
+                loading="lazy"
+              />
+              <figcaption>{erpFigures.process.caption}</figcaption>
+            </figure>
           </FadeUp>
           <div className="erp-process">
             {erpProcess.rows.map((row, i) => (
@@ -756,8 +879,8 @@ export function ErpAgentPage() {
 
 function ErpRelatedGuides() {
   const locale = useLocale();
+  const dict = getDictionary(locale);
   const guides = relatedGuidesFor("erp-agent");
-  if (!guides.length) return null;
   return (
     <section className="section section--paper">
       <div className="container">
@@ -768,24 +891,61 @@ function ErpRelatedGuides() {
             </div>
           </div>
         </FadeUp>
-        <FadeUp delay={80}>
-          <div className="post-cards">
-            {guides.map((entry) => {
-              const card = entry.card[locale];
-              return (
-                <a key={entry.slug} className="post-card" href={href(`/blog/${entry.slug}`, locale)}>
-                  <h3 className="post-card__title">{card.title}</h3>
-                  <p className="post-card__summary">{card.summary}</p>
-                  <span className="post-card__cta">
-                    {card.readLabel} <ArrowIcon />
+        {guides.length > 0 && (
+          <FadeUp delay={80}>
+            <div className="post-cards">
+              {guides.map((entry) => {
+                const card = entry.card[locale];
+                return (
+                  <a key={entry.slug} className="post-card" href={href(`/blog/${entry.slug}`, locale)}>
+                    <h3 className="post-card__title">{card.title}</h3>
+                    <p className="post-card__summary">{card.summary}</p>
+                    <span className="post-card__cta">
+                      {card.readLabel} <ArrowIcon />
+                    </span>
+                  </a>
+                );
+              })}
+            </div>
+          </FadeUp>
+        )}
+        <FadeUp delay={140}>
+          <div className="rel-services">
+            <p className="rel-services__label">{erpRelatedServices.heading}</p>
+            <div className="rel-services__grid">
+              {erpRelatedServices.items.map((s) => (
+                <a key={s.slug} className="rel-service" href={href(`/services/${s.slug}`, locale)}>
+                  <span className="rel-service__title">
+                    {dict.services_pages[s.slug].title} <ArrowIcon />
                   </span>
+                  <span className="rel-service__desc">{s.desc}</span>
                 </a>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </FadeUp>
       </div>
     </section>
+  );
+}
+
+/**
+ * FAQPage built from `erpFaq.items` — the questions the RU accordion at the
+ * bottom of this page actually renders.
+ *
+ * The route-level `servicePageJsonLd` is set to "no-faq" for this slug because
+ * *its* source is the dictionary FAQ, which the bespoke layout never displays;
+ * schema over invisible text is a structured-data violation. That reasoning
+ * doesn't apply to the copy below — it is on the page, in the DOM, in the same
+ * language — so the page emits its own FAQPage instead of going without one.
+ * Rendered only under the RU branch, since the en/de/es stubs have no FAQ.
+ */
+function ErpFaqJsonLd() {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: jsonLdString(faqPageJsonLd(erpFaq.items)) }}
+    />
   );
 }
 
