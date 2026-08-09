@@ -10,12 +10,20 @@ import type { ServiceDict } from "@/lib/i18n/types";
 import type { ServiceMedia } from "./service-media";
 import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 import { relatedGuidesFor } from "@/lib/blog";
+import { caseRelatedServices } from "@/lib/cases";
 
 const RELATED_GUIDES_LABEL: Record<Locale, string> = {
   en: "Related guides",
   ru: "Читайте также",
   de: "Weiterführende Guides",
   es: "Guías relacionadas",
+};
+
+const RELATED_SERVICES_LABEL: Record<Locale, string> = {
+  en: "How we deliver this",
+  ru: "Как мы это делаем",
+  de: "Wie wir das umsetzen",
+  es: "Cómo lo entregamos",
 };
 
 export function ServicePage({
@@ -44,6 +52,9 @@ export function ServicePage({
   const parent = breadcrumb ?? { parentLabel: "Services", parentHref: "/#services" };
   const relatedGuides = relatedGuidesFor(slug);
   const art = media && service.media ? { paths: media, alt: service.media } : null;
+  const relatedServices = (caseRelatedServices[slug] ?? []).filter(
+    (s) => dict.services_pages[s],
+  );
 
   function ctaIcon(kind?: "phone" | "mail" | "telegram" | "arrow") {
     if (kind === "phone") return <PhoneIcon size={16} />;
@@ -128,7 +139,7 @@ export function ServicePage({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={asset(heroImage)}
-                alt={service.title}
+                alt={service.imageAlt ?? service.title}
                 className="case-hero-image__img"
                 loading="eager"
               />
@@ -333,6 +344,37 @@ export function ServicePage({
         </div>
       </section>
 
+      {/* 6a. Architecture — in-page HTML so every label stays translatable
+          and readable, instead of baking a diagram into a picture. */}
+      {service.pipeline && (
+        <section className="case-arch" id="architecture">
+          <div className="container">
+            <FadeUp>
+              <div className="case-arch__head">
+                <p className="eyebrow">{service.pipeline.eyebrow}</p>
+                <h2>{service.pipeline.heading}</h2>
+                <p className="case-arch__lede">{service.pipeline.lede}</p>
+              </div>
+            </FadeUp>
+            <FadeUp delay={140}>
+              <div className="case-arch__diagram">
+                {service.pipeline.columns.map((col) => (
+                  <div key={col.head} className="case-arch__col">
+                    <div className="case-arch__col-head">{col.head}</div>
+                    {col.nodes.map((n) => (
+                      <div key={n.name} className="case-arch__node">
+                        <span className="case-arch__node-name">{n.name}</span>
+                        <span className="case-arch__node-meta">{n.meta}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </FadeUp>
+          </div>
+        </section>
+      )}
+
       {/* 6b. Metrics table — optional, only on long-form case landings */}
       {service.metrics && (
         <section className="section section--surface">
@@ -515,6 +557,43 @@ export function ServicePage({
         items={service.faq}
         heading={`${service.title} — ${c.faqSuffix}`}
       />
+
+      {/* 10b. Related services — the case landings sell an outcome; these are
+          the engagements that actually build it. Labels come from the services
+          dictionary, so they translate with everything else. */}
+      {relatedServices.length > 0 && (
+        <section className="section section--surface">
+          <div className="container">
+            <FadeUp>
+              <div className="section-header">
+                <div className="section-header__left">
+                  <h2>{RELATED_SERVICES_LABEL[locale]}</h2>
+                </div>
+              </div>
+            </FadeUp>
+            <FadeUp delay={80}>
+              <div className="post-cards">
+                {relatedServices.map((s) => {
+                  const svc = dict.services_pages[s];
+                  return (
+                    <a
+                      key={s}
+                      className="post-card"
+                      href={href(`/services/${s}`, locale)}
+                    >
+                      <h3 className="post-card__title">{svc.title}</h3>
+                      <p className="post-card__summary">{svc.cardSummary}</p>
+                      <span className="post-card__cta">
+                        {svc.navLabel} <ArrowIcon />
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            </FadeUp>
+          </div>
+        </section>
+      )}
 
       {/* 11. Related guides — inferred from which blog articles link to this
           page (see relatedGuidesFor in src/lib/blog.ts). Closes the loop the
