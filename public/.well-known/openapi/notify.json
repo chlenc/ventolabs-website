@@ -13,12 +13,12 @@
   },
   "servers": [
     {
-      "url": "https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1",
-      "description": "Production (Supabase Edge Functions)"
+      "url": "https://notify.ventolabs.com",
+      "description": "Production (Cloudflare Pages Functions). Accepts POST on any path; the site posts to the root."
     }
   ],
   "paths": {
-    "/notify": {
+    "/": {
       "post": {
         "operationId": "sendNotification",
         "summary": "Forward a site event to the Vento Labs Telegram channel",

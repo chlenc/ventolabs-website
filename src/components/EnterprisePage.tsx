@@ -759,6 +759,8 @@ export function EnterprisePage({
       {/* FAQ */}
       <FaqSection items={service.faq} heading={e.faqHeading} />
 
+      <ServiceCrossLinks slug="ai-workspace" />
+
       {/* Touch CheckIcon to keep import (for future deliverables list) */}
       <span hidden>
         <CheckIcon />

@@ -25,7 +25,7 @@
 <p>Webhook used by <a href="https://ventolabs.com">ventolabs.com</a> to forward visitor, booking, and session events to a Telegram channel. Also accepts Cal.com booking webhooks. Unauthenticated and CORS-open — the URL is exposed in the site's client bundle.</p>
 
 <h2>Endpoint</h2>
-<pre><code>POST https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1/notify</code></pre>
+<pre><code>POST https://notify.ventolabs.com/</code></pre>
 
 <h2>Machine-readable spec</h2>
 <p>OpenAPI 3.1 — <a href="/.well-known/openapi/notify.json"><code>/.well-known/openapi/notify.json</code></a></p>
@@ -40,7 +40,7 @@
 </ul>
 
 <h2>Example</h2>
-<pre><code>curl -X POST https://wlwmmyawxzspgwrijyvm.supabase.co/functions/v1/notify \
+<pre><code>curl -X POST https://notify.ventolabs.com/ \
   -H "Content-Type: application/json" \
   -d '{"type":"visit","page":"/","referrer":"(direct)","ts":"2026-05-08T12:00:00Z"}'</code></pre>
 

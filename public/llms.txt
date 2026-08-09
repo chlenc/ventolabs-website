@@ -56,6 +56,8 @@ Long-form write-ups at https://ventolabs.com/blog/. Each guide is published in o
 
 ## Machine-readable endpoints
 
-- [Agent card (A2A)](https://ventolabs.com/.well-known/agent-card.json)
-- [API catalog (RFC 9727)](https://ventolabs.com/.well-known/api-catalog)
+- [Agent card (A2A)](https://ventolabs.com/.well-known/agent-card.json): nine delivery skills — the four services, data centers, and the four productized solutions — for agent-to-agent routing.
+- [MCP server card](https://ventolabs.com/.well-known/mcp/server-card.json): the in-page WebMCP surface (`navigator.modelContext`). A visiting agent can book a consultation or fetch contact details without leaving the page.
+- [API catalog (RFC 9727)](https://ventolabs.com/.well-known/api-catalog): one entry, the public notify webhook, with its [OpenAPI 3.1 spec](https://ventolabs.com/.well-known/openapi/notify.json) and [human-readable docs](https://ventolabs.com/.well-known/api-docs/notify.html).
+- [Agent Skills discovery index](https://ventolabs.com/.well-known/agent-skills/index.json): intentionally an empty `skills` array. That index advertises downloadable `SKILL.md` procedure files for an agent to execute; Vento Labs publishes none. It is deliberately NOT a mirror of the nine A2A skills above — those describe work this company delivers, not instructions an agent can run. Do not treat the empty array as an oversight.
 - [Sitemap](https://ventolabs.com/sitemap.xml)
