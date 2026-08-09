@@ -319,6 +319,9 @@ export const es: Dictionary = {
     bookFreeSubtitle: "Llamada de descubrimiento de 30 minutos. Sin venta, sin presión.",
     bookFreeCta: "Obtener mi agente de IA gratis",
     faqSuffix: "FAQ",
+    nextEyebrow: "Sigue",
+    nextHeading: "Adónde ir después",
+    nextCta: "Abrir",
   },
 
   services_pages: {
@@ -372,8 +375,21 @@ export const es: Dictionary = {
         { q: "¿Cuánto cuesta un agente de IA a medida?", a: "El primer agente piloto es gratis — lo construimos tras una llamada de 30 minutos. Los agentes de producción se presupuestan a precio cerrado después de la llamada, según integraciones y alcance; el tiempo típico es de 3–7 días. El coste recurrente es solo el uso del modelo de IA, normalmente 20–200 $/mes pagados directamente a los proveedores, sin recargo." },
       ],
       seo: {
-        title: "Agentes de IA a medida — Autoalojados, seguros, 24/7",
-        description: "Construimos agentes de IA autoalojados sobre Claude Agent SDK, LangGraph, CrewAI. Controlan tu ordenador, se integran con Telegram, LinkedIn, WhatsApp. Configuración gratuita incluida.",
+        title: "Agentes de IA a medida, autoalojados",
+        description:
+          "Construimos tu agente de IA: autoalojado, sobre Claude Agent SDK, LangGraph o CrewAI, conectado a Telegram, correo y tus herramientas. El primero, gratis.",
+        serviceType: "Desarrollo de agentes de IA",
+      },
+      media: {
+        heroAlt: "Un servidor compacto autoalojado sobre un escritorio en una oficina tranquila — el agente corre en hardware tuyo.",
+        stepAlts: [
+          "Tarjetas en blanco dispuestas y unidas en un mapa ramificado de las tareas del día.",
+          "Un chasis de acero con el panel lateral retirado: placas y cableado a la vista.",
+          "El mismo equipo con tres módulos de ampliación acoplados en fila a su lado.",
+        ],
+        kitAlt: "Vista despiezada del equipo del agente: carcasa, placa base, módulo de almacenamiento, placa de conectores y fuente de alimentación.",
+        kitCaption:
+          "Un solo sistema, entregado entero: el runtime del agente, sus integraciones, la base de conocimiento y las claves — todo en hardware que controlas tú.",
       },
     },
     "ai-automation": {
@@ -424,8 +440,21 @@ export const es: Dictionary = {
         { q: "¿En qué se diferencia esto de usar Zapier?", a: "Usamos n8n (autoalojado, sin precios por tarea) y Make.com para flujos complejos. Más importante: añadimos inteligencia de IA y mantenimiento continuo — no solo conexiones de apuntar y pulsar." },
       ],
       seo: {
-        title: "Automatización de procesos con IA — n8n y Make.com",
-        description: "Automatiza cualificación de leads, sincronización de datos, informes y flujos con automatizaciones de IA en n8n y Make.com. Cero entrada manual de datos.",
+        title: "Automatización con IA — n8n y Make.com",
+        description:
+          "Conectamos tu CRM, correo, formularios y bases de datos en flujos con IA sobre n8n y Make.com: leads cualificados en minutos, datos al día, informes solos.",
+        serviceType: "Automatización de procesos",
+      },
+      media: {
+        heroAlt: "Un panel de parcheo con cada tirada peinada y ordenada a mano — el aspecto que tiene una automatización mantenida.",
+        stepAlts: [
+          "A un lado una maraña de cables sueltos; al otro, esos mismos cables peinados en un solo mazo.",
+          "Un bloque colector mecanizado con doce puertos y válvulas verdes, con líneas de acero convergiendo.",
+          "Una fila de pilotos indicadores en una barra de acero: casi todos verdes, uno ámbar.",
+        ],
+        kitAlt: "El kit de automatización extendido: bloque colector, racores ordenados por tamaño, manguera, válvulas, barra de indicadores y soportes.",
+        kitCaption:
+          "Los flujos, las conexiones entre tus herramientas y la monitorización que avisa cuando una de ellas cambia — construidos como un conjunto, no como zaps sueltos.",
       },
     },
     "ai-training": {
@@ -476,8 +505,21 @@ export const es: Dictionary = {
         { q: "¿Qué herramientas enseñáis?", a: "Claude Code, Cursor, servidores MCP, ingeniería de prompts, n8n/Make para automatización y lo que se adapte a tu equipo. No empujamos una sola herramienta — encontramos la que funciona." },
       ],
       seo: {
-        title: "Consultoría y formación en IA — Claude Code, Cursor, MCP",
-        description: "Instalamos Claude Code, Cursor y servidores MCP, formamos a tu equipo en flujos reales y medimos la adopción a 30 y 60 días. Consultoría de IA para proyectos de cualquier escala.",
+        title: "Formación en IA — Claude Code, Cursor, MCP",
+        description:
+          "Instalamos Claude Code, Cursor y servidores MCP, damos talleres sobre el trabajo real de tu equipo y medimos la adopción a 30 y 60 días. Consultoría incluida.",
+        serviceType: "Formación y consultoría en IA",
+      },
+      media: {
+        heroAlt: "Un equipo en una sesión práctica de IA alrededor de una mesa larga, visto desde el fondo de la sala.",
+        stepAlts: [
+          "Un calibre y un lápiz sobre una hoja de papel cuadriculado en blanco.",
+          "Un kit de puesto de trabajo dispuesto en cuadrícula: portátil, soporte, teclado, cables y una llave allen.",
+          "Una pila de manuales encuadernados idénticos; el de arriba, abierto por páginas en blanco.",
+        ],
+        kitAlt: "El kit de formación extendido: portátil y soporte, tres manuales encuadernados, lápiz, calibre, cable y dos bloques mecanizados.",
+        kitCaption:
+          "Herramientas instaladas en cada equipo, talleres sobre vuestro trabajo real y un manual que se queda con el equipo cuando nos vamos.",
       },
     },
     "ai-workspace": {
@@ -530,8 +572,21 @@ export const es: Dictionary = {
         { q: "¿Cuánto cuesta?", a: "Pilot desde 3.000 $ de setup + 500 $/mes. Scale desde 8.000 $ de setup + 2.000 $/mes. Enterprise con precio a medida. Los costes del modelo de IA (20–200 $/mes según uso) los facturan directamente los proveedores — sin márgenes nuestros." },
       ],
       seo: {
-        title: "Plataforma de IA empresarial — agentes para cada equipo",
-        description: "Sistema operativo de IA completo: agentes dedicados por departamento, Knowledge Vault, MCP Gateway, seguridad empresarial. Despliegue en 4 semanas. Precios de Pilot a Enterprise.",
+        title: "Plataforma de IA para toda la empresa",
+        description:
+          "Un agente de IA por departamento, un Knowledge Vault sobre tus documentos, permisos por rol e informes de ROI. En marcha en 4 semanas y en tu infraestructura.",
+        serviceType: "Plataforma de IA empresarial",
+      },
+      media: {
+        heroAlt: "Una planta de oficina diáfana a media tarde, vista desde el fondo — toda la empresa, no un único usuario avanzado.",
+        stepAlts: [
+          "Un bloque concentrador de acero con ocho cables entrando desde todas las direcciones.",
+          "Cuatro unidades modulares idénticas en fila; la segunda, abierta.",
+          "Doce módulos idénticos en cuadrícula; uno de ellos se está colocando en su hueco.",
+        ],
+        kitAlt: "Vista despiezada de la plataforma: envolvente, cuatro módulos de agente, un hub de pasarela, una cámara sellada de conocimiento y el mazo de cables.",
+        kitCaption:
+          "Agentes por equipo, la pasarela por la que todos hablan, la cámara donde vive vuestro conocimiento y el cableado a vuestros sistemas — una plataforma, no once suscripciones.",
       },
     },
   },
@@ -903,6 +958,8 @@ export const es: Dictionary = {
   dataCenters: {
     navLabel: "Centros de datos",
     breadcrumb: "Centros de datos",
+    cardSummary:
+      "Desarrollo integral de centros de datos de IA — terreno, energía, conexión a red, construcción modular y operación. De 10 a 100+ MW.",
     seo: {
       title: "Desarrollo de centros de datos para IA — terreno, energía, construcción y operación",
       description:
@@ -1440,6 +1497,7 @@ export const es: Dictionary = {
       { t: "Knowledge Vault", d: "Todo el conocimiento de la empresa indexado y disponible para la IA — para siempre" },
       { t: "Conectado a tus herramientas", d: "La IA habla con tu CRM, email, chat, Shopify, bases de datos — en tiempo real" },
     ],
+    solutionImageAlt: "Una plataforma modular montada: cuatro módulos de agente en una envolvente, un bloque de pasarela encima y el cableado entrando por el lateral.",
     howItWorksEyebrow: "Cómo funciona",
     howItWorksHeading: "De cero a potenciado por IA en 4 semanas",
     capabilitiesEyebrow: "Capacidades",
@@ -1463,6 +1521,8 @@ export const es: Dictionary = {
           { name: "Client Reporter", does: "Genera informes semanales/mensuales con tu marca para cada cliente automáticamente" },
           { name: "Follow-up Agent", does: "Envía seguimientos personalizados tras llamadas, demos y compras — los leads nunca se enfrían" },
         ],
+        imageId: "service",
+        imageAlt: "Un puesto de atención con los auriculares junto al teclado.",
       },
       {
         name: "Ventas y gestión de leads",
@@ -1471,6 +1531,8 @@ export const es: Dictionary = {
           { name: "Proposal Builder", does: "Genera propuestas a medida a partir de plantillas, datos del CRM y tratos pasados" },
           { name: "Outreach Agent", does: "Redacta y envía secuencias de prospección personalizadas en email y LinkedIn" },
         ],
+        imageId: "sales",
+        imageAlt: "Dos compañeros repasan una operación en la mesa junto a la ventana.",
       },
       {
         name: "Marketing y contenido",
@@ -1479,6 +1541,8 @@ export const es: Dictionary = {
           { name: "Campaign Optimizer", does: "Analiza el rendimiento de anuncios entre plataformas y sugiere mejoras" },
           { name: "SEO Monitor", does: "Rastrea rankings, encuentra oportunidades de keywords, redacta contenido optimizado" },
         ],
+        imageId: "marketing",
+        imageAlt: "Pruebas impresas, una cámara y muestras de color sobre una mesa de estudio.",
       },
       {
         name: "Operaciones y conocimiento",
@@ -1488,6 +1552,8 @@ export const es: Dictionary = {
           { name: "Report Generator", does: "Crea informes semanales/mensuales con datos en vivo de todas tus herramientas" },
           { name: "Onboarding Guide", does: "Guía a los nuevos empleados en los procesos, responde preguntas y reduce el tiempo de ramp-up" },
         ],
+        imageId: "operations",
+        imageAlt: "Un pasillo de archivo con carpetas idénticas; se extrae una del estante.",
       },
     ],
     integrationsEyebrow: "Integraciones",

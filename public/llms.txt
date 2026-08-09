@@ -13,10 +13,12 @@ Key facts:
 
 ## Services
 
-- [AI Agents](https://ventolabs.com/services/ai-assistant/): Custom self-hosted AI agents on Claude Agent SDK, LangGraph, CrewAI. Telegram, WhatsApp, LinkedIn, email integration; computer-use; any LLM backend including local models.
-- [AI Automation](https://ventolabs.com/services/ai-automation/): Intelligent workflow automation with n8n and Make.com — lead qualification, data sync, reporting, CRM/email/chat integrations.
-- [AI Consulting & Training](https://ventolabs.com/services/ai-training/): Team enablement — Claude Code, Cursor, MCP servers setup; hands-on workshops; adoption measured at 30 and 60 days.
-- [AI Platform](https://ventolabs.com/services/ai-workspace/): Company-wide AI operating system — dedicated agents per team, Knowledge Vault, role-based access, usage/ROI reporting.
+The four services are distinct engagements, in rough order of scope: one agent (ai-assistant) → your tools wired together (ai-automation) → your people trained (ai-training) → the whole company on one platform (ai-workspace).
+
+- [AI Agents](https://ventolabs.com/services/ai-assistant/): One custom AI agent, built for you and self-hosted on your server, VPS or local machine. Built on Claude Agent SDK, LangGraph or CrewAI; any LLM backend including fully local models. Integrates with Telegram, WhatsApp, LinkedIn, email (Gmail/Outlook), Slack and any API; computer-use for browsing, filling forms and extracting data; connects to your docs, FAQ, CRM and databases. Basic agent live in 3–7 days, complex multi-platform builds 1–3 weeks. First pilot agent is free; production agents are fixed-price quoted after the discovery call.
+- [AI Automation](https://ventolabs.com/services/ai-automation/): Workflow automation across the tools you already run, built on n8n (self-hosted, no per-task pricing) and Make.com. Process audit and automation roadmap, AI-powered lead qualification and response drafting, cross-platform data sync (CRM ↔ sheets ↔ email ↔ chat), automated reporting, webhook triggers, error monitoring and alerting, and ongoing maintenance as the connected tools change. AI handles the judgement calls that previously required a person.
+- [AI Consulting & Training](https://ventolabs.com/services/ai-training/): Team enablement and consulting. AI maturity assessment, Claude Code and Cursor installed and configured for every developer, MCP servers wired to your tools and databases, custom prompt libraries, hands-on workshops using the team's real work rather than demos, follow-up sessions and adoption measurement at 30 and 60 days, and a best-practices playbook. Also consulting on in-house AI projects: architecture, tool selection, risk assessment.
+- [AI Platform](https://ventolabs.com/services/ai-workspace/): Company-wide AI operating system for teams of roughly 5 to 200+. A dedicated agent per function (client service, sales, marketing, operations), an AI assistant with full company context for every employee, a Knowledge Vault indexing all company knowledge, connections to CRM, email, WhatsApp, Telegram, Shopify, Google Drive, Notion, Slack and any REST API, role-based access with audit logs, usage and ROI reporting, and AI-usage policy documentation. Self-hosted, live in 4 weeks. Pricing per the tiers listed above.
 
 ## AI infrastructure
 

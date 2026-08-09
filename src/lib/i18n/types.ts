@@ -16,7 +16,28 @@ export type ServiceDict = {
   stakes: string;
   socialProof?: { company: string; result: string };
   faq: { q: string; a: string }[];
-  seo: { title: string; description: string };
+  seo: {
+    title: string;
+    description: string;
+    /**
+     * schema.org `Service.serviceType` — a short *category* label. Falls back
+     * to `kicker`, which is marketing copy and on some pages reads as a
+     * feature list rather than a category (see ru/ai-workspace).
+     */
+    serviceType?: string;
+  };
+  /**
+   * Alt text and captions for the page's imagery. Image PATHS live in the
+   * component (keyed by slug, see ServiceWrapper) so translators never touch
+   * them. Optional: `case_pages` shares this type and carries its own artwork.
+   */
+  media?: {
+    heroAlt: string;
+    /** One per `plan` step, same order. */
+    stepAlts: string[];
+    kitAlt: string;
+    kitCaption: string;
+  };
   /** Optional KPI table (before/after) — block 6 of long-form case landings. */
   metrics?: {
     eyebrow: string;
@@ -86,9 +107,19 @@ export type CaseStudyDict = {
   metricsSource?: string;
 };
 
+/** Photo ids for the four team-function shots on /services/ai-workspace. */
+export type EnterpriseTeamImageId = "service" | "sales" | "marketing" | "operations";
+
 export type AgentCategoryDict = {
   name: string;
   agents: { name: string; does: string }[];
+  /**
+   * Which photo goes with this category. Carried in the dictionary rather
+   * than indexed positionally, because the locales do not list the same
+   * categories in the same order.
+   */
+  imageId: EnterpriseTeamImageId;
+  imageAlt: string;
 };
 
 /** Project/site ids on /data-centers. Photos are mapped per-id in the
@@ -115,6 +146,8 @@ export type HomeCrossLinkId = "data-centers" | "blog";
 export type DataCentersDict = {
   navLabel: string;
   breadcrumb: string;
+  /** One-line summary used when another page links here. */
+  cardSummary: string;
   seo: { title: string; description: string };
 
   hero: {
@@ -466,6 +499,10 @@ export type Dictionary = {
     bookFreeSubtitle: string;
     bookFreeCta: string;
     faqSuffix: string;
+    /** "Where to go next" cross-link block shared by all four service pages. */
+    nextEyebrow: string;
+    nextHeading: string;
+    nextCta: string;
   };
 
   services_pages: Record<string, ServiceDict>;
@@ -493,6 +530,7 @@ export type Dictionary = {
     solutionHeading: string;
     solutionLead: string;
     solutionCards: { t: string; d: string }[];
+    solutionImageAlt: string;
     howItWorksEyebrow: string;
     howItWorksHeading: string;
     capabilitiesEyebrow: string;

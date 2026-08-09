@@ -139,7 +139,10 @@ export function servicePageJsonLd({
       description: svc.seo.description,
       path: `${basePath}/${slug}`,
       locale,
-      serviceType: svc.kicker,
+      // `kicker` is marketing copy and on some pages reads as a feature list
+      // rather than a category, which makes a poor serviceType. Pages that
+      // care declare an explicit one.
+      serviceType: svc.seo.serviceType ?? svc.kicker,
     }),
     breadcrumb,
   ];

@@ -319,6 +319,9 @@ export const en: Dictionary = {
     bookFreeSubtitle: "30-minute discovery call. No pitch, no pressure.",
     bookFreeCta: "Claim your free AI agent",
     faqSuffix: "FAQ",
+    nextEyebrow: "Keep going",
+    nextHeading: "Where to go next",
+    nextCta: "Open",
   },
 
   services_pages: {
@@ -372,8 +375,21 @@ export const en: Dictionary = {
         { q: "How much does a custom AI agent cost?", a: "The first pilot agent is free — we build it after a 30-minute discovery call. Production agents are quoted fixed-price after the call, depending on integrations and scope; typical build time is 3–7 days. Ongoing costs are just AI model usage, usually $20–200/month paid directly to providers with no markup." },
       ],
       seo: {
-        title: "Custom AI Agents — Self-Hosted, Secure, 24/7",
-        description: "We build self-hosted AI agents on Claude Agent SDK, LangGraph, CrewAI. Controls your computer, integrates with Telegram, LinkedIn, WhatsApp. Free agent setup included.",
+        title: "Custom AI Agent Development, Self-Hosted",
+        description:
+          "We build one custom AI agent for you — self-hosted, on Claude Agent SDK, LangGraph or CrewAI, wired into Telegram, email and your tools. First agent free.",
+        serviceType: "AI agent development",
+      },
+      media: {
+        heroAlt: "A compact self-hosted server appliance on a desk in a quiet office — the agent runs on hardware you own.",
+        stepAlts: [
+          "Blank cards laid out and linked into a branching map of everyday tasks.",
+          "A steel agent appliance with its side panel lifted off, showing the boards and cabling inside.",
+          "The same appliance with three expansion modules clipped alongside it in a row.",
+        ],
+        kitAlt: "Exploded view of the agent appliance: outer shell, mainboard, storage module, connector plate and power unit.",
+        kitCaption:
+          "One system, handed over whole: the agent runtime, its integrations, the knowledge base and the keys — all on hardware you control.",
       },
     },
     "ai-automation": {
@@ -424,8 +440,21 @@ export const en: Dictionary = {
         { q: "How is this different from just using Zapier?", a: "We use n8n (self-hosted, no per-task pricing) and Make.com for complex workflows. More importantly, we add AI intelligence and ongoing maintenance — not just point-and-click connections." },
       ],
       seo: {
-        title: "AI Process Automation — n8n, Make.com & Custom Workflows",
-        description: "Automate lead qualification, data sync, reporting, and workflows with AI-powered n8n and Make.com automations. Zero manual data entry.",
+        title: "AI Workflow Automation — n8n & Make.com",
+        description:
+          "We connect your CRM, inbox, forms and databases into AI-driven workflows on n8n and Make.com: leads qualified in minutes, data synced, reports written for you.",
+        serviceType: "Business process automation",
+      },
+      media: {
+        heroAlt: "A patch frame where every cable run has been combed and dressed by hand — what a maintained automation looks like.",
+        stepAlts: [
+          "A tangle of loose cables on one side; the same cables combed into a single dressed harness on the other.",
+          "A machined manifold block with a dozen ports and green valves, steel lines converging into it.",
+          "A row of indicator lamps set into a steel bar — most green, one amber.",
+        ],
+        kitAlt: "The automation kit laid out flat: manifold block, graded connector fittings, hose, valves, indicator bar and mounting brackets.",
+        kitCaption:
+          "Workflows, the connectors between your tools, and the monitoring that tells you when one of them changes — built as one set, not as separate zaps.",
       },
     },
     "ai-training": {
@@ -476,8 +505,21 @@ export const en: Dictionary = {
         { q: "What tools do you teach?", a: "Claude Code, Cursor, MCP servers, prompt engineering, n8n/Make for automation, and whatever else fits your team's needs. We don't push one tool — we find what works." },
       ],
       seo: {
-        title: "AI Consulting & Team Training — Claude Code, Cursor, MCP",
-        description: "We install Claude Code, Cursor, and MCP servers, train your team on real workflows, and measure adoption at 30 and 60 days. AI consulting for projects of any scale.",
+        title: "AI Training for Teams — Claude Code, MCP",
+        description:
+          "We install Claude Code, Cursor and MCP servers, run workshops on your team's real work, then measure adoption at 30 and 60 days. AI consulting at any scale.",
+        serviceType: "AI training and consulting",
+      },
+      media: {
+        heroAlt: "A team working through a hands-on AI session at a long table, seen from the back of the room.",
+        stepAlts: [
+          "Calipers and a pencil resting on a blank sheet of grid paper.",
+          "A workstation kit laid out in a grid: laptop, stand, keyboard, cables and a hex tool.",
+          "A stack of identical bound playbooks, the top one open at blank pages.",
+        ],
+        kitAlt: "The training kit laid out flat: laptop and stand, three bound playbooks, pencil, calipers, cable and two machined blocks.",
+        kitCaption:
+          "Tools installed on every machine, workshops run on your own work, and a playbook the team keeps after we leave.",
       },
     },
     "ai-workspace": {
@@ -530,8 +572,21 @@ export const en: Dictionary = {
         { q: "How much does it cost?", a: "Pilot starts from $3,000 setup + $500/month. Scale starts from $8,000 setup + $2,000/month. Enterprise is custom-priced. AI model costs ($20-200/month depending on usage) are billed directly by providers — no markups." },
       ],
       seo: {
-        title: "Enterprise AI Platform — AI Operating System for Business",
-        description: "Full AI operating system: dedicated agents per department, Knowledge Vault, MCP Gateway, enterprise security. Deploy in 4 weeks. Pricing from Pilot to Enterprise.",
+        title: "Company-Wide AI Platform for Every Team",
+        description:
+          "An AI agent for every department, a Knowledge Vault over your documents, role-based access and ROI reporting. Live in 4 weeks on your own infrastructure.",
+        serviceType: "Enterprise AI platform",
+      },
+      media: {
+        heroAlt: "An open-plan office floor mid-afternoon, seen from the back — the whole company, not one power user.",
+        stepAlts: [
+          "A steel hub block with eight cables running into it from every direction.",
+          "Four identical modular units side by side, the second one standing open.",
+          "Twelve identical modules in a grid, one of them being set down into its place.",
+        ],
+        kitAlt: "Exploded view of the platform: enclosure, four agent modules, a gateway hub, a sealed knowledge vault and the cable loom.",
+        kitCaption:
+          "Agents per team, the gateway they all speak through, the vault your knowledge lives in and the wiring to your systems — one platform, not eleven subscriptions.",
       },
     },
   },
@@ -903,6 +958,8 @@ export const en: Dictionary = {
   dataCenters: {
     navLabel: "Data centers",
     breadcrumb: "Data centers",
+    cardSummary:
+      "End-to-end development of AI data centers — site, power, grid interconnection, modular build and operation. 10 to 100+ MW.",
     seo: {
       title: "AI Data Center Development — Site, Power, Build & Operate",
       description:
@@ -1440,6 +1497,7 @@ export const en: Dictionary = {
       { t: "Knowledge Vault", d: "All company knowledge indexed and available to AI — forever" },
       { t: "Connected to Your Tools", d: "AI talks to your CRM, email, chat, Shopify, databases — in real time" },
     ],
+    solutionImageAlt: "An assembled modular platform: four agent modules seated in one enclosure, a gateway block on top, cabling entering from the side.",
     howItWorksEyebrow: "How It Works",
     howItWorksHeading: "From zero to AI-powered in 4 weeks",
     capabilitiesEyebrow: "Capabilities",
@@ -1463,6 +1521,8 @@ export const en: Dictionary = {
           { name: "Client Reporter", does: "Generates branded weekly/monthly reports for each client automatically" },
           { name: "Follow-up Agent", does: "Sends personalized follow-ups after calls, demos, and purchases — never lets a lead go cold" },
         ],
+        imageId: "service",
+        imageAlt: "A support desk with a headset resting beside the keyboard.",
       },
       {
         name: "Sales & Lead Management",
@@ -1471,6 +1531,8 @@ export const en: Dictionary = {
           { name: "Proposal Builder", does: "Generates custom proposals from templates, CRM data, and past deals" },
           { name: "Outreach Agent", does: "Drafts and sends personalized outreach sequences across email and LinkedIn" },
         ],
+        imageId: "sales",
+        imageAlt: "Two colleagues going through a deal at a table by the window.",
       },
       {
         name: "Marketing & Content",
@@ -1479,6 +1541,8 @@ export const en: Dictionary = {
           { name: "Campaign Optimizer", does: "Analyzes ad performance across platforms and suggests improvements" },
           { name: "SEO Monitor", does: "Tracks rankings, finds keyword opportunities, drafts optimized content" },
         ],
+        imageId: "marketing",
+        imageAlt: "Printed proofs, a camera and colour swatches laid out on a studio table.",
       },
       {
         name: "Operations & Knowledge",
@@ -1488,6 +1552,8 @@ export const en: Dictionary = {
           { name: "Report Generator", does: "Creates weekly/monthly reports from live data across all your tools" },
           { name: "Onboarding Guide", does: "Walks new hires through processes, answers questions, reduces ramp-up time" },
         ],
+        imageId: "operations",
+        imageAlt: "An archive aisle of identical binders, one being pulled from the shelf.",
       },
     ],
     integrationsEyebrow: "Integrations",

@@ -4,8 +4,10 @@ import { FaqSection } from "./FaqSection";
 import { LeadForm } from "./LeadForm";
 import { FadeUp, MagneticButton, ArrowIcon, CheckIcon, GiftIcon, PhoneIcon, MailIcon, TelegramIcon } from "./Primitives";
 import { useLocale } from "./LocaleProvider";
+import { ServiceCrossLinks } from "./ServiceCrossLinks";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import type { ServiceDict } from "@/lib/i18n/types";
+import type { ServiceMedia } from "./service-media";
 import { asset, breadcrumbHomeLabels, href } from "@/lib/utils";
 import { relatedGuidesFor } from "@/lib/blog";
 import { caseRelatedServices } from "@/lib/cases";
@@ -29,18 +31,27 @@ export function ServicePage({
   service,
   breadcrumb,
   heroImage,
+  media,
 }: {
   slug: string;
   service: ServiceDict;
   breadcrumb?: { parentLabel: string; parentHref: string };
-  /** Optional marketing image shown in a full-bleed band right after the hero. */
+  /** Case landings: single marketing image in a contained band after the hero. */
   heroImage?: string;
+  /**
+   * Service pages: the full imagery set (bleed band, a frame per plan step,
+   * deliverables figure). Alt text comes from `service.media`; if either half
+   * is missing the page falls back to type-only, which is what the case
+   * landings still do.
+   */
+  media?: ServiceMedia;
 }) {
   const locale = useLocale();
   const dict = getDictionary(locale);
   const c = dict.servicesCommon;
   const parent = breadcrumb ?? { parentLabel: "Services", parentHref: "/#services" };
   const relatedGuides = relatedGuidesFor(slug);
+  const art = media && service.media ? { paths: media, alt: service.media } : null;
   const relatedServices = (caseRelatedServices[slug] ?? []).filter(
     (s) => dict.services_pages[s],
   );
@@ -112,7 +123,15 @@ export function ServicePage({
         </div>
       </section>
 
-      {/* 1b. Hero marketing image (optional) */}
+      {/* 1b. Full-bleed hero band — service pages */}
+      {art && (
+        <FadeUp className="svc-hero-media">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={asset(art.paths.hero)} alt={art.alt.heroAlt} loading="eager" />
+        </FadeUp>
+      )}
+
+      {/* 1b. Hero marketing image — case landings (contained) */}
       {heroImage && (
         <section className="case-hero-image">
           <div className="container">
@@ -239,7 +258,17 @@ export function ServicePage({
           <div className="steps">
             {service.plan.map((step, i) => (
               <FadeUp key={step.title} delay={i * 100}>
-                <div className="step">
+                <div className={`step${art ? " step--illustrated" : ""}`}>
+                  {art?.paths.steps[i] && (
+                    <div className="step__media">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={asset(art.paths.steps[i])}
+                        alt={art.alt.stepAlts[i] ?? ""}
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                   <h3>{step.title}</h3>
                   <p>{step.description}</p>
                 </div>
@@ -275,6 +304,15 @@ export function ServicePage({
               ))}
             </div>
           </FadeUp>
+          {art && (
+            <FadeUp delay={180}>
+              <figure className="svc-kit">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={asset(art.paths.kit)} alt={art.alt.kitAlt} loading="lazy" />
+                <figcaption>{art.alt.kitCaption}</figcaption>
+              </figure>
+            </FadeUp>
+          )}
         </div>
       </section>
 
@@ -510,6 +548,9 @@ export function ServicePage({
           </FadeUp>
         </div>
       </section>
+
+      {/* 9b. Where to go next — sibling services, cases, infrastructure, guides */}
+      <ServiceCrossLinks slug={slug} />
 
       {/* 10. FAQ */}
       <FaqSection

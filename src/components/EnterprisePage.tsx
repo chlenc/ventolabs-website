@@ -4,8 +4,10 @@ import { FaqSection } from "./FaqSection";
 import { LeadForm } from "./LeadForm";
 import { FadeUp, MagneticButton, ArrowIcon, CheckIcon } from "./Primitives";
 import { useLocale } from "./LocaleProvider";
+import { ServiceCrossLinks } from "./ServiceCrossLinks";
 import { getDictionary } from "@/lib/i18n";
 import type { ServiceDict } from "@/lib/i18n/types";
+import { teamImage, workspacePlatformImage, type ServiceMedia } from "./service-media";
 import { href, asset } from "@/lib/utils";
 import {
   siGooglesheets,
@@ -20,13 +22,6 @@ import {
   siTrello,
   siZoom,
 } from "simple-icons";
-
-const agentCategoryImages = [
-  "/images/agent-supply.jpg",
-  "/images/agent-sales.jpg",
-  "/images/agent-marketing.jpg",
-  "/images/agent-operations.jpg",
-];
 
 const siIcons: Record<string, string> = {
   "Google Sheets": siGooglesheets.path,
@@ -116,10 +111,18 @@ function ArchIcon({ kind }: { kind: string }) {
   }
 }
 
-export function EnterprisePage({ service }: { service: ServiceDict }) {
+export function EnterprisePage({
+  service,
+  media,
+}: {
+  service: ServiceDict;
+  /** Same imagery contract as ServicePage — see components/service-media.ts. */
+  media?: ServiceMedia;
+}) {
   const locale = useLocale();
   const dict = getDictionary(locale);
   const e = dict.enterprise;
+  const art = media && service.media ? { paths: media, alt: service.media } : null;
 
   return (
     <>
@@ -158,6 +161,14 @@ export function EnterprisePage({ service }: { service: ServiceDict }) {
           </FadeUp>
         </div>
       </section>
+
+      {/* Full-bleed hero band */}
+      {art && (
+        <FadeUp className="svc-hero-media">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={asset(art.paths.hero)} alt={art.alt.heroAlt} loading="eager" />
+        </FadeUp>
+      )}
 
       {/* Problem */}
       <section className="section section--paper">
@@ -314,8 +325,8 @@ export function EnterprisePage({ service }: { service: ServiceDict }) {
             <FadeUp delay={180}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={asset("/images/enterprise-solution.jpg")}
-                alt="AI Operating System"
+                src={asset(workspacePlatformImage)}
+                alt={e.solutionImageAlt}
                 style={{
                   width: "100%",
                   aspectRatio: "4 / 3",
@@ -342,7 +353,17 @@ export function EnterprisePage({ service }: { service: ServiceDict }) {
           <div className="steps">
             {service.plan.map((step, i) => (
               <FadeUp key={step.title} delay={i * 100}>
-                <div className="step">
+                <div className={`step${art ? " step--illustrated" : ""}`}>
+                  {art?.paths.steps[i] && (
+                    <div className="step__media">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={asset(art.paths.steps[i])}
+                        alt={art.alt.stepAlts[i] ?? ""}
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                   <h3>{step.title}</h3>
                   <p>{step.description}</p>
                 </div>
@@ -362,6 +383,15 @@ export function EnterprisePage({ service }: { service: ServiceDict }) {
               <p>{e.capabilitiesLead}</p>
             </div>
           </FadeUp>
+          {art && (
+            <FadeUp delay={80}>
+              <figure className="svc-kit">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={asset(art.paths.kit)} alt={art.alt.kitAlt} loading="lazy" />
+                <figcaption>{art.alt.kitCaption}</figcaption>
+              </figure>
+            </FadeUp>
+          )}
           <FadeUp delay={120}>
             <div className="features">
               {e.skills.map((skill, i) => (
@@ -407,8 +437,8 @@ export function EnterprisePage({ service }: { service: ServiceDict }) {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={asset(agentCategoryImages[ci] ?? agentCategoryImages[0])}
-                  alt={cat.name}
+                  src={asset(teamImage[cat.imageId])}
+                  alt={cat.imageAlt}
                   style={{
                     width: "100%",
                     aspectRatio: "4 / 3",
@@ -722,6 +752,9 @@ export function EnterprisePage({ service }: { service: ServiceDict }) {
           </FadeUp>
         </div>
       </section>
+
+      {/* Where to go next — sibling services, infrastructure, guides */}
+      <ServiceCrossLinks slug="ai-workspace" />
 
       {/* FAQ */}
       <FaqSection items={service.faq} heading={e.faqHeading} />
