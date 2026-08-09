@@ -8,6 +8,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { FaqSection } from "@/components/FaqSection";
 import { useLocale } from "@/components/LocaleProvider";
 import { getDictionary } from "@/lib/i18n";
+import type { HomeCrossLinkId, HomeStepId } from "@/lib/i18n/types";
 import { servicesSlugs } from "@/lib/services";
 import { asset, href } from "@/lib/utils";
 
@@ -24,18 +25,26 @@ const serviceImages: Record<string, string> = {
   "ai-workspace": "/images/service-card-ai-workspace.svg",
 };
 
+/* One documentary frame per process phase. Paths live here rather than in the
+ * dictionaries so translators only ever supply copy and alt text — same split
+ * as `buildImage` on /data-centers. */
+const stepImage: Record<HomeStepId, string> = {
+  audit: "/images/home/step-audit.jpg",
+  build: "/images/home/step-build.jpg",
+  scale: "/images/home/step-scale.jpg",
+};
+
+/* The two business lines with no service card of their own. Without these the
+ * only in-page route to either is the header nav. */
+const crossLinkPath: Record<HomeCrossLinkId, string> = {
+  "data-centers": "/data-centers",
+  blog: "/blog",
+};
+
 const caseCardKeys = [
   { key: "content-factory", img: "/images/case-content-factory.webp", metricKey: "contentFactory" as const },
   { key: "supplier-agent", img: "/images/case-supplier-agent.webp", metricKey: "supplierAgent" as const },
   { key: "erp-agent", img: "/images/case-erp-agent.webp", metricKey: "erpAgent" as const },
-];
-
-// Company names are proper nouns — locale-agnostic, so they live here rather
-// than in the dictionaries.
-const clientProofKeys = [
-  { key: "zigmund", company: "Zigmund Online" },
-  { key: "noconcept", company: "NoConcept" },
-  { key: "asgcompute", company: "ASG Compute" },
 ];
 
 function useCountUp(target: number, duration = 1800, start = false) {
@@ -107,6 +116,19 @@ export function HomeContent() {
   return (
     <>
       <HeroSection />
+
+      {/* Full-bleed band under the hero — the manual back-office work the
+          agents take over, so the offer above it has something concrete to
+          point at. Captioned, because an uncaptioned office photo would just
+          be decoration. */}
+      <FadeUp className="home-band">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={asset("/images/home/operations-band.jpg")} alt={dict.hero.imageAlt} />
+        <div className="container">
+          <p className="home-band__caption">{dict.hero.imageCaption}</p>
+        </div>
+      </FadeUp>
+
       <TrustBar />
 
       {/* Services — three editorial cards */}
@@ -153,6 +175,24 @@ export function HomeContent() {
               );
             })}
           </div>
+
+          {/* Cross-links to the two business lines that have no service card. */}
+          <FadeUp>
+            <p className="eyebrow cross-links__eyebrow">{dict.services.crossEyebrow}</p>
+          </FadeUp>
+          <div className="cross-links">
+            {dict.services.crossLinks.map((c, i) => (
+              <FadeUp key={c.id} delay={i * 100}>
+                <a href={href(crossLinkPath[c.id], locale)} className="cross-link">
+                  <h3>{c.title}</h3>
+                  <p>{c.description}</p>
+                  <span className="cross-link__cta">
+                    {c.cta} <ArrowIcon size={14} />
+                  </span>
+                </a>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -180,6 +220,10 @@ export function HomeContent() {
                   {i === 1 ? <em className="italic">{s.title}</em> : s.title}
                 </h3>
                 <p className="process-row__desc">{s.description}</p>
+                <div className="process-row__media">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={asset(stepImage[s.id])} alt={s.imageAlt} loading="lazy" />
+                </div>
               </FadeUp>
             ))}
           </ul>
@@ -242,52 +286,6 @@ export function HomeContent() {
               }}
             >
               {dict.roi.disclaimer}
-            </p>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* Client proof — named engagements with measured outcomes */}
-      <section className="section section--paper">
-        <div className="container">
-          <FadeUp>
-            <div className="section-header">
-              <div className="section-header__left">
-                <p className="eyebrow">{dict.clientProof.eyebrow}</p>
-                <h2>{dict.clientProof.heading}</h2>
-              </div>
-              <div className="section-header__right">
-                <p>{dict.clientProof.lead}</p>
-              </div>
-            </div>
-          </FadeUp>
-          <div className="stats-grid">
-            {clientProofKeys.map((c, i) => {
-              const rec = dict.cases.records[c.key];
-              if (!rec) return null;
-              const metric = rec.metrics[0];
-              return (
-                <FadeUp key={c.key} delay={i * 120}>
-                  <a href={href("/cases", locale)} className="stat">
-                    <div className="stat__source">
-                      <span>{c.company} · {rec.industry}</span>
-                      <ArrowIcon size={14} />
-                    </div>
-                    <div className="stat__num">
-                      <span>{metric.value}</span>
-                      <sup>{metric.label}</sup>
-                    </div>
-                    <p className="stat__desc">{rec.title}</p>
-                  </a>
-                </FadeUp>
-              );
-            })}
-          </div>
-          <FadeUp>
-            <p className="text-center" style={{ marginTop: "2rem" }}>
-              <a className="text-link" href={href("/cases", locale)}>
-                {dict.clientProof.cta} →
-              </a>
             </p>
           </FadeUp>
         </div>

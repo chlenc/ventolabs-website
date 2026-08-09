@@ -31,8 +31,20 @@ export function isBlogSlug(slug: string): slug is BlogSlug {
 
 type Seo = { title: string; description: string };
 
-/** Index-card copy — shown on /blog in every locale. */
-type Card = { eyebrow: string; title: string; summary: string; readLabel: string };
+/**
+ * Index-card copy — shown on /blog in every locale.
+ *
+ * `imageAlt` describes the guide's cover, which appears both on the index card
+ * and as the article hero. The cover's *path* is resolved from the slug in
+ * `blog/covers.ts`; nothing here ever names a file.
+ */
+type Card = {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  readLabel: string;
+  imageAlt: string;
+};
 
 export type BlogEntry = {
   slug: BlogSlug;
@@ -78,22 +90,22 @@ const oneCTools: BlogEntry = {
     ru: {
       title: "Инструменты 1С для Claude Code и Codex: MCP, скиллы, плагины",
       description:
-        "Каталог AI-инструментов для 1С:Предприятие: три десятка MCP-серверов, наборы Claude Code Skills, плагин BSL Language Server, Codex-плагин Unica и 1С:Напарник. Что ставить, в каком порядке и где грабли. Обзор от команды, которая внедряет AI-агентов в 1С.",
+        "Каталог AI-инструментов для 1С:Предприятие: MCP-серверы, наборы Claude Code Skills, плагин BSL Language Server, Codex-плагин Unica и 1С:Напарник.",
     },
     en: {
-      title: "AI tooling for 1C: MCP servers, skills and plugins (Russian guide)",
+      title: "AI tooling for 1C: MCP servers, skills and plugins",
       description:
-        "A field guide to the AI tooling around 1C:Enterprise — MCP servers, Claude Code skills, the BSL Language Server plugin and OpenAI Codex support. Published in Russian; English summary here.",
+        "A field guide to the AI tooling around 1C:Enterprise — MCP servers, Claude Code skills, the BSL Language Server plugin, OpenAI Codex. Guide in Russian.",
     },
     de: {
-      title: "KI-Tools für 1C: MCP-Server, Skills und Plugins (russischer Guide)",
+      title: "KI-Tools für 1C: MCP-Server, Skills und Plugins",
       description:
-        "Überblick über das KI-Ökosystem rund um 1C:Enterprise — MCP-Server, Claude-Code-Skills, das BSL-Language-Server-Plugin und OpenAI-Codex-Support. Der vollständige Guide ist auf Russisch.",
+        "Überblick über das KI-Ökosystem rund um 1C:Enterprise — MCP-Server, Claude-Code-Skills, BSL-Language-Server-Plugin, Codex. Guide auf Russisch.",
     },
     es: {
       title: "Herramientas de IA para 1C: servidores MCP, skills y plugins",
       description:
-        "Guía del ecosistema de IA alrededor de 1C:Enterprise — servidores MCP, skills de Claude Code, el plugin de BSL Language Server y soporte de OpenAI Codex. La guía completa está en ruso.",
+        "Guía del ecosistema de IA alrededor de 1C:Enterprise — servidores MCP, skills de Claude Code, el plugin BSL Language Server y Codex. Guía en ruso.",
     },
   },
   card: {
@@ -103,6 +115,8 @@ const oneCTools: BlogEntry = {
       summary:
         "Три десятка MCP-серверов, 95 скиллов в крупнейшем наборе, официальный плагин BSL Language Server и Codex-плагин Unica. Разбираем, что из этого ставить первым, что работает в обоих агентах и почему без MCP LLM уверенно пишет неправильный BSL.",
       readLabel: "Читать гайд",
+      imageAlt:
+        "Веер рожковых ключей и шестигранников на светлом столе рядом с тёмно-зелёными машинными блоками, один шестигранник тоже зелёный",
     },
     en: {
       eyebrow: "Guide · AI tooling",
@@ -110,6 +124,8 @@ const oneCTools: BlogEntry = {
       summary:
         "A survey of the 1C AI ecosystem: three dozen MCP servers, large Claude Code skill packs, the official BSL Language Server plugin and the Unica plugin for Codex. Written in Russian — the market it serves is Russian-speaking.",
       readLabel: "English summary",
+      imageAlt:
+        "Wrenches and hex keys fanned out on a pale surface beside deep-green machined blocks, one hex key green as well",
     },
     de: {
       eyebrow: "Guide · KI-Tools",
@@ -117,6 +133,8 @@ const oneCTools: BlogEntry = {
       summary:
         "Ein Überblick über das 1C-KI-Ökosystem: drei Dutzend MCP-Server, große Claude-Code-Skill-Pakete, das offizielle BSL-Language-Server-Plugin und das Unica-Plugin für Codex. Auf Russisch verfasst.",
       readLabel: "Deutsche Zusammenfassung",
+      imageAlt:
+        "Auffächerte Schraubenschlüssel und Innensechskantschlüssel auf heller Fläche neben dunkelgrünen Metallblöcken, einer der Schlüssel ebenfalls grün",
     },
     es: {
       eyebrow: "Guía · Herramientas de IA",
@@ -124,6 +142,8 @@ const oneCTools: BlogEntry = {
       summary:
         "Panorama del ecosistema de IA para 1C: tres decenas de servidores MCP, paquetes de skills para Claude Code, el plugin oficial de BSL Language Server y el plugin Unica para Codex. Escrita en ruso.",
       readLabel: "Resumen en español",
+      imageAlt:
+        "Llaves fijas y llaves Allen desplegadas en abanico sobre una superficie clara junto a bloques mecanizados verde oscuro, una de las llaves también verde",
     },
   },
 };
@@ -132,7 +152,7 @@ const oneCAgent: BlogEntry = {
   slug: "ai-agent-dlya-1c-vnedrenie",
   articleLocale: "ru",
   datePublished: "2026-07-16",
-  dateModified: "2026-07-16",
+  dateModified: "2026-08-08",
   readingMinutes: 14,
   keywords: [
     "AI-агент для 1С",
@@ -173,6 +193,8 @@ const oneCAgent: BlogEntry = {
       summary:
         "Ответы по данным, отчёты без программиста, рутина с подтверждением и помощь разработчику — и архитектура, которая делает это безопасным: read-only роли, ревью планов перед записью, аудит-лог. Плюс честный список зон, куда ИИ пускать нельзя, этапы внедрения за 2–4 недели и разбор, во что упирается стоимость.",
       readLabel: "Читать гайд",
+      imageAlt:
+        "Матовый корпус со ступенчатыми стальными пластинами и одним узким тёмно-зелёным просветом внутрь, рядом — стальной ключ",
     },
     en: {
       eyebrow: "Guide · AI agents for 1C",
@@ -180,6 +202,8 @@ const oneCAgent: BlogEntry = {
       summary:
         "What AI agents genuinely handle on top of 1C — data Q&A, ad-hoc reports, routine operations, developer assistance — and the architecture that keeps the database safe: read-only roles, plan review before any write, a full audit log. Written in Russian for the market it serves.",
       readLabel: "English summary",
+      imageAlt:
+        "A matte enclosure with stepped steel plates and a single narrow deep-green opening leading inside, a steel key beside it",
     },
     de: {
       eyebrow: "Guide · KI-Agenten für 1C",
@@ -187,6 +211,8 @@ const oneCAgent: BlogEntry = {
       summary:
         "Was KI-Agenten über 1C tatsächlich leisten — Datenabfragen, Ad-hoc-Berichte, Routineoperationen, Entwickler-Unterstützung — und die Architektur, die die Datenbank schützt: Read-only-Rollen, Plan-Review vor jedem Schreibzugriff, vollständiges Audit-Log. Auf Russisch verfasst.",
       readLabel: "Deutsche Zusammenfassung",
+      imageAlt:
+        "Ein mattes Gehäuse mit gestuften Stahlplatten und einem schmalen dunkelgrünen Durchlass ins Innere, daneben ein Stahlschlüssel",
     },
     es: {
       eyebrow: "Guía · Agentes de IA para 1C",
@@ -194,6 +220,8 @@ const oneCAgent: BlogEntry = {
       summary:
         "Lo que los agentes de IA resuelven de verdad sobre 1C — consultas de datos, informes puntuales, operaciones rutinarias, asistencia al desarrollador — y la arquitectura que protege la base: roles de solo lectura, revisión de planes antes de escribir, registro de auditoría completo. Escrita en ruso.",
       readLabel: "Resumen en español",
+      imageAlt:
+        "Una carcasa mate con placas de acero escalonadas y una única abertura verde oscuro hacia el interior, con una llave de acero al lado",
     },
   },
 };
@@ -202,7 +230,7 @@ const marketplaceAgent: BlogEntry = {
   slug: "ai-agent-dlya-marketpleysov-wb-ozon",
   articleLocale: "ru",
   datePublished: "2026-07-16",
-  dateModified: "2026-07-16",
+  dateModified: "2026-08-08",
   readingMinutes: 14,
   keywords: [
     "автоматизация Wildberries",
@@ -244,6 +272,8 @@ const marketplaceAgent: BlogEntry = {
       summary:
         "Утро селлера — выгрузки из двух ЛК, склейка в Excel и пересчёт маржи. Разбираем, как AI-агент поверх API WB и Ozon забирает эту рутину: ETL в свою базу, отчёты в Telegram, контент карточек. И честно — где автоматизация хрупкая и когда достаточно готового SaaS.",
       readLabel: "Читать гайд",
+      imageAlt:
+        "Два потока серых посылок на конвейерных дорожках сходятся в одну упорядоченную линию, одна посылка тёмно-зелёная",
     },
     en: {
       eyebrow: "Guide · Marketplaces",
@@ -251,6 +281,8 @@ const marketplaceAgent: BlogEntry = {
       summary:
         "A seller's morning is exports from two dashboards, spreadsheet merging and margin recalculation. The guide shows how an AI agent on top of the WB and Ozon APIs takes that routine over — and where automation stays fragile. Written in Russian, the language of both marketplaces.",
       readLabel: "English summary",
+      imageAlt:
+        "Two streams of grey parcels on conveyor tracks merging into a single ordered line, one parcel deep green",
     },
     de: {
       eyebrow: "Guide · Marktplätze",
@@ -258,6 +290,8 @@ const marketplaceAgent: BlogEntry = {
       summary:
         "Der Alltag eines Sellers: Exporte aus zwei Dashboards, Excel und Margen-Neuberechnung. Der Guide zeigt, wie ein KI-Agent über die WB- und Ozon-APIs diese Routine übernimmt — und wo Automatisierung fragil bleibt. Auf Russisch verfasst.",
       readLabel: "Deutsche Zusammenfassung",
+      imageAlt:
+        "Zwei Ströme grauer Pakete auf Förderbändern laufen zu einer geordneten Linie zusammen, ein Paket ist dunkelgrün",
     },
     es: {
       eyebrow: "Guía · Marketplaces",
@@ -265,6 +299,8 @@ const marketplaceAgent: BlogEntry = {
       summary:
         "La mañana de un seller: exportaciones de dos paneles, Excel y recálculo de márgenes. La guía muestra cómo un agente de IA sobre las APIs de WB y Ozon asume esa rutina — y dónde la automatización sigue siendo frágil. Escrita en ruso.",
       readLabel: "Resumen en español",
+      imageAlt:
+        "Dos flujos de paquetes grises sobre cintas transportadoras que confluyen en una sola línea ordenada, uno de ellos verde oscuro",
     },
   },
 };
@@ -273,7 +309,7 @@ const bankruptcyAi: BlogEntry = {
   slug: "ii-dlya-arbitrazhnogo-upravlyayushchego",
   articleLocale: "ru",
   datePublished: "2026-07-16",
-  dateModified: "2026-07-16",
+  dateModified: "2026-08-08",
   readingMinutes: 14,
   keywords: [
     "ИИ для арбитражного управляющего",
@@ -314,6 +350,8 @@ const bankruptcyAi: BlogEntry = {
       summary:
         "Контроль сроков по 127-ФЗ, разбор банковских выписок на оспоримые сделки, черновики отчётов и публикаций, мониторинг КАД и ЕФРСБ — что из рутины АУ агент уже забирает. И честно о границе: агент готовит, а решает и подписывает управляющий — ответственность персональная.",
       readLabel: "Читать гайд",
+      imageAlt:
+        "Стопки документов и папок разной высоты, у одной папки — тёмно-зелёный корешок, поперёк лежит стальная линейка",
     },
     en: {
       eyebrow: "Guide · AI in bankruptcy",
@@ -321,6 +359,8 @@ const bankruptcyAi: BlogEntry = {
       summary:
         "Deadline tracking under Law 127-FZ, bank statement screening for voidable transactions, report and filing drafts, court docket monitoring — what an AI agent already takes over, and where personal liability draws the line. Written in Russian for the market it serves.",
       readLabel: "English summary",
+      imageAlt:
+        "Stacks of documents and folders at differing heights, one folder with a deep-green tab, a steel ruler laid across them",
     },
     de: {
       eyebrow: "Guide · KI in der Insolvenzpraxis",
@@ -328,6 +368,8 @@ const bankruptcyAi: BlogEntry = {
       summary:
         "Fristenkontrolle nach 127-FZ, Screening von Kontoauszügen auf anfechtbare Transaktionen, Berichts- und Schriftsatzentwürfe, Akten-Monitoring — was ein KI-Agent schon übernimmt und wo die persönliche Haftung die Grenze zieht. Auf Russisch verfasst.",
       readLabel: "Deutsche Zusammenfassung",
+      imageAlt:
+        "Stapel von Dokumenten und Mappen unterschiedlicher Höhe, eine Mappe mit dunkelgrünem Reiter, quer darüber ein Stahllineal",
     },
     es: {
       eyebrow: "Guía · IA en procedimientos concursales",
@@ -335,6 +377,8 @@ const bankruptcyAi: BlogEntry = {
       summary:
         "Control de plazos según la ley 127-FZ, cribado de extractos bancarios en busca de operaciones impugnables, borradores de informes y escritos, monitorización de expedientes: lo que un agente ya asume y dónde marca el límite la responsabilidad personal. Escrita en ruso.",
       readLabel: "Resumen en español",
+      imageAlt:
+        "Pilas de documentos y carpetas de distinta altura, una con pestaña verde oscuro y una regla de acero cruzada encima",
     },
   },
 };
@@ -343,7 +387,7 @@ const aiAgentCost: BlogEntry = {
   slug: "custom-ai-agent-cost",
   articleLocale: "en",
   datePublished: "2026-07-16",
-  dateModified: "2026-07-16",
+  dateModified: "2026-08-08",
   readingMinutes: 14,
   keywords: [
     "custom AI agent cost",
@@ -384,6 +428,8 @@ const aiAgentCost: BlogEntry = {
       summary:
         "Рыночные вилки на разработку и ежемесячную эксплуатацию, пять факторов, из которых складывается любая смета, формула окупаемости no-code против SaaS и заказной разработки, скрытые расходы. Написано командой, которая строит агентов, — включая честные случаи, когда строить не стоит. На английском.",
       readLabel: "Читать гайд",
+      imageAlt:
+        "Стальное коромысло весов: с одной стороны стопка небольших серых блоков, с другой — один крупный тёмно-зелёный",
     },
     en: {
       eyebrow: "AI agents · Pricing",
@@ -391,6 +437,8 @@ const aiAgentCost: BlogEntry = {
       summary:
         "Market ranges for build and monthly run, the five drivers behind any quote, break-even math for no-code vs SaaS vs custom, and the hidden costs vendors leave out of proposals. Written by a team that builds agents — including the honest cases where you shouldn't buy one.",
       readLabel: "Read the guide",
+      imageAlt:
+        "A steel balance beam with a stack of small grey blocks on one side and a single larger deep-green block on the other",
     },
     de: {
       eyebrow: "Guide · Kosten von KI-Agenten",
@@ -398,6 +446,8 @@ const aiAgentCost: BlogEntry = {
       summary:
         "Marktspannen für Entwicklung und monatlichen Betrieb, die fünf Faktoren hinter jedem Angebot, Break-even-Rechnung für No-Code, SaaS und Individualentwicklung sowie versteckte Kosten. Geschrieben von einem Team, das Agenten baut — inklusive der ehrlichen Fälle, in denen sich der Bau nicht lohnt. Auf Englisch.",
       readLabel: "Guide lesen",
+      imageAlt:
+        "Ein stählerner Waagebalken: auf der einen Seite ein Stapel kleiner grauer Blöcke, auf der anderen ein größerer dunkelgrüner",
     },
     es: {
       eyebrow: "Guía · Costes de agentes de IA",
@@ -405,6 +455,8 @@ const aiAgentCost: BlogEntry = {
       summary:
         "Rangos de mercado para el desarrollo y la operación mensual, los cinco factores detrás de cualquier presupuesto, la fórmula de retorno para comparar no-code, SaaS y desarrollo a medida, y los costes ocultos. Escrito por un equipo que construye agentes — incluidos los casos honestos en que no conviene construir. En inglés.",
       readLabel: "Leer la guía",
+      imageAlt:
+        "Una balanza de acero con una pila de bloques grises pequeños en un lado y un único bloque verde oscuro más grande en el otro",
     },
   },
 };
@@ -435,22 +487,22 @@ const accountability: BlogEntry = {
     en: {
       title: "Autonomous AI without delegating accountability",
       description:
-        "You can delegate tasks and decision-making authority to an AI agent — not accountability. The five things every agent needs: scope, limits, approval points, an audit trail and a named owner. Why \"human in the loop\" is not a control, and how controlled autonomy scales faster than unlimited autonomy.",
+        "AI governance in practice: the five things every agent needs — scope, limits, approval points, an audit trail, a named owner — and why \"human in the loop\" is not a control.",
     },
     ru: {
       title: "Автономный AI без делегирования ответственности",
       description:
-        "Агенту можно делегировать задачи и право решать — ответственность нельзя. Пять вещей, которые нужны каждому AI-агенту: полномочия, лимиты, точки одобрения, аудит-лог и конкретный владелец. Почему «человек в контуре» — не контроль и как управляемая автономия ускоряет внедрение.",
+        "Управление AI-агентами на практике: пять вещей, которые нужны каждому агенту — полномочия, лимиты, точки одобрения, аудит-лог и владелец с именем.",
     },
     de: {
       title: "Autonome KI, ohne Verantwortung zu delegieren",
       description:
-        "Aufgaben und Entscheidungsbefugnis lassen sich an einen KI-Agenten delegieren — Verantwortung nicht. Die fünf Dinge, die jeder Agent braucht: Kompetenzrahmen, Limits, Freigabepunkte, Audit-Log und ein benannter Eigentümer. Warum „Mensch im Loop\" keine Kontrolle ist.",
+        "KI-Governance in der Praxis: die fünf Dinge, die jeder Agent braucht — Kompetenzrahmen, Limits, Freigabepunkte, Audit-Log und ein benannter Eigentümer.",
     },
     es: {
       title: "IA autónoma sin delegar la responsabilidad",
       description:
-        "A un agente de IA se le pueden delegar tareas y capacidad de decisión, pero no la responsabilidad. Las cinco cosas que necesita todo agente: ámbito, límites, puntos de aprobación, audit log y un responsable con nombre. Por qué «un humano en el bucle» no es un control.",
+        "Gobernanza de IA en la práctica: las cinco cosas que necesita todo agente — ámbito, límites, puntos de aprobación, audit log y un responsable con nombre.",
     },
   },
   card: {
@@ -460,6 +512,8 @@ const accountability: BlogEntry = {
       summary:
         "Agents now talk to customers, edit records and move money — but most companies cannot say who answers when one gets it wrong. The five requirements every agent needs, why \"human in the loop\" usually isn't one, and why the boundary makes you faster rather than slower.",
       readLabel: "Read the guide",
+      imageAlt:
+        "Three nested steel rings with aligned gaps, leaving one path through to a deep-green cylinder standing at the centre",
     },
     ru: {
       eyebrow: "Гайд · Управление AI",
@@ -467,6 +521,8 @@ const accountability: BlogEntry = {
       summary:
         "Агенты уже общаются с клиентами, правят записи и двигают деньги — но большинство компаний не может ответить, кто отвечает за ошибку. Пять требований к каждому агенту, почему «человек в контуре» обычно им не является и почему граница ускоряет, а не тормозит.",
       readLabel: "Читать гайд",
+      imageAlt:
+        "Три вложенных стальных кольца с совпадающими разрывами: сквозь них один проход к тёмно-зелёному цилиндру в центре",
     },
     de: {
       eyebrow: "Guide · KI-Governance",
@@ -474,6 +530,8 @@ const accountability: BlogEntry = {
       summary:
         "Agenten sprechen mit Kunden, ändern Datensätze und bewegen Geld — doch die meisten Unternehmen können nicht sagen, wer haftet, wenn einer sich irrt. Die fünf Anforderungen an jeden Agenten und warum die Grenze schneller statt langsamer macht.",
       readLabel: "Guide lesen",
+      imageAlt:
+        "Drei ineinanderliegende Stahlringe mit fluchtenden Öffnungen — ein Weg führt zu einem dunkelgrünen Zylinder in der Mitte",
     },
     es: {
       eyebrow: "Guía · Gobernanza de IA",
@@ -481,6 +539,8 @@ const accountability: BlogEntry = {
       summary:
         "Los agentes ya hablan con clientes, modifican registros y mueven dinero, pero la mayoría de las empresas no sabe quién responde cuando uno se equivoca. Los cinco requisitos de todo agente y por qué la frontera acelera en lugar de frenar.",
       readLabel: "Leer la guía",
+      imageAlt:
+        "Tres anillos de acero anidados con aberturas alineadas que dejan un solo paso hasta un cilindro verde oscuro en el centro",
     },
   },
 };
@@ -521,8 +581,11 @@ const RELATED_GUIDES: Record<string, BlogSlug[]> = {
     // landing is off-topic for both readers and crawlers.
   ],
   "bankruptcy-agent": ["ii-dlya-arbitrazhnogo-upravlyayushchego"],
+  "content-factory": ["ai-agent-dlya-marketpleysov-wb-ozon"],
+  "supplier-agent": ["ai-agent-dlya-marketpleysov-wb-ozon"],
   "ai-assistant": ["custom-ai-agent-cost"],
   "ai-automation": ["ai-agent-dlya-marketpleysov-wb-ozon"],
+  "ai-workspace": ["autonomous-ai-accountability"],
 };
 
 /** Guides that link to this service/case slug, newest first. Empty if none. */
@@ -534,10 +597,63 @@ export function relatedGuidesFor(slug: string): BlogEntry[] {
     .sort((a, b) => b.datePublished.localeCompare(a.datePublished));
 }
 
+/**
+ * Guide → guide adjacency, used for the "related guides" rail at the foot of
+ * every article and stub. The guides were an island: between them they made a
+ * single cross-link, so nothing on /blog passed authority to anything else on
+ * /blog. Two or three genuinely adjacent guides each, curated by topic — not
+ * "everything else", which reads as a footer and gets treated as one.
+ */
+const GUIDE_RELATIONS: Record<BlogSlug, readonly BlogSlug[]> = {
+  "instrumenty-1c-claude-code-codex": [
+    "ai-agent-dlya-1c-vnedrenie",
+    "custom-ai-agent-cost",
+  ],
+  "ai-agent-dlya-1c-vnedrenie": [
+    "instrumenty-1c-claude-code-codex",
+    "autonomous-ai-accountability",
+    "custom-ai-agent-cost",
+  ],
+  "ai-agent-dlya-marketpleysov-wb-ozon": [
+    "custom-ai-agent-cost",
+    "ai-agent-dlya-1c-vnedrenie",
+    "autonomous-ai-accountability",
+  ],
+  "ii-dlya-arbitrazhnogo-upravlyayushchego": [
+    "autonomous-ai-accountability",
+    "ai-agent-dlya-1c-vnedrenie",
+  ],
+  "custom-ai-agent-cost": [
+    "autonomous-ai-accountability",
+    "ai-agent-dlya-1c-vnedrenie",
+    "ai-agent-dlya-marketpleysov-wb-ozon",
+  ],
+  "autonomous-ai-accountability": [
+    "custom-ai-agent-cost",
+    "ai-agent-dlya-1c-vnedrenie",
+    "ii-dlya-arbitrazhnogo-upravlyayushchego",
+  ],
+};
+
+/** The two or three guides worth reading next to this one. */
+export function relatedGuides(slug: BlogSlug): BlogEntry[] {
+  return GUIDE_RELATIONS[slug].map((s) => entries[s]);
+}
+
 /** Does this locale get the real article, or a stub pointing at the original? */
 export function hasFullBody(entry: BlogEntry, locale: Locale): boolean {
   return (entry.bodyLocales ?? [entry.articleLocale]).includes(locale);
 }
+
+/**
+ * Newest `dateModified` across the guides — the /blog hub's real `lastmod`.
+ * Derived rather than hand-typed so it can never drift into a fabricated
+ * freshness signal.
+ */
+export const blogLastModified: string = blogSlugs
+  .map((slug) => entries[slug].dateModified)
+  .sort()
+  .at(-1)!;
 
 /** Newest first — the order /blog renders cards in. */
 export const blogIndex: BlogEntry[] = [...blogSlugs]
@@ -547,7 +663,15 @@ export const blogIndex: BlogEntry[] = [...blogSlugs]
 /** Index page chrome, per locale. */
 export const blogIndexCopy: Record<
   Locale,
-  { eyebrow: string; heading: string; lede: string; metaTitle: string; metaDescription: string }
+  {
+    eyebrow: string;
+    heading: string;
+    lede: string;
+    metaTitle: string;
+    metaDescription: string;
+    /** Heading over the guide-to-guide rail at the foot of every article. */
+    relatedTitle: string;
+  }
 > = {
   ru: {
     eyebrow: "Гайды",
@@ -556,6 +680,7 @@ export const blogIndexCopy: Record<
     metaTitle: "Гайды по AI в учётных системах",
     metaDescription:
       "Инженерные разборы от Vento Labs: AI-агенты поверх ERP, инструменты разработки, MCP-серверы и границы применимости LLM в учётных системах.",
+    relatedTitle: "Читайте дальше",
   },
   en: {
     eyebrow: "Guides",
@@ -564,6 +689,7 @@ export const blogIndexCopy: Record<
     metaTitle: "Engineering guides",
     metaDescription:
       "Long-form engineering write-ups from Vento Labs: AI agents on top of ERP systems, developer tooling, MCP servers, and where LLMs stop working.",
+    relatedTitle: "Read next",
   },
   de: {
     eyebrow: "Guides",
@@ -572,6 +698,7 @@ export const blogIndexCopy: Record<
     metaTitle: "Engineering-Guides",
     metaDescription:
       "Ausführliche Engineering-Analysen von Vento Labs: KI-Agenten auf ERP-Systemen, Developer-Tooling, MCP-Server und die Grenzen von LLMs.",
+    relatedTitle: "Weiterlesen",
   },
   es: {
     eyebrow: "Guías",
@@ -580,5 +707,6 @@ export const blogIndexCopy: Record<
     metaTitle: "Guías de ingeniería",
     metaDescription:
       "Análisis de ingeniería de Vento Labs: agentes de IA sobre sistemas ERP, herramientas de desarrollo, servidores MCP y los límites de los LLM.",
+    relatedTitle: "Sigue leyendo",
   },
 };

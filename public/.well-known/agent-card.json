@@ -22,92 +22,157 @@
     "stateTransitionHistory": false,
     "extendedAgentCard": false
   },
-  "defaultInputModes": ["text/plain", "application/json"],
-  "defaultOutputModes": ["text/plain", "application/json"],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
   "skills": [
     {
       "id": "ai-assistant",
       "name": "Custom AI Agent Development",
-      "description": "Custom AI agents built on Claude Agent SDK, LangGraph, and CrewAI — self-hosted on your infrastructure. Agents integrate with Telegram, WhatsApp, LinkedIn, email, and your internal tools, and can use any LLM (including local models).",
-      "tags": ["ai-agents", "claude-agent-sdk", "langgraph", "crewai", "self-hosted", "automation"],
-      "examples": [
+      "description": "One custom AI agent, built for the client and self-hosted on their own server, VPS, or local machine. Built on Claude Agent SDK, LangGraph, or CrewAI, with any LLM backend including fully local models. Integrates with Telegram, WhatsApp, LinkedIn, email, and Slack, connects to the client's docs and CRM, and can drive a computer to browse, fill forms, and extract data. Basic agent live in 3–7 days; the first pilot agent is free.",
+      "tags": ["ai-agents", "claude-agent-sdk", "langgraph", "crewai", "self-hosted", "computer-use", "local-llm"],      "examples": [
         "Build a self-hosted AI agent that handles inbound LinkedIn messages and qualifies leads.",
-        "Deploy a multi-agent system that monitors Telegram channels and produces a daily signal summary."
+        "Deploy a multi-agent system that monitors Telegram channels and produces a daily signal summary.",
+        "Run an agent entirely on a local model so no customer data leaves the office network."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "ai-automation",
       "name": "Operational AI Automation",
-      "description": "End-to-end automation of business operations — from lead capture to invoicing — replacing manual handoffs between chats, spreadsheets, and email threads.",
-      "tags": ["workflow-automation", "rpa", "back-office", "operations"],
-      "examples": [
+      "description": "End-to-end automation of business operations — from lead capture to invoicing — built on n8n (self-hosted, no per-task pricing) and Make.com. Covers a process audit and roadmap, AI-driven lead qualification and response drafting, cross-platform data sync between CRM, sheets, email, and chat, automated reporting, webhook triggers, and error monitoring with ongoing maintenance as the connected tools change.",
+      "tags": ["workflow-automation", "n8n", "make.com", "integrations", "back-office", "operations"],      "examples": [
         "Automate lead intake from website forms into the CRM with AI-driven enrichment and qualification.",
-        "Replace manual order processing with an agent that reads supplier emails and updates inventory."
+        "Replace manual order processing with an agent that reads supplier emails and updates inventory.",
+        "Rebuild a set of brittle Zapier automations as monitored n8n workflows with alerting."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "ai-training",
       "name": "AI Strategy & Team Training",
-      "description": "Consulting and hands-on team training to make AI adoption stick — process audits, workshops, and a prioritized roadmap for embedding AI in daily work.",
-      "tags": ["consulting", "training", "strategy", "audit"],
-      "examples": [
+      "description": "Consulting and hands-on team training to make AI adoption stick. Starts with an AI maturity assessment, then installs the tooling — Claude Code and Cursor per developer, MCP servers wired to the client's tools and databases, custom prompt libraries — runs workshops on the team's real work rather than demos, and measures adoption at 30 and 60 days. Also covers architecture, tool selection, and risk review for in-house AI projects.",
+      "tags": ["consulting", "training", "claude-code", "cursor", "mcp", "adoption", "audit"],      "examples": [
         "Audit a finance team's workflows and produce a prioritized AI automation roadmap.",
-        "Run a hands-on workshop teaching a sales team to use Claude for prospect research and outreach."
+        "Run a hands-on workshop teaching a sales team to use Claude for prospect research and outreach.",
+        "Set up Claude Code, Cursor, and MCP servers for a 12-person engineering team and track usage."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "ai-workspace",
-      "name": "Enterprise AI Workspace",
-      "description": "A permissioned AI layer for enterprises — role-based access, audit trails, and a unified interface so dozens of employees can safely use AI across departments.",
-      "tags": ["enterprise", "workspace", "rbac", "compliance"],
+      "name": "Company-Wide AI Platform",
+      "description": "A company-wide AI operating system for teams of roughly 5 to 200+: a dedicated agent per function (client service, sales, marketing, operations), an assistant with full company context for every employee, a Knowledge Vault indexing company knowledge, connections to CRM, email, WhatsApp, Shopify, Drive, Notion, Slack and any REST API, role-based access with audit logs, and usage/ROI reporting. Self-hosted, live in 4 weeks.",
+      "tags": ["enterprise", "ai-platform", "knowledge-base", "rbac", "self-hosted", "compliance"],
       "examples": [
         "Deploy an AI workspace for 45 employees across 5 departments with department-scoped permissions.",
-        "Stand up an enterprise Claude/GPT gateway with audit logs and per-team usage caps."
+        "Stand up an enterprise Claude/GPT gateway with audit logs and per-team usage caps.",
+        "Index a company's docs, SOPs, and past conversations so any employee can query them in chat."      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "data-centers",
       "name": "AI Data Center Development",
       "description": "End-to-end development of AI data centers for investors and owners — configuration and TCO sizing, site search screened on deliverable grid capacity, securing land and power, transmission interconnection, modular construction, commissioning, and operation. Typical projects 10–100+ MW, phased; modular deployment in 3–6 months against 24–36 for conventional construction.",
-      "tags": ["data-centers", "ai-infrastructure", "energy", "grid-interconnection", "modular-construction", "hpc"],
+      "tags": [
+        "data-centers",
+        "ai-infrastructure",
+        "energy",
+        "grid-interconnection",
+        "modular-construction",
+        "hpc"
+      ],
       "examples": [
         "Assess whether a 20 MW AI data center makes sense for a given budget and target geography.",
         "Screen a candidate parcel against deliverable transmission capacity, water, fiber, and permitting before purchase."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "content-factory",
       "name": "AI Content Factory for E-commerce",
       "description": "Turns a product catalog into a daily stream of discovery content — product cards, social posts, comparison articles — automatically generated from SKU data.",
-      "tags": ["e-commerce", "content-generation", "marketing", "seo"],
+      "tags": [
+        "e-commerce",
+        "content-generation",
+        "marketing",
+        "seo"
+      ],
       "examples": [
         "Generate daily TikTok scripts for 500 SKUs based on inventory and trending hooks.",
         "Auto-publish product comparison articles when new SKUs are added to the catalog."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "supplier-agent",
       "name": "Supplier Communication Agent",
       "description": "Reads unstructured supplier messages across email, WhatsApp, and Telegram and updates the catalog with prices, stock levels, lead times, and new SKUs.",
-      "tags": ["e-commerce", "suppliers", "catalog-management", "messaging"],
+      "tags": [
+        "e-commerce",
+        "suppliers",
+        "catalog-management",
+        "messaging"
+      ],
       "examples": [
         "Parse supplier WhatsApp price-list updates and sync the live catalog with an audit trail.",
         "Auto-create draft purchase orders when suppliers announce a restock in chat."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "erp-agent",
@@ -118,8 +183,14 @@
         "Turn 'add a shipment-date column to the invoice print form' into a reviewable 1C extension plan.",
         "Set up a scheduled nightly stock export to a website endpoint without touching the standard configuration."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     },
     {
       "id": "bankruptcy-agent",
@@ -130,8 +201,14 @@
         "Analyze a debtor's case file and surface potentially voidable transactions for the trustee to review.",
         "Draft a creditors'-meeting report on the statutory form for the trustee to check and sign."
       ],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"]
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ]
     }
   ]
 }

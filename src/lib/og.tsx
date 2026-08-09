@@ -60,7 +60,10 @@ export function renderOgImage({
     const svc = dict.services_pages[slug as ServiceSlug];
     if (svc) {
       title = svc.heroTitle;
-      eyebrow = svc.kicker;
+      // Same preference as the JSON-LD serviceType: the short category label
+      // where one exists, since `kicker` can be a full feature list that
+      // overruns the card's uppercase eyebrow slot.
+      eyebrow = svc.seo.serviceType ?? svc.kicker;
     }
   } else if (kind === "case" && slug) {
     const cs = dict.case_pages[slug];

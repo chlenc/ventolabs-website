@@ -3,8 +3,9 @@
 import { FadeUp, ArrowIcon } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
 import { localeNames } from "@/lib/i18n";
-import { href, breadcrumbHomeLabels } from "@/lib/utils";
-import { blogIndex, blogIndexCopy } from "@/lib/blog";
+import { asset, href, breadcrumbHomeLabels } from "@/lib/utils";
+import { blogIndex, blogIndexCopy, hasFullBody } from "@/lib/blog";
+import { cardImage } from "./covers";
 
 /** "16 июля 2026" / "16 July 2026" — locale-aware, no dependency. */
 function formatDate(iso: string, locale: string): string {
@@ -42,12 +43,26 @@ export function BlogIndexPage() {
       <section className="section section--paper" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="post-cards">
-            {blogIndex.map((entry) => {
+            {blogIndex.map((entry, i) => {
               const card = entry.card[locale];
-              const foreign = locale !== entry.articleLocale;
+              // The badge warns that the guide opens in another language, so
+              // it keys off whether *this* locale ships a body — not off the
+              // original language. The one translated guide has a body in all
+              // four and must never be flagged.
+              const foreign = !hasFullBody(entry, locale);
               return (
                 <FadeUp key={entry.slug}>
                   <a className="post-card" href={href(`/blog/${entry.slug}`, locale)}>
+                    <div className="post-card__media">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={asset(cardImage[entry.slug])}
+                        alt={card.imageAlt}
+                        width={900}
+                        height={502}
+                        loading={i < 2 ? "eager" : "lazy"}
+                      />
+                    </div>
                     <div className="post-card__meta">
                       <span>{card.eyebrow}</span>
                       <span className="post-card__dot">·</span>

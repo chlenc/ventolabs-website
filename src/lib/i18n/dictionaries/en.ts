@@ -9,13 +9,13 @@ export const en: Dictionary = {
   },
 
   seo: {
-    homeTitle: "Vento Labs | AI Agents & Automation for Business",
+    homeTitle: "AI Agents & Automation for Business | Vento Labs",
     homeDescription:
-      "Custom AI agents that cut operating costs, automate workflows, and scale your business without adding headcount. Free AI agent setup with every engagement.",
+      "Custom AI agents that cut operating costs, automate workflows, and scale your business without new headcount. Free AI agent build with every engagement.",
     titleTemplate: "%s | Vento Labs",
-    casesTitle: "AI Case Studies — Real Results from AI Agents & Automation",
+    casesTitle: "AI Agent Case Studies — Content, Supplier & 1C Automation",
     casesDescription:
-      "Measurable client results in healthcare, e-commerce, cloud and legaltech — plus four productized AI solutions, including our own product ArbitrAI.",
+      "What we build and ship: an e-commerce content factory, a supplier-operations agent, a permissioned AI layer over 1C, and ArbitrAI — our own legaltech product.",
     privacyTitle: "Privacy Policy",
     privacyDescription: "Privacy Policy for Vento Labs — how we handle your data.",
     termsTitle: "Terms of Use",
@@ -67,6 +67,10 @@ export const en: Dictionary = {
     ctaPrimary: "Book a free call",
     ctaSecondary: "Our services",
     scroll: "Scroll",
+    imageAlt:
+      "A company back office: desks of printed order forms, archive boxes and spreadsheets on screen — the manual work an AI agent takes over.",
+    imageCaption:
+      "This is what we automate: order forms, supplier emails, spreadsheet updates and the same questions answered by hand every day.",
   },
 
   problem: {
@@ -85,9 +89,9 @@ export const en: Dictionary = {
     heading: "From audit to results in weeks, not months",
     lead: "Three phases, zero fluff. We start small, prove value, then scale — so you're never stuck paying for something that doesn't work.",
     steps: [
-      { title: "Audit", description: "We analyze your key processes in a 30-minute call. No fluff — we identify where AI can save the most time and money right now." },
-      { title: "Build", description: "We set up your first AI agent — connected to your tools, knowledge base, and workflows. You see a working solution in days, not months." },
-      { title: "Scale", description: "We expand automation across your operations by priority. Each iteration has clear KPIs, and we support you as your needs evolve." },
+      { id: "audit", title: "Audit", description: "We analyze your key processes in a 30-minute call. No fluff — we identify where AI can save the most time and money right now.", imageAlt: "A process map drawn by hand on paper during a discovery call, with three steps circled as automation candidates." },
+      { id: "build", title: "Build", description: "We set up your first AI agent — connected to your tools, knowledge base, and workflows. You see a working solution in days, not months.", imageAlt: "A build desk: the agent's code on one screen, the chat channel it answers in on the other." },
+      { id: "scale", title: "Scale", description: "We expand automation across your operations by priority. Each iteration has clear KPIs, and we support you as your needs evolve.", imageAlt: "An operations dashboard across three screens, tracking every running agent against its KPIs." },
     ],
   },
 
@@ -95,6 +99,23 @@ export const en: Dictionary = {
     eyebrow: "What We Do",
     heading: "Four ways we help your business work smarter",
     lead: "We cover the full cycle — from idea to production release. Every engagement starts with a free AI agent, so you see value before you commit.",
+    crossEyebrow: "Also from Vento Labs",
+    crossLinks: [
+      {
+        id: "data-centers",
+        title: "AI data centers",
+        description:
+          "A separate practice for investors and owners: we develop AI data centers end to end — configuration, land next to transmission capacity, grid interconnection, modular construction and commissioning. From 10 to 100+ MW.",
+        cta: "See the data center practice",
+      },
+      {
+        id: "blog",
+        title: "Engineering guides",
+        description:
+          "How this actually gets built — what a custom agent costs, how long integrations take, connecting agents to 1C and marketplaces, and where autonomy still needs a human in the loop.",
+        cta: "Read the guides",
+      },
+    ],
   },
 
   leadMagnet: {
@@ -164,13 +185,6 @@ export const en: Dictionary = {
     cta: "Book a free call",
   },
 
-  clientProof: {
-    eyebrow: "Client Results",
-    heading: "Real clients. Measured results.",
-    lead: "Three engagements, three measurable outcomes — patient intake, marketplace operations, company-wide AI adoption.",
-    cta: "Read the case studies",
-  },
-
   founder: {
     eyebrow: "Who you'll talk to",
     heading: "No sales team. You talk to the person who builds your agent.",
@@ -205,8 +219,8 @@ export const en: Dictionary = {
   casesIntro: {
     eyebrow: "Case Studies",
     heading: "AI systems we build — and the results they produce",
-    lead: "Solutions you can launch, and client deployments with measured outcomes.",
-    description: "Four productized solutions — a content factory, a supplier-operations agent, a permissioned AI layer over 1C, and a bankruptcy legaltech platform — alongside shipped client work with measurable results across healthcare, e-commerce, cloud infrastructure and legaltech, including ArbitrAI, our own product.",
+    lead: "Solutions you can launch, and the product we built, shipped and run ourselves.",
+    description: "Four productized solutions — a content factory, a supplier-operations agent, a permissioned AI layer over 1C, and a bankruptcy legaltech platform — plus ArbitrAI, the legaltech product we built, shipped and run ourselves. Every number on this page says where it came from.",
     homeHeadingLead: "Three AI systems",
     homeHeadingEm: "we build",
     homeHeadingTail: "for operations.",
@@ -263,57 +277,23 @@ export const en: Dictionary = {
           { value: "127-FZ + APC", label: "deadline control" },
         ],
       },
-      zigmund: {
-        industry: "Online Therapy Platform",
-        title: "AI agent cut patient intake time by 80% and handles 200+ conversations daily",
-        challenge: "Zigmund Online's support team was overwhelmed — 200+ daily inquiries about therapist availability, session booking, and insurance questions. Patients waited 3-4 hours for a response, and 30% dropped off before booking.",
-        solution: "Deployed a self-hosted AI agent in Telegram and WhatsApp that handles patient intake, answers insurance questions from the knowledge base, matches patients with available therapists, and books sessions automatically.",
-        result: "Patient response time dropped from 4 hours to under 2 minutes. Booking conversion increased by 40%. The support team now focuses on complex cases instead of repetitive intake.",
-        metrics: [
-          { value: "2 min", label: "response time (was 4 hours)" },
-          { value: "+40%", label: "booking conversion" },
-          { value: "200+", label: "conversations handled daily" },
-        ],
-      },
-      noconcept: {
-        industry: "E-commerce",
-        title: "Automated product management saves 25 hours per week across the team",
-        challenge: "NoConcept manages 3,000+ SKUs across multiple marketplaces. Price updates, stock sync, and customer inquiries consumed 5+ hours daily. Lead qualification from the website and social channels was entirely manual.",
-        solution: "Built an automation pipeline with n8n: incoming leads are qualified by AI, product data syncs across platforms in real-time, customer questions are answered from the product database, and weekly analytics reports generate automatically.",
-        result: "Lead response time dropped from 6 hours to 8 minutes. Product data sync errors eliminated. The team reclaimed 25+ hours per week for growth activities instead of data entry.",
-        metrics: [
-          { value: "8 min", label: "lead response (was 6 hours)" },
-          { value: "25h", label: "saved per week" },
-          { value: "3,000+", label: "SKUs managed automatically" },
-        ],
-      },
-      asgcompute: {
-        industry: "Cloud Infrastructure",
-        title: "Enterprise AI workspace deployed for 45 employees across 5 departments in 4 weeks",
-        challenge: "ASG Compute had no AI governance. Engineers used personal ChatGPT accounts, sales had no AI tools, and sensitive infrastructure data was going through uncontrolled channels. No visibility into AI spend or usage.",
-        solution: "Deployed a full AI operating system: Claude Team Plan for all 45 employees, 13 custom AI agents across sales, engineering, DevOps, marketing, and support. Knowledge Vault with all internal documentation. Role-based access and compliance policies.",
-        result: "Full AI adoption across all departments in under 4 weeks. AI spend consolidated and reduced by 35%. New AI agents now deploy in 2-3 days instead of weeks. Company knowledge is preserved and accessible to every team member.",
-        metrics: [
-          { value: "13", label: "AI agents deployed" },
-          { value: "4 weeks", label: "from zero to full adoption" },
-          { value: "–35%", label: "AI infrastructure costs" },
-        ],
-      },
       arbitrai: {
         industry: "LegalTech · Bankruptcy",
         title: "ArbitrAI — our own AI platform for bankruptcy trustees: deadline control, AI documents, legal analytics",
         challenge: "A bankruptcy trustee runs 20–300 cases at once. Daily deadline monitoring takes 2–3 hours, one missed statutory publication risks disqualification, and routine court filings consume hours of highly-paid time.",
         solution: "A product Vento Labs built and launched together with a practicing trustee: automatic deadline calculation under the Russian insolvency law with Telegram alerts, AI-drafted publications and notices, transaction analysis for clawback claims. Integrated with the court and registry systems (KAD, EFRSB); data hosted in-country for compliance. Every AI output ships as a draft for human review — never auto-filed.",
         result: "Daily deadline monitoring dropped from 2–3 hours to under 20 minutes, 99.9% of statutory registry filings now go out on time, and document prep is 6× faster. Live at arbitrai.tech — our own product for the Russian legaltech market.",
+        imageAlt: "An open archival document box holding a row of blank filing dividers, precisely aligned, one tab in dark green.",
         metrics: [
           { value: "2–3 h → 20 min", label: "daily deadline monitoring" },
           { value: "99.9%", label: "publications filed on time" },
           { value: "6×", label: "faster document prep" },
         ],
+        metricsSource: "Source: Vento Labs’ own measurements on ArbitrAI (arbitrai.tech). Our product, our figures — not an independent audit.",
       },
     },
     sectionLabels: { challenge: "Challenge", solution: "Solution", result: "Result" },
-    readyHeading: "Ready to join them?",
+    readyHeading: "Want one of these on your operation?",
     readyDesc: "Book a call — we'll set up your AI agent for free.",
     readyCta: "Book a free call",
   },
@@ -339,6 +319,9 @@ export const en: Dictionary = {
     bookFreeSubtitle: "30-minute discovery call. No pitch, no pressure.",
     bookFreeCta: "Claim your free AI agent",
     faqSuffix: "FAQ",
+    nextEyebrow: "Keep going",
+    nextHeading: "Where to go next",
+    nextCta: "Open",
   },
 
   services_pages: {
@@ -383,7 +366,6 @@ export const en: Dictionary = {
         "Full control over your data — self-hosted, no vendor lock-in",
       ],
       stakes: "Every day without an AI agent is a day you're doing work a machine should handle. Your competitors are already automating — the gap grows wider every month.",
-      socialProof: { company: "Zigmund Online", result: "Response time dropped from 4 hours to under 2 minutes" },
       faq: [
         { q: "What frameworks do you use?", a: "We build on Claude Agent SDK, LangGraph, CrewAI, and other leading open-source frameworks. We pick the best tool for your specific use case — there's no one-size-fits-all." },
         { q: "Can it really control my computer?", a: "Yes. Using computer-use capabilities, the agent can browse websites, fill forms, extract data, manage files, and interact with any application — just like a human assistant would." },
@@ -393,8 +375,21 @@ export const en: Dictionary = {
         { q: "How much does a custom AI agent cost?", a: "The first pilot agent is free — we build it after a 30-minute discovery call. Production agents are quoted fixed-price after the call, depending on integrations and scope; typical build time is 3–7 days. Ongoing costs are just AI model usage, usually $20–200/month paid directly to providers with no markup." },
       ],
       seo: {
-        title: "Custom AI Agents — Self-Hosted, Secure, 24/7",
-        description: "We build self-hosted AI agents on Claude Agent SDK, LangGraph, CrewAI. Controls your computer, integrates with Telegram, LinkedIn, WhatsApp. Free agent setup included.",
+        title: "Custom AI Agent Development, Self-Hosted",
+        description:
+          "We build one custom AI agent for you — self-hosted, on Claude Agent SDK, LangGraph or CrewAI, wired into Telegram, email and your tools. First agent free.",
+        serviceType: "AI agent development",
+      },
+      media: {
+        heroAlt: "A compact self-hosted server appliance on a desk in a quiet office — the agent runs on hardware you own.",
+        stepAlts: [
+          "Blank cards laid out and linked into a branching map of everyday tasks.",
+          "A steel agent appliance with its side panel lifted off, showing the boards and cabling inside.",
+          "The same appliance with three expansion modules clipped alongside it in a row.",
+        ],
+        kitAlt: "Exploded view of the agent appliance: outer shell, mainboard, storage module, connector plate and power unit.",
+        kitCaption:
+          "One system, handed over whole: the agent runtime, its integrations, the knowledge base and the keys — all on hardware you control.",
       },
     },
     "ai-automation": {
@@ -438,7 +433,6 @@ export const en: Dictionary = {
         "Zero data loss between systems — everything synced in real time",
       ],
       stakes: "Every manual process is a bottleneck waiting to break. While you copy-paste between tabs, your competitors close deals faster because their systems talk to each other.",
-      socialProof: { company: "NoConcept", result: "Lead response time dropped from 6 hours to 8 minutes" },
       faq: [
         { q: "What tools do you integrate with?", a: "Google Workspace, HubSpot, Salesforce, Notion, Airtable, Slack, Telegram, WhatsApp, Shopify, WooCommerce, Stripe, and any tool with an API. If it exists, we can connect it." },
         { q: "What happens if an automation breaks?", a: "We set up monitoring and alerts so we catch issues before you do. Our support package includes fixing and adapting automations as your tools or processes change." },
@@ -446,8 +440,21 @@ export const en: Dictionary = {
         { q: "How is this different from just using Zapier?", a: "We use n8n (self-hosted, no per-task pricing) and Make.com for complex workflows. More importantly, we add AI intelligence and ongoing maintenance — not just point-and-click connections." },
       ],
       seo: {
-        title: "AI Process Automation — n8n, Make.com & Custom Workflows",
-        description: "Automate lead qualification, data sync, reporting, and workflows with AI-powered n8n and Make.com automations. Zero manual data entry.",
+        title: "AI Workflow Automation — n8n & Make.com",
+        description:
+          "We connect your CRM, inbox, forms and databases into AI-driven workflows on n8n and Make.com: leads qualified in minutes, data synced, reports written for you.",
+        serviceType: "Business process automation",
+      },
+      media: {
+        heroAlt: "A patch frame where every cable run has been combed and dressed by hand — what a maintained automation looks like.",
+        stepAlts: [
+          "A tangle of loose cables on one side; the same cables combed into a single dressed harness on the other.",
+          "A machined manifold block with a dozen ports and green valves, steel lines converging into it.",
+          "A row of indicator lamps set into a steel bar — most green, one amber.",
+        ],
+        kitAlt: "The automation kit laid out flat: manifold block, graded connector fittings, hose, valves, indicator bar and mounting brackets.",
+        kitCaption:
+          "Workflows, the connectors between your tools, and the monitoring that tells you when one of them changes — built as one set, not as separate zaps.",
       },
     },
     "ai-training": {
@@ -491,7 +498,6 @@ export const en: Dictionary = {
         "You have measurable data on AI adoption and productivity gains",
       ],
       stakes: "Companies that adopt AI now will be 10x more productive in 2 years. Companies that wait will spend 10x more catching up. The window is closing.",
-      socialProof: { company: "ASG Compute", result: "Full AI adoption across 5 departments in under 4 weeks" },
       faq: [
         { q: "What if our team has never used AI before?", a: "That's common and perfectly fine. We design training from the ground up, starting with fundamentals and progressing to advanced workflows based on your team's pace." },
         { q: "Is this a one-time workshop or ongoing?", a: "Both options available. We start with an intensive workshop series, then offer monthly check-ins to sustain adoption. We measure at 30 and 60 days and adjust." },
@@ -499,8 +505,21 @@ export const en: Dictionary = {
         { q: "What tools do you teach?", a: "Claude Code, Cursor, MCP servers, prompt engineering, n8n/Make for automation, and whatever else fits your team's needs. We don't push one tool — we find what works." },
       ],
       seo: {
-        title: "AI Consulting & Team Training — Claude Code, Cursor, MCP",
-        description: "We install Claude Code, Cursor, and MCP servers, train your team on real workflows, and measure adoption at 30 and 60 days. AI consulting for projects of any scale.",
+        title: "AI Training for Teams — Claude Code, MCP",
+        description:
+          "We install Claude Code, Cursor and MCP servers, run workshops on your team's real work, then measure adoption at 30 and 60 days. AI consulting at any scale.",
+        serviceType: "AI training and consulting",
+      },
+      media: {
+        heroAlt: "A team working through a hands-on AI session at a long table, seen from the back of the room.",
+        stepAlts: [
+          "Calipers and a pencil resting on a blank sheet of grid paper.",
+          "A workstation kit laid out in a grid: laptop, stand, keyboard, cables and a hex tool.",
+          "A stack of identical bound playbooks, the top one open at blank pages.",
+        ],
+        kitAlt: "The training kit laid out flat: laptop and stand, three bound playbooks, pencil, calipers, cable and two machined blocks.",
+        kitCaption:
+          "Tools installed on every machine, workshops run on your own work, and a playbook the team keeps after we leave.",
       },
     },
     "ai-workspace": {
@@ -544,7 +563,6 @@ export const en: Dictionary = {
         "New AI agents deploy in days — the system grows with your business",
       ],
       stakes: "Without a system, AI adoption creates more chaos than it solves. Scattered tools, fragmented knowledge, inconsistent results — that's not innovation, it's wasted potential.",
-      socialProof: { company: "ASG Compute", result: "13 AI agents deployed across 5 departments in 4 weeks" },
       faq: [
         { q: "How many AI agents can you deploy?", a: "We typically start with 3-5 agents and scale from there. Our largest deployment runs 20+ agents across multiple departments. The architecture supports unlimited expansion." },
         { q: "What about data security?", a: "Your data stays on your infrastructure — self-hosted databases, role-based access, audit logs. No vendor lock-in — we use standard open protocols." },
@@ -554,8 +572,21 @@ export const en: Dictionary = {
         { q: "How much does it cost?", a: "Pilot starts from $3,000 setup + $500/month. Scale starts from $8,000 setup + $2,000/month. Enterprise is custom-priced. AI model costs ($20-200/month depending on usage) are billed directly by providers — no markups." },
       ],
       seo: {
-        title: "Enterprise AI Platform — AI Operating System for Business",
-        description: "Full AI operating system: dedicated agents per department, Knowledge Vault, MCP Gateway, enterprise security. Deploy in 4 weeks. Pricing from Pilot to Enterprise.",
+        title: "Company-Wide AI Platform for Every Team",
+        description:
+          "An AI agent for every department, a Knowledge Vault over your documents, role-based access and ROI reporting. Live in 4 weeks on your own infrastructure.",
+        serviceType: "Enterprise AI platform",
+      },
+      media: {
+        heroAlt: "An open-plan office floor mid-afternoon, seen from the back — the whole company, not one power user.",
+        stepAlts: [
+          "A steel hub block with eight cables running into it from every direction.",
+          "Four identical modular units side by side, the second one standing open.",
+          "Twelve identical modules in a grid, one of them being set down into its place.",
+        ],
+        kitAlt: "Exploded view of the platform: enclosure, four agent modules, a gateway hub, a sealed knowledge vault and the cable loom.",
+        kitCaption:
+          "Agents per team, the gateway they all speak through, the vault your knowledge lives in and the wiring to your systems — one platform, not eleven subscriptions.",
       },
     },
   },
@@ -568,6 +599,7 @@ export const en: Dictionary = {
       heroTitle: "Turn your catalog into a stream of content that sells every day",
       heroDescription: "We take your product photos, feed, brand guide and references — and ship lifestyle visuals, carousels, short videos, AI presenters and product-card versions for your site, social channels and marketplaces.",
       cardSummary: "Turns SKUs into a stream of discovery content for social, product cards and marketplaces.",
+      imageAlt: "A single amber dropper bottle surrounded by a grid of small prints, each showing the same bottle from a different angle and in different light.",
       problems: [
         "Your product only lives inside the card, while the buyer has already decided — in the feed, a board, a short video, a useful carousel.",
         "Manual content production can't keep up with e-commerce rhythm: too slow, too expensive, too few angles per SKU.",
@@ -609,6 +641,38 @@ export const en: Dictionary = {
         { q: "What about platform rules and honesty around AI content?", a: "We don't dress up AI output as real customer reviews and we don't use synthetic testimonials. Scripted demos and AI presenters are presented as what they are. FTC and EU consumer-review rules are respected." },
         { q: "How fast can we launch a pilot?", a: "Typical shape: 10–30 SKUs, 1–2 weeks to the first publishable pack. After that you move to a regular weekly rhythm." },
       ],
+      pipeline: {
+        eyebrow: "How it runs",
+        heading: "One catalog in. Every channel out.",
+        lede: "Nothing here is a black box: you hand over source material, the pipeline turns each SKU into a system of angles, and a human signs off before anything is published.",
+        columns: [
+          {
+            head: "What you hand over",
+            nodes: [
+              { name: "Product photos and feed", meta: "Your catalog, as it already exists" },
+              { name: "Brand guide and references", meta: "The look the output has to hold" },
+              { name: "Channels and rules", meta: "Where it ships, and in what shape" },
+            ],
+          },
+          {
+            head: "The content pipeline",
+            nodes: [
+              { name: "Content matrix", meta: "Which angles sell, build brand, drive performance" },
+              { name: "Generation tuned per brand", meta: "References and product photos, not an off-the-shelf model" },
+              { name: "Human review", meta: "Bad visuals do not ship" },
+            ],
+          },
+          {
+            head: "What comes back",
+            nodes: [
+              { name: "Lifestyle visuals and carousels", meta: "Recipes, how-tos, sets, comparisons" },
+              { name: "Short video and AI presenters", meta: "TikTok, Shorts, Reels, scripted demos" },
+              { name: "Card and rich-content versions", meta: "Product cards and marketplace specs" },
+              { name: "Ad variants per platform", meta: "Meta, Google, Wildberries, Ozon" },
+            ],
+          },
+        ],
+      },
       seo: {
         title: "Content Factory for E-commerce — Pilot on your SKUs",
         description: "Turn your catalog into a content stream for product cards, social and marketplaces. Lifestyle visuals, carousels, short videos, AI presenters. Pilot on your SKUs.",
@@ -621,6 +685,7 @@ export const en: Dictionary = {
       heroTitle: "Suppliers write in chaos. Your catalog should respond with structure.",
       heroDescription: "The agent reads incoming emails, messages, price lists, spreadsheets and files from suppliers, extracts SKUs, stock, prices and lead times, stores everything in your database or CRM, and triggers catalog updates by your rules.",
       cardSummary: "Turns emails, chats and price lists from suppliers into live stock, prices and catalog updates.",
+      imageAlt: "Overhead view: plain cardboard boxes and tubes heaped in disorder on the left, the same objects arranged in an exact grid on the right.",
       problems: [
         "Product and stock data live across email, chats, PDFs and spreadsheets — your catalog always lags.",
         "Managers burn hours hand-copying price lists and syncing stock and prices.",
@@ -662,6 +727,39 @@ export const en: Dictionary = {
         { q: "What about supplier data security?", a: "Data is processed inside your perimeter or via API access with data-processing agreements. Models run on business tier — your data isn't used for training. For strict requirements we can run self-hosted." },
         { q: "How long does it take to launch?", a: "MVP on 1–3 key suppliers — 2–3 weeks. Full supplier coverage — 1–2 months depending on the number of sources and rule complexity." },
       ],
+      pipeline: {
+        eyebrow: "How it runs",
+        heading: "Chaos in. Structure out.",
+        lede: "The agent sits between the supplier and your storefront. It reads whatever arrives, extracts the fields that matter, and either updates by your rules or hands the exception to a human.",
+        columns: [
+          {
+            head: "Inbound, as suppliers send it",
+            nodes: [
+              { name: "Email and attachments", meta: "Threads, forwards, replies to replies" },
+              { name: "Chats", meta: "Telegram, WhatsApp, messenger updates" },
+              { name: "Price lists and files", meta: "Excel, PDF, Google Sheets, photos of a price list" },
+            ],
+          },
+          {
+            head: "The agent layer",
+            nodes: [
+              { name: "Extraction", meta: "SKU, price, stock, lead time, MOQ, terms" },
+              { name: "Normalization and matching", meta: "Against your catalog, per-supplier templates" },
+              { name: "Rules", meta: "Auto-publish what is trusted, route the rest to review" },
+              { name: "Change journal", meta: "History per supplier, with the source message" },
+            ],
+          },
+          {
+            head: "Systems that end up correct",
+            nodes: [
+              { name: "Storefront", meta: "Shopify, WooCommerce" },
+              { name: "CRM and ERP", meta: "1C, Bitrix, MyWarehouse, custom systems" },
+              { name: "Database and sheets", meta: "API, Google Sheets, Airtable, Notion" },
+              { name: "Alerts", meta: "Failures, outliers, suspicious data" },
+            ],
+          },
+        ],
+      },
       seo: {
         title: "Supplier Agent — AI for Supplier Emails & Catalog Updates",
         description: "AI agent turns supplier emails, chats and price lists into live stock, prices and storefront updates — by your rules, with approvals and a full change journal.",
@@ -739,7 +837,7 @@ export const en: Dictionary = {
         { q: "How do you align actions with our accounting policy?", a: "During the role-mapping stage we jointly fix allowed scenarios and prohibitions. Every subsequent agent request is checked against these rules. You can also enable manual approval for any action above a defined threshold — by amount, operation type or other criteria." },
       ],
       seo: {
-        title: "1C Agent — AI Layer over 1C ERP (full case in Russian)",
+        title: "1C Agent — a digital 1C developer",
         description: "AI agent for 1C ERP on Claude: plain-language requests, a reviewed change plan, edits confined to extensions so the 1C core stays intact. Full case in Russian.",
       },
       ctaPrimary: { label: "Book a free call", href: "#book", kind: "arrow" },
@@ -860,6 +958,8 @@ export const en: Dictionary = {
   dataCenters: {
     navLabel: "Data centers",
     breadcrumb: "Data centers",
+    cardSummary:
+      "End-to-end development of AI data centers — site, power, grid interconnection, modular build and operation. 10 to 100+ MW.",
     seo: {
       title: "AI Data Center Development — Site, Power, Build & Operate",
       description:
@@ -1219,11 +1319,6 @@ export const en: Dictionary = {
           caption: "138 kV interconnect and private substation at the East Texas site",
         },
         {
-          id: "transmission",
-          alt: "High-voltage transmission tower feeding a private substation",
-          caption: "Transmission feed — the constraint every project is really built around",
-        },
-        {
           id: "switchgear",
           alt: "Interior switchgear and electrical distribution room",
           caption: "Switchgear and distribution room at an operating facility",
@@ -1402,6 +1497,7 @@ export const en: Dictionary = {
       { t: "Knowledge Vault", d: "All company knowledge indexed and available to AI — forever" },
       { t: "Connected to Your Tools", d: "AI talks to your CRM, email, chat, Shopify, databases — in real time" },
     ],
+    solutionImageAlt: "An assembled modular platform: four agent modules seated in one enclosure, a gateway block on top, cabling entering from the side.",
     howItWorksEyebrow: "How It Works",
     howItWorksHeading: "From zero to AI-powered in 4 weeks",
     capabilitiesEyebrow: "Capabilities",
@@ -1425,6 +1521,8 @@ export const en: Dictionary = {
           { name: "Client Reporter", does: "Generates branded weekly/monthly reports for each client automatically" },
           { name: "Follow-up Agent", does: "Sends personalized follow-ups after calls, demos, and purchases — never lets a lead go cold" },
         ],
+        imageId: "service",
+        imageAlt: "A support desk with a headset resting beside the keyboard.",
       },
       {
         name: "Sales & Lead Management",
@@ -1433,6 +1531,8 @@ export const en: Dictionary = {
           { name: "Proposal Builder", does: "Generates custom proposals from templates, CRM data, and past deals" },
           { name: "Outreach Agent", does: "Drafts and sends personalized outreach sequences across email and LinkedIn" },
         ],
+        imageId: "sales",
+        imageAlt: "Two colleagues going through a deal at a table by the window.",
       },
       {
         name: "Marketing & Content",
@@ -1441,6 +1541,8 @@ export const en: Dictionary = {
           { name: "Campaign Optimizer", does: "Analyzes ad performance across platforms and suggests improvements" },
           { name: "SEO Monitor", does: "Tracks rankings, finds keyword opportunities, drafts optimized content" },
         ],
+        imageId: "marketing",
+        imageAlt: "Printed proofs, a camera and colour swatches laid out on a studio table.",
       },
       {
         name: "Operations & Knowledge",
@@ -1450,6 +1552,8 @@ export const en: Dictionary = {
           { name: "Report Generator", does: "Creates weekly/monthly reports from live data across all your tools" },
           { name: "Onboarding Guide", does: "Walks new hires through processes, answers questions, reduces ramp-up time" },
         ],
+        imageId: "operations",
+        imageAlt: "An archive aisle of identical binders, one being pulled from the shelf.",
       },
     ],
     integrationsEyebrow: "Integrations",
@@ -1491,14 +1595,6 @@ export const en: Dictionary = {
       { title: "Live in weeks, not months", description: "First agents work in 4 weeks. New ones deploy in days. We iterate on real data, not assumptions." },
     ],
     stakesEyebrow: "The cost of waiting",
-    resultsEyebrow: "Results",
-    resultsHeading: "Companies we've helped",
-    resultsEntries: [
-      { company: "NoConcept", industry: "E-commerce", result: "Lead response dropped from 6 hours to 8 minutes. 25 hours/week saved across the team." },
-      { company: "Zigmund Online", industry: "Healthcare", result: "Patient response time from 4 hours to 2 minutes. Booking conversion up 40%." },
-      { company: "ASG Compute", industry: "Cloud / SaaS", result: "13 AI agents deployed across 5 departments in 4 weeks. AI costs reduced 35%." },
-    ],
-    resultsCta: "See all case studies",
     ctaHeading: "Ready to power your team with AI?",
     ctaDesc: "Book a discovery call. We'll map your processes and show you exactly which agents will save you the most time.",
     ctaPrimary: "Book a discovery call",
