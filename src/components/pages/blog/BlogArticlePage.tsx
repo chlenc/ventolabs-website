@@ -3,11 +3,18 @@
 import type { ReactNode } from "react";
 import { FadeUp, MagneticButton, ArrowIcon } from "@/components/Primitives";
 import { useLocale } from "@/components/LocaleProvider";
-import { localizedPath } from "@/lib/i18n";
-import { href, breadcrumbHomeLabels } from "@/lib/utils";
+import { localeNames, localizedPath } from "@/lib/i18n";
+import { asset, href, breadcrumbHomeLabels } from "@/lib/utils";
 import { site } from "@/lib/site";
-import { getBlogEntry, blogIndexCopy, type BlogSlug } from "@/lib/blog";
+import {
+  getBlogEntry,
+  blogIndexCopy,
+  hasFullBody,
+  relatedGuides,
+  type BlogSlug,
+} from "@/lib/blog";
 import { getArticleBody } from "./registry";
+import { cardImage, coverImage, figureImage } from "./covers";
 import type { Block, Section } from "./types";
 
 /**
@@ -117,6 +124,41 @@ function BlockView({ block }: { block: Block }) {
           <p>{inline(block.text)}</p>
         </aside>
       );
+    case "figure":
+      return (
+        <figure className="post__figure">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={asset(figureImage[block.id])}
+            alt={block.alt}
+            width={1200}
+            height={805}
+            loading="lazy"
+          />
+          {block.caption && <figcaption>{inline(block.caption)}</figcaption>}
+        </figure>
+      );
+    case "flow":
+      // Built in HTML rather than generated as a picture: the labels have to
+      // be real text — readable, selectable, and translated with the body.
+      return (
+        <figure className="post__flow">
+          {block.title && <figcaption className="post__flow-title">{block.title}</figcaption>}
+          <ol>
+            {block.stages.map((stage, i) => (
+              <li
+                key={i}
+                className={stage.gate ? "post__flow-step post__flow-step--gate" : "post__flow-step"}
+              >
+                <span className="post__flow-idx">{String(i + 1).padStart(2, "0")}</span>
+                <p className="post__flow-label">{stage.label}</p>
+                <p className="post__flow-text">{inline(stage.text)}</p>
+              </li>
+            ))}
+          </ol>
+          {block.note && <p className="post__flow-note">{inline(block.note)}</p>}
+        </figure>
+      );
   }
 }
 
@@ -131,6 +173,61 @@ function SectionView({ section, index }: { section: Section; index: number }) {
         <BlockView key={i} block={block} />
       ))}
     </section>
+  );
+}
+
+/**
+ * Guide → guide rail. Rendered under every article *and* every stub: the six
+ * guides used to make one cross-link between them, so /blog passed no
+ * authority internally and a reader who finished one had nowhere to go but
+ * the CTA.
+ */
+function RelatedGuides({ slug }: { slug: BlogSlug }) {
+  const locale = useLocale();
+  const related = relatedGuides(slug);
+  if (!related.length) return null;
+
+  return (
+    <aside className="post__related" aria-labelledby="related-guides">
+      <h2 id="related-guides" className="post__related-title">
+        {blogIndexCopy[locale].relatedTitle}
+      </h2>
+      <div className="post__related-grid">
+        {related.map((entry) => {
+          const card = entry.card[locale];
+          // Same rule as the index: flag only when this locale gets a stub.
+          const foreign = !hasFullBody(entry, locale);
+          return (
+            <a
+              key={entry.slug}
+              className="post__related-card"
+              href={href(`/blog/${entry.slug}`, locale)}
+            >
+              <span className="post__related-media">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={asset(cardImage[entry.slug])}
+                  alt={card.imageAlt}
+                  width={900}
+                  height={502}
+                  loading="lazy"
+                />
+              </span>
+              <span className="post__related-eyebrow">
+                {card.eyebrow}
+                {foreign && (
+                  <span className="post-card__lang">{localeNames[entry.articleLocale]}</span>
+                )}
+              </span>
+              <span className="post__related-headline">{card.title}</span>
+              <span className="post__related-cta">
+                {card.readLabel} <ArrowIcon />
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </aside>
   );
 }
 
@@ -175,6 +272,9 @@ function ArticleStub({ slug }: { slug: BlogSlug }) {
           <MagneticButton href={href("/blog", locale)} variant="ghost">
             {stub.ctaSecondary}
           </MagneticButton>
+        </div>
+        <div className="container container--narrow" style={{ padding: 0 }}>
+          <RelatedGuides slug={slug} />
         </div>
       </div>
     </section>
@@ -223,6 +323,20 @@ export function BlogArticlePage({ slug }: { slug: BlogSlug }) {
           </FadeUp>
         </div>
       </header>
+
+      <div className="container container--narrow">
+        <FadeUp>
+          <figure className="post__cover">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={asset(coverImage[slug])}
+              alt={entry.card[locale].imageAlt}
+              width={1376}
+              height={768}
+            />
+          </figure>
+        </FadeUp>
+      </div>
 
       <div className="container container--narrow post__body">
         <FadeUp>
@@ -281,6 +395,8 @@ export function BlogArticlePage({ slug }: { slug: BlogSlug }) {
             ))}
           </div>
         </section>
+
+        <RelatedGuides slug={slug} />
       </div>
 
       <section className="post__cta">

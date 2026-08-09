@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { blogSlugs, getBlogEntry, isBlogSlug } from "@/lib/blog";
 import { BlogArticlePage } from "@/components/pages/blog/BlogArticlePage";
-import { getArticleBody } from "@/components/pages/blog/registry";
+import { getArticleBody, getArticleHeadline } from "@/components/pages/blog/registry";
 import { buildPageMetadata } from "@/lib/seo";
 import { JsonLd, blogPostingJsonLd } from "@/lib/jsonld";
 
@@ -24,7 +24,14 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   const entry = getBlogEntry(slug);
   return (
     <>
-      <JsonLd data={blogPostingJsonLd({ entry, locale: "en", faq: getArticleBody(slug, "en")?.faq })} />
+      <JsonLd
+        data={blogPostingJsonLd({
+          entry,
+          locale: "en",
+          faq: getArticleBody(slug, "en")?.faq,
+          headline: getArticleHeadline(slug, "en", entry.articleLocale),
+        })}
+      />
       <BlogArticlePage slug={slug} />
     </>
   );

@@ -907,7 +907,7 @@ em, .italic {
 }
 .process-row {
   display: grid;
-  grid-template-columns: 4rem 1fr 1.6fr;
+  grid-template-columns: 4rem 1fr 1.5fr 19rem;
   gap: 2.5rem;
   padding: clamp(1.75rem, 3vw, 2.5rem) 0;
   border-bottom: 1px solid rgba(243, 234, 216, 0.15);
@@ -945,8 +945,30 @@ em, .italic {
   max-width: 56ch;
   line-height: 1.55;
 }
+/* Documentary frame per phase. `align-self: start` because the row is
+   baseline-aligned for its type — the image must not ride the baseline. */
+.process-row__media {
+  align-self: start;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(243, 234, 216, 0.06);
+}
+.process-row__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.process-row:hover .process-row__media img { transform: scale(1.03); }
+@media (max-width: 1000px) {
+  .process-row { grid-template-columns: 4rem 1fr 1.6fr; }
+  /* Full-width frame under the copy rather than a squeezed fourth column. */
+  .process-row__media { grid-column: 2 / -1; margin-top: 0.5rem; max-width: 30rem; }
+}
 @media (max-width: 800px) {
   .process-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .process-row__media { grid-column: 1; max-width: none; }
 }
 
 /* ═══ Stats / ROI ═══ */
@@ -2630,6 +2652,109 @@ em, .italic {
 .case-card__cta svg { transition: transform 0.3s var(--ease-out); }
 .case-card:hover .case-card__cta svg { transform: translate(3px, -3px); }
 
+/* Provenance line under a card's metric chips. Deliberately quiet but not
+   hidden: a number on a case card without a source is the thing this page
+   most needs to avoid. */
+.case-card__source {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: -0.2rem 0 0;
+}
+
+/* ═══ Case landing architecture diagram — in-page HTML, not an image, so the
+   labels stay translatable and legible at any size. Same visual language as
+   the bespoke .erp-arch block, kept as its own scope so neither can break the
+   other. ═══ */
+.case-arch {
+  background: var(--forest);
+  color: var(--cream);
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  overflow: hidden;
+  position: relative;
+}
+.case-arch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(243, 234, 216, 0.5) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.case-arch > * { position: relative; }
+.case-arch__head { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 60ch; }
+.case-arch__head .eyebrow { color: rgba(243, 234, 216, 0.6); }
+.case-arch__head h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  margin-top: 1rem;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+}
+.case-arch__lede {
+  color: rgba(243, 234, 216, 0.78);
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  max-width: 60ch;
+}
+.case-arch__diagram {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (max-width: 900px) { .case-arch__diagram { grid-template-columns: 1fr; } }
+.case-arch__col { display: flex; flex-direction: column; gap: 0.75rem; position: relative; }
+/* Flow arrow between columns — decorative, hidden from the a11y tree and
+   dropped entirely once the columns stack. */
+.case-arch__col + .case-arch__col::before {
+  content: "";
+  position: absolute;
+  left: -0.95rem;
+  top: 2.6rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-top: 1px solid rgba(243, 234, 216, 0.35);
+  border-right: 1px solid rgba(243, 234, 216, 0.35);
+  transform: rotate(45deg);
+}
+@media (max-width: 900px) {
+  .case-arch__col + .case-arch__col::before { display: none; }
+}
+.case-arch__col-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(243, 234, 216, 0.55);
+  margin-bottom: 0.5rem;
+}
+.case-arch__node {
+  background: rgba(243, 234, 216, 0.06);
+  border: 1px solid rgba(243, 234, 216, 0.12);
+  border-radius: 8px;
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+.case-arch__node:hover {
+  background: rgba(243, 234, 216, 0.1);
+  transform: translateY(-2px);
+}
+.case-arch__node-name { font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.15; }
+.case-arch__node-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: rgba(243, 234, 216, 0.6);
+}
+
 .cases-group-title {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -4000,6 +4125,25 @@ em, .italic {
   background: var(--paper);
   transition: border-color 0.3s, background 0.3s, transform 0.4s var(--ease);
 }
+/* Cover sits flush inside the card's padding box, edge to edge. */
+.post-card__media {
+  margin: calc(-1 * clamp(1.5rem, 3vw, 2.25rem));
+  margin-bottom: clamp(1.4rem, 2.6vw, 1.9rem);
+  overflow: hidden;
+  background: var(--paper-warm);
+}
+/* A band, not the full 16:9 frame — six full-height covers would push the
+   copy off every screen. All six compositions are centred, so the crop is
+   safe. */
+.post-card__media img {
+  display: block;
+  width: 100%;
+  height: clamp(150px, 24vw, 260px);
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s var(--ease);
+}
+.post-card:hover .post-card__media img { transform: scale(1.02); }
 .post-card:hover {
   border-color: var(--forest);
   background: var(--paper-warm);
@@ -4411,6 +4555,174 @@ em, .italic {
   max-width: 62ch;
 }
 
+/* ─── Guide: imagery ─── */
+.post__cover {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+}
+.post__cover img,
+.post__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.post__figure {
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+}
+.post__figure figcaption {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* ─── Guide: flow diagram (real HTML, not a picture) ─── */
+.post__flow {
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+.post__flow-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+/* Wraps into rows rather than squeezing six columns into a narrow measure —
+   reading order stays left-to-right, top-to-bottom either way. */
+.post__flow ol {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  column-gap: 0;
+  row-gap: 1.5rem;
+}
+.post__flow-step {
+  position: relative;
+  padding: 0 1.1rem;
+  border-left: 2px solid var(--line-strong);
+}
+.post__flow-step--gate { border-left-color: var(--forest); }
+.post__flow-idx {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.post__flow-step--gate .post__flow-idx { color: var(--forest); }
+.post__flow-label {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.post__flow-text {
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.post__flow-note {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+/* One stage per row on phones — three narrow columns would shred the labels. */
+@media (max-width: 640px) {
+  .post__flow ol { grid-template-columns: 1fr; row-gap: 1.25rem; }
+}
+
+/* ─── Guide: read-next rail ─── */
+.post__related {
+  margin-top: clamp(3.5rem, 7vw, 5rem);
+  padding-top: clamp(2rem, 4vw, 2.75rem);
+  border-top: 1px solid var(--line-strong);
+}
+.post__related-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.post__related-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+}
+.post__related-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transition: border-color 0.3s, background 0.3s, transform 0.4s var(--ease);
+}
+.post__related-card:hover {
+  border-color: var(--forest);
+  background: var(--paper-warm);
+  transform: translateY(-2px);
+}
+.post__related-media {
+  display: block;
+  overflow: hidden;
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--line);
+}
+.post__related-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 900 / 502;
+  object-fit: cover;
+}
+.post__related-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 1rem 1.1rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.post__related-headline {
+  padding: 0.6rem 1.1rem 0;
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+.post__related-card:hover .post__related-headline { color: var(--forest); }
+.post__related-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding: 1rem 1.1rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+.post__related-card:hover .post__related-cta svg { transform: translateX(3px); }
+.post__related-cta svg { transition: transform 0.3s var(--ease); }
+
 /* ═══════════════════════════════════════════════════════════════
    /data-centers — AI infrastructure landing
    ═══════════════════════════════════════════════════════════════ */
@@ -4705,11 +5017,11 @@ em, .italic {
   gap: clamp(1rem, 2vw, 1.5rem);
   margin-top: clamp(2.5rem, 5vw, 4rem);
 }
+/* Four shots: a wide lead pair, then an even pair under it. */
 .dc-gallery > *:nth-child(1) { grid-column: span 4; }
 .dc-gallery > *:nth-child(2) { grid-column: span 2; }
-.dc-gallery > *:nth-child(3) { grid-column: span 2; }
-.dc-gallery > *:nth-child(4) { grid-column: span 2; }
-.dc-gallery > *:nth-child(5) { grid-column: span 2; }
+.dc-gallery > *:nth-child(3) { grid-column: span 3; }
+.dc-gallery > *:nth-child(4) { grid-column: span 3; }
 .dc-shot { height: 100%; display: flex; flex-direction: column; }
 .dc-shot img {
   width: 100%;
@@ -4915,4 +5227,482 @@ em, .italic {
 @media (max-width: 600px) {
   .dc-build { grid-template-columns: 1fr; }
   .dc-hero-media img { height: clamp(200px, 56vw, 300px); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Bespoke case landings — shared additions
+   (/cases/erp-agent, /cases/bankruptcy-agent)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* --- Russian-only stubs (en/de/es): "how it works" list + related services --- */
+
+.stub-how {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  max-width: var(--container-narrow);
+}
+.stub-how__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stub-how__list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.65rem;
+  list-style: none;
+  padding: 0;
+}
+.stub-how__list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(14, 14, 12, 0.78);
+}
+.stub-how__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  background: var(--forest);
+}
+.stub-related {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.stub-related a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --- Related services strip (RU landings) --- */
+
+.rel-services {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--line);
+  max-width: var(--container-narrow);
+}
+.rel-services__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rel-services__grid {
+  margin-top: 1.1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.rel-service {
+  display: block;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  transition: border-color 0.3s, transform 0.4s var(--ease);
+}
+.rel-service:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
+.rel-service__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.rel-service__desc {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* --- erp-agent: before / after comparison --- */
+
+.erp-ba {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--line-strong);
+}
+.erp-ba__head,
+.erp-ba__row {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.7fr) 1fr 1fr;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
+}
+.erp-ba__head {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.erp-ba__col-head {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.erp-ba__col-head--before { color: var(--muted); }
+.erp-ba__col-head--after { color: var(--forest); }
+.erp-ba__row {
+  padding: clamp(1rem, 2vw, 1.4rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+.erp-ba__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 0.15rem;
+}
+.erp-ba__cell {
+  display: block;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.erp-ba__cell--before {
+  color: rgba(14, 14, 12, 0.5);
+  text-decoration: line-through;
+  text-decoration-color: rgba(14, 14, 12, 0.2);
+  text-decoration-thickness: 1px;
+}
+.erp-ba__cell--after {
+  color: var(--ink);
+  padding-left: clamp(0.85rem, 1.5vw, 1.1rem);
+  border-left: 2px solid var(--forest);
+}
+/* Column labels repeat inside each cell on narrow screens only. */
+.erp-ba__tag { display: none; }
+
+@media (max-width: 780px) {
+  .erp-ba__head { display: none; }
+  .erp-ba__row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .erp-ba__cell--after {
+    padding-left: 0.85rem;
+  }
+  .erp-ba__tag {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+    text-decoration: none;
+  }
+  .erp-ba__cell--after .erp-ba__tag { color: var(--forest); }
+}
+
+/* --- bankruptcy-agent: statutory deadline timeline --- */
+
+.bank-timeline {
+  margin-top: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  list-style: none;
+  padding: 0;
+  counter-reset: bank-tl;
+}
+.bank-tl {
+  position: relative;
+  padding-top: 1.9rem;
+}
+/* The rail: a hairline across the row with a node per deadline. */
+.bank-tl::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: calc(-1 * clamp(1rem, 2vw, 1.75rem));
+  height: 1px;
+  background: var(--line-strong);
+}
+.bank-tl:last-child::before { right: 0; }
+.bank-tl__marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--forest);
+}
+.bank-tl__window {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+  background: rgba(30, 60, 20, 0.07);
+  padding: 0.22rem 0.5rem;
+}
+.bank-tl__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+.bank-tl__desc {
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.bank-tl__source {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(14, 14, 12, 0.4);
+}
+.bank-timeline__note {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--line-strong);
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 76ch;
+}
+
+/* --- Wide conceptual figure (both landings) --- */
+
+.case-figure {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+}
+.case-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+.case-figure figcaption {
+  margin-top: 0.85rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 76ch;
+}
+@media (max-width: 900px) {
+  .bank-timeline { grid-template-columns: repeat(2, 1fr); }
+  .bank-tl:nth-child(2)::before { right: 0; }
+}
+@media (max-width: 640px) {
+  .rel-services__grid { grid-template-columns: 1fr; }
+  .bank-timeline { grid-template-columns: 1fr; }
+  .bank-tl::before { right: 0; }
+}
+
+/* ─── /services/* imagery: hero band, illustrated plan steps, kit figure ───
+   Deliberately parallel to the .dc-* rules above: the service pages and
+   /data-centers should read as one system. */
+.svc-hero-media {
+  display: block;
+  width: 100%;
+  background: var(--paper);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.svc-hero-media img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 34vw, 460px);
+  object-fit: cover;
+}
+
+/* Studio frame at the head of a "how it works" card, bleeding to the card
+   edge. The card's ::before counter is a flex item too, so the media is
+   pulled above it with order rather than by reordering the markup. */
+.step--illustrated {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+  /* Grid rows stretch, so match the tallest card in the row — otherwise the
+     images line up at the top but the card borders end at three heights. */
+  height: 100%;
+}
+.step--illustrated .step__media {
+  order: -1;
+  margin: 0 -1.5rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+  background: #f4f1ea;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  overflow: hidden;
+}
+.step--illustrated .step__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.step--illustrated::before { margin-top: 1.25rem; }
+
+/* Wide "what you get" figure under the deliverables checklist */
+.svc-kit { margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+.svc-kit img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #f4f1ea;
+}
+.svc-kit figcaption {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 74ch;
+}
+
+/* "Where to go next" cross-link cards */
+.svc-next {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.svc-next__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.svc-next__card:hover {
+  border-color: var(--forest);
+  transform: translateY(-2px);
+}
+.svc-next__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  transition: color 0.3s var(--ease);
+}
+.svc-next__card:hover .svc-next__title { color: var(--forest); }
+.svc-next__summary {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: none;
+}
+.svc-next__cta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+.svc-next__card:hover .svc-next__cta svg { transform: translateX(3px); }
+.svc-next__cta svg { transition: transform 0.3s var(--ease); }
+
+@media (max-width: 600px) {
+  .svc-hero-media img { height: clamp(180px, 52vw, 280px); }
+}
+
+/* ─── Home imagery: below-hero band, process frames (see .process-row__media) ─── */
+.home-band {
+  width: 100%;
+  background: var(--paper);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+.home-band img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 34vw, 460px);
+  object-fit: cover;
+}
+.home-band__caption {
+  margin-top: 1.1rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--line-strong);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+/* ─── Home cross-links — /data-centers and /blog, which have no service card ─── */
+.cross-links__eyebrow { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.cross-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin-top: 1.5rem;
+}
+.cross-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--fg);
+  transition: border-color 0.4s var(--ease), transform 0.5s var(--ease);
+}
+.cross-link:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-3px);
+}
+.cross-link h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+  letter-spacing: -0.01em;
+}
+.cross-link p {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.cross-link__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+.cross-link:hover .cross-link__cta svg { transform: translateX(3px); }
+.cross-link__cta svg { transition: transform 0.4s var(--ease); }
+
+@media (max-width: 800px) {
+  .cross-links { grid-template-columns: 1fr; }
+  .home-band img { height: clamp(190px, 50vw, 280px); }
 }
