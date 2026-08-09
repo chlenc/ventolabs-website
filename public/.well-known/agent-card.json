@@ -91,7 +91,7 @@
       "description": "A company-wide AI operating system for teams of roughly 5 to 200+: a dedicated agent per function (client service, sales, marketing, operations), an assistant with full company context for every employee, a Knowledge Vault indexing company knowledge, connections to CRM, email, WhatsApp, Shopify, Drive, Notion, Slack and any REST API, role-based access with audit logs, and usage/ROI reporting. Self-hosted, live in 4 weeks.",
       "tags": ["enterprise", "ai-platform", "knowledge-base", "rbac", "self-hosted", "compliance"],
       "examples": [
-        "Deploy an AI workspace for 45 employees across 5 departments with department-scoped permissions.",
+        "Deploy an AI workspace across several departments with department-scoped permissions.",
         "Stand up an enterprise Claude/GPT gateway with audit logs and per-team usage caps.",
         "Index a company's docs, SOPs, and past conversations so any employee can query them in chat."      ],
       "inputModes": [
