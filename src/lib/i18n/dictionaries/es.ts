@@ -11,7 +11,7 @@ export const es: Dictionary = {
   seo: {
     homeTitle: "Agentes de IA y automatización para negocios | Vento Labs",
     homeDescription:
-      "Agentes de IA a medida que reducen costes, automatizan flujos de trabajo y escalan tu negocio sin contratar. Primer agente gratis en cada proyecto.",
+      "Agentes de IA a medida que reducen costes, automatizan flujos de trabajo y escalan tu negocio sin contratar. Un Cerebro Digital de Negocio por $500 conecta tus sistemas en cada proyecto.",
     titleTemplate: "%s | Vento Labs",
     casesTitle: "Casos de agentes de IA — contenido, proveedores y 1C",
     casesDescription:
@@ -48,12 +48,12 @@ export const es: Dictionary = {
     ],
     cta: { label: "Reservar llamada", href: "#book" },
     openMenu: "Abrir menú",
-    giftAria: "Agente de IA gratis",
+    giftAria: "Cerebro Digital de Negocio",
     languageLabel: "Idioma",
   },
 
   hero: {
-    badge: "Piloto gratuito de 2 semanas — construimos tu primer agente de IA sin coste",
+    badge: "Cerebro Digital de Negocio — $500 para conectar tus datos y descubrir lo que se te escapa",
     line1: "Diseñamos y construimos",
     line2: "agentes de IA",
     line3: "que hacen crecer tu negocio",
@@ -63,14 +63,10 @@ export const es: Dictionary = {
       "En producción en días, no meses",
     ],
     desc: "Agentes de IA y automatizaciones a medida que se encargan del trabajo repetitivo — para que tu equipo se enfoque en crecer en vez de en tareas rutinarias.",
-    sub: "Reserva una llamada de 30 minutos — definimos el caso de uso y construimos tu primer agente gratis.",
-    ctaPrimary: "Reservar llamada gratis",
+    sub: "Reserva una llamada de 30 minutos — definimos tus sistemas y conectamos tu Cerebro Digital de Negocio por $500.",
+    ctaPrimary: "Reservar llamada",
     ctaSecondary: "Nuestros servicios",
     scroll: "Desplazar",
-    imageAlt:
-      "El back office de una empresa: mesas con formularios de pedido impresos, cajas de archivo y hojas de cálculo en pantalla — el trabajo manual que asume un agente de IA.",
-    imageCaption:
-      "Esto es lo que automatizamos: formularios de pedido, correos de proveedores, actualizar hojas de cálculo y responder a mano las mismas preguntas cada día.",
   },
 
   problem: {
@@ -98,7 +94,7 @@ export const es: Dictionary = {
   services: {
     eyebrow: "Qué hacemos",
     heading: "Cuatro formas de ayudar a tu negocio a trabajar de forma más inteligente",
-    lead: "Cubrimos el ciclo completo — desde la idea hasta el release a producción. Cada proyecto empieza con un agente de IA gratuito, para que veas el valor antes de comprometerte.",
+    lead: "Cubrimos el ciclo completo — desde la idea hasta el release a producción. Cada proyecto puede empezar con un Cerebro Digital de Negocio: conectamos tus sistemas por $500 y ves el valor antes de comprometerte a más.",
     crossEyebrow: "También de Vento Labs",
     crossLinks: [
       {
@@ -119,15 +115,15 @@ export const es: Dictionary = {
   },
 
   leadMagnet: {
-    giftLabel: "ASISTENTE DE IA GRATIS",
-    title: "Reserva una llamada — configuraremos tu agente de IA gratis",
+    giftLabel: "CEREBRO DIGITAL DE NEGOCIO",
+    title: "Reserva una llamada — conectaremos tu Cerebro Digital de Negocio por $500",
     items: [
-      "Agente de IA a medida desplegado para tu equipo",
-      "Conectado a tu base de conocimiento — documentos, FAQ, guías internas",
-      "Sesión corta de formación para que tu equipo lo use desde el primer día",
+      "IA conectada a tus bases de datos, CRM, ERP, chats de equipo y tableros kanban",
+      "Descubre patrones, cuellos de botella y oportunidades que tus paneles no muestran",
+      "Recorrido breve para que tu equipo empiece a hacerle preguntas de inmediato",
       "Los costes de infraestructura van en tu cuenta — totalmente transparentes",
     ],
-    cta: "Obtener mi agente de IA gratis",
+    cta: "Obtener mi Cerebro Digital de Negocio — $500",
   },
 
   roi: {
@@ -161,28 +157,28 @@ export const es: Dictionary = {
       { q: "¿Qué datos van a los modelos de IA externos?", a: "Solo los que tú permitas expresamente. Usamos acceso API de nivel business donde tus datos no se usan para entrenar modelos. También podemos configurar modelos autoalojados para el máximo control si tu cumplimiento normativo lo requiere." },
       { q: "¿Cuánto cuesta mensualmente?", a: "Los costes típicos de modelos de IA son de 20–200 $/mes según el uso. Te damos una estimación detallada antes de empezar y pagas a los proveedores directamente — sin márgenes nuestros." },
       { q: "¿Cuánto tarda la implementación?", a: "Un agente de IA básico se lanza en 3–7 días. Los flujos de automatización tardan 1–3 semanas. La configuración enterprise suele ser de 2–4 semanas. Siempre obtienes primero una solución funcionando." },
-      { q: "¿Podemos parar tras la configuración inicial?", a: "Sí — no hay atadura ni compromiso a largo plazo. El piloto gratuito sigue funcionando para que puedas seguir evaluándolo; si continúas con cualquier contrato de pago, todo lo que construimos se transfiere a ti, incluidos el código y las configuraciones. Muchos clientes empiezan pequeño y vuelven cuando están listos para automatizar más." },
+      { q: "¿Podemos parar tras la configuración inicial?", a: "Sí — no hay atadura ni compromiso a largo plazo. El Cerebro Digital de Negocio de $500 es tuyo para seguir usándolo tal cual; si continúas con cualquier contrato de pago, todo lo que construimos se transfiere a ti, incluidos el código y las configuraciones. Muchos clientes empiezan pequeño y vuelven cuando están listos para automatizar más." },
       { q: "¿Trabajáis con nuestro sector?", a: "Nuestro enfoque funciona en todos los sectores — las herramientas de IA son flexibles y adaptamos la base de conocimiento, flujos y políticas a tus necesidades. Hemos trabajado con servicios profesionales, e-commerce, SaaS y consultoras." },
     ],
   },
 
   finalCta: {
     eyebrow: "Empieza aquí",
-    heading: "Empieza con un agente de IA gratis — reserva una llamada hoy",
-    description: "Llamada de descubrimiento de 30 minutos. Sin venta, sin presión. Construiremos y desplegaremos tu agente de IA gratis.",
-    cta: "Obtener mi agente de IA gratis",
+    heading: "Empieza con un Cerebro Digital de Negocio — reserva una llamada hoy",
+    description: "Llamada de descubrimiento de 30 minutos. Sin venta, sin presión. Por $500, conectamos tus sistemas y construimos tu Cerebro Digital de Negocio.",
+    cta: "Obtener mi Cerebro Digital de Negocio — $500",
   },
 
   exitPopup: {
-    title: "Espera — agente de IA gratis para tu negocio",
-    description: "Reserva una llamada de 30 minutos y construiremos y desplegaremos un agente de IA a medida para tu equipo. Cero coste de configuración.",
-    cta: "Obtener mi agente de IA gratis",
+    title: "Espera — un Cerebro Digital de Negocio para tu empresa",
+    description: "Reserva una llamada de 30 minutos y por $500 conectaremos tus datos, CRM y chats en un Cerebro Digital de Negocio funcionando.",
+    cta: "Obtener mi Cerebro Digital de Negocio — $500",
   },
 
   giftPopup: {
-    title: "🎁 Agente de IA gratis",
-    description: "Reserva una llamada de descubrimiento y configuraremos un agente de IA a medida para tu negocio — totalmente gratis.",
-    cta: "Reservar llamada gratis",
+    title: "🧠 Cerebro Digital de Negocio",
+    description: "Reserva una llamada de descubrimiento — por $500 conectamos tus datos, CRM y chats en un Cerebro Digital de Negocio funcionando.",
+    cta: "Reservar llamada",
   },
 
   founder: {
@@ -294,12 +290,12 @@ export const es: Dictionary = {
     },
     sectionLabels: { challenge: "Reto", solution: "Solución", result: "Resultado" },
     readyHeading: "¿Quieres algo así en tu operación?",
-    readyDesc: "Reserva una llamada — configuraremos tu agente de IA gratis.",
-    readyCta: "Reservar llamada gratis",
+    readyDesc: "Reserva una llamada — conectaremos tu Cerebro Digital de Negocio por $500.",
+    readyCta: "Reservar llamada",
   },
 
   servicesCommon: {
-    heroCta: "Reservar llamada gratis",
+    heroCta: "Reservar llamada",
     heroSecondary: "Qué incluye",
     problemEyebrow: "El problema",
     problemHeading: "¿Te suena familiar?",
@@ -309,15 +305,15 @@ export const es: Dictionary = {
     howItWorksHeading: "Tres pasos para empezar",
     deliverablesEyebrow: "Entregables",
     deliverablesHeading: "Qué incluye",
-    deliverablesNote: "Entregables concretos. El piloto gratuito cubre tu primer agente funcional; la lista completa de abajo se entrega en un proyecto de pago — presupuesto cerrado tras la llamada inicial.",
+    deliverablesNote: "Entregables concretos. El Cerebro Digital de Negocio de $500 cubre la conexión de tus primeros sistemas; la lista completa de abajo se entrega en un proyecto de pago — presupuesto cerrado tras la llamada inicial.",
     resultsEyebrow: "Resultados",
     resultsHeading: "Qué puedes esperar",
     stakesEyebrow: "El coste de esperar",
     socialProofEyebrow: "Resultado del cliente",
-    bookFreeGiftLabel: "AGENTE DE IA GRATIS",
-    bookFreeHeading: "Reserva una llamada — configuraremos tu agente de IA gratis",
+    bookFreeGiftLabel: "CEREBRO DIGITAL DE NEGOCIO",
+    bookFreeHeading: "Reserva una llamada — conectaremos tu Cerebro Digital de Negocio por $500",
     bookFreeSubtitle: "Llamada de descubrimiento de 30 minutos. Sin venta, sin presión.",
-    bookFreeCta: "Obtener mi agente de IA gratis",
+    bookFreeCta: "Obtener mi Cerebro Digital de Negocio — $500",
     faqSuffix: "FAQ",
     nextEyebrow: "Sigue",
     nextHeading: "Adónde ir después",
@@ -372,12 +368,12 @@ export const es: Dictionary = {
         { q: "¿Y la privacidad de los datos?", a: "Tu agente se ejecuta en tu infraestructura — tu servidor, tu VPS o tu máquina de oficina. Los datos nunca salen de tu entorno. Puedes usar LLMs totalmente locales para máxima privacidad." },
         { q: "¿Qué mensajeros y plataformas soportáis?", a: "Telegram, WhatsApp, LinkedIn, email (Gmail, Outlook), Slack y cualquier plataforma con API. También podemos añadir integraciones a medida." },
         { q: "¿Cuánto tarda en construirse?", a: "Un agente básico se lanza en 3–7 días. Los agentes complejos multi-plataforma con integraciones a medida tardan 1–3 semanas. Siempre obtienes primero un MVP funcional." },
-        { q: "¿Cuánto cuesta un agente de IA a medida?", a: "El primer agente piloto es gratis — lo construimos tras una llamada de 30 minutos. Los agentes de producción se presupuestan a precio cerrado después de la llamada, según integraciones y alcance; el tiempo típico es de 3–7 días. El coste recurrente es solo el uso del modelo de IA, normalmente 20–200 $/mes pagados directamente a los proveedores, sin recargo." },
+        { q: "¿Cuánto cuesta un agente de IA a medida?", a: "Un Cerebro Digital de Negocio de $500 es el proyecto inicial habitual — conectamos tus sistemas tras una llamada de descubrimiento de 30 minutos. Los agentes de producción se presupuestan a precio cerrado después de la llamada, según integraciones y alcance; el tiempo típico es de 3–7 días. El coste recurrente es solo el uso del modelo de IA, normalmente 20–200 $/mes pagados directamente a los proveedores, sin recargo." },
       ],
       seo: {
         title: "Agentes de IA a medida, autoalojados",
         description:
-          "Construimos tu agente de IA: autoalojado, sobre Claude Agent SDK, LangGraph o CrewAI, conectado a Telegram, correo y tus herramientas. El primero, gratis.",
+          "Construimos tu agente de IA: autoalojado, sobre Claude Agent SDK, LangGraph o CrewAI, conectado a Telegram, correo y tus herramientas. Empieza con un Cerebro Digital de Negocio por $500.",
         serviceType: "Desarrollo de agentes de IA",
       },
       media: {
@@ -1757,12 +1753,12 @@ export const es: Dictionary = {
           ],
         },
         {
-          heading: "2. Piloto gratuito de agente de IA — oferta condicional",
+          heading: "2. Cerebro Digital de Negocio — Alcance y entrega",
           content: [
-            "Vento Labs ofrece a clientes potenciales una construcción gratuita de un agente de IA (el «Piloto Gratuito») como parte del onboarding hacia un contrato remunerado. Cubrimos la construcción, configuración y despliegue sin coste a cambio de que el cliente firme un contrato de servicios para uno de nuestros paquetes comerciales.",
-            "Alcance típico: una construcción de dos semanas sobre Claude Agent SDK (o un framework de agentes equivalente), conectado a una base de conocimiento y a un stack de herramientas acordados previamente, desplegado en el entorno del cliente. El entregable exacto se confirma por escrito durante la llamada de descubrimiento antes de iniciar cualquier trabajo.",
-            "Si el cliente no firma un contrato remunerado, Vento Labs conserva la propiedad del Piloto Gratuito — incluidos código, prompts y configuraciones. No se factura por el trabajo piloto en sí, pero el entregable no se transfiere al cliente hasta que se ejecute un acuerdo remunerado.",
-            "Los costes de infraestructura (hosting en la nube, uso de APIs de modelos de IA) siempre son responsabilidad del cliente y los facturan directamente los proveedores correspondientes, incluido durante el período del Piloto Gratuito.",
+            "Vento Labs ofrece un proyecto inicial a precio fijo (el «Cerebro Digital de Negocio») por USD 500: conectamos los sistemas existentes del cliente — bases de datos, CRM, ERP, chat de equipo y herramientas de proyectos o kanban — en una capa de IA funcional que revela analítica e información a partir de esos datos.",
+            "Alcance típico: una construcción sobre Claude Agent SDK (o un framework de agentes equivalente) que conecta un conjunto de sistemas y fuentes de datos acordado previamente, desplegada en el entorno del cliente. El entregable exacto, los sistemas incluidos y el calendario se confirman por escrito durante la llamada de descubrimiento antes de iniciar cualquier trabajo y antes de cobrar la tarifa.",
+            "La tarifa de USD 500 cubre íntegramente el entregable del Cerebro Digital de Negocio acordado. Tras el pago, la propiedad del código, los prompts y las configuraciones resultantes, construidos específicamente para el cliente, se transfiere al cliente. Continuar posteriormente con un proyecto remunerado de mayor alcance es opcional y se rige por un acuerdo independiente.",
+            "Los costes de infraestructura (hosting en la nube, uso de APIs de modelos de IA) siempre son responsabilidad del cliente y los facturan directamente los proveedores correspondientes, incluido durante el proyecto del Cerebro Digital de Negocio.",
           ],
         },
         {

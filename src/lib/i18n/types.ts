@@ -339,9 +339,6 @@ export type Dictionary = {
     ctaPrimary: string;
     ctaSecondary: string;
     scroll: string;
-    /** Alt text and caption for the full-bleed band under the hero copy. */
-    imageAlt: string;
-    imageCaption: string;
   };
 
   problem: {
