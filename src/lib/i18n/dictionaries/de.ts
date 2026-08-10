@@ -11,7 +11,7 @@ export const de: Dictionary = {
   seo: {
     homeTitle: "KI-Agenten & Automatisierung für Unternehmen | Vento Labs",
     homeDescription:
-      "Maßgeschneiderte KI-Agenten senken Betriebskosten, automatisieren Workflows und skalieren Ihr Unternehmen — ohne neue Stellen. Erster Agent gratis.",
+      "Maßgeschneiderte KI-Agenten senken Betriebskosten, automatisieren Workflows und skalieren Ihr Unternehmen — ohne neue Stellen. Ein $500 Digitales Business-Gehirn verbindet Ihre Systeme bei jedem Projekt.",
     titleTemplate: "%s | Vento Labs",
     casesTitle: "KI-Agenten-Cases — Content, Lieferanten & 1C",
     casesDescription:
@@ -48,12 +48,12 @@ export const de: Dictionary = {
     ],
     cta: { label: "Termin buchen", href: "#book" },
     openMenu: "Menü öffnen",
-    giftAria: "Kostenloser KI-Agent",
+    giftAria: "Digitales Business-Gehirn",
     languageLabel: "Sprache",
   },
 
   hero: {
-    badge: "Kostenloser 2-Wochen-Pilot — wir bauen Ihren ersten KI-Agenten gratis",
+    badge: "Digitales Business-Gehirn — für $500 verbinden wir Ihre Daten und zeigen, was Ihnen entgeht",
     line1: "Wir entwerfen & bauen",
     line2: "KI-Agenten,",
     line3: "die Ihr Geschäft wachsen lassen",
@@ -63,14 +63,10 @@ export const de: Dictionary = {
       "Live in Tagen, nicht Monaten",
     ],
     desc: "Maßgeschneiderte KI-Agenten und Automatisierungen, die Ihre repetitive Arbeit übernehmen — damit Ihr Team sich auf Wachstum statt Routine konzentriert.",
-    sub: "Buchen Sie ein 30-minütiges Gespräch — wir definieren den Use Case und bauen Ihren ersten Agenten kostenlos.",
-    ctaPrimary: "Kostenlosen Termin buchen",
+    sub: "Buchen Sie ein 30-minütiges Gespräch — wir analysieren Ihre Systeme und verbinden Ihr Digitales Business-Gehirn für $500.",
+    ctaPrimary: "Termin buchen",
     ctaSecondary: "Unsere Leistungen",
     scroll: "Scrollen",
-    imageAlt:
-      "Das Backoffice eines Unternehmens: Schreibtische voller ausgedruckter Auftragsformulare, Archivkartons und Tabellen am Bildschirm — die Handarbeit, die ein KI-Agent übernimmt.",
-    imageCaption:
-      "Genau das automatisieren wir: Auftragsformulare, Lieferanten-E-Mails, Tabellenpflege und jeden Tag dieselben Fragen, von Hand beantwortet.",
   },
 
   problem: {
@@ -98,7 +94,7 @@ export const de: Dictionary = {
   services: {
     eyebrow: "Was wir tun",
     heading: "Vier Wege, Ihr Unternehmen intelligenter arbeiten zu lassen",
-    lead: "Wir decken den gesamten Zyklus ab — von der Idee bis zum Produktions-Release. Jedes Projekt startet mit einem kostenlosen KI-Agenten, damit Sie den Wert sehen, bevor Sie sich binden.",
+    lead: "Wir decken den gesamten Zyklus ab — von der Idee bis zum Produktions-Release. Jedes Projekt kann mit einem Digitalen Business-Gehirn starten: Wir verbinden Ihre Systeme für $500 und Sie sehen die Erkenntnisse, bevor Sie sich weiter binden.",
     crossEyebrow: "Ebenfalls von Vento Labs",
     crossLinks: [
       {
@@ -119,15 +115,15 @@ export const de: Dictionary = {
   },
 
   leadMagnet: {
-    giftLabel: "KI-ASSISTENT GRATIS",
-    title: "Termin buchen — wir richten Ihren KI-Agenten kostenlos ein",
+    giftLabel: "DIGITALES BUSINESS-GEHIRN",
+    title: "Termin buchen — wir verbinden Ihr Digitales Business-Gehirn für $500",
     items: [
-      "Maßgeschneiderter KI-Agent für Ihr Team eingerichtet",
-      "Mit Ihrer Wissensbasis verbunden — Dokumente, FAQ, interne Anleitungen",
-      "Kurze Schulung, damit Ihr Team sofort loslegen kann",
+      "KI verbunden mit Ihren Datenbanken, CRM, ERP, Team-Chats und Kanban-Boards",
+      "Deckt Muster, Engpässe und Chancen auf, die Ihre Dashboards nicht zeigen",
+      "Kurze Einweisung, damit Ihr Team sofort Fragen stellen kann",
       "Infrastrukturkosten laufen auf Ihrem Konto — völlig transparent",
     ],
-    cta: "Meinen kostenlosen KI-Agenten holen",
+    cta: "Ihr Digitales Business-Gehirn sichern — $500",
   },
 
   roi: {
@@ -161,28 +157,28 @@ export const de: Dictionary = {
       { q: "Welche Daten gehen an externe KI-Modelle?", a: "Nur die, die Sie ausdrücklich freigeben. Wir nutzen API-Zugänge auf Business-Tarif, bei denen Ihre Daten nicht zum Modelltraining verwendet werden. Bei strengen Compliance-Vorgaben richten wir auch self-hosted Modelle ein." },
       { q: "Was kostet der laufende Betrieb pro Monat?", a: "Typische KI-Modellkosten liegen bei 20–200 $/Monat je nach Nutzung. Wir geben Ihnen vor Beginn eine detaillierte Schätzung, und Sie zahlen Anbieter direkt — ohne Aufschlag von uns." },
       { q: "Wie lange dauert die Umsetzung?", a: "Ein einfacher KI-Agent ist in 3–7 Tagen live. Prozessautomatisierungen brauchen 1–3 Wochen. Enterprise-Workspace 2–4 Wochen. Sie bekommen immer zuerst eine funktionierende Lösung." },
-      { q: "Können wir nach der ersten Einrichtung aufhören?", a: "Ja — es gibt kein Lock-in und keine Langzeitbindung. Der kostenlose Pilot bleibt live, damit Sie ihn weiter evaluieren können; wenn Sie mit einem bezahlten Auftrag fortfahren, geht alles Gebaute an Sie über — einschließlich Code und Konfigurationen. Viele Kunden starten klein und kommen zurück, wenn sie mehr automatisieren wollen." },
+      { q: "Können wir nach der ersten Einrichtung aufhören?", a: "Ja — es gibt kein Lock-in und keine Langzeitbindung. Das $500 Digitale Business-Gehirn gehört Ihnen und bleibt so nutzbar, wie es ist; setzen Sie mit einem bezahlten Projekt fort, geht alles Gebaute an Sie über — einschließlich Code und Konfigurationen. Viele Kunden starten klein und kommen zurück, wenn sie mehr automatisieren wollen." },
       { q: "Arbeiten Sie mit unserer Branche?", a: "Unser Ansatz funktioniert branchenübergreifend — die KI-Tools sind flexibel, und wir passen Wissensbasis, Workflows und Richtlinien an Sie an. Wir haben mit professionellen Dienstleistern, E-Commerce, SaaS und Beratungen gearbeitet." },
     ],
   },
 
   finalCta: {
     eyebrow: "Hier starten",
-    heading: "Starten Sie mit einem kostenlosen KI-Agenten — Termin heute buchen",
-    description: "30-minütiges Entdeckungsgespräch. Kein Pitch, kein Druck. Wir bauen und deployen Ihren KI-Agenten kostenlos.",
-    cta: "Meinen kostenlosen KI-Agenten holen",
+    heading: "Starten Sie mit einem Digitalen Business-Gehirn — heute Termin buchen",
+    description: "30-minütiges Entdeckungsgespräch. Kein Pitch, kein Druck. Für $500 verbinden wir Ihre Systeme und bauen Ihr Digitales Business-Gehirn.",
+    cta: "Ihr Digitales Business-Gehirn sichern — $500",
   },
 
   exitPopup: {
-    title: "Moment — kostenloser KI-Agent für Ihr Unternehmen",
-    description: "Buchen Sie einen 30-minütigen Termin, und wir bauen und deployen einen maßgeschneiderten KI-Agenten für Ihr Team. Null Kosten für die Einrichtung.",
-    cta: "Meinen kostenlosen KI-Agenten holen",
+    title: "Moment — ein Digitales Business-Gehirn für Ihr Unternehmen",
+    description: "Buchen Sie ein 30-minütiges Gespräch, und für $500 verbinden wir Ihre Daten, CRM und Chats zu einem funktionierenden Digitalen Business-Gehirn.",
+    cta: "Ihr Digitales Business-Gehirn sichern — $500",
   },
 
   giftPopup: {
-    title: "🎁 Kostenloser KI-Agent",
-    description: "Buchen Sie ein Entdeckungsgespräch, und wir richten einen maßgeschneiderten KI-Agenten für Ihr Unternehmen ein — völlig kostenlos.",
-    cta: "Kostenlosen Termin buchen",
+    title: "🧠 Digitales Business-Gehirn",
+    description: "Buchen Sie ein Entdeckungsgespräch — für $500 verbinden wir Ihre Daten, CRM und Chats zu einem funktionierenden Digitalen Business-Gehirn.",
+    cta: "Termin buchen",
   },
 
   founder: {
@@ -294,12 +290,12 @@ export const de: Dictionary = {
     },
     sectionLabels: { challenge: "Herausforderung", solution: "Lösung", result: "Ergebnis" },
     readyHeading: "So etwas für Ihren Betrieb?",
-    readyDesc: "Termin buchen — wir richten Ihren KI-Agenten kostenlos ein.",
-    readyCta: "Kostenlosen Termin buchen",
+    readyDesc: "Termin buchen — wir verbinden Ihr Digitales Business-Gehirn für $500.",
+    readyCta: "Termin buchen",
   },
 
   servicesCommon: {
-    heroCta: "Kostenlosen Termin buchen",
+    heroCta: "Termin buchen",
     heroSecondary: "Was enthalten ist",
     problemEyebrow: "Das Problem",
     problemHeading: "Kommt Ihnen das bekannt vor?",
@@ -309,15 +305,15 @@ export const de: Dictionary = {
     howItWorksHeading: "Drei Schritte zum Start",
     deliverablesEyebrow: "Leistungen",
     deliverablesHeading: "Was enthalten ist",
-    deliverablesNote: "Konkrete Leistungen. Der kostenlose Pilot umfasst Ihren ersten funktionierenden Agenten; die vollständige Liste unten liefern wir im bezahlten Projekt — Festpreis nach dem Erstgespräch.",
+    deliverablesNote: "Konkrete Leistungen. Das $500 Digitale Business-Gehirn deckt die Anbindung Ihrer ersten Systeme ab; die vollständige Liste unten liefern wir im bezahlten Projekt — Festpreis nach dem Erstgespräch.",
     resultsEyebrow: "Ergebnisse",
     resultsHeading: "Was Sie erwarten können",
     stakesEyebrow: "Der Preis des Wartens",
     socialProofEyebrow: "Kundenergebnis",
-    bookFreeGiftLabel: "KI-AGENT GRATIS",
-    bookFreeHeading: "Termin buchen — wir richten Ihren KI-Agenten kostenlos ein",
+    bookFreeGiftLabel: "DIGITALES BUSINESS-GEHIRN",
+    bookFreeHeading: "Termin buchen — wir verbinden Ihr Digitales Business-Gehirn für $500",
     bookFreeSubtitle: "30-minütiges Entdeckungsgespräch. Kein Pitch, kein Druck.",
-    bookFreeCta: "Meinen kostenlosen KI-Agenten holen",
+    bookFreeCta: "Ihr Digitales Business-Gehirn sichern — $500",
     faqSuffix: "FAQ",
     nextEyebrow: "Weiter",
     nextHeading: "Wohin als Nächstes",
@@ -372,12 +368,12 @@ export const de: Dictionary = {
         { q: "Was ist mit dem Datenschutz?", a: "Ihr Agent läuft auf Ihrer Infrastruktur — Ihr Server, VPS oder Büro-Rechner. Daten verlassen Ihre Umgebung nie. Für maximalen Datenschutz können Sie rein lokale LLMs verwenden." },
         { q: "Welche Messenger und Plattformen werden unterstützt?", a: "Telegram, WhatsApp, LinkedIn, E-Mail (Gmail, Outlook), Slack und jede Plattform mit API. Individuelle Integrationen ergänzen wir gern." },
         { q: "Wie lange dauert der Bau?", a: "Ein einfacher Agent startet in 3–7 Tagen. Komplexe Multi-Plattform-Agenten mit Individualintegrationen 1–3 Wochen. Sie bekommen immer zuerst ein funktionierendes MVP." },
-        { q: "Was kostet ein individueller KI-Agent?", a: "Der erste Pilot-Agent ist kostenlos — wir bauen ihn nach einem 30-minütigen Erstgespräch. Produktions-Agenten kalkulieren wir danach zum Festpreis, je nach Integrationen und Umfang; typische Bauzeit sind 3–7 Tage. Laufende Kosten sind nur die KI-Modellnutzung, meist 20–200 $/Monat direkt an die Anbieter, ohne Aufschlag." },
+        { q: "Was kostet ein individueller KI-Agent?", a: "Der übliche Einstieg ist ein $500 Digitales Business-Gehirn — wir verbinden Ihre Systeme nach einem 30-minütigen Erstgespräch. Produktions-Agenten kalkulieren wir danach zum Festpreis, je nach Integrationen und Umfang; typische Bauzeit sind 3–7 Tage. Laufende Kosten sind nur die KI-Modellnutzung, meist 20–200 $/Monat direkt an die Anbieter, ohne Aufschlag." },
       ],
       seo: {
         title: "KI-Agenten nach Maß — self-hosted",
         description:
-          "Wir bauen Ihnen einen eigenen KI-Agenten: self-hosted, auf Claude Agent SDK, LangGraph oder CrewAI, verbunden mit Telegram, E-Mail und Ihren Tools. Gratis.",
+          "Wir bauen Ihnen einen eigenen KI-Agenten: self-hosted, auf Claude Agent SDK, LangGraph oder CrewAI, verbunden mit Telegram, E-Mail und Ihren Tools. Start mit einem Digitalen Business-Gehirn für $500.",
         serviceType: "KI-Agenten-Entwicklung",
       },
       media: {
@@ -1757,12 +1753,12 @@ export const de: Dictionary = {
           ],
         },
         {
-          heading: "2. Kostenloser KI-Agent-Pilot — Bedingtes Angebot",
+          heading: "2. Digitales Business-Gehirn — Umfang und Leistung",
           content: [
-            "Vento Labs bietet interessierten Kunden einen kostenfreien Aufbau eines KI-Agenten (den „Gratis-Piloten\") als Teil des Onboardings in einen bezahlten Auftrag an. Wir übernehmen Aufbau, Konfiguration und Deployment ohne Berechnung — unter der Voraussetzung, dass der Kunde im Anschluss eine Leistungsvereinbarung für eines unserer kommerziellen Pakete unterzeichnet.",
-            "Typischer Umfang: ein zweiwöchiger Aufbau auf Basis des Claude Agent SDK (oder eines gleichwertigen Agent-Frameworks), verbunden mit einer vorab abgestimmten Wissensbasis und Werkzeug-Stack, deployt in der Kundenumgebung. Das genaue Lieferergebnis wird im Entdeckungsgespräch vor Arbeitsbeginn schriftlich bestätigt.",
-            "Unterzeichnet der Kunde keinen kostenpflichtigen Auftrag, behält Vento Labs das Eigentum am Gratis-Piloten — einschließlich Code, Prompts und Konfigurationen. Für die Pilotarbeit selbst wird keine Gebühr erhoben, das Ergebnis wird jedoch nicht an den Kunden übergeben, bis eine kostenpflichtige Vereinbarung geschlossen ist.",
-            "Infrastrukturkosten (Cloud-Hosting, Nutzung der KI-Modell-APIs) gehen jederzeit zu Lasten des Kunden und werden von den jeweiligen Anbietern direkt berechnet, auch während des Gratis-Piloten.",
+            "Vento Labs bietet ein Einstiegsprojekt zum Festpreis (das „Digitale Business-Gehirn\") für USD 500 an: Wir verbinden die bestehenden Systeme des Kunden — Datenbanken, CRM, ERP, Team-Chat sowie Projekt- oder Kanban-Tools — zu einer funktionierenden KI-Schicht, die Analysen und Erkenntnisse über diese Daten hinweg sichtbar macht.",
+            "Typischer Umfang: ein Aufbau auf Basis des Claude Agent SDK (oder eines gleichwertigen Agent-Frameworks), der eine vorab vereinbarte Auswahl an Systemen und Datenquellen verbindet und in der Umgebung des Kunden bereitgestellt wird. Das genaue Lieferergebnis, die einbezogenen Systeme und der Zeitplan werden im Entdeckungsgespräch schriftlich bestätigt, bevor die Arbeit beginnt und bevor die Gebühr berechnet wird.",
+            "Die Gebühr von USD 500 deckt das vereinbarte Liefergebnis des Digitalen Business-Gehirns vollständig ab. Mit Zahlung geht das Eigentum am entstandenen Code, an den Prompts und an den speziell für den Kunden erstellten Konfigurationen auf den Kunden über. Eine anschließende Fortsetzung in ein größeres, kostenpflichtiges Projekt ist optional und wird durch eine separate Vereinbarung geregelt.",
+            "Infrastrukturkosten (Cloud-Hosting, Nutzung der KI-Modell-APIs) gehen jederzeit zu Lasten des Kunden und werden von den jeweiligen Anbietern direkt berechnet — auch während des Digitalen Business-Gehirn-Projekts.",
           ],
         },
         {

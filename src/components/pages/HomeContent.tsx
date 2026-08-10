@@ -42,8 +42,8 @@ const crossLinkPath: Record<HomeCrossLinkId, string> = {
 };
 
 const caseCardKeys = [
-  { key: "content-factory", img: "/images/case-content-factory.webp", metricKey: "contentFactory" as const },
-  { key: "supplier-agent", img: "/images/case-supplier-agent.webp", metricKey: "supplierAgent" as const },
+  { key: "content-factory", img: "/images/case-content-factory.jpg", metricKey: "contentFactory" as const },
+  { key: "supplier-agent", img: "/images/case-supplier-agent.jpg", metricKey: "supplierAgent" as const },
   { key: "erp-agent", img: "/images/case-erp-agent.webp", metricKey: "erpAgent" as const },
 ];
 
@@ -116,18 +116,6 @@ export function HomeContent() {
   return (
     <>
       <HeroSection />
-
-      {/* Full-bleed band under the hero — the manual back-office work the
-          agents take over, so the offer above it has something concrete to
-          point at. Captioned, because an uncaptioned office photo would just
-          be decoration. */}
-      <FadeUp className="home-band">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={asset("/images/home/operations-band.jpg")} alt={dict.hero.imageAlt} />
-        <div className="container">
-          <p className="home-band__caption">{dict.hero.imageCaption}</p>
-        </div>
-      </FadeUp>
 
       <TrustBar />
 

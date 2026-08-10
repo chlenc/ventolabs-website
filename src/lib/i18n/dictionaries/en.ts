@@ -11,7 +11,7 @@ export const en: Dictionary = {
   seo: {
     homeTitle: "AI Agents & Automation for Business | Vento Labs",
     homeDescription:
-      "Custom AI agents that cut operating costs, automate workflows, and scale your business without new headcount. Free AI agent build with every engagement.",
+      "Custom AI agents that cut operating costs, automate workflows, and scale your business without new headcount. A $500 Digital Business Brain connects your systems with every engagement.",
     titleTemplate: "%s | Vento Labs",
     casesTitle: "AI Agent Case Studies — Content, Supplier & 1C Automation",
     casesDescription:
@@ -48,12 +48,12 @@ export const en: Dictionary = {
     ],
     cta: { label: "Book a call", href: "#book" },
     openMenu: "Open menu",
-    giftAria: "Free AI agent",
+    giftAria: "Digital Business Brain",
     languageLabel: "Language",
   },
 
   hero: {
-    badge: "Free 2-week pilot — we build your first AI agent at no cost",
+    badge: "Digital Business Brain — $500 to connect your data and surface what you're missing",
     line1: "We design & build",
     line2: "AI agents",
     line3: "that grow your business",
@@ -63,14 +63,10 @@ export const en: Dictionary = {
       "Live in days, not months",
     ],
     desc: "Custom AI agents and automations that handle your repetitive work — so your team focuses on growth instead of busywork.",
-    sub: "Book a 30-minute call — we scope the use case and build your first agent for free.",
-    ctaPrimary: "Book a free call",
+    sub: "Book a 30-minute call — we scope your systems and connect your Digital Business Brain for $500.",
+    ctaPrimary: "Book a call",
     ctaSecondary: "Our services",
     scroll: "Scroll",
-    imageAlt:
-      "A company back office: desks of printed order forms, archive boxes and spreadsheets on screen — the manual work an AI agent takes over.",
-    imageCaption:
-      "This is what we automate: order forms, supplier emails, spreadsheet updates and the same questions answered by hand every day.",
   },
 
   problem: {
@@ -98,7 +94,7 @@ export const en: Dictionary = {
   services: {
     eyebrow: "What We Do",
     heading: "Four ways we help your business work smarter",
-    lead: "We cover the full cycle — from idea to production release. Every engagement starts with a free AI agent, so you see value before you commit.",
+    lead: "We cover the full cycle — from idea to production release. Every engagement can start with a Digital Business Brain: connect your systems for $500 and see the insight before you commit to more.",
     crossEyebrow: "Also from Vento Labs",
     crossLinks: [
       {
@@ -119,15 +115,15 @@ export const en: Dictionary = {
   },
 
   leadMagnet: {
-    giftLabel: "FREE AI ASSISTANT",
-    title: "Book a call — we'll set up your AI agent for free",
+    giftLabel: "DIGITAL BUSINESS BRAIN",
+    title: "Book a call — we'll connect your Digital Business Brain for $500",
     items: [
-      "Custom AI agent deployed for your team",
-      "Connected to your knowledge base — docs, FAQ, internal guides",
-      "Short training session so your team can start using it immediately",
+      "AI connected to your databases, CRM, ERP, team chats and kanban boards",
+      "Surfaces patterns, bottlenecks and opportunities your dashboards don't show",
+      "Short walkthrough so your team can start asking it questions immediately",
       "Infrastructure costs are on your account — fully transparent",
     ],
-    cta: "Claim your free AI agent",
+    cta: "Get your Digital Business Brain — $500",
   },
 
   roi: {
@@ -161,28 +157,28 @@ export const en: Dictionary = {
       { q: "What data goes to external AI models?", a: "Only the data you explicitly allow. We use business-tier API access where your data is not used for model training. We can also set up self-hosted models for maximum control if your compliance requires it." },
       { q: "How much does it cost to run monthly?", a: "Typical AI model costs are $20–200/month depending on usage volume. We give you a detailed cost estimate before starting, and you pay providers directly — no markups." },
       { q: "How long does implementation take?", a: "A basic AI agent launches in 3-7 days. Process automation workflows take 1-3 weeks. Enterprise workspace setup is typically 2-4 weeks. You always get a working solution first." },
-      { q: "Can we stop after the first setup?", a: "Yes — there's no lock-in or long-term commitment. The free pilot stays live so you can keep evaluating it; if you continue with any paid engagement, everything we built transfers to you, including code and configurations. Many clients start small and come back when they're ready to automate more." },
+      { q: "Can we stop after the first setup?", a: "Yes — there's no lock-in or long-term commitment. The $500 Digital Business Brain is yours to keep using as-is; if you continue with any paid engagement, everything we built transfers to you, including code and configurations. Many clients start small and come back when they're ready to automate more." },
       { q: "Do you work with our industry?", a: "Our approach works across industries — the AI tools are flexible and we customize the knowledge base, workflows, and policies to your specific needs. We've worked with professional services, e-commerce, SaaS, and consulting firms." },
     ],
   },
 
   finalCta: {
     eyebrow: "Start here",
-    heading: "Start with a free AI agent — book a call today",
-    description: "30-minute discovery call. No pitch, no pressure. We'll build and deploy your AI agent for free.",
-    cta: "Claim your free AI agent",
+    heading: "Start with a Digital Business Brain — book a call today",
+    description: "30-minute discovery call. No pitch, no pressure. For $500, we connect your systems and build your Digital Business Brain.",
+    cta: "Get your Digital Business Brain — $500",
   },
 
   exitPopup: {
-    title: "Wait — free AI agent for your business",
-    description: "Book a 30-minute call and we'll build and deploy a custom AI agent for your team. Zero cost for the setup.",
-    cta: "Claim your free AI agent",
+    title: "Wait — a Digital Business Brain for your business",
+    description: "Book a 30-minute call and for $500 we'll connect your data, CRM and chats into a working Digital Business Brain.",
+    cta: "Get your Digital Business Brain — $500",
   },
 
   giftPopup: {
-    title: "🎁 Free AI Agent",
-    description: "Book a discovery call and we'll set up a custom AI agent for your business — completely free.",
-    cta: "Book a free call",
+    title: "🧠 Digital Business Brain",
+    description: "Book a discovery call — for $500 we connect your data, CRM and chats into a working Digital Business Brain.",
+    cta: "Book a call",
   },
 
   founder: {
@@ -294,12 +290,12 @@ export const en: Dictionary = {
     },
     sectionLabels: { challenge: "Challenge", solution: "Solution", result: "Result" },
     readyHeading: "Want one of these on your operation?",
-    readyDesc: "Book a call — we'll set up your AI agent for free.",
-    readyCta: "Book a free call",
+    readyDesc: "Book a call — we'll connect your Digital Business Brain for $500.",
+    readyCta: "Book a call",
   },
 
   servicesCommon: {
-    heroCta: "Book a free call",
+    heroCta: "Book a call",
     heroSecondary: "What's included",
     problemEyebrow: "The Problem",
     problemHeading: "Sound familiar?",
@@ -309,15 +305,15 @@ export const en: Dictionary = {
     howItWorksHeading: "Three steps to get started",
     deliverablesEyebrow: "Deliverables",
     deliverablesHeading: "What's included",
-    deliverablesNote: "Concrete deliverables. The free pilot covers your first working agent; the full list below ships in a paid engagement — fixed quote after the discovery call.",
+    deliverablesNote: "Concrete deliverables. The $500 Digital Business Brain covers connecting your first systems; the full list below ships in a paid engagement — fixed quote after the discovery call.",
     resultsEyebrow: "Results",
     resultsHeading: "What you can expect",
     stakesEyebrow: "The cost of waiting",
     socialProofEyebrow: "Client result",
-    bookFreeGiftLabel: "FREE AI AGENT",
-    bookFreeHeading: "Book a call — we'll set up your AI agent for free",
+    bookFreeGiftLabel: "DIGITAL BUSINESS BRAIN",
+    bookFreeHeading: "Book a call — we'll connect your Digital Business Brain for $500",
     bookFreeSubtitle: "30-minute discovery call. No pitch, no pressure.",
-    bookFreeCta: "Claim your free AI agent",
+    bookFreeCta: "Get your Digital Business Brain — $500",
     faqSuffix: "FAQ",
     nextEyebrow: "Keep going",
     nextHeading: "Where to go next",
@@ -372,12 +368,12 @@ export const en: Dictionary = {
         { q: "What about data privacy?", a: "Your agent runs on your infrastructure — your server, your VPS, or even your office machine. Data never leaves your environment. You can use fully local LLMs for maximum privacy." },
         { q: "Which messengers and platforms are supported?", a: "Telegram, WhatsApp, LinkedIn, email (Gmail, Outlook), Slack, and any platform with an API. We can also add custom integrations." },
         { q: "How long does it take to build?", a: "A basic agent launches in 3–7 days. Complex multi-platform agents with custom integrations take 1-3 weeks. You always get a working MVP first." },
-        { q: "How much does a custom AI agent cost?", a: "The first pilot agent is free — we build it after a 30-minute discovery call. Production agents are quoted fixed-price after the call, depending on integrations and scope; typical build time is 3–7 days. Ongoing costs are just AI model usage, usually $20–200/month paid directly to providers with no markup." },
+        { q: "How much does a custom AI agent cost?", a: "A $500 Digital Business Brain is the usual starting engagement — we connect your systems after a 30-minute discovery call. Production agents are quoted fixed-price after the call, depending on integrations and scope; typical build time is 3–7 days. Ongoing costs are just AI model usage, usually $20–200/month paid directly to providers with no markup." },
       ],
       seo: {
         title: "Custom AI Agent Development, Self-Hosted",
         description:
-          "We build one custom AI agent for you — self-hosted, on Claude Agent SDK, LangGraph or CrewAI, wired into Telegram, email and your tools. First agent free.",
+          "We build one custom AI agent for you — self-hosted, on Claude Agent SDK, LangGraph or CrewAI, wired into Telegram, email and your tools. Starts with a $500 Digital Business Brain.",
         serviceType: "AI agent development",
       },
       media: {
@@ -1757,12 +1753,12 @@ export const en: Dictionary = {
           ],
         },
         {
-          heading: "2. Free AI Agent Pilot — Conditional Offer",
+          heading: "2. Digital Business Brain — Scope and Delivery",
           content: [
-            "Vento Labs offers a complimentary AI agent build (the \"Free Pilot\") to prospective clients as part of onboarding into a paid engagement. We cover the build, configuration, and deployment at no cost in exchange for the client proceeding to a signed services agreement for one of our commercial packages.",
-            "Typical scope: a two-week build on Claude Agent SDK (or an equivalent agent framework), connected to a pre-agreed knowledge base and tool stack, deployed into the client's environment. The exact deliverable is confirmed in writing during the discovery call before any work begins.",
-            "If the client does not sign a paid engagement, Vento Labs retains ownership of the Free Pilot — including code, prompts, and configurations. No fee is charged for the pilot work itself, but the deliverable is not transferred to the client unless a paid agreement is executed.",
-            "Infrastructure costs (cloud hosting, AI model API usage) are the responsibility of the client and billed directly by the respective providers at all times, including during the Free Pilot period.",
+            "Vento Labs offers a fixed-price entry engagement (the \"Digital Business Brain\") for USD 500: we connect a client's existing systems — databases, CRM, ERP, team chat, and project or kanban tools — into a working AI layer that surfaces analytics and insights across that data.",
+            "Typical scope: a build on Claude Agent SDK (or an equivalent agent framework) connecting a pre-agreed set of systems and data sources, deployed into the client's environment. The exact deliverable, systems in scope, and timeline are confirmed in writing during the discovery call before any work begins and before the fee is charged.",
+            "The USD 500 fee covers the agreed Digital Business Brain deliverable in full. On payment, ownership of the resulting code, prompts, and configurations built specifically for the client transfers to the client. Continuing into a larger paid engagement afterward is optional and governed by a separate agreement.",
+            "Infrastructure costs (cloud hosting, AI model API usage) are the responsibility of the client and billed directly by the respective providers at all times, including during the Digital Business Brain engagement.",
           ],
         },
         {

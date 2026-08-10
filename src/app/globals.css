@@ -5630,28 +5630,6 @@ em, .italic {
   .svc-hero-media img { height: clamp(180px, 52vw, 280px); }
 }
 
-/* ─── Home imagery: below-hero band, process frames (see .process-row__media) ─── */
-.home-band {
-  width: 100%;
-  background: var(--paper);
-  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
-}
-.home-band img {
-  display: block;
-  width: 100%;
-  height: clamp(220px, 34vw, 460px);
-  object-fit: cover;
-}
-.home-band__caption {
-  margin-top: 1.1rem;
-  padding-left: 1.1rem;
-  border-left: 2px solid var(--line-strong);
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  max-width: 70ch;
-}
-
 /* ─── Home cross-links — /data-centers and /blog, which have no service card ─── */
 .cross-links__eyebrow { margin-top: clamp(3rem, 6vw, 4.5rem); }
 .cross-links {
@@ -5704,5 +5682,4 @@ em, .italic {
 
 @media (max-width: 800px) {
   .cross-links { grid-template-columns: 1fr; }
-  .home-band img { height: clamp(190px, 50vw, 280px); }
 }

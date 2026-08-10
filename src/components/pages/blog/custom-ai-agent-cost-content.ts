@@ -28,7 +28,7 @@ export const aiAgentCostArticle: Article = {
     "**The monthly bill is the number everyone forgets.** Tokens, hosting, monitoring and a maintenance retainer typically land at $500–2,000 a month for an SMB production agent. High-volume customer-facing agents can spend that on tokens alone.",
     "**The model is the cheap part.** Price is driven by five things: how many workflows you automate, how many systems the agent touches, the state of your data, the guardrails required before it can write anywhere, and where it has to be hosted. Integrations and data readiness dominate.",
     "**Break-even is arithmetic, not faith.** Payback months = build cost ÷ (monthly hours saved × loaded hourly rate − monthly run cost). If that doesn't clear 12–18 months, buy SaaS or do nothing — an honest vendor will tell you so.",
-    "**Never buy the full build to find out if it works.** One workflow, real data, a measured baseline, kill criteria — two weeks is enough. That's exactly the shape of the [free pilot](/services/ai-assistant/) we run.",
+    "**Never buy the full build to find out if it works.** One workflow, real data, a measured baseline, kill criteria — two weeks is enough. That's exactly the shape of the [$500 Digital Business Brain pilot](/services/ai-assistant/) we run.",
   ],
 
   tocTitle: "Contents",
@@ -294,7 +294,7 @@ export const aiAgentCostArticle: Article = {
         },
         {
           kind: "p",
-          text: "This logic is why we run [free two-week pilots](/services/ai-assistant/) at Vento Labs: an agent on your workflow, on your data, against a measured baseline — before anyone discusses a build contract. It moves the risk of the estimate from your budget to ours, which is where it belongs: we're the ones claiming it will work. Our [case studies](/cases/) show what came out the other end of that funnel.",
+          text: "This logic is why we run [$500 two-week pilots](/services/ai-assistant/) at Vento Labs: an agent on your workflow, on your data, against a measured baseline — before anyone discusses a build contract. It caps the risk of the estimate at a fraction of a full build, and puts most of that risk on us: we're the ones claiming it will work. Our [case studies](/cases/) show what came out the other end of that funnel.",
         },
         {
           kind: "note",
@@ -361,14 +361,14 @@ export const aiAgentCostArticle: Article = {
     },
     {
       q: "How can I test an AI agent before paying for a full build?",
-      a: "Run a shadow-mode pilot: one workflow, real data, a measured baseline, and kill criteria written down before you start. Two weeks is enough to learn accuracy, escalation rate and cost per task — the numbers a production quote should be built on. This is exactly the shape of the free two-week pilot we run at Vento Labs: the risk of the estimate sits with the vendor rather than with your budget.",
+      a: "Run a shadow-mode pilot: one workflow, real data, a measured baseline, and kill criteria written down before you start. Two weeks is enough to learn accuracy, escalation rate and cost per task — the numbers a production quote should be built on. This is exactly the shape of the $500 two-week pilot we run at Vento Labs: the risk of the estimate is capped at a fraction of a full build instead of sitting entirely with your budget.",
     },
   ],
 
   cta: {
     eyebrow: "Vento Labs",
     title: "Price it with a pilot, not a proposal",
-    text: "We build custom AI agents on top of ERPs, accounting systems and marketplaces — with review flows before anything writes to your data. The first two weeks are free: your workflow, your data, a measured baseline, and kill criteria you set. If the numbers don't clear the bar, you'll know for the cost of a few review hours — and we'll be the ones to say so.",
+    text: "We build custom AI agents on top of ERPs, accounting systems and marketplaces — with review flows before anything writes to your data. The first two weeks are a flat $500: your workflow, your data, a measured baseline, and kill criteria you set. If the numbers don't clear the bar, you'll know for a fraction of a full build — and we'll be the ones to say so.",
     primaryLabel: "Book a 30-minute call",
     primaryHref: "#book",
     secondaryLabel: "See the case studies",

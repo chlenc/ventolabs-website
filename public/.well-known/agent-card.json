@@ -33,7 +33,7 @@
     {
       "id": "ai-assistant",
       "name": "Custom AI Agent Development",
-      "description": "One custom AI agent, built for the client and self-hosted on their own server, VPS, or local machine. Built on Claude Agent SDK, LangGraph, or CrewAI, with any LLM backend including fully local models. Integrates with Telegram, WhatsApp, LinkedIn, email, and Slack, connects to the client's docs and CRM, and can drive a computer to browse, fill forms, and extract data. Basic agent live in 3–7 days; the first pilot agent is free.",
+      "description": "One custom AI agent, built for the client and self-hosted on their own server, VPS, or local machine. Built on Claude Agent SDK, LangGraph, or CrewAI, with any LLM backend including fully local models. Integrates with Telegram, WhatsApp, LinkedIn, email, and Slack, connects to the client's docs and CRM, and can drive a computer to browse, fill forms, and extract data. Basic agent live in 3–7 days; the usual starting engagement is a $500 Digital Business Brain connecting the client's existing systems.",
       "tags": [
         "ai-agents",
         "claude-agent-sdk",
