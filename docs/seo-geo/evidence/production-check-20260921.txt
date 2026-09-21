@@ -1,0 +1,159 @@
+Проверка живого сайта ventolabs.com — 21 сентября 2026
+========================================================
+
+1. Коды ответов (curl)
+----------------------
+200 0.903995s 88471b  https://ventolabs.com/
+200 0.712118s 99013b  https://ventolabs.com/ru/
+200 0.707064s 69122b  https://ventolabs.com/ru/services/ai-automation/
+200 0.720601s 108592b  https://ventolabs.com/ru/blog/ai-agent-dlya-1c-vnedrenie/
+200 0.747481s 51021b  https://ventolabs.com/sitemap.xml
+200 0.601275s 571b  https://ventolabs.com/robots.txt
+  https://ventolabs.com/llms.txt
+200 0.529344s 10636b  https://ventolabs.com/.well-known/agent-card.json
+404 0.659403s 35881b  https://ventolabs.com/nonexistent-page-check/
+
+2. Заголовки главной
+--------------------
+HTTP/2 200 
+server: GitHub.com
+content-type: text/html; charset=utf-8
+last-modified: Mon, 10 Aug 2026 05:42:15 GMT
+access-control-allow-origin: *
+etag: "6a7964b7-15997"
+expires: Mon, 21 Sep 2026 18:42:28 GMT
+cache-control: max-age=600
+x-proxy-cache: MISS
+x-github-request-id: D86E:32B75C:1F7CE3:1F9B5F:6AB1783C
+x-github-edge-region: fra
+accept-ranges: bytes
+date: Mon, 21 Sep 2026 18:33:14 GMT
+via: 1.1 varnish
+age: 46
+x-served-by: cache-fra-eddf8230072-FRA
+x-cache: HIT
+x-cache-hits: 1
+x-timer: S1790015595.774289,VS0,VE11
+vary: Accept-Encoding
+x-fastly-request-id: 630cbbba5417af88fc74e38ac8b3ff2db977c8dd
+content-length: 88471
+
+Замечание: last-modified = 10 августа 2026. Сайт не пересобирался 40 дней.
+Хостинг — GitHub Pages за Fastly, edge-регион fra (Франкфурт).
+
+3. robots.txt
+-------------
+User-agent: *
+Allow: /
+# Next.js RSC payloads — not for indexing (llms.txt stays crawlable).
+# Two rules per filename: the bare form only matches the site root, so the
+# nested copies (one set per route, per locale) need the /*/ wildcard too.
+Disallow: /__next.
+Disallow: /*/__next.
+Disallow: /index.txt
+Disallow: /*/index.txt
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+# AI assistants and answer engines are welcome to read and cite this site.
+# Entity and offer summary for LLMs: https://ventolabs.com/llms.txt
+
+Sitemap: https://ventolabs.com/sitemap.xml
+
+4. Проверки русской главной (grep по отданному HTML)
+----------------------------------------------------
+title           : AI-агенты и автоматизация для бизнеса | Vento Labs
+canonical       : https://ventolabs.com/ru/
+hreflang        : en, es, ru, de, x-default — присутствуют в head
+JSON-LD типы    : ProfessionalService, WebSite, FAQPage (6 Q/A), Person, PostalAddress
+Яндекс.Метрика  : не найдено ни одного обращения к mc.yandex.ru
+GTM             : GTM-NG78TDBW — присутствует
+yandex-verification : не найдено
+google-site-verification : не найдено
+"$500"          : 23 вхождения
+"₽"             : 0 вхождений
+контакты        : t.me/defi_defiler (5), wa.me/529998023600 (2)
+российский номер: отсутствует на странице (есть в src/lib/site.ts, не используется)
+
+5. sitemap.xml — 80 URL, lastmod у 28
+--------------------------------------
+<loc>https://ventolabs.com/</loc>
+<loc>https://ventolabs.com/es/</loc>
+<loc>https://ventolabs.com/ru/</loc>
+<loc>https://ventolabs.com/de/</loc>
+<loc>https://ventolabs.com/data-centers/</loc>
+<loc>https://ventolabs.com/es/data-centers/</loc>
+<loc>https://ventolabs.com/ru/data-centers/</loc>
+<loc>https://ventolabs.com/de/data-centers/</loc>
+<loc>https://ventolabs.com/cases/</loc>
+<loc>https://ventolabs.com/es/cases/</loc>
+<loc>https://ventolabs.com/ru/cases/</loc>
+<loc>https://ventolabs.com/de/cases/</loc>
+<loc>https://ventolabs.com/cases/content-factory/</loc>
+<loc>https://ventolabs.com/es/cases/content-factory/</loc>
+<loc>https://ventolabs.com/ru/cases/content-factory/</loc>
+<loc>https://ventolabs.com/de/cases/content-factory/</loc>
+<loc>https://ventolabs.com/cases/supplier-agent/</loc>
+<loc>https://ventolabs.com/es/cases/supplier-agent/</loc>
+<loc>https://ventolabs.com/ru/cases/supplier-agent/</loc>
+<loc>https://ventolabs.com/de/cases/supplier-agent/</loc>
+<loc>https://ventolabs.com/cases/erp-agent/</loc>
+<loc>https://ventolabs.com/es/cases/erp-agent/</loc>
+<loc>https://ventolabs.com/ru/cases/erp-agent/</loc>
+<loc>https://ventolabs.com/de/cases/erp-agent/</loc>
+<loc>https://ventolabs.com/cases/bankruptcy-agent/</loc>
+<loc>https://ventolabs.com/es/cases/bankruptcy-agent/</loc>
+<loc>https://ventolabs.com/ru/cases/bankruptcy-agent/</loc>
+<loc>https://ventolabs.com/de/cases/bankruptcy-agent/</loc>
+<loc>https://ventolabs.com/blog/</loc>
+<loc>https://ventolabs.com/es/blog/</loc>
+<loc>https://ventolabs.com/ru/blog/</loc>
+<loc>https://ventolabs.com/de/blog/</loc>
+<loc>https://ventolabs.com/blog/instrumenty-1c-claude-code-codex/</loc>
+<loc>https://ventolabs.com/es/blog/instrumenty-1c-claude-code-codex/</loc>
+<loc>https://ventolabs.com/ru/blog/instrumenty-1c-claude-code-codex/</loc>
+<loc>https://ventolabs.com/de/blog/instrumenty-1c-claude-code-codex/</loc>
+<loc>https://ventolabs.com/blog/ai-agent-dlya-1c-vnedrenie/</loc>
+<loc>https://ventolabs.com/es/blog/ai-agent-dlya-1c-vnedrenie/</loc>
+<loc>https://ventolabs.com/ru/blog/ai-agent-dlya-1c-vnedrenie/</loc>
+<loc>https://ventolabs.com/de/blog/ai-agent-dlya-1c-vnedrenie/</loc>
+<loc>https://ventolabs.com/blog/ai-agent-dlya-marketpleysov-wb-ozon/</loc>
+<loc>https://ventolabs.com/es/blog/ai-agent-dlya-marketpleysov-wb-ozon/</loc>
+<loc>https://ventolabs.com/ru/blog/ai-agent-dlya-marketpleysov-wb-ozon/</loc>
+<loc>https://ventolabs.com/de/blog/ai-agent-dlya-marketpleysov-wb-ozon/</loc>
+<loc>https://ventolabs.com/blog/ii-dlya-arbitrazhnogo-upravlyayushchego/</loc>
+<loc>https://ventolabs.com/es/blog/ii-dlya-arbitrazhnogo-upravlyayushchego/</loc>
+<loc>https://ventolabs.com/ru/blog/ii-dlya-arbitrazhnogo-upravlyayushchego/</loc>
+<loc>https://ventolabs.com/de/blog/ii-dlya-arbitrazhnogo-upravlyayushchego/</loc>
+<loc>https://ventolabs.com/blog/custom-ai-agent-cost/</loc>
+<loc>https://ventolabs.com/es/blog/custom-ai-agent-cost/</loc>
+<loc>https://ventolabs.com/ru/blog/custom-ai-agent-cost/</loc>
+<loc>https://ventolabs.com/de/blog/custom-ai-agent-cost/</loc>
+<loc>https://ventolabs.com/blog/autonomous-ai-accountability/</loc>
+<loc>https://ventolabs.com/es/blog/autonomous-ai-accountability/</loc>
+<loc>https://ventolabs.com/ru/blog/autonomous-ai-accountability/</loc>
+<loc>https://ventolabs.com/de/blog/autonomous-ai-accountability/</loc>
+<loc>https://ventolabs.com/terms/</loc>
+<loc>https://ventolabs.com/es/terms/</loc>
+<loc>https://ventolabs.com/ru/terms/</loc>
+<loc>https://ventolabs.com/de/terms/</loc>
+<loc>https://ventolabs.com/privacy/</loc>
+<loc>https://ventolabs.com/es/privacy/</loc>
+<loc>https://ventolabs.com/ru/privacy/</loc>
+<loc>https://ventolabs.com/de/privacy/</loc>
+<loc>https://ventolabs.com/services/ai-assistant/</loc>
+<loc>https://ventolabs.com/es/services/ai-assistant/</loc>
+<loc>https://ventolabs.com/ru/services/ai-assistant/</loc>
+<loc>https://ventolabs.com/de/services/ai-assistant/</loc>
+<loc>https://ventolabs.com/services/ai-automation/</loc>
+<loc>https://ventolabs.com/es/services/ai-automation/</loc>
+<loc>https://ventolabs.com/ru/services/ai-automation/</loc>
+<loc>https://ventolabs.com/de/services/ai-automation/</loc>
+<loc>https://ventolabs.com/services/ai-training/</loc>
+<loc>https://ventolabs.com/es/services/ai-training/</loc>
+<loc>https://ventolabs.com/ru/services/ai-training/</loc>
+<loc>https://ventolabs.com/de/services/ai-training/</loc>
+<loc>https://ventolabs.com/services/ai-workspace/</loc>
+<loc>https://ventolabs.com/es/services/ai-workspace/</loc>
+<loc>https://ventolabs.com/ru/services/ai-workspace/</loc>
+<loc>https://ventolabs.com/de/services/ai-workspace/</loc>
+

@@ -1,0 +1,86 @@
+{
+  "checkedAt": "2026-09-21",
+  "property": "sc-domain:ventolabs.com",
+  "results": [
+    {
+      "url": "https://ventolabs.com/ru/",
+      "verdict": "PASS",
+      "coverageState": "Submitted and indexed",
+      "lastCrawlTime": "2026-09-17T21:58:50Z",
+      "googleCanonical": "https://ventolabs.com/ru/",
+      "robotsTxtState": "ALLOWED"
+    },
+    {
+      "url": "https://ventolabs.com/ru/services/ai-automation/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    },
+    {
+      "url": "https://ventolabs.com/ru/services/ai-workspace/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    },
+    {
+      "url": "https://ventolabs.com/ru/cases/erp-agent/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    },
+    {
+      "url": "https://ventolabs.com/ru/blog/ai-agent-dlya-1c-vnedrenie/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    },
+    {
+      "url": "https://ventolabs.com/services/ai-automation/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    },
+    {
+      "url": "https://ventolabs.com/blog/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    },
+    {
+      "url": "https://ventolabs.com/blog/custom-ai-agent-cost/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    },
+    {
+      "url": "https://ventolabs.com/cases/erp-agent/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    },
+    {
+      "url": "https://ventolabs.com/es/services/ai-automation/",
+      "verdict": "NEUTRAL",
+      "coverageState": "URL is unknown to Google",
+      "lastCrawlTime": null,
+      "googleCanonical": null,
+      "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED"
+    }
+  ]
+}

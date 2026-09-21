@@ -7,6 +7,7 @@ import { PilotOfferPopup } from "@/components/PilotOfferPopup";
 import { CalendlyWidget } from "@/components/CalendlyPopup";
 import { FloatingContact } from "@/components/FloatingContact";
 import { GoogleTagManagerHead, GoogleTagManagerNoScript } from "@/components/GoogleTagManager";
+import { YandexMetrikaHead, YandexMetrikaNoScript } from "@/components/YandexMetrika";
 import { AnalyticsBootstrap } from "@/components/AnalyticsBootstrap";
 import { VisitorTracker } from "@/components/VisitorTracker";
 import { LocaleProvider } from "@/components/LocaleProvider";
@@ -68,6 +69,12 @@ export const metadata: Metadata = {
     url: `${site.url}/`,
   },
   twitter: { card: "summary_large_image", title: dict.seo.homeTitle, description: dict.seo.homeDescription },
+  // Webmaster-tool ownership tags. Both are env-driven: unset means Next
+  // emits nothing, so a fake placeholder can never ship to production.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+  },
   robots: {
     index: true,
     follow: true,
@@ -93,6 +100,7 @@ export default function RootLayout({
     >
       <head>
         <GoogleTagManagerHead />
+        <YandexMetrikaHead />
         <link rel="icon" href={asset("/favicon.svg")} type="image/svg+xml" />
         {/* RFC 8288 link relations for agents (GH Pages can't set HTTP Link headers, so we expose them in HTML). */}
         <link rel="sitemap" type="application/xml" href={asset("/sitemap.xml")} />
@@ -158,6 +166,7 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleTagManagerNoScript />
+        <YandexMetrikaNoScript />
         <AnalyticsBootstrap />
         <VisitorTracker />
         <WebMCP />
