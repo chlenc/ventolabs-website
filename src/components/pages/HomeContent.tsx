@@ -21,8 +21,10 @@ const roiLinks = [
 const serviceImages: Record<string, string> = {
   "ai-assistant": "/images/service-card-ai-assistant.svg",
   "ai-automation": "/images/service-card-ai-automation.svg",
+  "sistema-ucheta": "/images/service-card-sistema-ucheta.svg",
   "ai-training": "/images/service-card-ai-training.svg",
   "ai-workspace": "/images/service-card-ai-workspace.svg",
+  "seo-geo-audit": "/images/service-card-seo-geo-audit.svg",
 };
 
 /* One documentary frame per process phase. Paths live here rather than in the

@@ -287,6 +287,20 @@ export const de: Dictionary = {
         ],
         metricsSource: "Quelle: eigene Messungen von Vento Labs an ArbitrAI (arbitrai.tech). Unser Produkt, unsere Zahlen — kein unabhängiges Audit.",
       },
+      "marketplace-ops": {
+        industry: "E-Commerce",
+        title: "Automatisiertes Produktmanagement spart dem Team 25 Stunden pro Woche",
+        challenge: "Ein Online-Shop verwaltet 3.000+ SKUs auf mehreren Marktplätzen. Preis-Updates, Bestandssynchronisation und Kundenanfragen verschlangen 5+ Stunden täglich. Lead-Qualifizierung aus Website und Social war komplett manuell.",
+        solution: "Automatisierungspipeline mit n8n: eingehende Leads werden von KI qualifiziert, Produktdaten werden plattformübergreifend in Echtzeit synchronisiert, Kundenfragen aus der Produktdatenbank beantwortet, wöchentliche Analytics-Reports entstehen automatisch.",
+        result: "Lead-Reaktionszeit sank von 6 Stunden auf 8 Minuten. Sync-Fehler eliminiert. Das Team gewann 25+ Stunden pro Woche für Wachstumsaktivitäten statt Dateneingabe.",
+        imageAlt: "Ein Kunde bezahlt an der Kasse eines kleinen Ladens per Telefon, während die Verkäuferin an einem Tablet-Kassensystem arbeitet.",
+        metrics: [
+          { value: "8 Min.", label: "Lead-Reaktion (vorher 6 Std.)" },
+          { value: "25 Std.", label: "pro Woche gespart" },
+          { value: "3.000+", label: "SKUs automatisch verwaltet" },
+        ],
+        metricsSource: "Illustratives Beispiel, kein konkretes Kundenprojekt: die Zahlen zeigen die typische Wirkung dieser Automatisierung, kein gemessenes Ergebnis.",
+      },
     },
     sectionLabels: { challenge: "Herausforderung", solution: "Lösung", result: "Ergebnis" },
     readyHeading: "So etwas für Ihren Betrieb?",
@@ -583,6 +597,172 @@ export const de: Dictionary = {
         kitAlt: "Explosionsdarstellung der Plattform: Gehäuse, vier Agenten-Module, ein Gateway-Hub, ein verschlossener Wissenstresor und der Kabelbaum.",
         kitCaption:
           "Agenten pro Team, das Gateway, über das sie alle sprechen, der Tresor für Ihr Wissen und die Verkabelung zu Ihren Systemen — eine Plattform statt elf Abos.",
+      },
+    },
+    "sistema-ucheta": {
+      title: "Betriebssystem für Zahlen",
+      kicker: "Dashboard, Shop und Agent",
+      navLabel: "Betriebssystem",
+      heroTitle: "Ein Betriebssystem, das zu Ihrem Geschäft passt",
+      heroDescription:
+        "Ein Dashboard, in das Sie sich einloggen, Dinge eintragen und nachsehen. Ein Shop, der aus denselben Daten lebt. Und ein Agent, der rechnet, abgleicht und Fragen in Worten beantwortet statt in der nächsten Tabelle.",
+      cardSummary:
+        "Eigenes Dashboard, Shop auf denselben Daten und ein Agent, der rechnet und abgleicht — statt drei Tabellen, die sich widersprechen.",
+      problems: [
+        "Die Zahlen liegen in drei Tabellen, keine stimmt mit der anderen überein — und nur wer sie pflegt, weiß welche richtig ist",
+        "Für die Marge eines einzelnen Artikels müssen Einkauf, Versand, Plattformgebühren und Retouren von Hand zusammengesucht werden",
+        "Lagerbestand, Marktplatzbestand und Tabelle zeigen drei verschiedene Zahlen — und ein Kunde merkt es zuerst",
+        "Ein ERP ist da, aber jede Änderung bedeutet Dienstleister, drei Wochen und eine Rechnung — also führt das Team nebenher doch wieder Excel",
+      ],
+      guide: {
+        empathy:
+          "Wir haben das oft genug gesehen: Das Geschäft läuft und verdient Geld, gesteuert wird es aber aus einer Datei, die außer einer Person niemand zu öffnen wagt.",
+        authority:
+          "Wir haben solche Systeme für Mode, Beschaffung und Marktplätze gebaut — darunter eines, das 25 Stunden Handarbeit pro Woche ersetzt hat. Code und Datenbank bleiben bei Ihnen.",
+      },
+      plan: [
+        {
+          title: "Aufnahme",
+          description:
+            "Wir sehen uns an, wie Sie heute rechnen: Tabellen, ERP, Chatverläufe, Notizbuch. Wir finden, wo die Zahlen auseinanderlaufen und warum. Ergebnis: eine Datenlandkarte und die Liste dessen, was zusammenpassen muss.",
+        },
+        {
+          title: "Aufbau",
+          description:
+            "Wir bauen das Dashboard um Ihre Objekte: Artikel, Aufträge, Lieferanten, Geld, Mitarbeitende. Vorhandene Daten ziehen wir um. Rollen und Rechte ab dem ersten Tag.",
+        },
+        {
+          title: "Agent",
+          description:
+            "Dann kommt der Agent: Er rechnet Kosten und Marge, gleicht Bestände zwischen Lager und Marktplätzen ab, schickt Berichte in den Chat und antwortet in normaler Sprache.",
+        },
+      ],
+      included: [
+        "Web-Dashboard für Ihre Objekte: Artikel, Aufträge, Lieferanten, Einkauf, Kosten, Kunden",
+        "Übernahme des Bestehenden: Excel, Google Tabellen, ERP-Exporte",
+        "Rollen und Rechte: wer was sieht und wer was ändern darf",
+        "Optionaler Shop oder Katalog, gespeist aus demselben Dashboard",
+        "Rechnender Agent: Kosten, Marge, Bestände, Liquiditätslücken",
+        "Abgleiche: Lager gegen Marktplatz, Zahlungen gegen Lieferungen, Aufträge gegen Einkauf",
+        "Berichte im Chat, geplant und auf Zuruf, in verständlicher Sprache",
+        "Integrationen: ERP, Marktplätze, Bank, CRM, Telegram",
+        "Betrieb auf Ihrer Infrastruktur oder auf unserer — Ihre Entscheidung",
+        "Quellcode und Datenbank gehen an Sie über",
+      ],
+      outcomes: [
+        "Ein Ort, an dem die Wahrheit über Bestände, Aufträge und Geld steht",
+        "Die Marge je Artikel rechnet sich selbst — inklusive Versand, Gebühren und Retouren",
+        "Abweichungen findet der Agent, nicht der Kunde",
+        "Der Bericht, der einen halben Tag gekostet hat, kommt von allein",
+      ],
+      stakes:
+        "Solange die Zahlen in einer Datei leben, hängt das Geschäft an einer Person und ihrem Gedächtnis. Das trägt genau bis zum ersten Urlaub, der ersten Kündigung oder dem ersten Ausfall.",
+      faq: [
+        {
+          q: "Was kostet das?",
+          a: "Wir starten mit einer Analyse für 500 $: Wir schließen Ihre Daten an und zeigen, was darin bereits sichtbar ist. Danach ein Festpreis, typischerweise 2–4 Wochen Arbeit. Laufende Kosten danach sind nur Betrieb und KI-Nutzung, direkt beim Anbieter, ohne Aufschlag.",
+        },
+        {
+          q: "Ersetzt das unser ERP?",
+          a: "Nein, und das soll es auch nicht. Das ERP bleibt das führende System für die Buchhaltung. Das Dashboard deckt das ab, wofür Sie ohnehin Nebentabellen führen: Live-Bestände, Marge, Abgleich. Wir lesen über die Austauschschnittstelle und fassen den Kern nicht an.",
+        },
+        {
+          q: "Bleiben unsere Daten bei uns?",
+          a: "Ja. Wir installieren auf Ihrem Server oder in Ihrer Cloud, mit Ihren Zugängen. Quellcode und Datenbank gehen an Sie. Auf Ihren Daten wird kein Modell trainiert — alles läuft über APIs.",
+        },
+        {
+          q: "Und wenn sich das Geschäft ändert?",
+          a: "Das System ist so gebaut, dass neue Objekte und Berichte ohne Neuschreiben dazukommen. Änderungen im ersten Monat nach dem Start gehören zum Projekt, danach nach Absprache.",
+        },
+      ],
+      seo: {
+        title: "Individuelles Betriebssystem: Dashboard und KI-Agent",
+        description:
+          "Wir bauen ein Betriebssystem um Ihr Geschäft: Dashboard für Artikel, Aufträge und Geld, optionaler Shop auf denselben Daten und ein Agent, der Marge rechnet, Bestände abgleicht und im Chat berichtet. Live in 2–4 Wochen.",
+        serviceType: "Entwicklung individueller Betriebssysteme",
+      },
+    },
+    "seo-geo-audit": {
+      title: "SEO- und GEO-Audit",
+      kicker: "Suchmaschinen und KI-Assistenten",
+      navLabel: "SEO/GEO-Audit",
+      heroTitle: "Eine Website, die Menschen finden und KI-Assistenten zitieren",
+      heroDescription:
+        "Wir finden heraus, warum Sie in der Suche und in KI-Antworten unsichtbar sind. Wir reparieren die Technik, schließen Webmaster-Tools und Analytics an und bereiten die Seite darauf vor, zitiert zu werden. Am Ende steht ein belegter Bericht samt umgesetzter Korrekturen — keine Präsentation.",
+      cardSummary:
+        "Warum weder Menschen noch KI-Assistenten Ihre Seite finden — mit Belegen beantwortet und behoben.",
+      problems: [
+        "Die Seite existiert und hat Geld gekostet, aber aus der Suche kommt niemand — und unklar bleibt, ob die Seite schlecht oder nur unsichtbar ist",
+        "Webmaster-Tools und Analytics wurden nie angeschlossen, also ist jedes Gespräch über Wachstum Raterei",
+        "Die Agentur schickt Rankings, und Anfragen kommen trotzdem keine",
+        "ChatGPT empfiehlt Ihre Wettbewerber und kennt Sie nicht — obwohl Sie dasselbe besser machen",
+      ],
+      guide: {
+        empathy:
+          "Ein vertrautes Gefühl: Alles sieht richtig gemacht aus, und die Suche verhält sich, als gäbe es die Seite nicht.",
+        authority:
+          "Wir auditieren wie Ingenieure untersuchen: Jeder Befund ist durch eine Serverantwort oder einen Search-Console-Export belegt, nicht durch eine Meinung. Die Korrekturen setzen wir selbst um und zeigen Vorher und Nachher.",
+      },
+      plan: [
+        {
+          title: "Messen",
+          description:
+            "Wir schließen Search Console, Webmaster-Tools und Analytics an, erfassen echte Serverantworten und crawlen die Seite. Daraus wird ein Ausgangswert, zu dem man zurückkehren kann.",
+        },
+        {
+          title: "Diagnose",
+          description:
+            "Wir finden, was im Weg steht: Indexierung, Markup, Geschwindigkeit, Struktur, Texte. Jeder Befund kommt mit Beleg und ist nach Wirkung auf Anfragen priorisiert, nicht auf Rankings.",
+        },
+        {
+          title: "Beheben",
+          description:
+            "Wir setzen alles um, was sich im Code beheben lässt, und übergeben eine kurze Liste dessen, was nur Sie tun können. Danach prüfen wir das Ergebnis auf der Live-Seite nach.",
+        },
+      ],
+      included: [
+        "Webmaster-Tools und Analytics angeschlossen und eingerichtet, mit Zielen und Sitzungsaufzeichnung",
+        "Google Search Console angeschlossen und Sitemap eingereicht",
+        "Technisches Audit: Statuscodes, Canonicals, hreflang, robots, Sitemap, Geschwindigkeit",
+        "Indexierungsprüfung: was Suchmaschinen wirklich kennen und was sie nie gesehen haben",
+        "Schema.org-Markup für Ihren Geschäftstyp",
+        "GEO-Vorbereitung: llms.txt, Antwortstruktur, Zitierbarkeit in KI-Assistenten",
+        "IndexNow — sofortige Änderungsmeldungen an Yandex und Bing",
+        "Bericht mit Belegen, Umsetzungsplan und Messplan",
+        "Umsetzung aller Korrekturen, die im Code liegen",
+        "Nachmessung einen Monat nach der Umsetzung",
+      ],
+      outcomes: [
+        "Sie wissen, wie viele Seiten Suchmaschinen tatsächlich kennen — und warum der Rest fehlt",
+        "Webmaster-Tools und Analytics laufen wirklich, mit Zielen, statt auf der Irgendwann-Liste zu stehen",
+        "Die technischen Ursachen der Unsichtbarkeit sind beseitigt und auf der Live-Seite geprüft",
+        "Es gibt einen Ausgangswert und einen Messplan — in drei Monaten ist belegbar, ob es gewirkt hat",
+      ],
+      stakes:
+        "Ohne Messung wird Wachstumsarbeit zur Glaubensfrage. Man kann ein Jahr lang für SEO zahlen und nie erfahren, dass der Crawler die Hälfte der Seiten schlicht nie besucht hat. Genau das haben wir mehr als einmal gefunden.",
+      faq: [
+        {
+          q: "Was kostet es und wie lange dauert es?",
+          a: "Das Audit inklusive umgesetzter Korrekturen beginnt bei 500 $ und dauert meist 1–2 Wochen. Das genaue Angebot folgt, nachdem wir die Seite gesehen haben.",
+        },
+        {
+          q: "Was bekomme ich konkret?",
+          a: "Einen fünfteiligen Bericht: Kontext und die ehrlichen Grenzen der Prüfung, Befunde mit Belegen, Umsetzungsplan, Messplan und die Rohdaten dahinter. Dazu die Korrekturen, eingespielt in Ihr Repository oder Ihr CMS.",
+        },
+        {
+          q: "Garantieren Sie Rankings?",
+          a: "Nein, und niemand kann das — es liegt nicht in unserer Hand. Garantiert wird anderes: ein messbarer Ausgangswert, beseitigte technische Ursachen und ein ehrlicher Bericht darüber, was gewirkt hat und was nicht.",
+        },
+        {
+          q: "Was ist GEO und warum jetzt?",
+          a: "Ein Teil der Leute sucht nicht mehr, sondern fragt ChatGPT, Gemini oder einen Sprachassistenten. Damit ein Assistent Sie nennt, muss sich ein Fakt leicht aus Ihrer Seite herausnehmen und zitieren lassen. Das ist eigene Arbeit, und fast niemand hat sie gemacht.",
+        },
+      ],
+      seo: {
+        title: "SEO- und GEO-Audit: Suche und KI-Antworten",
+        description:
+          "Wir diagnostizieren, warum Ihre Seite in der Suche und in KI-Antworten unsichtbar ist, schließen Webmaster-Tools und Analytics an, reparieren Indexierung und Markup und bereiten die Seite aufs Zitiertwerden vor.",
+        serviceType: "SEO-Audit und Website-Optimierung",
       },
     },
   },

@@ -287,6 +287,20 @@ export const en: Dictionary = {
         ],
         metricsSource: "Source: Vento Labs’ own measurements on ArbitrAI (arbitrai.tech). Our product, our figures — not an independent audit.",
       },
+      "marketplace-ops": {
+        industry: "E-commerce",
+        title: "Automated product management saves 25 hours per week across the team",
+        challenge: "An online store manages 3,000+ SKUs across multiple marketplaces. Price updates, stock sync, and customer inquiries consumed 5+ hours daily. Lead qualification from the website and social channels was entirely manual.",
+        solution: "Built an automation pipeline with n8n: incoming leads are qualified by AI, product data syncs across platforms in real-time, customer questions are answered from the product database, and weekly analytics reports generate automatically.",
+        result: "Lead response time dropped from 6 hours to 8 minutes. Product data sync errors eliminated. The team reclaimed 25+ hours per week for growth activities instead of data entry.",
+        imageAlt: "A customer pays by phone at a small shop's checkout counter while the seller works at a tablet point-of-sale.",
+        metrics: [
+          { value: "8 min", label: "lead response (was 6 hours)" },
+          { value: "25h", label: "saved per week" },
+          { value: "3,000+", label: "SKUs managed automatically" },
+        ],
+        metricsSource: "Illustrative example, not a specific client engagement: the numbers show the typical effect of this kind of automation, not a measured result.",
+      },
     },
     sectionLabels: { challenge: "Challenge", solution: "Solution", result: "Result" },
     readyHeading: "Want one of these on your operation?",
@@ -583,6 +597,172 @@ export const en: Dictionary = {
         kitAlt: "Exploded view of the platform: enclosure, four agent modules, a gateway hub, a sealed knowledge vault and the cable loom.",
         kitCaption:
           "Agents per team, the gateway they all speak through, the vault your knowledge lives in and the wiring to your systems — one platform, not eleven subscriptions.",
+      },
+    },
+    "sistema-ucheta": {
+      title: "Operations System",
+      kicker: "Dashboard, storefront and agent",
+      navLabel: "Operations System",
+      heroTitle: "A operations system built around how your business actually runs",
+      heroDescription:
+        "A dashboard you log into, add to and look at. A storefront fed from the same data. And an agent that does the arithmetic, reconciles the numbers and answers questions in words instead of another spreadsheet.",
+      cardSummary:
+        "Your own dashboard, a storefront on the same data, and an agent that calculates and reconciles — instead of three spreadsheets that disagree.",
+      problems: [
+        "Records live in three spreadsheets, none of which agree, and only the person who maintains them knows which one is right",
+        "Working out the margin on a single item means manually combining cost, shipping, marketplace fees and returns",
+        "Warehouse stock, marketplace stock and the spreadsheet show three different numbers — and a customer tells you first",
+        "You have an ERP, but every change means a contractor, three weeks and an invoice, so the team keeps a parallel spreadsheet anyway",
+      ],
+      guide: {
+        empathy:
+          "We have seen this often enough: the business already works and makes money, but it is run out of a file nobody except one person dares to open.",
+        authority:
+          "We have built operations systems for clothing, supply and marketplace businesses — including one that replaced 25 hours of manual work a week. The code and the database stay yours.",
+      },
+      plan: [
+        {
+          title: "Map",
+          description:
+            "We look at how you count today: spreadsheets, ERP, chat threads, a notebook. We find where the numbers diverge and why. You get an entity map and a list of what has to reconcile.",
+        },
+        {
+          title: "Build",
+          description:
+            "We stand up a dashboard around your entities: products, orders, suppliers, money, staff. Existing data is migrated in. Roles and permissions from day one, not later.",
+        },
+        {
+          title: "Agent",
+          description:
+            "We add the agent: it calculates cost and margin, reconciles stock between your warehouse and the marketplaces, sends reports to chat and answers questions in plain language.",
+        },
+      ],
+      included: [
+        "A web dashboard for your entities: products, orders, suppliers, purchases, costs, customers",
+        "Migration of what already exists: Excel, Google Sheets, ERP exports",
+        "Roles and permissions: who sees what, and who can change what",
+        "An optional storefront or catalogue fed from the same dashboard",
+        "A bookkeeping agent: cost, margin, stock levels, cash gaps",
+        "Reconciliations: warehouse against marketplace, payments against shipments, orders against purchases",
+        "Scheduled and on-demand reports in chat, written in plain language",
+        "Integrations: ERP, marketplaces, bank, CRM, Telegram",
+        "Hosted on your infrastructure or ours — your call",
+        "Source code and database handed over to you",
+      ],
+      outcomes: [
+        "One place that holds the truth about stock, orders and money",
+        "Margin per item calculates itself, including shipping, fees and returns",
+        "Discrepancies are found by the agent, not by a customer",
+        "The report that used to take half a day arrives on its own",
+      ],
+      stakes:
+        "While the books live in a file, the business rests on one person and their memory. That works right up until the first holiday, resignation or crash — which is exactly when you find out what \"we'll sort it out later\" actually cost.",
+      faq: [
+        {
+          q: "What does it cost?",
+          a: "We start with a $500 review: we connect your data and show what is already visible in it. After that, a fixed quote — typically 2–4 weeks of work. Running costs afterwards are hosting and AI model usage only, paid directly to the providers with no markup.",
+        },
+        {
+          q: "Will this replace our ERP?",
+          a: "No, and it should not. The ERP stays the system of record for accounting. The dashboard covers what you keep parallel spreadsheets for anyway: live stock, margin and reconciliation. We read from the ERP through its exchange interface and never touch its core.",
+        },
+        {
+          q: "Does our data stay with us?",
+          a: "Yes. We deploy on your server or in your cloud, with your credentials. Source code and database are handed to you. No model is trained on your data — everything runs through APIs.",
+        },
+        {
+          q: "What if the business changes and we need something different?",
+          a: "The system is built so new entities and reports can be added without a rewrite. Changes in the first month after launch are part of the project; after that, by agreement.",
+        },
+      ],
+      seo: {
+        title: "Custom operations system: dashboard and AI agent",
+        description:
+          "We build an operations system around your business: a dashboard for products, orders and money, an optional storefront on the same data, and an agent that calculates margin, reconciles stock and reports in chat. Live in 2–4 weeks.",
+        serviceType: "Custom operations system development",
+      },
+    },
+    "seo-geo-audit": {
+      title: "SEO and GEO audit",
+      kicker: "Search engines and AI assistants",
+      navLabel: "SEO/GEO audit",
+      heroTitle: "A site people find and AI assistants quote",
+      heroDescription:
+        "We work out why you are invisible in search and in AI answers. We fix the technical side, connect the webmaster tools and analytics, and prepare the site to be cited. You get a report backed by evidence and the fixes already shipped — not a slide deck.",
+      cardSummary:
+        "Why neither people nor AI assistants find your site — answered with evidence, and fixed.",
+      problems: [
+        "The site exists and money went into it, but nobody arrives from search — and it is unclear whether the site is bad or simply invisible",
+        "Webmaster tools and analytics were never connected, so every conversation about growth is guesswork",
+        "The agency sends a report full of rankings, and the enquiries still do not come",
+        "ChatGPT recommends your competitors and has never heard of you — even though you do the same thing better",
+      ],
+      guide: {
+        empathy:
+          "A familiar feeling: everything looks done correctly, and search behaves as if the site did not exist.",
+        authority:
+          "We audit the way engineers investigate: every finding is backed by a server response or a Search Console export, not an opinion. We ship the fixes ourselves and show the before and after.",
+      },
+      plan: [
+        {
+          title: "Measure",
+          description:
+            "We connect Search Console, the webmaster tools and analytics, capture real server responses and crawl the site. That becomes a baseline you can return to later.",
+        },
+        {
+          title: "Diagnose",
+          description:
+            "We find what is in the way: indexing, markup, speed, structure, copy. Every finding comes with evidence and is ranked by its effect on enquiries, not on rankings.",
+        },
+        {
+          title: "Fix",
+          description:
+            "We ship everything that can be fixed in code and hand you a short list of what only you can do. Then we re-check the result on the live site.",
+        },
+      ],
+      included: [
+        "Webmaster tools and analytics connected and configured, with goals and session recording",
+        "Google Search Console connected and the sitemap submitted",
+        "Technical audit: status codes, canonicals, hreflang, robots, sitemap, speed",
+        "Indexing check: what search engines actually know about the site, and what they have never seen",
+        "Schema.org markup for your type of business",
+        "GEO preparation: llms.txt, answer structure, citability in AI assistants",
+        "IndexNow — instant change notifications for Yandex and Bing",
+        "A report with evidence, an implementation plan and a measurement plan",
+        "Implementation of every fix that lives in code",
+        "A follow-up measurement a month after the work ships",
+      ],
+      outcomes: [
+        "You know how many pages search engines actually know — and why the rest are missing",
+        "Webmaster tools and analytics genuinely work, with goals, instead of being on the someday list",
+        "The technical causes of invisibility are removed and verified on the live site",
+        "There is a baseline and a measurement plan, so in three months you can tell whether it worked",
+      ],
+      stakes:
+        "Without measurement, growth work becomes a matter of faith. You can pay for a year of SEO and never learn that the crawler has simply never visited half your pages. We have found exactly that, more than once.",
+      faq: [
+        {
+          q: "What does it cost and how long does it take?",
+          a: "The audit including shipped fixes starts at $500 and usually takes 1–2 weeks. The exact quote comes after we have looked at the site.",
+        },
+        {
+          q: "What do I actually receive?",
+          a: "A five-part report: context and the honest limits of the check, findings with evidence, an implementation plan, a measurement plan, and the raw exports behind all of it. Plus the fixes, shipped into your repository or CMS.",
+        },
+        {
+          q: "Do you guarantee rankings?",
+          a: "No, and nobody can — it is not ours to give. What we do guarantee is a measurable baseline, the technical causes of invisibility removed, and an honest report on what worked and what did not.",
+        },
+        {
+          q: "What is GEO and why now?",
+          a: "Some people no longer search — they ask ChatGPT, Gemini or a voice assistant. For an assistant to mention you, a fact has to be easy to lift from your site and quote. That is separate work, and almost nobody has done it yet.",
+        },
+      ],
+      seo: {
+        title: "SEO and GEO audit: search engines and AI answers",
+        description:
+          "We diagnose why your site is invisible in search and in AI assistant answers, connect webmaster tools and analytics, fix indexing and markup, and prepare the site to be cited. Evidence-backed report plus shipped fixes.",
+        serviceType: "SEO audit and site optimisation",
       },
     },
   },

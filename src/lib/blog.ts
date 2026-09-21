@@ -586,6 +586,16 @@ const RELATED_GUIDES: Record<string, BlogSlug[]> = {
   "ai-assistant": ["custom-ai-agent-cost"],
   "ai-automation": ["ai-agent-dlya-marketpleysov-wb-ozon"],
   "ai-workspace": ["autonomous-ai-accountability"],
+  // The operations-system page is the commercial destination the Russian
+  // guides were missing: three of them describe exactly this problem (1C
+  // integration, marketplace bookkeeping, what a build actually costs) and
+  // until now they linked nowhere that could be bought.
+  "sistema-ucheta": [
+    "ai-agent-dlya-1c-vnedrenie",
+    "ai-agent-dlya-marketpleysov-wb-ozon",
+    "instrumenty-1c-claude-code-codex",
+    "custom-ai-agent-cost",
+  ],
 };
 
 /** Guides that link to this service/case slug, newest first. Empty if none. */

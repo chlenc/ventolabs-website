@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="One page found by search engines and quoted by AI assistants">
+  <rect width="800" height="500" fill="#eeeae0"/>
+  <g fill="#1e3c14" opacity="0.08">
+    <circle cx="40" cy="40" r="1.5"/><circle cx="120" cy="40" r="1.5"/><circle cx="200" cy="40" r="1.5"/><circle cx="280" cy="40" r="1.5"/><circle cx="360" cy="40" r="1.5"/><circle cx="440" cy="40" r="1.5"/><circle cx="520" cy="40" r="1.5"/><circle cx="600" cy="40" r="1.5"/><circle cx="680" cy="40" r="1.5"/><circle cx="760" cy="40" r="1.5"/>
+    <circle cx="40" cy="460" r="1.5"/><circle cx="120" cy="460" r="1.5"/><circle cx="200" cy="460" r="1.5"/><circle cx="280" cy="460" r="1.5"/><circle cx="360" cy="460" r="1.5"/><circle cx="440" cy="460" r="1.5"/><circle cx="520" cy="460" r="1.5"/><circle cx="600" cy="460" r="1.5"/><circle cx="680" cy="460" r="1.5"/><circle cx="760" cy="460" r="1.5"/>
+  </g>
+  <g font-family="Menlo, Consolas, monospace" font-size="12" letter-spacing="1.5">
+    <!-- the page in the middle -->
+    <rect x="320" y="120" width="160" height="120" rx="8" fill="#1e3c14"/>
+    <text x="400" y="166" text-anchor="middle" fill="#f3ead8">PAGE</text>
+    <line x1="348" y1="186" x2="452" y2="186" stroke="#f3ead8" stroke-width="1" opacity="0.5"/>
+    <line x1="348" y1="200" x2="430" y2="200" stroke="#f3ead8" stroke-width="1" opacity="0.5"/>
+    <line x1="348" y1="214" x2="444" y2="214" stroke="#f3ead8" stroke-width="1" opacity="0.5"/>
+    <!-- crawlers arriving -->
+    <rect x="55" y="112" width="150" height="44" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="130" y="139" text-anchor="middle" fill="#1e3c14">YANDEX</text>
+    <rect x="55" y="204" width="150" height="44" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="130" y="231" text-anchor="middle" fill="#1e3c14">GOOGLE</text>
+    <path d="M 205 134 L 262 134 L 262 172 L 314 172" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <path d="M 205 226 L 262 226 L 262 188 L 314 188" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <path d="M 308 167 L 316 172 L 308 177 Z" fill="#1e3c14"/>
+    <path d="M 308 183 L 316 188 L 308 193 Z" fill="#1e3c14"/>
+    <!-- assistants quoting -->
+    <rect x="595" y="112" width="150" height="44" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <text x="670" y="139" text-anchor="middle" fill="#1e3c14">CHATGPT</text>
+    <rect x="595" y="204" width="150" height="44" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <text x="670" y="231" text-anchor="middle" fill="#1e3c14">ALISA</text>
+    <path d="M 486 172 L 538 172 L 538 134 L 589 134" fill="none" stroke="#1e3c14" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <path d="M 486 188 L 538 188 L 538 226 L 589 226" fill="none" stroke="#1e3c14" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <path d="M 583 129 L 591 134 L 583 139 Z" fill="#1e3c14"/>
+    <path d="M 583 221 L 591 226 L 583 231 Z" fill="#1e3c14"/>
+    <!-- evidence line -->
+    <rect x="300" y="286" width="200" height="40" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="400" y="311" text-anchor="middle" fill="#1e3c14">llms.txt · schema</text>
+    <path d="M 400 240 L 400 284" fill="none" stroke="#1e3c14" stroke-width="1.2" stroke-dasharray="3 5"/>
+  </g>
+  <text x="400" y="395" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="26" fill="#1e3c14" text-anchor="middle">found, then quoted</text>
+  <text x="48" y="470" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1e3c14" opacity="0.55">VL / SEO + GEO AUDIT</text>
+  <text x="752" y="470" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1e3c14" opacity="0.55" text-anchor="end">06</text>
+</svg>

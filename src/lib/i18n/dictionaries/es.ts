@@ -287,6 +287,20 @@ export const es: Dictionary = {
         ],
         metricsSource: "Fuente: mediciones propias de Vento Labs sobre ArbitrAI (arbitrai.tech). Nuestro producto, nuestras cifras — no es una auditoría independiente.",
       },
+      "marketplace-ops": {
+        industry: "E-commerce",
+        title: "La gestión automatizada de productos ahorra 25 horas por semana al equipo",
+        challenge: "Una tienda online gestiona 3.000+ SKUs en varios marketplaces. Las actualizaciones de precios, sincronización de stock y consultas consumían 5+ horas al día. La cualificación de leads desde web y redes era totalmente manual.",
+        solution: "Construimos un pipeline de automatización con n8n: los leads entrantes son cualificados por IA, los datos de producto se sincronizan en tiempo real, las preguntas de clientes se responden desde la base de datos y los informes semanales se generan automáticamente.",
+        result: "El tiempo de respuesta a leads bajó de 6 horas a 8 minutos. Errores de sincronización eliminados. El equipo recuperó 25+ horas a la semana para crecer en vez de hacer entrada de datos.",
+        imageAlt: "Un cliente paga con el teléfono en el mostrador de una tienda pequeña mientras la vendedora trabaja en un TPV con tablet.",
+        metrics: [
+          { value: "8 min", label: "respuesta a leads (antes 6 h)" },
+          { value: "25 h", label: "ahorradas por semana" },
+          { value: "3.000+", label: "SKUs gestionados automáticamente" },
+        ],
+        metricsSource: "Ejemplo ilustrativo, no un proyecto de cliente real: las cifras muestran el efecto típico de este tipo de automatización, no un resultado medido.",
+      },
     },
     sectionLabels: { challenge: "Reto", solution: "Solución", result: "Resultado" },
     readyHeading: "¿Quieres algo así en tu operación?",
@@ -583,6 +597,172 @@ export const es: Dictionary = {
         kitAlt: "Vista despiezada de la plataforma: envolvente, cuatro módulos de agente, un hub de pasarela, una cámara sellada de conocimiento y el mazo de cables.",
         kitCaption:
           "Agentes por equipo, la pasarela por la que todos hablan, la cámara donde vive vuestro conocimiento y el cableado a vuestros sistemas — una plataforma, no once suscripciones.",
+      },
+    },
+    "sistema-ucheta": {
+      title: "Sistema de gestión",
+      kicker: "Panel, escaparate y agente",
+      navLabel: "Sistema de gestión",
+      heroTitle: "Un sistema de gestión hecho a la medida de su negocio",
+      heroDescription:
+        "Un panel al que entra, donde añade y consulta. Un escaparate alimentado por esos mismos datos. Y un agente que hace las cuentas, cuadra las cifras y responde con palabras en lugar de otra hoja de cálculo.",
+      cardSummary:
+        "Su propio panel, un escaparate sobre los mismos datos y un agente que calcula y cuadra — en vez de tres hojas que no coinciden.",
+      problems: [
+        "Las cuentas viven en tres hojas que no coinciden entre sí, y solo quien las mantiene sabe cuál es la buena",
+        "Calcular el margen de un artículo obliga a juntar a mano coste, envío, comisiones del marketplace y devoluciones",
+        "El stock del almacén, el del marketplace y el de la hoja son tres cifras distintas — y se entera por un cliente",
+        "Hay un ERP, pero cada cambio significa proveedor, tres semanas y una factura, así que el equipo acaba llevando un Excel paralelo",
+      ],
+      guide: {
+        empathy:
+          "Lo hemos visto suficientes veces: el negocio ya funciona y gana dinero, pero se dirige desde un archivo que nadie salvo una persona se atreve a abrir.",
+        authority:
+          "Hemos construido sistemas así para moda, aprovisionamiento y marketplaces — incluido uno que sustituyó 25 horas de trabajo manual a la semana. El código y la base de datos se quedan con usted.",
+      },
+      plan: [
+        {
+          title: "Mapeo",
+          description:
+            "Miramos cómo cuenta hoy: hojas, ERP, conversaciones, una libreta. Encontramos dónde divergen las cifras y por qué. Sale un mapa de entidades y la lista de lo que tiene que cuadrar.",
+        },
+        {
+          title: "Construcción",
+          description:
+            "Levantamos el panel sobre sus entidades: artículos, pedidos, proveedores, dinero, personas. Migramos lo que ya existe. Roles y permisos desde el primer día.",
+        },
+        {
+          title: "Agente",
+          description:
+            "Añadimos el agente: calcula coste y margen, cuadra el stock entre almacén y marketplaces, envía informes al chat y responde en lenguaje normal.",
+        },
+      ],
+      included: [
+        "Panel web para sus entidades: artículos, pedidos, proveedores, compras, gastos, clientes",
+        "Migración de lo existente: Excel, Hojas de cálculo de Google, exportaciones del ERP",
+        "Roles y permisos: quién ve qué y quién puede cambiar qué",
+        "Escaparate o catálogo opcional alimentado por el mismo panel",
+        "Agente contable: coste, margen, stock, tensiones de caja",
+        "Cuadres: almacén contra marketplace, pagos contra envíos, pedidos contra compras",
+        "Informes en el chat, programados y a demanda, en lenguaje claro",
+        "Integraciones: ERP, marketplaces, banco, CRM, Telegram",
+        "Alojado en su infraestructura o en la nuestra — usted decide",
+        "Código fuente y base de datos entregados a usted",
+      ],
+      outcomes: [
+        "Un único sitio donde está la verdad sobre stock, pedidos y dinero",
+        "El margen por artículo se calcula solo, con envío, comisiones y devoluciones incluidos",
+        "Las discrepancias las encuentra el agente, no un cliente",
+        "El informe que costaba media jornada llega solo",
+      ],
+      stakes:
+        "Mientras las cuentas vivan en un archivo, el negocio depende de una persona y su memoria. Eso aguanta justo hasta las primeras vacaciones, la primera baja o el primer fallo.",
+      faq: [
+        {
+          q: "¿Cuánto cuesta?",
+          a: "Empezamos con una revisión de 500 $: conectamos sus datos y mostramos lo que ya se ve en ellos. Después, presupuesto cerrado, normalmente 2–4 semanas de trabajo. Los costes recurrentes son solo alojamiento y uso de modelos de IA, pagados directamente al proveedor y sin recargo.",
+        },
+        {
+          q: "¿Esto sustituye a nuestro ERP?",
+          a: "No, y no debería. El ERP sigue siendo el sistema contable de referencia. El panel cubre aquello para lo que igualmente lleva hojas paralelas: stock en vivo, margen y cuadres. Leemos del ERP por su interfaz de intercambio y no tocamos el núcleo.",
+        },
+        {
+          q: "¿Nuestros datos se quedan con nosotros?",
+          a: "Sí. Desplegamos en su servidor o en su nube, con sus accesos. El código fuente y la base de datos se le entregan. No se entrena ningún modelo con sus datos — todo pasa por APIs.",
+        },
+        {
+          q: "¿Y si el negocio cambia y necesitamos otra cosa?",
+          a: "El sistema se construye para que nuevas entidades e informes se añadan sin reescribirlo. Los cambios del primer mes tras el arranque entran en el proyecto; después, según acuerdo.",
+        },
+      ],
+      seo: {
+        title: "Sistema de gestión a medida: panel y agente de IA",
+        description:
+          "Construimos un sistema de gestión a la medida de su negocio: panel de artículos, pedidos y dinero, escaparate opcional sobre los mismos datos y un agente que calcula márgenes, cuadra stock e informa por chat. Operativo en 2–4 semanas.",
+        serviceType: "Desarrollo de sistemas de gestión a medida",
+      },
+    },
+    "seo-geo-audit": {
+      title: "Auditoría SEO y GEO",
+      kicker: "Buscadores y asistentes de IA",
+      navLabel: "Auditoría SEO/GEO",
+      heroTitle: "Una web que la gente encuentra y la IA cita",
+      heroDescription:
+        "Averiguamos por qué es invisible en los buscadores y en las respuestas de IA. Arreglamos la parte técnica, conectamos las herramientas de webmaster y la analítica, y preparamos el sitio para ser citado. El resultado es un informe con pruebas y las correcciones ya aplicadas, no una presentación.",
+      cardSummary:
+        "Por qué ni las personas ni los asistentes de IA encuentran su web — respondido con pruebas y corregido.",
+      problems: [
+        "La web existe y costó dinero, pero de los buscadores no llega nadie — y no se sabe si es mala o simplemente invisible",
+        "Las herramientas de webmaster y la analítica nunca se conectaron, así que cualquier conversación sobre crecimiento es a ciegas",
+        "La agencia manda un informe lleno de posiciones y las solicitudes siguen sin llegar",
+        "ChatGPT recomienda a sus competidores y no le conoce — aunque usted hace lo mismo mejor",
+      ],
+      guide: {
+        empathy:
+          "Una sensación conocida: todo parece bien hecho y el buscador se comporta como si la web no existiera.",
+        authority:
+          "Auditamos como investigan los ingenieros: cada hallazgo está respaldado por una respuesta del servidor o una exportación de Search Console, no por una opinión. Las correcciones las aplicamos nosotros y enseñamos el antes y el después.",
+      },
+      plan: [
+        {
+          title: "Medir",
+          description:
+            "Conectamos Search Console, las herramientas de webmaster y la analítica, capturamos respuestas reales del servidor y rastreamos el sitio. Eso queda como punto de partida al que se puede volver.",
+        },
+        {
+          title: "Diagnosticar",
+          description:
+            "Encontramos lo que estorba: indexación, marcado, velocidad, estructura, textos. Cada hallazgo viene con prueba y priorizado por su efecto en las solicitudes, no en las posiciones.",
+        },
+        {
+          title: "Corregir",
+          description:
+            "Aplicamos todo lo que se arregla en código y le entregamos una lista corta de lo que solo puede hacer usted. Después verificamos el resultado en el sitio en producción.",
+        },
+      ],
+      included: [
+        "Herramientas de webmaster y analítica conectadas y configuradas, con objetivos y grabación de sesión",
+        "Google Search Console conectado y sitemap enviado",
+        "Auditoría técnica: códigos de respuesta, canonical, hreflang, robots, sitemap, velocidad",
+        "Revisión de indexación: qué conocen realmente los buscadores y qué no han visto nunca",
+        "Marcado Schema.org para su tipo de negocio",
+        "Preparación GEO: llms.txt, estructura de respuestas, citabilidad en asistentes de IA",
+        "IndexNow — aviso inmediato de cambios a Yandex y Bing",
+        "Informe con pruebas, plan de implementación y plan de medición",
+        "Implementación de todas las correcciones que viven en el código",
+        "Medición de control un mes después",
+      ],
+      outcomes: [
+        "Sabe cuántas páginas conocen de verdad los buscadores — y por qué faltan las demás",
+        "Las herramientas de webmaster y la analítica funcionan de verdad, con objetivos, en vez de quedar pendientes",
+        "Las causas técnicas de la invisibilidad están eliminadas y verificadas en producción",
+        "Hay punto de partida y plan de medición: en tres meses se puede afirmar si funcionó",
+      ],
+      stakes:
+        "Sin medición, el trabajo de crecimiento se vuelve cuestión de fe. Se puede pagar un año de SEO y no enterarse nunca de que el rastreador simplemente no ha visitado la mitad de las páginas. Lo hemos encontrado más de una vez.",
+      faq: [
+        {
+          q: "¿Cuánto cuesta y cuánto tarda?",
+          a: "La auditoría con las correcciones aplicadas parte de 500 $ y suele llevar 1–2 semanas. El presupuesto exacto llega después de ver el sitio.",
+        },
+        {
+          q: "¿Qué recibo exactamente?",
+          a: "Un informe en cinco partes: contexto y los límites honestos de la revisión, hallazgos con pruebas, plan de implementación, plan de medición y las exportaciones en bruto que los sostienen. Además, las correcciones aplicadas en su repositorio o su CMS.",
+        },
+        {
+          q: "¿Garantizan posiciones?",
+          a: "No, y nadie puede — no está en nuestra mano. Lo que sí garantizamos es un punto de partida medible, las causas técnicas de la invisibilidad eliminadas y un informe honesto de qué funcionó y qué no.",
+        },
+        {
+          q: "¿Qué es GEO y por qué ahora?",
+          a: "Parte de la gente ya no busca: le pregunta a ChatGPT, a Gemini o a un asistente de voz. Para que un asistente le mencione, un dato tiene que poder extraerse y citarse con facilidad desde su web. Es un trabajo aparte y casi nadie lo ha hecho.",
+        },
+      ],
+      seo: {
+        title: "Auditoría SEO y GEO: buscadores y respuestas de IA",
+        description:
+          "Diagnosticamos por qué su web es invisible en los buscadores y en las respuestas de los asistentes de IA, conectamos webmaster y analítica, arreglamos indexación y marcado, y la preparamos para ser citada.",
+        serviceType: "Auditoría SEO y optimización web",
       },
     },
   },

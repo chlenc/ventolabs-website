@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Dashboard, storefront and agent sharing one set of numbers">
+  <rect width="800" height="500" fill="#eeeae0"/>
+  <g fill="#1e3c14" opacity="0.08">
+    <circle cx="40" cy="40" r="1.5"/><circle cx="120" cy="40" r="1.5"/><circle cx="200" cy="40" r="1.5"/><circle cx="280" cy="40" r="1.5"/><circle cx="360" cy="40" r="1.5"/><circle cx="440" cy="40" r="1.5"/><circle cx="520" cy="40" r="1.5"/><circle cx="600" cy="40" r="1.5"/><circle cx="680" cy="40" r="1.5"/><circle cx="760" cy="40" r="1.5"/>
+    <circle cx="40" cy="460" r="1.5"/><circle cx="120" cy="460" r="1.5"/><circle cx="200" cy="460" r="1.5"/><circle cx="280" cy="460" r="1.5"/><circle cx="360" cy="460" r="1.5"/><circle cx="440" cy="460" r="1.5"/><circle cx="520" cy="460" r="1.5"/><circle cx="600" cy="460" r="1.5"/><circle cx="680" cy="460" r="1.5"/><circle cx="760" cy="460" r="1.5"/>
+  </g>
+  <!-- three sources feeding one ledger -->
+  <g font-family="Menlo, Consolas, monospace" font-size="12" letter-spacing="1.5">
+    <rect x="55" y="95" width="145" height="46" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="127" y="123" text-anchor="middle" fill="#1e3c14">SKLAD</text>
+    <rect x="55" y="157" width="145" height="46" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="127" y="185" text-anchor="middle" fill="#1e3c14">WB / OZON</text>
+    <rect x="55" y="219" width="145" height="46" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="127" y="247" text-anchor="middle" fill="#1e3c14">1C / BANK</text>
+    <path d="M 200 118 L 250 118 L 250 180" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <line x1="200" y1="180" x2="250" y2="180" stroke="#1e3c14" stroke-width="1.2"/>
+    <path d="M 200 242 L 250 242 L 250 180" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <path d="M 250 180 L 296 180" stroke="#1e3c14" stroke-width="1.2"/>
+    <path d="M 290 175 L 298 180 L 290 185 Z" fill="#1e3c14"/>
+    <!-- the ledger -->
+    <rect x="300" y="128" width="190" height="104" rx="8" fill="#1e3c14"/>
+    <text x="395" y="166" text-anchor="middle" fill="#f3ead8">DASHBOARD</text>
+    <text x="395" y="192" text-anchor="middle" fill="#f3ead8" opacity="0.7" font-size="11">one set of numbers</text>
+    <!-- agent checks the ledger -->
+    <path d="M 395 232 L 395 286" fill="none" stroke="#1e3c14" stroke-width="1.2" stroke-dasharray="3 5"/>
+    <rect x="310" y="288" width="170" height="46" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="395" y="316" text-anchor="middle" fill="#1e3c14">AGENT · SVERKA</text>
+    <!-- outputs -->
+    <path d="M 490 180 L 545 180" stroke="#1e3c14" stroke-width="1.2"/>
+    <path d="M 539 175 L 547 180 L 539 185 Z" fill="#1e3c14"/>
+    <rect x="550" y="95" width="195" height="46" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="647" y="123" text-anchor="middle" fill="#1e3c14">VITRINA</text>
+    <rect x="550" y="157" width="195" height="46" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="647" y="185" text-anchor="middle" fill="#1e3c14">MARZHA</text>
+    <rect x="550" y="219" width="195" height="46" rx="8" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <text x="647" y="247" text-anchor="middle" fill="#1e3c14">OTCHET · TELEGRAM</text>
+    <path d="M 545 180 L 545 118 L 550 118" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+    <path d="M 545 180 L 545 242 L 550 242" fill="none" stroke="#1e3c14" stroke-width="1.2"/>
+  </g>
+  <text x="400" y="400" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="26" fill="#1e3c14" text-anchor="middle">the numbers finally agree</text>
+  <text x="48" y="470" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1e3c14" opacity="0.55">VL / OPERATIONS SYSTEM</text>
+  <text x="752" y="470" font-family="Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1e3c14" opacity="0.55" text-anchor="end">03</text>
+</svg>
