@@ -71,4 +71,6 @@ jobs:
           path: out
       - run: node scripts/indexnow.mjs
         env:
-          INDEXNOW_KEY: e0505dcf46a443189a77330a33092dec
+          # Public by design: the protocol verifies ownership by fetching this
+          # same value from the site root, so it cannot be a secret.
+          INDEXNOW_KEY: 9009a2da1f71b19368d4887af472f6e4
