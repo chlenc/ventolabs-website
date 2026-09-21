@@ -33,6 +33,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
+      # The sitemap the deploy is about to publish — IndexNow reads it from
+      # here after the deploy succeeds.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sitemap
+          path: out/sitemap.xml
+          retention-days: 1
 
   deploy:
     needs: build
@@ -43,3 +50,25 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tell Yandex and Bing what changed. Google ignores IndexNow — its side is
+  # covered by the sitemap in Search Console.
+  #
+  # `continue-on-error` is deliberate: the site is already live at this point,
+  # and a refused ping only costs us crawl latency, never correctness.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/download-artifact@v4
+        with:
+          name: sitemap
+          path: out
+      - run: node scripts/indexnow.mjs
+        env:
+          INDEXNOW_KEY: e0505dcf46a443189a77330a33092dec
