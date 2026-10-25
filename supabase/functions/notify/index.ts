@@ -3,9 +3,8 @@
 // Kept in sync here only in case Supabase is ever revived; not currently
 // deployed/reachable.
 //
-// Prefer function env (supabase secrets set TG_BOT_TOKEN=… TG_CHAT_ID=…);
-// hardcoded values remain as fallback so a redeploy without env keeps working.
-const BOT_TOKEN = Deno.env.get("TG_BOT_TOKEN") || "8796675484:AAFmoa8ouMNPMpvnzV10tLiXsp9Xuq9nv6o";
+// TG_BOT_TOKEN must be configured as a function secret. Never commit tokens.
+const BOT_TOKEN = Deno.env.get("TG_BOT_TOKEN")?.trim();
 const CHAT_ID = Deno.env.get("TG_CHAT_ID") || "-1003805212766";
 const TG_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
 
@@ -320,6 +319,12 @@ Deno.serve(async (req) => {
     return new Response("Method not allowed", { status: 405, headers: corsHeaders });
   }
 
+  if (!BOT_TOKEN) {
+    return new Response(JSON.stringify({ ok: false, error: "Notification service is not configured" }), {
+      status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
   try {
     // Parse body — support both application/json and text/plain (sendBeacon)
     const raw = await req.text();
@@ -521,11 +526,12 @@ Deno.serve(async (req) => {
 
     if (emailSubject) await sendEmailCopy(emailSubject, message);
 
-    return new Response(JSON.stringify({ ok: tgData.ok }), {
-      status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+    return new Response(JSON.stringify({ ok: tgRes.ok && tgData.ok === true }), {
+      status: tgRes.ok && tgData.ok === true ? 200 : 502, headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: String(err) }), {
+  } catch {
+    // Upstream errors can include credential-bearing Telegram URLs.
+    return new Response(JSON.stringify({ ok: false, error: "Notification service failed" }), {
       status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
