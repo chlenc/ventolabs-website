@@ -1,0 +1,62 @@
+{
+  "repository": "https://github.com/google/fonts",
+  "commit": "e7db6ca603fd4862010383ff17ffd6cc4ffac1c0",
+  "files": [
+    {
+      "family": "fraunces",
+      "name": "Fraunces[SOFT,WONK,opsz,wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/fraunces/Fraunces%5BSOFT%2CWONK%2Copsz%2Cwght%5D.ttf",
+      "sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb",
+      "bytes": 360440,
+      "output": "fraunces.woff2",
+      "output_sha256": "7dc0dd18aeeae3204d5cc26679b5f41d8be1e622bd3bd39fef574346c99508e8"
+    },
+    {
+      "family": "fraunces",
+      "name": "OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/fraunces/OFL.txt",
+      "sha256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b",
+      "bytes": 4391,
+      "output": "fraunces-OFL.txt"
+    },
+    {
+      "family": "intertight",
+      "name": "InterTight[wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/intertight/InterTight%5Bwght%5D.ttf",
+      "sha256": "b81b73dcb64df3c230cabade7df6c5773bf863233f24c9ee51087519f1f88b6f",
+      "bytes": 581588,
+      "output": "intertight.woff2",
+      "output_sha256": "1413178a7a2d34c761baaffe9eeece0e43b7caa8f0dd1bb7e0bc9ad254027af7"
+    },
+    {
+      "family": "intertight",
+      "name": "OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/intertight/OFL.txt",
+      "sha256": "50240ab035cf1b6b3307940235481d515c4b6de3ab1fa843dbe59e7892cb9d58",
+      "bytes": 4383,
+      "output": "intertight-OFL.txt"
+    },
+    {
+      "family": "jetbrainsmono",
+      "name": "JetBrainsMono[wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf",
+      "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda",
+      "bytes": 187208,
+      "output": "jetbrainsmono.woff2",
+      "output_sha256": "7b7f3419196f675a973d30cb70078749120caddea86c8547ebf54a8db2ca13af"
+    },
+    {
+      "family": "jetbrainsmono",
+      "name": "OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/jetbrainsmono/OFL.txt",
+      "sha256": "b2fe5e8987594e9ffd1d2ca52a2f5d73eb8335243893c5d6254b5ad69269591d",
+      "bytes": 4399,
+      "output": "jetbrainsmono-OFL.txt"
+    }
+  ],
+  "conversion": {
+    "fonttools": "4.67.0",
+    "brotli": "1.2.1",
+    "operation": "WOFF2 compression only; no glyph subsetting or axis instancing"
+  }
+}
