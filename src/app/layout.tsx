@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter_Tight, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ExitIntentPopup } from "@/components/ExitIntentPopup";
@@ -19,25 +19,30 @@ import { defaultLocale, getDictionary, htmlLangCodes, locales, localizedPath, op
 import { jsonLdString, webSiteJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
+// Keep fonts in the repository so production builds never depend on Google Fonts.
+const fraunces = localFont({
+  src: "./fonts/fraunces.woff2",
+  weight: "100 900",
+  style: "normal",
+  adjustFontFallback: "Times New Roman",
   variable: "--font-serif",
   display: "swap",
-  axes: ["opsz", "SOFT"],
 });
 
-const interTight = Inter_Tight({
-  subsets: ["latin"],
+const interTight = localFont({
+  src: "./fonts/intertight.woff2",
+  style: "normal",
   variable: "--font-sans",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "300 700",
 });
 
-const jetBrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetBrainsMono = localFont({
+  src: "./fonts/jetbrainsmono.woff2",
+  style: "normal",
   variable: "--font-mono",
   display: "swap",
-  weight: ["400", "500"],
+  weight: "400 500",
 });
 
 const dict = getDictionary(defaultLocale);
